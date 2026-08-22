@@ -1,0 +1,16 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "tags": "multitext",
+    "cssclasses": "multitext",
+    "type": "text",
+    "source": "text",
+    "source_url": "text",
+    "author": "text",
+    "date": "date",
+    "archived": "date",
+    "status": "text",
+    "draft": "checkbox",
+    "description": "text"
+  }
+}

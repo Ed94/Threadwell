@@ -1,0 +1,17 @@
+.DS_Store
+.trash/
+.replit
+replit.nix
+
+site/
+
+private/*
+!private/.gitkeep
+meta/attachments/*
+!meta/attachments/.gitkeep
+
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/plugins/
+.obsidian/themes/
+.obsidian/snippets/

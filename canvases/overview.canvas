@@ -1,0 +1,24 @@
+{
+	"nodes":[
+		{"id":"title","type":"text","text":"# Threadwell\nRecovered threads and submerged records.","x":-360,"y":-80,"width":320,"height":140,"color":"5"},
+		{"id":"home","type":"file","file":"index.md","x":40,"y":-160,"width":260,"height":80},
+		{"id":"archive","type":"file","file":"archive/index.md","x":400,"y":-280,"width":280,"height":100},
+		{"id":"threads","type":"file","file":"archive/threads/index.md","x":760,"y":-360,"width":260,"height":80},
+		{"id":"sources","type":"file","file":"archive/sources/index.md","x":760,"y":-220,"width":260,"height":80},
+		{"id":"canvases","type":"file","file":"canvases/index.md","x":400,"y":-80,"width":280,"height":80},
+		{"id":"notes","type":"file","file":"notes/index.md","x":400,"y":80,"width":280,"height":100},
+		{"id":"example-thread","type":"file","file":"archive/threads/How to archive a thread.md","x":760,"y":-40,"width":300,"height":80},
+		{"id":"example-note","type":"file","file":"notes/What this archive is for.md","x":760,"y":80,"width":300,"height":80}
+	],
+	"edges":[
+		{"id":"e1","fromNode":"title","fromSide":"right","toNode":"home","toSide":"left"},
+		{"id":"e2","fromNode":"home","fromSide":"right","toNode":"archive","toSide":"left"},
+		{"id":"e3","fromNode":"home","fromSide":"right","toNode":"canvases","toSide":"left"},
+		{"id":"e4","fromNode":"home","fromSide":"right","toNode":"notes","toSide":"left"},
+		{"id":"e5","fromNode":"archive","fromSide":"right","toNode":"threads","toSide":"left"},
+		{"id":"e6","fromNode":"archive","fromSide":"right","toNode":"sources","toSide":"left"},
+		{"id":"e7","fromNode":"threads","fromSide":"bottom","toNode":"example-thread","toSide":"top"},
+		{"id":"e8","fromNode":"notes","fromSide":"right","toNode":"example-note","toSide":"left"},
+		{"id":"e9","fromNode":"example-thread","fromSide":"bottom","toNode":"example-note","toSide":"top","label":"distills"}
+	]
+}
