@@ -32,4 +32,4 @@ On Linux I do speculative pinning of CPU memory via mlockall. Learned that later
 
 Media (not lifted): `2066184005632786736_HKyPZnfWMAAv4qF_orig.jpg`
 
-Branches: [[2026-06-14-Social_Vulture-running-in-crt-or-are-you-emulating-scanlines-in]], [[2026-06-15-sadhuIGI-also-this-font-is-cursed]], [[2026-06-15-GrowlerEnjooyer-there-is-0-chance-you-actually-use-this-font-its]]
+Branches: [[archive/threads/NOTimothyLottes/2026-06-14-on-linux-i-do-speculative-pinning-of-cpu-memory/2026-06-14-Social_Vulture-running-in-crt-or-are-you-emulating-scanlines-in]], [[archive/threads/NOTimothyLottes/2026-06-14-on-linux-i-do-speculative-pinning-of-cpu-memory/2026-06-15-sadhuIGI-also-this-font-is-cursed]], [[archive/threads/NOTimothyLottes/2026-06-14-on-linux-i-do-speculative-pinning-of-cpu-memory/2026-06-15-GrowlerEnjooyer-there-is-0-chance-you-actually-use-this-font-its]]

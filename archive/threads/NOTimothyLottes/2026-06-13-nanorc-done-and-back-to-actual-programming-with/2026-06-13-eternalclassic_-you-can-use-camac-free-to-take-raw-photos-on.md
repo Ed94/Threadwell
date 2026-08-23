@@ -37,4 +37,4 @@ parent_post_id: "2065804972378243476"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-06-13-nanorc-done-and-back-to-actual-programming-with]]

@@ -41,4 +41,4 @@ parent_post_id: "2060730425929080874"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-05-30-renovating-cpu-clock-code-im-assuming-x86-64-tsc]]

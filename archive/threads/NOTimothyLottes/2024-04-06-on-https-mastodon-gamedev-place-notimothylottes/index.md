@@ -34,4 +34,4 @@ in_reply_to: "1776518700230721688"
 
 Media (not lifted): `1776597200073568623_GKe8HDtXYAAOrfj_orig.jpg`
 
-Branches: [[2024-04-06-MartinJIFuller-a-worthwhile-project-knowledge-well-worth-sharing]], [[2024-04-08-RickyAH-ha-that-wont-save-you-from-my-follow]], [[2024-04-09-BenSimsTech-oh-sick-im-deep-in-optimising-shaders-in-an-aaa]]
+Branches: [[archive/threads/NOTimothyLottes/2024-04-06-on-https-mastodon-gamedev-place-notimothylottes/2024-04-06-MartinJIFuller-a-worthwhile-project-knowledge-well-worth-sharing]], [[archive/threads/NOTimothyLottes/2024-04-06-on-https-mastodon-gamedev-place-notimothylottes/2024-04-08-RickyAH-ha-that-wont-save-you-from-my-follow]], [[archive/threads/NOTimothyLottes/2024-04-06-on-https-mastodon-gamedev-place-notimothylottes/2024-04-09-BenSimsTech-oh-sick-im-deep-in-optimising-shaders-in-an-aaa]]

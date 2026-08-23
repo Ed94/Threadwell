@@ -30,7 +30,7 @@ in_reply_to: ""
 
 I'll add one conspiracy theory for everyone listening: After STP's source was out there, DLSS4 'transformer' magically gained 'sharpness' but I don't believe it was from the ML model change at all, instead I think they just introduced the same error feedback mechanism in STP ...
 
-Branches: [[2026-03-08-gindi4711-did-they-not-just-use-more-historical-frames-to]]
+Branches: [[archive/threads/NOTimothyLottes/2026-03-08-ill-add-one-conspiracy-theory-for-everyone/2026-03-08-gindi4711-did-they-not-just-use-more-historical-frames-to]]
 
 **2/**
 

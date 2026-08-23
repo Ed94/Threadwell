@@ -43,4 +43,4 @@ Another option is to dynamically change the far plane, moving it closer as you g
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2025-11-17-i-wish-everyone-would-just-adopt-reversed-with]]

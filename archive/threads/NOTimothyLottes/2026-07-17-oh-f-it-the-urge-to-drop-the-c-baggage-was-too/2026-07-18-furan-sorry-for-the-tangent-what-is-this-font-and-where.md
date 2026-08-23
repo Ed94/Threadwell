@@ -41,4 +41,4 @@ parent_post_id: "2078257788732461389"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-07-17-oh-f-it-the-urge-to-drop-the-c-baggage-was-too]]

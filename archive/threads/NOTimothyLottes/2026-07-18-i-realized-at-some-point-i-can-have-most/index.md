@@ -32,4 +32,4 @@ I realized at some point I can have most interpreted forth-style words in an ali
 
 Media (not lifted): `2078349730204078527_HNfHl-dXcAAf6Om_orig.png`
 
-Branches: [[2026-07-18-noop_dev-even-smaller-code-size-possible-with-custom]]
+Branches: [[archive/threads/NOTimothyLottes/2026-07-18-i-realized-at-some-point-i-can-have-most/2026-07-18-noop_dev-even-smaller-code-size-possible-with-custom]]

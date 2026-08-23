@@ -172,6 +172,7 @@ def render_branch(
     spine_handle: str,
     archived: str,
     media_by_post: dict[str, tuple[str, ...]] | None = None,
+    spine_wiki: str = "index",
 ) -> str:
     """descendant_ids are posts after the root, in display order (tree.descendants)."""
     ids = by_id(thread)
@@ -202,6 +203,6 @@ def render_branch(
         chunks.append(_post_block(n, post, media_by_post))
     chunks.append("## Related")
     chunks.append("")
-    chunks.append("- Spine: [[index]]")
+    chunks.append(f"- Spine: [[{spine_wiki}]]")
     chunks.append("")
     return "\n".join(chunks).rstrip() + "\n"

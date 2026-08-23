@@ -49,4 +49,4 @@ parent_post_id: "1950860870818439202"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2025-07-31-people-claim-assembly-is-hard-a-good-counter-to]]

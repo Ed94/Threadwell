@@ -32,7 +32,7 @@ in_reply_to: ""
 
 Media (not lifted): `1948009807161721332_Gwi4H27WgAAIgMN_orig.png`
 
-Branches: [[2025-07-23-Karyuutensei-where-does-the-restart-number-come-from-i-assume]]
+Branches: [[archive/threads/NOTimothyLottes/2025-07-23-i-dont-use-standard-c-libs-or-anything-like-that/2025-07-23-Karyuutensei-where-does-the-restart-number-come-from-i-assume]]
 
 **2/**
 

@@ -33,4 +33,4 @@ parent_post_id: "1651268028795961344"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2023-04-26-can-make-a-custom-forth-to-binary-in-a-few-k]]

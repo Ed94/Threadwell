@@ -30,7 +30,7 @@ in_reply_to: ""
 
 So I'm on Linux now, but obviously I cheated, because this is a SteamOS machine (pre-installed). Need to re-learn enough to be able to make responsible choices on a new install. First up what init system to do? {openrc, runit, s6, or dinit}.
 
-Branches: [[2026-06-11-RouaniJihad-my-patience-is-this-thin-with-win11-right-now-but]], [[2026-06-11-mcnabbd-fascinating-to-me-how-this-challenge-would-have]], [[2026-06-11-NOTimothyLottes-going-to-give-artix-lxqt-runit-variation-a-try]]
+Branches: [[archive/threads/NOTimothyLottes/2026-06-10-steamos-init/2026-06-11-RouaniJihad-my-patience-is-this-thin-with-win11-right-now-but]], [[archive/threads/NOTimothyLottes/2026-06-10-steamos-init/2026-06-11-mcnabbd-fascinating-to-me-how-this-challenge-would-have]], [[archive/threads/NOTimothyLottes/2026-06-10-steamos-init/2026-06-11-NOTimothyLottes-going-to-give-artix-lxqt-runit-variation-a-try]]
 
 **2/**
 

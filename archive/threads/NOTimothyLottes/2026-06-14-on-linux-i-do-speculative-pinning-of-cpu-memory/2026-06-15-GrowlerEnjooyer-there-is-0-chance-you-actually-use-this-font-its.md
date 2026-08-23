@@ -45,4 +45,4 @@ parent_post_id: "2066184005632786736"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-06-14-on-linux-i-do-speculative-pinning-of-cpu-memory]]

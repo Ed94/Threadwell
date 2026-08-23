@@ -32,7 +32,7 @@ Renovating CPU clock code. I'm assuming x86-64 TSC is always >= 1 GHz so that co
 
 Media (not lifted): `2060730425929080874_HJku0L4WkAAZk5a_orig.png`
 
-Branches: [[2026-05-31-FUZxxl-if-you-do-the-multiply-in-uint128-t-and-then]]
+Branches: [[archive/threads/NOTimothyLottes/2026-05-30-renovating-cpu-clock-code-im-assuming-x86-64-tsc/2026-05-31-FUZxxl-if-you-do-the-multiply-in-uint128-t-and-then]]
 
 **2/**
 

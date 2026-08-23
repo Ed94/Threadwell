@@ -33,4 +33,4 @@ parent_post_id: "1588515348223254528"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2022-11-04-vulkan-1500-lines-of-overhead-including-header]]

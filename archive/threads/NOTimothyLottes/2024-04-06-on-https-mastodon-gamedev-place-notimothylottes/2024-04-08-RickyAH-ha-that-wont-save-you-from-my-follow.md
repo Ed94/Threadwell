@@ -35,4 +35,4 @@ Media (not lifted): `1777246377824731474_GKoMKCHWwAAWLvG.mp4_orig.mp4`
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2024-04-06-on-https-mastodon-gamedev-place-notimothylottes]]

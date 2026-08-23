@@ -35,4 +35,4 @@ Media (not lifted): `1689479056448684032_F3I8AZmW0AEy6jn_orig.png` `168947905644
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2023-08-07-crt-emulation-on-lcds-can-be-hard-for-example-its]]

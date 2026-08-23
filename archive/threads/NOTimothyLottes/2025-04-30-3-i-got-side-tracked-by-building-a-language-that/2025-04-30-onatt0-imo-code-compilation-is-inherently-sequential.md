@@ -43,4 +43,4 @@ codegen with execution on GPU could work as 2-items(vreg)/stack and 32K cells pe
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2025-04-30-3-i-got-side-tracked-by-building-a-language-that]]

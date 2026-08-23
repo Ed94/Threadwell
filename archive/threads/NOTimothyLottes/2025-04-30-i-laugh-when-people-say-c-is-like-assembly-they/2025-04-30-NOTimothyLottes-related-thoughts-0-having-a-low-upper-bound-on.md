@@ -70,4 +70,4 @@ Gets to easy unnamed arguments
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2025-04-30-i-laugh-when-people-say-c-is-like-assembly-they]]

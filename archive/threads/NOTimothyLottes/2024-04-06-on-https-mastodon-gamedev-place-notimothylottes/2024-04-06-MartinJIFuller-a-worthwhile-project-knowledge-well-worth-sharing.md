@@ -33,4 +33,4 @@ parent_post_id: "1776597200073568623"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2024-04-06-on-https-mastodon-gamedev-place-notimothylottes]]

@@ -32,4 +32,4 @@ Vulkan starts with the ping pong between getting an instance proc addr so one ca
 
 Media (not lifted): `2074108624553554387_HMi2ZkFXEAAy767_orig.png`
 
-Branches: [[2026-07-08-nullspector-thats-very-neat-but-is-it-really-true-in-practice]]
+Branches: [[archive/threads/NOTimothyLottes/2026-07-06-vulkan-starts-with-the-ping-pong-between-getting/2026-07-08-nullspector-thats-very-neat-but-is-it-really-true-in-practice]]

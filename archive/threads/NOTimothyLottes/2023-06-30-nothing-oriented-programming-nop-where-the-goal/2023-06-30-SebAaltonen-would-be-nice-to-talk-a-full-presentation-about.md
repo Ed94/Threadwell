@@ -41,4 +41,4 @@ Media (not lifted): `1674776150671781888_Fz3_kb8WYAMXvcT_orig.png`
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2023-06-30-nothing-oriented-programming-nop-where-the-goal]]

@@ -37,4 +37,4 @@ parent_post_id: "2064858927829745887"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-06-10-steamos-init]]

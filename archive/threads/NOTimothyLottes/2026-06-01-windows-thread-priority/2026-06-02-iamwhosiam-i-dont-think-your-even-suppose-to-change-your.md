@@ -37,4 +37,4 @@ parent_post_id: "2061416116694442141"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-06-01-windows-thread-priority]]

@@ -33,4 +33,4 @@ parent_post_id: "2075769880092037309"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-07-11-rethinking-vulkan-queue-choice-traditional-double]]

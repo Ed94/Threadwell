@@ -34,4 +34,4 @@ sadly i am still a grumpy git.
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2023-06-30-nothing-oriented-programming-nop-where-the-goal]]

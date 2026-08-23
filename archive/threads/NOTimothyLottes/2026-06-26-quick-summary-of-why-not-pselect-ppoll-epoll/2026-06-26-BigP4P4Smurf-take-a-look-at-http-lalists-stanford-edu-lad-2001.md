@@ -33,4 +33,4 @@ parent_post_id: "2070337342854832468"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-06-26-quick-summary-of-why-not-pselect-ppoll-epoll]]

@@ -42,4 +42,4 @@ I think we gave up on them too early, they felt good to use, pleasant to look at
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-06-13-nanorc-done-and-back-to-actual-programming-with]]

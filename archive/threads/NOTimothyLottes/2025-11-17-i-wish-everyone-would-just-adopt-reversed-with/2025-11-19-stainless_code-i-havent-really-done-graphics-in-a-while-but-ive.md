@@ -38,4 +38,4 @@ Some cursory googling didn't return anything useful on this topic.
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2025-11-17-i-wish-everyone-would-just-adopt-reversed-with]]

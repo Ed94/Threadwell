@@ -45,4 +45,4 @@ ofc a lot of people want portability so we went the boring route
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2025-04-30-3-i-got-side-tracked-by-building-a-language-that]]

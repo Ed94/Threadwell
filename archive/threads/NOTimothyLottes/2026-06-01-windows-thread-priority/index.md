@@ -30,7 +30,7 @@ in_reply_to: ""
 
 Windows thread priority. SeIncreaseBasePriorityPrivilege required to play in the (fake)"Realtime" class -BUT- apparently there is AvSetMmThreadCharacteristics() for "Pro Audio" and AvSetMmThreadPriority() which can bring up priority into realtime. Curious if games using today?
 
-Branches: [[2026-06-02-iamwhosiam-i-dont-think-your-even-suppose-to-change-your]]
+Branches: [[archive/threads/NOTimothyLottes/2026-06-01-windows-thread-priority/2026-06-02-iamwhosiam-i-dont-think-your-even-suppose-to-change-your]]
 
 **2/**
 

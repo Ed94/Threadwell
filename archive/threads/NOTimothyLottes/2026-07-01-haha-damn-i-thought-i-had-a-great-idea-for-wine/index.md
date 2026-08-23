@@ -32,7 +32,7 @@ Haha damn, I thought I had a great idea, for Wine workarounds, I could just dete
 
 Media (not lifted): `2072445315370590266_HMLNdMOXkAAIoEj_orig.png`
 
-Branches: [[2026-07-01-opdroid1234-the-two-truths-ive-come-to-accept-in-life-a]], [[2026-07-02-winning_tactic-you-could-pretend-to-be-an-audio-jack]]
+Branches: [[archive/threads/NOTimothyLottes/2026-07-01-haha-damn-i-thought-i-had-a-great-idea-for-wine/2026-07-01-opdroid1234-the-two-truths-ive-come-to-accept-in-life-a]], [[archive/threads/NOTimothyLottes/2026-07-01-haha-damn-i-thought-i-had-a-great-idea-for-wine/2026-07-02-winning_tactic-you-could-pretend-to-be-an-audio-jack]]
 
 **2/**
 

@@ -33,4 +33,4 @@ parent_post_id: "1951347512088088657"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2025-08-01-also-run-from-gpu-side-editing-tools-for-shader]]

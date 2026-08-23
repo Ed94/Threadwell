@@ -37,4 +37,4 @@ parent_post_id: "2061123768429211767"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-05-31-no-debugger-debug-console-printf-style-prior]]

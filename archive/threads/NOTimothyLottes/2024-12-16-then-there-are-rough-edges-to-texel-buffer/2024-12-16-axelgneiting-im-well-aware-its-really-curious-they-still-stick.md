@@ -33,4 +33,4 @@ parent_post_id: "1868492851170205803"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2024-12-16-then-there-are-rough-edges-to-texel-buffer]]

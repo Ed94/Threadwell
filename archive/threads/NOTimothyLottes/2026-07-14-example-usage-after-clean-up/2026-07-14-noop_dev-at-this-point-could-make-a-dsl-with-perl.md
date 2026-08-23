@@ -33,4 +33,4 @@ parent_post_id: "2076833886827376782"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-07-14-example-usage-after-clean-up]]

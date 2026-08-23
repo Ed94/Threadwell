@@ -30,4 +30,4 @@ in_reply_to: ""
 
 Also run-from GPU-side editing tools for shader source and bind everything tables. And build-the-editors-in-it style. Which load/store to the CART. So it won't be for people who want TBs of giant team gen content, but rather sized for what a single person could pull off
 
-Branches: [[2025-08-01-snk_xed-looking-forward-to-it-what-do-i-bookmark]], [[2025-08-01-joeyazf-sounds-super-interesting]]
+Branches: [[archive/threads/NOTimothyLottes/2025-08-01-also-run-from-gpu-side-editing-tools-for-shader/2025-08-01-snk_xed-looking-forward-to-it-what-do-i-bookmark]], [[archive/threads/NOTimothyLottes/2025-08-01-also-run-from-gpu-side-editing-tools-for-shader/2025-08-01-joeyazf-sounds-super-interesting]]

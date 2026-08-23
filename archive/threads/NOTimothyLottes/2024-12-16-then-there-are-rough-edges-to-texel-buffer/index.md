@@ -36,4 +36,4 @@ sRGB -> yes NV, no AMD
 And a big one: NV limits to 128 M elements
 {512 MiB,1GiB,2GiB} buffer size limits for {32,64,128}-bits respectively
 
-Branches: [[2024-12-16-axelgneiting-im-well-aware-its-really-curious-they-still-stick]]
+Branches: [[archive/threads/NOTimothyLottes/2024-12-16-then-there-are-rough-edges-to-texel-buffer/2024-12-16-axelgneiting-im-well-aware-its-really-curious-they-still-stick]]

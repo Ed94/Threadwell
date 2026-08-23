@@ -30,7 +30,7 @@ in_reply_to: ""
 
 @onatt0 [3] I got side tracked by building a language that could be assembled from on the GPU in SIMD. However now I ask myself if that is just adding "complexity", because if programs are bounded in size, why not just focus on CPU non-parallel nested factoring (aka the forth-like way)
 
-Branches: [[2025-04-30-onatt0-imo-code-compilation-is-inherently-sequential]]
+Branches: [[archive/threads/NOTimothyLottes/2025-04-30-3-i-got-side-tracked-by-building-a-language-that/2025-04-30-onatt0-imo-code-compilation-is-inherently-sequential]]
 
 **2/**
 
@@ -56,10 +56,10 @@ Gets to easy unnamed arguments
 
 @onatt0 [8] Likely the majority of C/C++/OOP/bloatware is just shuffling data around in argument gather to support the concept of data stacks on HW that has no physical data stack.
 
-Branches: [[2025-04-30-onatt0-holy-truthnuke-and-people-think-c-is-the-optimal]]
+Branches: [[archive/threads/NOTimothyLottes/2025-04-30-3-i-got-side-tracked-by-building-a-language-that/2025-04-30-onatt0-holy-truthnuke-and-people-think-c-is-the-optimal]]
 
 **7/**
 
 @onatt0 [9] Could just pre-layout call arguments in order of usage, leverage data compression at init-time to unpack into memory before run-time. No more code to shuffle arguments, or set registers to immediates, etc. Just a common (cached) pre-call to consume args from the "tape"
 
-Branches: [[2025-04-30-onatt0-simply-brilliant]]
+Branches: [[archive/threads/NOTimothyLottes/2025-04-30-3-i-got-side-tracked-by-building-a-language-that/2025-04-30-onatt0-simply-brilliant]]

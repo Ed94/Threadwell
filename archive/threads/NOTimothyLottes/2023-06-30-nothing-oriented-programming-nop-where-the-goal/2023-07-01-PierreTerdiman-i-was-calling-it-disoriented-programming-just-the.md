@@ -35,4 +35,4 @@ https://x.com/PierreTerdiman/status/1673389650172321813?s=20
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2023-06-30-nothing-oriented-programming-nop-where-the-goal]]

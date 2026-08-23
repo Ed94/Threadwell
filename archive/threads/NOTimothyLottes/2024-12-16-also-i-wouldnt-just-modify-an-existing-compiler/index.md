@@ -30,4 +30,4 @@ in_reply_to: ""
 
 @AgileJebrim @GustavSterbrant Also I wouldn't just modify an existing compiler, I'd just write an assembler specific for GCN/RDNA/whateversNext family.
 
-Branches: [[2024-12-16-AgileJebrim-fair-enough-current-compilers-are-a-bloated-mess]]
+Branches: [[archive/threads/NOTimothyLottes/2024-12-16-also-i-wouldnt-just-modify-an-existing-compiler/2024-12-16-AgileJebrim-fair-enough-current-compilers-are-a-bloated-mess]]

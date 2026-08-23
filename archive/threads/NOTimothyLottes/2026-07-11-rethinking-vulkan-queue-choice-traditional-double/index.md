@@ -32,7 +32,7 @@ Rethinking Vulkan queue choice. Traditional double-buffered games might do somet
 
 Media (not lifted): `2075769880092037309_HM6desTW0AAHA_H_orig.png`
 
-Branches: [[2026-07-11-konrad_kubacki_-am-i-having-a-stroke-what-is-this-font-it-feels]]
+Branches: [[archive/threads/NOTimothyLottes/2026-07-11-rethinking-vulkan-queue-choice-traditional-double/2026-07-11-konrad_kubacki_-am-i-having-a-stroke-what-is-this-font-it-feels]]
 
 **2/**
 

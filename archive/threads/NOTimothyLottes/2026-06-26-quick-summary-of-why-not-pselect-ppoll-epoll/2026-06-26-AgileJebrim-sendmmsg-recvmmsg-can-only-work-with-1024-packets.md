@@ -53,4 +53,4 @@ sendmmsg/recvmmsg can only work with 1024 packets at a time unfortunately. Youâ€
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-06-26-quick-summary-of-why-not-pselect-ppoll-epoll]]

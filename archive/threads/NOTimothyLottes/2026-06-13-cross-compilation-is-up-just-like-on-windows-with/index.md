@@ -32,7 +32,7 @@ Cross compilation is up. Just like on windows with GCC I have to disable all war
 
 Media (not lifted): `2065832746757341482_HKtP7aQXsAAtJ5X_orig.jpg` `2065832746757341482_HKtP7aTWEAAC_j4_orig.jpg`
 
-Branches: [[2026-06-13-tomcr2100-interesting-font-does-it-have-a-name]]
+Branches: [[archive/threads/NOTimothyLottes/2026-06-13-cross-compilation-is-up-just-like-on-windows-with/2026-06-13-tomcr2100-interesting-font-does-it-have-a-name]]
 
 **2/**
 

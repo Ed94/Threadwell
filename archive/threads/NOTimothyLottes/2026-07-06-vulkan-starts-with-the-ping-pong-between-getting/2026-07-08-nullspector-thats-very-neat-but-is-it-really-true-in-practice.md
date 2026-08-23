@@ -37,4 +37,4 @@ parent_post_id: "2074108624553554387"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-07-06-vulkan-starts-with-the-ping-pong-between-getting]]

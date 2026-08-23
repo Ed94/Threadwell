@@ -37,4 +37,4 @@ parent_post_id: "2030722033286328426"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-03-08-ill-add-one-conspiracy-theory-for-everyone]]

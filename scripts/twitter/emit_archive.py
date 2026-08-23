@@ -238,6 +238,8 @@ def _upsert_wikilink(path: Path, target: str) -> None:
             kept.append(line)
     if target not in names:
         names.append(target)
+    short = target.rsplit("/", 1)[-1]
+    names = [n for n in names if n == target or n != short]
     names.sort()
     while kept and kept[0] == "":
         kept.pop(0)
@@ -256,8 +258,17 @@ def _upsert_wikilink(path: Path, target: str) -> None:
         path.write_text(body_text, encoding="utf-8", newline="\n")
 
 
+def wiki_thread(handle: str, dir_name: str) -> str:
+    return f"archive/threads/{handle}/{dir_name}"
+
+
+def wiki_branch(handle: str, dir_name: str, name: str) -> str:
+    return f"archive/threads/{handle}/{dir_name}/{name}"
+
+
 def ensure_handle_index(vault: Path, handle: str, dir_name: str) -> None:
     path = vault / "archive" / "threads" / handle / "index.md"
+    target = wiki_thread(handle, dir_name)
     if not path.is_file():
         front = (
             "---\n"
@@ -274,12 +285,12 @@ def ensure_handle_index(vault: Path, handle: str, dir_name: str) -> None:
         )
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(
-            front + f"\n- [[{dir_name}]]\n",
+            front + f"\n- [[{target}]]\n",
             encoding="utf-8",
             newline="\n",
         )
         return
-    _upsert_wikilink(path, dir_name)
+    _upsert_wikilink(path, target)
 
 
 def ensure_threads_index(vault: Path, handle: str) -> None:
@@ -307,13 +318,13 @@ def ensure_threads_index(vault: Path, handle: str) -> None:
                 "Example of the note shape (single spine, no branches): "
                 "[[How to archive a thread]]\n"
                 "\n"
-                f"- [[{handle}]]\n"
+                f"- [[archive/threads/{handle}]]\n"
             ),
             encoding="utf-8",
             newline="\n",
         )
         return
-    _upsert_wikilink(path, handle)
+    _upsert_wikilink(path, f"archive/threads/{handle}")
 
 
 def discover_dumps(root: Path) -> list[Path]:
@@ -402,12 +413,16 @@ def emit(
 
     items, media_by_post = collect_media(thread, input_dir, asset_dir)
 
+    branch_links = {
+        rid: wiki_branch(handle, dir_name, name)
+        for rid, name in branch_names.items()
+    }
     (note_dir / "index.md").write_text(
         render_spine(
             thread,
             spine,
             roots,
-            branch_names,
+            branch_links,
             archived,
             media_by_post,
         ),
@@ -423,6 +438,7 @@ def emit(
                 first.handle,
                 archived,
                 media_by_post,
+                spine_wiki=wiki_thread(handle, dir_name),
             ),
             encoding="utf-8",
             newline="\n",

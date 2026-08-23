@@ -33,4 +33,4 @@ parent_post_id: "2065832746757341482"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-06-13-cross-compilation-is-up-just-like-on-windows-with]]

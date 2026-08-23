@@ -35,4 +35,4 @@ Media (not lifted): `1950900720770625916_GxL93LLW8AA-5hM.mp4_orig.mp4`
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2025-07-31-people-claim-assembly-is-hard-a-good-counter-to]]

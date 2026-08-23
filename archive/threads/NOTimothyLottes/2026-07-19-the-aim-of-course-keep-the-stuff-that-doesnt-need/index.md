@@ -30,4 +30,4 @@ in_reply_to: ""
 
 The aim of course, keep the stuff that doesn't need to go fast optimized instead for low complexity and low size (aka interpreted forth), and keep the stuff that needs to go fast, at peak, assembly. Hits 2 extremes well.
 
-Branches: [[2026-07-19-noop_dev-these-instrs-are-anything-but-fast-and-if-you]]
+Branches: [[archive/threads/NOTimothyLottes/2026-07-19-the-aim-of-course-keep-the-stuff-that-doesnt-need/2026-07-19-noop_dev-these-instrs-are-anything-but-fast-and-if-you]]

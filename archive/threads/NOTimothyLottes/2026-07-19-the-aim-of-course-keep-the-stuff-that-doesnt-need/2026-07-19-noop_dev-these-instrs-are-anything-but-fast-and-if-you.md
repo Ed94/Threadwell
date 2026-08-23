@@ -61,4 +61,4 @@ parent_post_id: "2078729662021111958"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-07-19-the-aim-of-course-keep-the-stuff-that-doesnt-need]]

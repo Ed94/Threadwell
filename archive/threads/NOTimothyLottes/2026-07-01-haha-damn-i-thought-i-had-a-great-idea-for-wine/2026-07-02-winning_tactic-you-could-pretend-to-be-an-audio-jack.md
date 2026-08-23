@@ -33,4 +33,4 @@ parent_post_id: "2072445315370590266"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-07-01-haha-damn-i-thought-i-had-a-great-idea-for-wine]]

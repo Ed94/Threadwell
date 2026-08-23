@@ -41,4 +41,4 @@ parent_post_id: "1948009807161721332"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2025-07-23-i-dont-use-standard-c-libs-or-anything-like-that]]

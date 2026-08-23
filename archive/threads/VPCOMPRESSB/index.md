@@ -10,5 +10,5 @@ tags:
   - VPCOMPRESSB
 ---
 
-- [[2025-11-10-im-not-familiar-with-your-problem]]
-- [[2025-11-20-no-tokens-and-no-asts-easier-because-its-forth]]
+- [[archive/threads/VPCOMPRESSB/2025-11-10-im-not-familiar-with-your-problem]]
+- [[archive/threads/VPCOMPRESSB/2025-11-20-no-tokens-and-no-asts-easier-because-its-forth]]

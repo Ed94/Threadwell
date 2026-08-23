@@ -32,4 +32,4 @@ Oh, F-it! The urge to drop the C baggage was too strong, using nasm to bootstrap
 
 Media (not lifted): `2078257788732461389_HNdzRxAXMAEom1u_orig.png`
 
-Branches: [[2026-07-18-furan-sorry-for-the-tangent-what-is-this-font-and-where]]
+Branches: [[archive/threads/NOTimothyLottes/2026-07-17-oh-f-it-the-urge-to-drop-the-c-baggage-was-too/2026-07-18-furan-sorry-for-the-tangent-what-is-this-font-and-where]]

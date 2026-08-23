@@ -33,4 +33,4 @@ parent_post_id: "1868716773937414589"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2024-12-16-also-i-wouldnt-just-modify-an-existing-compiler]]

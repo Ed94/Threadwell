@@ -32,4 +32,4 @@ in_reply_to: "1651253961524142081"
 
 @kenpex @wadetb Can make a custom forth to binary in a few K. Bring up a runtime assembler in the language and do anything fast and simple from that point, load libraries, make system/dll C calls. 100,000x complexity reduction in compiler toolchain size.
 
-Branches: [[2023-04-26-wvo-a-few-k-why-not-just-1k-https-strlen-com-false]]
+Branches: [[archive/threads/NOTimothyLottes/2023-04-26-can-make-a-custom-forth-to-binary-in-a-few-k/2023-04-26-wvo-a-few-k-why-not-just-1k-https-strlen-com-false]]

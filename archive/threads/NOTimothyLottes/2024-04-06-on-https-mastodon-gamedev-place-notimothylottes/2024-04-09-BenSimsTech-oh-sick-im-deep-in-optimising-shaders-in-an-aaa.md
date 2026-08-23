@@ -34,4 +34,4 @@ Going to give it all a thorough read, I'm after all the GCN info I can find righ
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2024-04-06-on-https-mastodon-gamedev-place-notimothylottes]]

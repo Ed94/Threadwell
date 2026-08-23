@@ -45,4 +45,4 @@ parent_post_id: "2071706805114216559"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-06-29-alsa-hell-month-continues-remember-it-might-be]]

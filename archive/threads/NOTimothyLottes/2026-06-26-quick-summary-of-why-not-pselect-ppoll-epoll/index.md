@@ -32,4 +32,4 @@ Quick summary of why not {pselect, ppoll, epoll_pwait2} style non-TCP IO [it can
 
 Media (not lifted): `2070337342854832468_HLtP4RgWgAADbir_orig.png`
 
-Branches: [[2026-06-26-AgileJebrim-sendmmsg-recvmmsg-can-only-work-with-1024-packets]], [[2026-06-26-BigP4P4Smurf-take-a-look-at-http-lalists-stanford-edu-lad-2001]]
+Branches: [[archive/threads/NOTimothyLottes/2026-06-26-quick-summary-of-why-not-pselect-ppoll-epoll/2026-06-26-AgileJebrim-sendmmsg-recvmmsg-can-only-work-with-1024-packets]], [[archive/threads/NOTimothyLottes/2026-06-26-quick-summary-of-why-not-pselect-ppoll-epoll/2026-06-26-BigP4P4Smurf-take-a-look-at-http-lalists-stanford-edu-lad-2001]]

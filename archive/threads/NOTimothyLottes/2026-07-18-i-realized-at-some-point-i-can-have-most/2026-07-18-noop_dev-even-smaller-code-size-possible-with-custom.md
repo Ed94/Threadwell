@@ -33,4 +33,4 @@ parent_post_id: "2078349730204078527"
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-07-18-i-realized-at-some-point-i-can-have-most]]

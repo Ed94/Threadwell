@@ -30,7 +30,7 @@ in_reply_to: ""
 
 no-debugger-debug / console / printf-style - prior evolved to one mmapped fixed-width-height log file with an atomic for multi-thread|process messages - but even that seems too complexy ...
 
-Branches: [[2026-05-31-retrotink2-here-i-am-still-debugging-by-looking-at-if-a]]
+Branches: [[archive/threads/NOTimothyLottes/2026-05-31-no-debugger-debug-console-printf-style-prior/2026-05-31-retrotink2-here-i-am-still-debugging-by-looking-at-if-a]]
 
 **2/**
 

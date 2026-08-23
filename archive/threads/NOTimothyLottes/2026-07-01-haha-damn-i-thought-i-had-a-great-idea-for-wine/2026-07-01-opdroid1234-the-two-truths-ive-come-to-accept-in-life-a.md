@@ -36,4 +36,4 @@ b. theres no trick that unavaels the existing software stacks complexity into so
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-07-01-haha-damn-i-thought-i-had-a-great-idea-for-wine]]

@@ -41,4 +41,4 @@ Somewhat surprised, Artix using the graphical install just worked out of the box
 
 ## Related
 
-- Spine: [[index]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-06-10-steamos-init]]

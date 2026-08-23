@@ -32,7 +32,7 @@ CRT emulation on LCDs can be hard. For example it's often easy to generate a pat
 
 Media (not lifted): `1688491417109196800_F265_JZXsAAInpa_orig.jpg` `1688491417109196800_F265_hLXkAAnfek_orig.jpg`
 
-Branches: [[2023-08-10-BlurBusters-very-interesting-crosstalk-from-voltage-inversion]]
+Branches: [[archive/threads/NOTimothyLottes/2023-08-07-crt-emulation-on-lcds-can-be-hard-for-example-its/2023-08-10-BlurBusters-very-interesting-crosstalk-from-voltage-inversion]]
 
 **2/**
 

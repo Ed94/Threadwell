@@ -32,7 +32,7 @@ ALSA hell month continues: remember it might be "open source" but it is definite
 
 Media (not lifted): `2071706805114216559_HMAt1GiXAAAoahX_orig.png`
 
-Branches: [[2026-06-29-AlexABPerson-have-you-actually-reached-out-to-said-developers]]
+Branches: [[archive/threads/NOTimothyLottes/2026-06-29-alsa-hell-month-continues-remember-it-might-be/2026-06-29-AlexABPerson-have-you-actually-reached-out-to-said-developers]]
 
 **2/**
 

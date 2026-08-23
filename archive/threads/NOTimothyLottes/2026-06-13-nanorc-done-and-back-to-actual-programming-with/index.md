@@ -32,7 +32,7 @@ Nanorc done and back to actual programming with the new font. The iPhone cannot 
 
 Media (not lifted): `2065804972378243476_HKs2q8RXQAAVsjN_orig.jpg`
 
-Branches: [[2026-06-13-quiveron_x-why-are-you-using-crt]], [[2026-06-13-eternalclassic_-you-can-use-camac-free-to-take-raw-photos-on]], [[2026-06-13-winning_tactic-hz-sharing-i-wonder-if-crts-can-be-changed-like]], [[2026-06-14-mayemayey-ohh-what-is-that-a-2070sb]]
+Branches: [[archive/threads/NOTimothyLottes/2026-06-13-nanorc-done-and-back-to-actual-programming-with/2026-06-13-quiveron_x-why-are-you-using-crt]], [[archive/threads/NOTimothyLottes/2026-06-13-nanorc-done-and-back-to-actual-programming-with/2026-06-13-eternalclassic_-you-can-use-camac-free-to-take-raw-photos-on]], [[archive/threads/NOTimothyLottes/2026-06-13-nanorc-done-and-back-to-actual-programming-with/2026-06-13-winning_tactic-hz-sharing-i-wonder-if-crts-can-be-changed-like]], [[archive/threads/NOTimothyLottes/2026-06-13-nanorc-done-and-back-to-actual-programming-with/2026-06-14-mayemayey-ohh-what-is-that-a-2070sb]]
 
 **2/**
 
