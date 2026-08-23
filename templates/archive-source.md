@@ -4,14 +4,19 @@ type: archive
 source: twitter
 source_url:
 author:
+handle:
+post_id: ""
 date: <% tp.date.now("YYYY-MM-DD") %>
 archived: <% tp.date.now("YYYY-MM-DD") %>
 status: draft
 draft: true
 tags:
   - archive
+  - twitter
 description:
 aliases: []
+in_reply_to: ""
+parent_post_id: ""
 ---
 
 > [!info] Provenance
@@ -23,26 +28,10 @@ aliases: []
 - Author:
 - Posted:
 
-## Record
+## Thread
 
 **1/**
 
-## Media
-
-```md
-![](https://YOUR-IMAGE-HOST/archive/slug.png)
-```
-
-YouTube:
-
-```md
-![](https://www.youtube.com/watch?v=VIDEO_ID)
-```
-
-Odysee:
-
-```html
-<iframe width="560" height="315" src="https://odysee.com/$/embed/SLUG/CLAIM" allowfullscreen></iframe>
-```
-
 ## Related
+
+- Spine: [[index]]

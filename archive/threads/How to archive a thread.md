@@ -4,6 +4,8 @@ type: archive
 source: twitter
 source_url: https://x.com/
 author: ""
+handle: ""
+post_id: ""
 date: 2026-08-22
 archived: 2026-08-22
 status: published
@@ -12,13 +14,14 @@ tags:
   - archive
   - twitter
   - how-to
-description: Worked example of an archived thread note. Replace this when real threads land.
+description: Worked example of a spine note. Real threads use a folder per thread.
 aliases:
   - example-thread
+in_reply_to: ""
 ---
 
 > [!info] Provenance
-> Replace this file with a real thread. The shape is what matters: frontmatter, then posts in order, then optional media.
+> Stub for the note shape. A real thread is a folder: `archive/threads/<handle>/<YYYY-MM-DD-slug>/index.md` plus optional branch notes. See [[How threads are organized]].
 
 ## Source
 
@@ -36,13 +39,13 @@ aliases:
 
 ## Media
 
-Images use absolute URLs on the image host:
+Images use absolute HTTPS URLs:
 
 ```md
-![](https://YOUR-IMAGE-HOST/archive/example.png)
+![](https://files.catbox.moe/example.png)
 ```
 
-Optional live tweet (not a substitute for the transcript):
+A live tweet embed is optional and is not the archive:
 
 ```md
 ![](https://x.com/user/status/123)
@@ -50,4 +53,5 @@ Optional live tweet (not a substitute for the transcript):
 
 ## Related
 
+- How folders work: [[How threads are organized]]
 - Distilled note: [[What this archive is for]]

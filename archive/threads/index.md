@@ -8,6 +8,8 @@ tags:
   - archive
 ---
 
-One note per thread. Transcribe the posts in order. Do not rely on a live embed as the only copy.
+Threads are filed by author handle, then by date and title. The main note in each folder is that author's own chain. Replies live beside it.
 
-Example: [[How to archive a thread]]
+How to read a folder: [[How threads are organized]].
+
+Example of the note shape (single spine, no branches): [[How to archive a thread]]

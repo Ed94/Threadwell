@@ -21,6 +21,8 @@ Threadwell holds material that search engines and platform pages do not keep rel
 | `notes/` | Your writing. What it means. |
 | `canvases/` | Spatial maps between the two. |
 
-An authored note should [[How to archive a thread|link the archive record]] instead of pasting the thread again.
+How a thread is filed: [[How threads are organized]].
+
+An authored note should wikilink the archive record instead of pasting the thread again.
 
 Set `draft: true` until a note is ready. `archive/`, `canvases/`, and `notes/` publish otherwise.

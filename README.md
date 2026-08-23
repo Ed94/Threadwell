@@ -12,12 +12,15 @@ Open **this repo root** as the Obsidian vault. Quartz is only the publisher; it 
 
 ```
 archive/              # public — primary sources
-  threads/            # Twitter/X and similar
+  threads/<handle>/<YYYY-MM-DD-slug>/
+                      # one thread: index.md is the author's chain
   sources/            # talks, pages, other records
 canvases/             # public — .canvas maps
 notes/                # public — authored / distilled writing
 templates/            # not published
-meta/                 # not published — conventions, local attachments
+meta/                 # not published — conventions
+assets/               # not published, gitignored — working media
+secrets/              # not published, gitignored — cookies, host keys
 private/              # not published, not pushed
 publish/              # tracked overlay: quartz.config.yaml
 site/                 # local Quartz clone (gitignored; own remotes)
@@ -34,7 +37,9 @@ site/                 # local Quartz clone (gitignored; own remotes)
 | `type` | `archive` \| `canvas` \| `note` |
 | `source` | `twitter` \| `youtube` \| `odysee` \| `article` \| `original` \| `other` |
 | `source_url` | original URL |
-| `author` | original author |
+| `author` | original display name |
+| `handle` | username without `@` |
+| `post_id` | Twitter status id |
 | `date` | original date `YYYY-MM-DD` |
 | `archived` | capture date |
 | `status` | `draft` \| `review` \| `published` |
@@ -50,8 +55,10 @@ Templates: `templates/archive-source.md`, `templates/authored-note.md` (Template
 Images: absolute HTTPS URLs on your image host. Do not commit local binaries for published notes.
 
 ```md
-![](https://YOUR-IMAGE-HOST/archive/slug.png)
+![](https://files.catbox.moe/example.png)
 ```
+
+Keep local copies in `assets/` (not committed). Do not point notes at `assets/` or `./media/`.
 
 YouTube and tweets (Quartz Obsidian-flavored Markdown):
 
@@ -108,12 +115,12 @@ Open http://localhost:8080
 
 ## Add content and republish
 
-1. New thread: Templater → `archive-source` → save under `archive/threads/`
-2. Transcribe posts in order. Host images. Optional YouTube/Odysee/tweet embeds.
+1. New thread: create `archive/threads/<handle>/<YYYY-MM-DD-slug>/`. Templater → `archive-source` → save as `index.md` (the author's chain). Off-spine replies get their own notes in that folder. See `notes/How threads are organized.md`.
+2. Transcribe posts in order. Upload images to the image host; paste HTTPS URLs. Optional YouTube/Odysee/tweet embeds.
 3. Distill in `notes/` with `authored-note`. Wikilink the archive record.
-4. Set `draft: false` and `status: published`
+4. Set `draft: false` and `status: published` when the capture has been reviewed.
 5. Preview: `cd site; npx quartz build -d .. --serve`
-6. Commit and push `main` (vault + `publish/`, never `site/`)
+6. Commit and push `main` (vault + `publish/`, never `site/`, never `assets/` or `secrets/`)
 
 Threadwell remotes: `origin` → https://github.com/Ed94/Threadwell.git only.
 Quartz remotes live in `site/` (`cd site; git pull`). After a Quartz pull, re-copy `publish/quartz.config.yaml`.

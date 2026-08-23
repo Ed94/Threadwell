@@ -10,16 +10,20 @@ draft: true
 | Field | Values | Notes |
 | --- | --- | --- |
 | `type` | `archive` \| `canvas` \| `note` | Required |
-| `source` | `twitter` \| `youtube` \| `odysee` \| `article` \| `original` \| `other` | Archive + media notes |
-| `source_url` | URL | Canonical original |
-| `author` | string | Original author, not you |
+| `source` | `twitter` \| `discord` \| `youtube` \| `odysee` \| `article` \| `original` \| `other` | Archive + media notes |
+| `source_url` | URL | This note's post, not always the thread root |
+| `author` | string | Display name |
+| `handle` | string | Username without `@` |
+| `post_id` | string | Twitter status id (spine root or branch root) |
 | `date` | `YYYY-MM-DD` | Original publication date |
 | `archived` | `YYYY-MM-DD` | When you captured it |
 | `status` | `draft` \| `review` \| `published` | Human workflow |
 | `draft` | `true` \| `false` | Quartz omit-from-site flag |
-| `tags` | list | Prefer `archive`, `twitter`, `note`, topic slugs |
+| `tags` | list | Ingest: `archive`, `twitter`, handle. Topics by hand |
 | `description` | string | Search / OG preview |
 | `aliases` | list | Extra names |
+| `in_reply_to` | string | Foreign parent of a spine, if any |
+| `parent_post_id` | string | Branch notes only: post this branch replies to |
 
 `draft: true` hides the page from the built site. It does **not** hide the file from a public GitHub repo. Truly private material goes in `private/` (gitignored).
 
@@ -28,23 +32,26 @@ draft: true
 | Path | Published | Role |
 | --- | --- | --- |
 | `archive/` | yes | Primary sources |
+| `archive/threads/<handle>/<YYYY-MM-DD-slug>/` | yes | One Twitter thread. `index.md` is the author's chain |
 | `canvases/` | yes | `.canvas` maps |
 | `notes/` | yes | Authored writing |
 | `templates/` | no | Templater / core templates |
 | `meta/` | no | Vault rules, local attachments |
+| `assets/` | no, gitignored | Working media before upload |
+| `secrets/` | no, gitignored | Cookies and image-host credentials |
 | `private/` | no, gitignored | Never publish, never push |
 | `site/` | no, gitignored | Local Quartz clone (own remotes) |
 | `publish/` | no | Tracked Quartz overlay |
 
+A thread folder holds `index.md` (spine) and one markdown file per off-spine reply tree. Reading guide: `notes/How threads are organized.md`.
+
 # Images
 
-Always absolute HTTPS URLs on the image host. Do not commit local binaries for published notes.
+Always absolute HTTPS URLs on the image host (catbox after upload). Do not commit local binaries for published notes. Working files sit in `assets/` (gitignored), not in `meta/attachments/` except unrelated Obsidian drops.
 
 ```md
-![](https://YOUR-IMAGE-HOST/archive/slug.png)
+![](https://files.catbox.moe/example.png)
 ```
-
-Scratch files may sit in `meta/attachments/` (gitignored).
 
 # Video
 
