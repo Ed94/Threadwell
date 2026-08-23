@@ -6,12 +6,6 @@ from .models import PostData, ThreadData
 from .slug import date_prefix
 from .tree import by_id
 
-_PROVENANCE = (
-    "> [!info] Provenance\n"
-    "> Primary source record. Do not editorialize here. "
-    "Interpretation goes in a `notes/` page."
-)
-
 
 def _yaml_quote(value: str) -> str:
     return '"' + value.replace("\\", "\\\\").replace('"', '\\"') + '"'
@@ -149,8 +143,6 @@ def render_spine(
             in_reply_to=in_reply_to,
         ),
         "",
-        _PROVENANCE,
-        "",
         _source_block(first),
         "",
     ]
@@ -199,8 +191,6 @@ def render_branch(
             in_reply_to="",
             parent_post_id=root.reply_to_id or "",
         ),
-        "",
-        _PROVENANCE,
         "",
         _source_block(root),
         "",

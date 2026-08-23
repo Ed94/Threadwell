@@ -15,3 +15,5 @@ How to read a folder: [[How threads are organized]].
 Example of the note shape (single spine, no branches): [[How to archive a thread]]
 
 - [[NOTimothyLottes]]
+- [[VPCOMPRESSB]]
+- [[winning_tactic]]

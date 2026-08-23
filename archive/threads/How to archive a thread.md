@@ -20,9 +20,6 @@ aliases:
 in_reply_to: ""
 ---
 
-> [!info] Provenance
-> Stub for the note shape. A real thread is a folder: `archive/threads/<handle>/<YYYY-MM-DD-slug>/index.md` plus optional branch notes. See [[How threads are organized]].
-
 ## Source
 
 - URL:

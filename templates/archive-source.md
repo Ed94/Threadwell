@@ -19,9 +19,6 @@ in_reply_to: ""
 parent_post_id: ""
 ---
 
-> [!info] Provenance
-> Primary source record. Do not editorialize here. Interpretation goes in a `notes/` page.
-
 ## Source
 
 - URL: <% tp.file.cursor() %>
