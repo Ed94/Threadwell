@@ -39,6 +39,7 @@ draft: true
 | `meta/` | no | Vault rules, local attachments |
 | `assets/` | no, gitignored | Working media before upload |
 | `secrets/` | no, gitignored | Cookies and image-host credentials |
+| `scripts/` | no | Tracked tooling. Quartz-ignored |
 | `private/` | no, gitignored | Never publish, never push |
 | `site/` | no, gitignored | Local Quartz clone (own remotes) |
 | `publish/` | no | Tracked Quartz overlay |

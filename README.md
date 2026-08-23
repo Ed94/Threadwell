@@ -21,6 +21,7 @@ templates/            # not published
 meta/                 # not published — conventions
 assets/               # not published, gitignored — working media
 secrets/              # not published, gitignored — cookies, host keys
+scripts/              # not published — local tooling (tracked)
 private/              # not published, not pushed
 publish/              # tracked overlay: quartz.config.yaml
 site/                 # local Quartz clone (gitignored; own remotes)

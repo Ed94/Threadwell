@@ -15,3 +15,9 @@ meta/attachments/*
 .obsidian/plugins/
 .obsidian/themes/
 .obsidian/snippets/
+
+assets/*
+!assets/README.md
+secrets/*
+!secrets/README.md
+scripts/twitter/__pycache__

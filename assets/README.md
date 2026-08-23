@@ -1,0 +1,1 @@
+Working media for Threadwell. Mirrors archive/threads/<handle>/<date-slug>/ plus handles/<handle>/. Gitignored except this file. Not published. Lift to the image host later. Do not link notes at this folder.
