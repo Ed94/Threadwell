@@ -1,0 +1,35 @@
+---
+title: "I realized at some point I can have most interpreted forth-style words in an aligned 8-bytes."
+type: archive
+source: twitter
+source_url: "https://x.com/NOTimothyLottes/status/2078349730204078527"
+author: "NOTimothyLottes"
+handle: NOTimothyLottes
+post_id: "2078349730204078527"
+date: 2026-07-18
+archived: 2026-08-23
+status: draft
+draft: true
+tags:
+  - archive
+  - twitter
+  - NOTimothyLottes
+description: "I realized at some point I can have most interpreted forth-style words in an aligned 8-bytes."
+in_reply_to: ""
+---
+
+## Source
+
+- URL: https://x.com/NOTimothyLottes/status/2078349730204078527
+- Author: NOTimothyLottes (@NOTimothyLottes)
+- Posted: 2026-07-18 05:22:44
+
+## Thread
+
+**1/**
+
+I realized at some point I can have most interpreted forth-style words in an aligned 8-bytes. So can make a very small interpreter.
+
+Media (not lifted): `2078349730204078527_HNfHl-dXcAAf6Om_orig.png`
+
+Branches: [[2026-07-18-noop_dev-even-smaller-code-size-possible-with-custom]]

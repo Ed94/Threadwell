@@ -19,9 +19,6 @@ in_reply_to: ""
 parent_post_id: "2064858927829745887"
 ---
 
-> [!info] Provenance
-> Primary source record. Do not editorialize here. Interpretation goes in a `notes/` page.
-
 ## Source
 
 - URL: https://x.com/RouaniJihad/status/2064865782870294858

@@ -18,9 +18,6 @@ description: "So I'm on Linux now, but obviously I cheated, because this is a St
 in_reply_to: ""
 ---
 
-> [!info] Provenance
-> Primary source record. Do not editorialize here. Interpretation goes in a `notes/` page.
-
 ## Source
 
 - URL: https://x.com/NOTimothyLottes/status/2064858927829745887
