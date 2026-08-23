@@ -17,7 +17,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from twitter.models import ThreadData, load_thread
 from twitter.render import render_branch, render_spine
 from twitter.slug import branch_file_name, date_prefix, thread_dir_name
-from twitter.tree import by_id, branch_roots, children_map, descendants, spine_ids
+from twitter.tree import (
+    by_id,
+    branch_roots,
+    children_map,
+    descendants,
+    spine_from_tip,
+    spine_ids,
+)
 
 _POST_ID_LINE = re.compile(r'^post_id:\s*"?([^"\s]+)"?\s*$')
 _WIKILINK_ITEM = re.compile(r"^- \[\[([^\]|]+)\]\]\s*$")
@@ -125,7 +132,7 @@ def empty_text_ids(thread: ThreadData) -> list[str]:
     return [p.post_id for p in thread.posts if not (p.text or "").strip()]
 
 
-def render_gaps(thread: ThreadData, spine: list[str]) -> str:
+def render_gaps(thread: ThreadData, spine: list[str], *, input_kind: str = "root") -> str:
     ids = by_id(thread)
     suggested = spine[-1] if spine else ""
     quote_ids = [p.post_id for p in thread.posts if p.quote_of_id]
@@ -138,7 +145,7 @@ def render_gaps(thread: ThreadData, spine: list[str]) -> str:
 
     lines = [
         "# gaps",
-        "input: root",
+        f"input: {input_kind}",
         f"suggested_tip: {suggested}",
     ]
     if quote_ids:
@@ -337,6 +344,7 @@ def emit(
     *,
     force: bool = False,
     reuse_dir: Path | None = None,
+    tip: str | None = None,
 ) -> EmitResult:
     src = input_dir / "thread_data.json"
     if not src.is_file():
@@ -346,7 +354,12 @@ def emit(
     if not thread.posts:
         raise SystemExit(f"no posts in {src}")
 
-    spine = spine_ids(thread)
+    if tip:
+        spine = spine_from_tip(thread, tip)
+        input_kind = "tip"
+    else:
+        spine = spine_ids(thread)
+        input_kind = "root"
     roots = branch_roots(thread, spine)
     ids = by_id(thread)
     kids = children_map(thread)
@@ -426,7 +439,7 @@ def emit(
         newline="\n",
     )
     (asset_dir / "gaps.md").write_text(
-        render_gaps(thread, spine),
+        render_gaps(thread, spine, input_kind=input_kind),
         encoding="utf-8",
         newline="\n",
     )
@@ -541,6 +554,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         action="store_true",
         help="Emit even if post_id already exists in the vault",
     )
+    parser.add_argument(
+        "--tip",
+        default=None,
+        help="Climb reply_to from this post_id for the spine (same handle)",
+    )
     return parser.parse_args(argv)
 
 
@@ -558,7 +576,14 @@ def main(argv: list[str] | None = None) -> int:
             f"written={written} errors={errors}"
         )
         return 0 if errors == 0 else 1
-    emit(args.input, args.vault, args.slug, args.archived, force=args.force)
+    emit(
+        args.input,
+        args.vault,
+        args.slug,
+        args.archived,
+        force=args.force,
+        tip=args.tip,
+    )
     return 0
 
 

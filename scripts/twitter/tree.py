@@ -18,6 +18,25 @@ def children_map(thread: ThreadData) -> dict[str, list[str]]:
     return kids
 
 
+def spine_from_tip(thread: ThreadData, tip_id: str) -> list[str]:
+    ids = by_id(thread)
+    if tip_id not in ids:
+        raise ValueError(f"tip {tip_id} not in dump")
+    handle = ids[tip_id].handle
+    chain = [tip_id]
+    cur = tip_id
+    while True:
+        parent = ids[cur].reply_to_id
+        if not parent or parent not in ids:
+            break
+        if ids[parent].handle != handle:
+            break
+        chain.append(parent)
+        cur = parent
+    chain.reverse()
+    return chain
+
+
 def spine_ids(thread: ThreadData) -> list[str]:
     ids = by_id(thread)
     kids = children_map(thread)
