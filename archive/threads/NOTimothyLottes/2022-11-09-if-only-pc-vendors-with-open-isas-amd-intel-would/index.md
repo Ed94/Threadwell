@@ -1,5 +1,5 @@
 ---
-title: "@olson_dan If only PC vendors with open ISAs (AMD/Intel) would allow loading binary compute shaders in VK built using non-driver toolchains."
+title: "@olson_dan If only PC vendors with open ISAs."
 type: archive
 source: twitter
 source_url: "https://x.com/NOTimothyLottes/status/1590241107317002240"

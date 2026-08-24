@@ -1,5 +1,5 @@
 ---
-title: "My prefered method of managing application data was the 'self-modifying-binary': (a.) on launch copy binary to temp file, (b.) launch temp file, (c.) exit, (d.) now temp file execution can freely modify origional binary :)"
+title: "My prefered method of managing application data was the 'self-modifying-binary'"
 type: archive
 source: twitter
 source_url: "https://x.com/NOTimothyLottes/status/1591646625692553216"
