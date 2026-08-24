@@ -251,6 +251,38 @@ def cmd_refresh(post_id: str, tip: bool, slug: str | None) -> int:
     return 0
 
 
+def cmd_sync(handle: str | None) -> int:
+    """Rebuild handle-index wikilinks from actual folder listing.
+
+    Use after manual edits or a stale state. Idempotent.
+    """
+    root = VAULT / "archive" / "threads"
+    targets = [root / handle] if handle else None
+    changed = 0
+    for handle_dir in targets or sorted(root.iterdir()):
+        if not handle_dir.is_dir() or handle_dir.name.startswith("."):
+            continue
+        idx = handle_dir / "index.md"
+        if not idx.is_file():
+            continue
+        text = idx.read_text(encoding="utf-8")
+        end = text.find("\n---", 3)
+        if end < 0:
+            continue
+        fm = text[: end + 4]
+        dirs = sorted(d.name for d in handle_dir.iterdir() if d.is_dir())
+        links = "\n".join(f"- [[archive/threads/{handle_dir.name}/{d}]]" for d in dirs)
+        new = fm + "\n\n" + links + "\n"
+        if new != text:
+            idx.write_text(new, encoding="utf-8", newline="\n")
+            changed += 1
+            print(f"rewrote {handle_dir.name}: {len(dirs)} dirs")
+        else:
+            print(f"ok {handle_dir.name}: {len(dirs)} dirs")
+    print(f"changed {changed}")
+    return 0
+
+
 def cmd_publish(post_id: str) -> int:
     _assets, notes = locate(post_id)
     if notes is None:
@@ -299,8 +331,12 @@ def main(argv: list[str] | None = None) -> int:
                 default="umi",
                 choices=("auto", "umi", "tesseract", "windows"),
             )
+    sync = sub.add_parser(
+        "sync", help="rebuild handle-index wikilinks from actual folder listing"
+    )
+    sync.add_argument("--handle", default=None, help="single handle, else all")
     args = parser.parse_args(argv)
-    post_id = args.id
+    post_id = getattr(args, "id", None)
     if args.cmd == "locate":
         return cmd_locate(post_id)
     if args.cmd == "graph":
@@ -319,6 +355,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_refresh(post_id, tip=args.tip, slug=args.slug)
     if args.cmd == "publish":
         return cmd_publish(post_id)
+    if args.cmd == "sync":
+        return cmd_sync(handle=args.handle)
     raise SystemExit(f"unknown {args.cmd}")
 
 

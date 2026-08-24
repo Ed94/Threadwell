@@ -10,8 +10,18 @@ Default without --orig: only rows already publish=true.
 After upload, any note token that is the local filename (backticked or
 bare) or a previous url for that row becomes ![](https://files.catbox.moe/…).
 
-Per-upload curl: --max-time 120, --retry 3, --retry-delay 2, --retry-all-errors.
-Errors are sanitized to redact the userhash before printing.
+Catbox rate-limits the userhash per minute. Algorithm:
+
+  - One attempt per upload. No curl retries. A failure is a failure —
+    the user retries the whole lift later (the script persists progress
+    after each success, so partial work survives).
+  - 60-second sleep between consecutive uploads in the same run.
+  - 200 KB/s upload cap per curl.
+  - On empty/non-URL body: sleep 120s before raising, so a manual
+    retry minutes later doesn't arrive during catbox's cooldown.
+  - media.json is rewritten after each successful upload (atomic),
+    not at the end of the run.
+  - Errors are sanitized to redact the userhash before printing.
 """
 from __future__ import annotations
 
@@ -27,11 +37,10 @@ from pathlib import Path
 from paths import VAULT as VAULT_ROOT
 
 API = "https://catbox.moe/user/api.php"
-MAX_TIME = 120
-RETRIES = 3
-RETRY_DELAY = 5
-THROTTLE_SECS = 5.0
-LIMIT_RATE = "500k"
+MAX_TIME = 180
+THROTTLE_SECS = 60.0
+LIMIT_RATE = "200k"
+EMPTY_BACKOFF = 120.0
 
 
 def _redact_cmd(cmd: list[str]) -> str:
@@ -75,11 +84,6 @@ def upload(path: Path, userhash: str) -> str:
         "-sS",
         "--max-time",
         str(MAX_TIME),
-        "--retry",
-        str(RETRIES),
-        "--retry-delay",
-        str(RETRY_DELAY),
-        "--retry-all-errors",
         "--limit-rate",
         LIMIT_RATE,
         "-F",
@@ -93,13 +97,19 @@ def upload(path: Path, userhash: str) -> str:
     try:
         raw = subprocess.check_output(cmd, text=True, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as exc:
+        time.sleep(EMPTY_BACKOFF)
         raise SystemExit(
             f"catbox upload failed for {path.name} "
-            f"(curl exit {exc.returncode}): {_redact_cmd(cmd)}"
+            f"(curl exit {exc.returncode}); waited {EMPTY_BACKOFF:.0f}s before exit. "
+            f"cmd: {_redact_cmd(cmd)}"
         ) from None
     url = raw.strip()
     if not url.startswith("https://"):
-        raise SystemExit(f"catbox refused {path.name}: {url[:200]}")
+        time.sleep(EMPTY_BACKOFF)
+        raise SystemExit(
+            f"catbox refused {path.name} (empty/non-URL body); "
+            f"waited {EMPTY_BACKOFF:.0f}s before exit. body[:200]={url[:200]!r}"
+        )
     return url
 
 
@@ -131,6 +141,14 @@ def rewrite_notes(notes_dir: Path, old_tokens: list[str], url: str) -> int:
     return changed
 
 
+def persist(media_path: Path, data: dict) -> None:
+    media_path.write_text(
+        json.dumps(data, indent=2) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--vault", type=Path, default=VAULT_ROOT)
@@ -159,6 +177,7 @@ def main(argv: list[str] | None = None) -> int:
     publishable = [it for it in items if it.get("publish")]
     for i, item in enumerate(publishable):
         if i > 0 and not args.dry_run:
+            print(f"throttling {THROTTLE_SECS:.0f}s before next upload…")
             time.sleep(THROTTLE_SECS)
         name = str(item.get("filename") or "")
         src = args.thread / name
@@ -175,9 +194,9 @@ def main(argv: list[str] | None = None) -> int:
         uploaded += 1
         print(f"uploaded {name} -> {url}")
         rewrite_notes(args.notes, old, url)
+        persist(media_path, data)
+        print(f"persisted media.json ({uploaded} done so far)")
 
-    if not args.dry_run:
-        media_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
     print(f"uploaded {uploaded}")
     return 0
 

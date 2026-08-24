@@ -61,6 +61,7 @@ jobs:
         working-directory: site
         run: npx quartz build -d ..
       - name: Patch sidebar title link
+        working-directory: site
         run: python ../publish/quartz-patches/patch-title-link.py
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

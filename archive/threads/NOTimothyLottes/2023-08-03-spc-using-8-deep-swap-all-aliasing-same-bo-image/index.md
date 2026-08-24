@@ -29,7 +29,7 @@ in_reply_to: ""
 
 SPC: Using 8 deep swap all aliasing same BO (image) fixes Game Mode crash with external display. Pipelined load gets to black screen in 2 ms. Takes 460 ms to allocate 4 GiB GTT video ram, 558 ms to copy 256 MiB cart from page cache to USWC (page faults), all in parallel.
 
-Media (not lifted): `1687062786273062912_F2mmqYXWoAAG3fj_orig.jpg`
+![](https://files.catbox.moe/yfbahk.jpg)
 
 **2/**
 
@@ -39,7 +39,7 @@ Clearing page cache to simulate a cold launch: Takes 1.5 sec to read 256 MiB fro
 
 Forgot the timing capture ... Load from SSD.
 
-Media (not lifted): `1687066126268674048_F2mpszoXMAE00Hy_orig.jpg`
+`1687066126268674048_F2mpszoXMAE00Hy_orig.jpg`
 
 **4/**
 
