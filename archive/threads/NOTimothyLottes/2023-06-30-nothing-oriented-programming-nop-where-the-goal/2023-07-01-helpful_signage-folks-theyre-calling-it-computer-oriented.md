@@ -3,12 +3,12 @@ title: "@NOTimothyLottes Folks, they're calling it \"computer oriented programmi
 type: archive
 source: twitter
 source_url: "https://x.com/helpful_signage/status/1675020853862359041"
-author: "Total Slack Holocaust"
+author: "Zaynep Tofurky"
 handle: helpful_signage
 post_id: "1675020853862359041"
 date: 2023-07-01
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter
@@ -21,7 +21,7 @@ parent_post_id: "1674757854471806977"
 ## Source
 
 - URL: https://x.com/helpful_signage/status/1675020853862359041
-- Author: Total Slack Holocaust (@helpful_signage)
+- Author: Zaynep Tofurky (@helpful_signage)
 - Posted: 2023-07-01 05:57:46
 
 ## Branch

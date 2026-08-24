@@ -8,7 +8,7 @@ handle: wyattscarpenter
 post_id: "1678087686404595712"
 date: 2023-07-09
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter

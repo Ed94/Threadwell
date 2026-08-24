@@ -8,7 +8,7 @@ handle: SebAaltonen
 post_id: "1674768757867020289"
 date: 2023-06-30
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter
@@ -36,7 +36,7 @@ I will save your image for that day (if I get approval to use it), since Twitter
 
 @SebAaltonen "Approval", haha, sure it's covered under my favorite license
 
-Media (not lifted): `1674776150671781888_Fz3_kb8WYAMXvcT_orig.png`
+![](https://files.catbox.moe/y9nkha.png)
 
 ## Related
 

@@ -8,7 +8,7 @@ handle: mike_acton
 post_id: "1674962613506297857"
 date: 2023-07-01
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter
@@ -30,7 +30,7 @@ parent_post_id: "1674757854471806977"
 
 @NOTimothyLottes
 
-Media (not lifted): `1674962613506297857_Fz6pnsBaQAEtMIZ_orig.jpg`
+![](https://files.catbox.moe/n7x29c.jpg)
 
 ## Related
 

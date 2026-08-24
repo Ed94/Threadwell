@@ -8,7 +8,7 @@ handle: asparagiii
 post_id: "1675123653162196992"
 date: 2023-07-01
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter
@@ -30,7 +30,7 @@ parent_post_id: "1674757854471806977"
 
 @NOTimothyLottes Looks like a koala
 
-Media (not lifted): `1675123653162196992_Fz88Bk0WAAApDzL_orig.jpg`
+![](https://files.catbox.moe/wtbwl8.jpg)
 
 ## Related
 

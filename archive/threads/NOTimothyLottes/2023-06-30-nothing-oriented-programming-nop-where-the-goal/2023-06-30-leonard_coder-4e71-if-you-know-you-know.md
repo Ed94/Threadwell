@@ -8,7 +8,7 @@ handle: leonard_coder
 post_id: "1674771452799614976"
 date: 2023-06-30
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter

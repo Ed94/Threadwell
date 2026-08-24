@@ -8,7 +8,7 @@ handle: DefenceForceOrg
 post_id: "1675059402280251395"
 date: 2023-07-01
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter

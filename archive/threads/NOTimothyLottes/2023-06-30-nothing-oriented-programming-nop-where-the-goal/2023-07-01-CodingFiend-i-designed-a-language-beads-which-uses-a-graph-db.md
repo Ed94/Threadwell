@@ -8,7 +8,7 @@ handle: CodingFiend
 post_id: "1675149939759017987"
 date: 2023-07-01
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter
