@@ -8,7 +8,6 @@ handle: bkaradzic
 post_id: "2076844424236265641"
 date: 2026-07-14
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

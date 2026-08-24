@@ -274,7 +274,6 @@ plugins:
       includedProperties:
         - type
         - source
-        - status
         - date
         - tags
         - description

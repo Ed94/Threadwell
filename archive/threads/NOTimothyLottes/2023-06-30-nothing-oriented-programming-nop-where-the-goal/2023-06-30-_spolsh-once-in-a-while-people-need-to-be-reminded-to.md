@@ -8,7 +8,6 @@ handle: _spolsh
 post_id: "1674839597853835285"
 date: 2023-06-30
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

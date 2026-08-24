@@ -8,7 +8,6 @@ handle: AgileJebrim
 post_id: "1868717227866046808"
 date: 2024-12-16
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

@@ -8,7 +8,6 @@ handle: ""
 post_id: ""
 date: 2026-08-22
 archived: 2026-08-22
-status: published
 draft: false
 tags:
   - archive

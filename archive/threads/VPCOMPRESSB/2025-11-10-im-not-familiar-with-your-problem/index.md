@@ -8,7 +8,6 @@ handle: VPCOMPRESSB
 post_id: "1987744335333622188"
 date: 2025-11-10
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

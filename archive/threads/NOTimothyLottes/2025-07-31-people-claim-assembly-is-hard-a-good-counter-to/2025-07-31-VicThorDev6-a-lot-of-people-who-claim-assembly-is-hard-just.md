@@ -8,7 +8,6 @@ handle: VicThorDev6
 post_id: "1950927812401004774"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

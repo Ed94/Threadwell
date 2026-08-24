@@ -8,7 +8,6 @@ handle: biovf
 post_id: "1950863824522739861"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

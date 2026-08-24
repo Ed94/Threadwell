@@ -8,7 +8,6 @@ handle: m6502
 post_id: "1950913023851278616"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

@@ -1,7 +1,6 @@
 ---
 title: winning_tactic
 type: note
-status: published
 draft: false
 description: Archived threads by winning_tactic.
 tags:

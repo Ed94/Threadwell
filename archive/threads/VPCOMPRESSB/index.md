@@ -1,7 +1,6 @@
 ---
 title: VPCOMPRESSB
 type: note
-status: published
 draft: false
 description: Archived threads by VPCOMPRESSB.
 tags:

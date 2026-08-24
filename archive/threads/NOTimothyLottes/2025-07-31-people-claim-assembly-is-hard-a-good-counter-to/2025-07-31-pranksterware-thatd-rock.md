@@ -8,7 +8,6 @@ handle: pranksterware
 post_id: "1950872517700206902"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

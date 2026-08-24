@@ -9,7 +9,8 @@ From the vault root:
   python scripts/twitter/tw.py locate --id 1692565070583136348
 
 refresh = refetch + emit --force (--tip uses the --id as tip).
-Does not commit. Does not flip draft. Never prints cookies or userhash.
+publish = draft: false on the thread index (the only switch).
+Does not commit. Never prints cookies or userhash.
 """
 from __future__ import annotations
 
@@ -250,10 +251,41 @@ def cmd_refresh(post_id: str, tip: bool, slug: str | None) -> int:
     return 0
 
 
+def cmd_publish(post_id: str) -> int:
+    _assets, notes = locate(post_id)
+    if notes is None:
+        raise SystemExit(f"no vault thread for {post_id}")
+    path = notes / "index.md"
+    if not path.is_file():
+        raise SystemExit(f"missing {path}")
+    text = path.read_text(encoding="utf-8")
+    new = text
+    new = new.replace("draft: true", "draft: false")
+    new = new.replace("status: draft", "status: published")
+    if "draft: false" not in new:
+        raise SystemExit(f"no draft field in {path}")
+    if new == text:
+        print(f"already published {path}")
+        return 0
+    path.write_text(new, encoding="utf-8", newline="\n")
+    print(f"draft: false -> {path}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for name in ("locate", "graph", "refetch", "emit", "lift", "ocr", "merge", "refresh"):
+    for name in (
+        "locate",
+        "graph",
+        "refetch",
+        "emit",
+        "lift",
+        "ocr",
+        "merge",
+        "refresh",
+        "publish",
+    ):
         p = sub.add_parser(name)
         p.add_argument("--id", required=True)
         if name in ("emit", "refresh"):
@@ -285,6 +317,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_merge(post_id)
     if args.cmd == "refresh":
         return cmd_refresh(post_id, tip=args.tip, slug=args.slug)
+    if args.cmd == "publish":
+        return cmd_publish(post_id)
     raise SystemExit(f"unknown {args.cmd}")
 
 

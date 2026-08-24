@@ -8,7 +8,6 @@ handle: Stererence
 post_id: "1950970860694913461"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

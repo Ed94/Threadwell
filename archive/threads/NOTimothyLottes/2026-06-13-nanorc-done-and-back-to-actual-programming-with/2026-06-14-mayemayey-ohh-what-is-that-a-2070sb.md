@@ -8,7 +8,6 @@ handle: mayemayey
 post_id: "2066072383954288814"
 date: 2026-06-14
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

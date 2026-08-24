@@ -8,7 +8,6 @@ handle: noop_dev
 post_id: "2077048344820551917"
 date: 2026-07-14
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

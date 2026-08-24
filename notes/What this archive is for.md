@@ -3,7 +3,6 @@ title: What this archive is for
 type: note
 source: original
 date: 2026-08-22
-status: published
 draft: false
 tags:
   - note

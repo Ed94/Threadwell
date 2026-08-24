@@ -1,7 +1,6 @@
 ---
 title: Notes
 type: note
-status: published
 draft: false
 description: Authored and distilled writing.
 tags: []

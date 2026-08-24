@@ -8,7 +8,6 @@ handle: quiveron_x
 post_id: "2065848389875458358"
 date: 2026-06-13
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

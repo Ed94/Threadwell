@@ -3,7 +3,6 @@ title: How threads are organized
 type: note
 source: original
 date: 2026-08-23
-status: published
 draft: false
 tags:
   - note

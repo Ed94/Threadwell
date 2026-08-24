@@ -8,7 +8,6 @@ handle: ssh4net
 post_id: "1950870099809681578"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

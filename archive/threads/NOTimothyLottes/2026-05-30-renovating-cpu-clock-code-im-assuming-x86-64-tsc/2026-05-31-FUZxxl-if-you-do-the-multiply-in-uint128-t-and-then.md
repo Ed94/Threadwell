@@ -8,7 +8,6 @@ handle: FUZxxl
 post_id: "2060885487858880689"
 date: 2026-05-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

@@ -1,7 +1,6 @@
 ---
 title: Archive
 type: note
-status: published
 draft: false
 description: Primary-source records. Not commentary.
 tags:

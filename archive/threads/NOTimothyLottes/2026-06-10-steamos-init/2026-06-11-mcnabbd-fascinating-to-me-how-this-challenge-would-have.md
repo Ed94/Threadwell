@@ -8,7 +8,6 @@ handle: mcnabbd
 post_id: "2064875327617396915"
 date: 2026-06-11
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

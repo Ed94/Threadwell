@@ -8,7 +8,6 @@ handle: BenSimsTech
 post_id: "1777555708499927142"
 date: 2024-04-09
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

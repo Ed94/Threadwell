@@ -56,7 +56,6 @@ def _frontmatter(
         f"post_id: {_yaml_quote(post_id)}",
         f"date: {date}",
         f"archived: {archived}",
-        "status: draft",
         "draft: true",
         "tags:",
         "  - archive",

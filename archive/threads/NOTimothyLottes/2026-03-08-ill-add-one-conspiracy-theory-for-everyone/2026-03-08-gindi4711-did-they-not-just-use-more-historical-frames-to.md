@@ -8,7 +8,6 @@ handle: gindi4711
 post_id: "2030734135338144038"
 date: 2026-03-08
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

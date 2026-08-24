@@ -8,7 +8,6 @@ handle: BlurBusters
 post_id: "1689479056448684032"
 date: 2023-08-10
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

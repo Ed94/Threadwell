@@ -8,7 +8,6 @@ handle: schulzb589
 post_id: "1951093394786361833"
 date: 2025-08-01
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

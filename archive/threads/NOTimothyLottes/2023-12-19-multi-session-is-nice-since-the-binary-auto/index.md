@@ -8,7 +8,6 @@ handle: NOTimothyLottes
 post_id: "1737201090058219980"
 date: 2023-12-19
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

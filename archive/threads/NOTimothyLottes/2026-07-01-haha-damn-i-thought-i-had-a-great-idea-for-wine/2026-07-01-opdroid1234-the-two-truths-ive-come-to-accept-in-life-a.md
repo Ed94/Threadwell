@@ -8,7 +8,6 @@ handle: opdroid1234
 post_id: "2072447876987314447"
 date: 2026-07-01
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

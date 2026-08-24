@@ -8,7 +8,6 @@ handle: PierreTerdiman
 post_id: "1675088736621559808"
 date: 2023-07-01
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

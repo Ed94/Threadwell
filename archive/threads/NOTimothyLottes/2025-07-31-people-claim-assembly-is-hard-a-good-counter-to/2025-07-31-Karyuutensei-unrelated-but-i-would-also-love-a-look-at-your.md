@@ -8,7 +8,6 @@ handle: Karyuutensei
 post_id: "1950905493053923408"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

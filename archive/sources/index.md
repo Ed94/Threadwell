@@ -1,7 +1,6 @@
 ---
 title: Sources
 type: note
-status: published
 draft: false
 description: Non-thread primary sources — talks, pages, videos, documents.
 tags:

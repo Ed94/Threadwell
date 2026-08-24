@@ -1,7 +1,6 @@
 ---
 title: Threads
 type: note
-status: published
 draft: false
 description: Archived Twitter/X threads and similar sequential posts.
 tags:

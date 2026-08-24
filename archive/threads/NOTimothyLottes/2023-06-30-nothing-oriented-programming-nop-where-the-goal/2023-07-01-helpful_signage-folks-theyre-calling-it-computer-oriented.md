@@ -8,7 +8,6 @@ handle: helpful_signage
 post_id: "1675020853862359041"
 date: 2023-07-01
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

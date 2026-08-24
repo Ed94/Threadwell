@@ -8,7 +8,6 @@ handle: domipheus
 post_id: "1674777379414179840"
 date: 2023-06-30
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

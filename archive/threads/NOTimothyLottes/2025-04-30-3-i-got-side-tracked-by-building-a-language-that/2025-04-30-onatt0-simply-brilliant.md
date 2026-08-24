@@ -8,7 +8,6 @@ handle: onatt0
 post_id: "1917654071323857138"
 date: 2025-04-30
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

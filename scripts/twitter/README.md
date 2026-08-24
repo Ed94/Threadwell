@@ -10,6 +10,7 @@ python scripts/twitter/tw.py graph   --id <snowflake>
 python scripts/twitter/tw.py refresh --id <snowflake> --tip
 python scripts/twitter/tw.py lift    --id <snowflake> --orig
 python scripts/twitter/tw.py ocr     --id <snowflake>
+python scripts/twitter/tw.py publish --id <snowflake>
 ```
 
 `paths.py` sets vault = two parents above this file, dumps = `../manual_slop/docs/twitter`, scratch = `../Threadwell-ai/scratch`.
@@ -21,7 +22,7 @@ Usual publish path after you like the note:
 1. `tw.py graph --id …` — confirm tip vs root.
 2. `tw.py refresh --id … --tip` if the dump stored a tip as root.
 3. `tw.py lift --id … --orig` — catbox + rewrite `![](https://…)`.
-4. You set `draft: false` and commit.
+4. `tw.py publish --id …` sets `draft: false`. You commit.
 
 Site wikilinks must be `[[archive/threads/<handle>/<date-slug>]]`. Short `[[slug]]` 404s.
 

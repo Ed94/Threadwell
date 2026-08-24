@@ -8,7 +8,6 @@ handle: 2Sexy4MyGPU
 post_id: "1950935584714654191"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

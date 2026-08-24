@@ -8,7 +8,6 @@ handle: mmalex
 post_id: "1950886322341630045"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

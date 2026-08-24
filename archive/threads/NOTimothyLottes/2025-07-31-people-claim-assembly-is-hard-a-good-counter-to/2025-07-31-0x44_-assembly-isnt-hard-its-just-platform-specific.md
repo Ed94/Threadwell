@@ -8,7 +8,6 @@ handle: 0x44_
 post_id: "1951048949667619280"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

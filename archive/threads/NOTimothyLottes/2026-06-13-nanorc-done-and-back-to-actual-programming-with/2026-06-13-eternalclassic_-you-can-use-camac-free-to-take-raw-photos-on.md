@@ -8,7 +8,6 @@ handle: eternalclassic_
 post_id: "2065854318817816626"
 date: 2026-06-13
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

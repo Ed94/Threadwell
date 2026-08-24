@@ -8,7 +8,6 @@ handle: simplex_fx
 post_id: "1951011391827010009"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

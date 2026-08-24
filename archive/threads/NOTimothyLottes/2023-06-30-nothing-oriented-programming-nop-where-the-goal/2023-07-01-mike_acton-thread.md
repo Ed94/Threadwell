@@ -8,7 +8,6 @@ handle: mike_acton
 post_id: "1674962613506297857"
 date: 2023-07-01
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

@@ -8,7 +8,6 @@ handle: konigssohne
 post_id: "1950961762419044639"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive

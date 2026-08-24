@@ -8,7 +8,6 @@ handle: leonard_coder
 post_id: "1950889332375470135"
 date: 2025-07-31
 archived: 2026-08-23
-status: draft
 draft: true
 tags:
   - archive
