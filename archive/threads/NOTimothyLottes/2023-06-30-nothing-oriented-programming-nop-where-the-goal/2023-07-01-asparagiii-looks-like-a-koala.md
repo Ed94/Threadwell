@@ -30,8 +30,7 @@ parent_post_id: "1674757854471806977"
 
 @NOTimothyLottes Looks like a koala
 
-![](https://files.catbox.moe/wtbwl8.jpg)
-
+![](https://pbs.twimg.com/media/Fz88Bk0WAAApDzL?format=jpg&name=orig)
 ## Related
 
 - Spine: [[archive/threads/NOTimothyLottes/2023-06-30-nothing-oriented-programming-nop-where-the-goal]]

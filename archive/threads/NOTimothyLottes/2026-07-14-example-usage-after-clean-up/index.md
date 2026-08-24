@@ -29,6 +29,5 @@ in_reply_to: ""
 
 Example usage after clean-up.
 
-Media (not lifted): `2076833886827376782_HNJlSFyW0AAQylS_orig.png`
-
+![](https://pbs.twimg.com/media/HNJlSFyW0AAQylS?format=png&name=orig)
 Branches: [[archive/threads/NOTimothyLottes/2026-07-14-example-usage-after-clean-up/2026-07-14-bkaradzic-much-clearer]], [[archive/threads/NOTimothyLottes/2026-07-14-example-usage-after-clean-up/2026-07-14-noop_dev-at-this-point-could-make-a-dsl-with-perl]]

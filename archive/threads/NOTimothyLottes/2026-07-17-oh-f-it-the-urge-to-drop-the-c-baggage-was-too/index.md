@@ -29,6 +29,5 @@ in_reply_to: ""
 
 Oh, F-it! The urge to drop the C baggage was too strong, using nasm to bootstrap another radical Forth for Linux. Will see how far I can get in a 4 KiB binary to start. Apparently this wants to exist, and I have no choice but to lend some fingers. ELF64 out of the way.
 
-Media (not lifted): `2078257788732461389_HNdzRxAXMAEom1u_orig.png`
-
+![](https://pbs.twimg.com/media/HNdzRxAXMAEom1u?format=png&name=orig)
 Branches: [[archive/threads/NOTimothyLottes/2026-07-17-oh-f-it-the-urge-to-drop-the-c-baggage-was-too/2026-07-18-furan-sorry-for-the-tangent-what-is-this-font-and-where]]

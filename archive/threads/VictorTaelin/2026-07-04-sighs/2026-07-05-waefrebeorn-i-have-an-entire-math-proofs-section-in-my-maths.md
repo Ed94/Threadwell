@@ -32,8 +32,7 @@ parent_post_id: "2073406569459368226"
 
 so “+1”
 
-![](https://files.catbox.moe/iiumro.jpg)
-
+![](https://pbs.twimg.com/media/HMcipC5WUAA44VI?format=jpg&name=orig)
 ## Related
 
 - Spine: [[archive/threads/VictorTaelin/2026-07-04-sighs]]

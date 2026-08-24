@@ -29,22 +29,19 @@ in_reply_to: ""
 
 So instead of the massive "mmdeviceapi.h" mess-ware, I defined a stupid CPP_(object,virtual_function_number) macro. This way I just have to write down the index in the VT table for the specific virtual function ...
 
-Media (not lifted): `2073110092447203466_HMUqNm_XIAA0JEP_orig.png`
-
+![](https://pbs.twimg.com/media/HMUqNm_XIAA0JEP?format=png&name=orig)
 **2/**
 
 Here is initial bring up, function call by function call. No headers, and no C++. The magic of typecasting at usage IC4_(CPP_(... is that I don't ever have to build the headers. That is at least working out well. I do line by line to test in Wine, defer fail handling until later
 
-Media (not lifted): `2073111326981783629_HMUrDz2XsAA9JLP_orig.png`
-
+![](https://pbs.twimg.com/media/HMUrDz2XsAA9JLP?format=png&name=orig)
 **3/**
 
 More on bring-up. I just run and check visually for output in the console (this time 'B055'). Since compile times are under a second, it is super fast to check as I go. Easy to see how much code bloat there is for C++ this way (doing it manually).
 
-Media (not lifted): `2073113441959616958_HMUs9oLWUAAaHx9_orig.png`
-
+![](https://pbs.twimg.com/media/HMUs9oLWUAAaHx9?format=png&name=orig)
 **4/**
 
 Example below of how much header bloat I'm factoring out using my simple macros
 
-Media (not lifted): `2073114409270997497_HMUujnwWoAAUQd1_orig.png`
+![](https://pbs.twimg.com/media/HMUujnwWoAAUQd1?format=png&name=orig)

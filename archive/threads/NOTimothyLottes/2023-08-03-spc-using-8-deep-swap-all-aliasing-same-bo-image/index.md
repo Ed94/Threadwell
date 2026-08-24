@@ -29,7 +29,7 @@ in_reply_to: ""
 
 SPC: Using 8 deep swap all aliasing same BO (image) fixes Game Mode crash with external display. Pipelined load gets to black screen in 2 ms. Takes 460 ms to allocate 4 GiB GTT video ram, 558 ms to copy 256 MiB cart from page cache to USWC (page faults), all in parallel.
 
-![](https://files.catbox.moe/yfbahk.jpg)
+![](https://pbs.twimg.com/media/F2mmqYXWoAAG3fj?format=jpg&name=orig)
 
 **2/**
 

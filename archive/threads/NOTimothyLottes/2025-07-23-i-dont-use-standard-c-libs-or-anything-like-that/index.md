@@ -29,12 +29,11 @@ in_reply_to: ""
 
 @Karyuutensei I don't use standard C libs or anything like that. I just write my own stuff. For 'printf' style debugging I have macros that write to a memory mapped log file. They give {[restartNumber]|[msSinceLaunch]|[sourceLine]|[hex]|[dec]|[comment]}. Keeping multiple restarts in same log
 
-Media (not lifted): `1948009807161721332_Gwi4H27WgAAIgMN_orig.png`
-
+![](https://pbs.twimg.com/media/Gwi4H27WgAAIgMN?format=png&name=orig)
 Branches: [[archive/threads/NOTimothyLottes/2025-07-23-i-dont-use-standard-c-libs-or-anything-like-that/2025-07-23-Karyuutensei-where-does-the-restart-number-come-from-i-assume]]
 
 **2/**
 
 @Karyuutensei That log example is a simple test program, it starts in 0.3 ms for that run. The log tells all about how it pipelines start up {doing memory page warming, kart load, window setup, VK setup in parallel, getting to PSO gen as fast as possible [get layout done first]}
 
-Media (not lifted): `1948010813555634392_Gwi47owXQAEa2Ar_orig.png`
+![](https://pbs.twimg.com/media/Gwi47owXQAEa2Ar?format=png&name=orig)

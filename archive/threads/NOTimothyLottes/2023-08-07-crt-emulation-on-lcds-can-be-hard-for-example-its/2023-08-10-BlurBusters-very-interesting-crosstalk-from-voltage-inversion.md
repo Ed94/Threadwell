@@ -30,8 +30,9 @@ parent_post_id: "1688491417109196800"
 
 @NOTimothyLottes Very interesting "crosstalk from voltage inversion" artifact. Some repeating patterns or flicker patterns can trigger crosstalk artifacts too. Behavior varies a lot between TN, IPS, and VA, but all of them have to alternate voltage polarity spatially and temporally.
 
-Media (not lifted): `1689479056448684032_F3I8AZmW0AEy6jn_orig.png` `1689479056448684032_F3I8BVlXoAAnuJB_orig.png`
+![](https://pbs.twimg.com/media/F3I8AZmW0AEy6jn?format=png&name=orig)
 
+![](https://pbs.twimg.com/media/F3I8BVlXoAAnuJB?format=png&name=orig)
 ## Related
 
 - Spine: [[archive/threads/NOTimothyLottes/2023-08-07-crt-emulation-on-lcds-can-be-hard-for-example-its]]

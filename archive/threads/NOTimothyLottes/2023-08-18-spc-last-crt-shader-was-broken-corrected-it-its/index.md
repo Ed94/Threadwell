@@ -29,8 +29,11 @@ in_reply_to: ""
 
 SPC: Last CRT shader was broken. Corrected it. It's energy conserving now, and correctly doing sub-pixel line width raster using the individual channels. Cell camera  shots below at different zooms.
 
-Media (not lifted): `1692395128739057844_F3yYY1iXYAAaAlE_orig.jpg` `1692395128739057844_F3yYZQwXcAABFvi_orig.jpg` `1692395128739057844_F3yYZo5WAAA0aRS_orig.jpg`
+![](https://pbs.twimg.com/media/F3yYY1iXYAAaAlE?format=jpg&name=orig)
 
+![](https://pbs.twimg.com/media/F3yYZQwXcAABFvi?format=jpg&name=orig)
+
+![](https://pbs.twimg.com/media/F3yYZo5WAAA0aRS?format=jpg&name=orig)
 **2/**
 
 Each scan line is simulated with only 3 pixels. But you get 9 sub-pixels to play with, so that is where the quality comes from. It reaches 7/8th of the display peak brightness, this compromise was so there is always some amount of perceptual scan effect.

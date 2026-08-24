@@ -29,26 +29,26 @@ in_reply_to: ""
 
 SPC: Left off with KEY and GAMEPAD input GPU-accessable. NOP design, no functions, no API, just a fixed VA address and data format to read, dead easy.
 
-Media (not lifted): `1687250591813079041_F2pRdu9WgAABCLE_orig.jpg` `1687250591813079041_F2pReKsXoAAPvow_orig.jpg`
+![](https://pbs.twimg.com/media/F2pRdu9WgAABCLE?format=jpg&name=orig)
 
+![](https://pbs.twimg.com/media/F2pReKsXoAAPvow?format=jpg&name=orig)
 **2/**
 
 Wrote some console data dumping to aid in bringing up HID parsers for Deck and three generations of PlayStation controllers. Apparently XBox controllers aren't HIDs so not sure how one is supposed to access those.
 
-Media (not lifted): `1687251721032978432_F2pSfIHXcAMI-IQ_orig.jpg` `1687251721032978432_F2pSfzAWcAMo6t7_orig.jpg`
+![](https://pbs.twimg.com/media/F2pSfIHXcAMI-IQ?format=jpg&name=orig)
 
+![](https://pbs.twimg.com/media/F2pSfzAWcAMo6t7?format=jpg&name=orig)
 **3/**
 
 Supporting hot plug was a bit of a mess, just trying to open devices every second. Adding open devices to an epoll. {Product, vendor} isn't enough to ID a device, too much aliasing, so I use packet size as well.
 
-Media (not lifted): `1687252813468852225_F2pTfekWYAAAwSi_orig.jpg`
-
+![](https://pbs.twimg.com/media/F2pTfekWYAAAwSi?format=jpg&name=orig)
 **4/**
 
 Open devices with matching packet size get set in a bit array, and I collect up to 4 of those device outputs to sent to the GPU. Special logic to always place Steam Deck controls last to make docking work well.
 
-Media (not lifted): `1687253442643755008_F2pUEG0XwAEwYvP_orig.jpg`
-
+![](https://pbs.twimg.com/media/F2pUEG0XwAEwYvP?format=jpg&name=orig)
 **5/**
 
 I'll have to tackle audio at some point, but I'm skipping networking for version 1. But otherwise SPC is good to move on to the next step, which is to build out the GPU side assembler & data editor. Which will be written in binary at first.

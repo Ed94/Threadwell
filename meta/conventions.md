@@ -48,7 +48,7 @@ A thread folder holds `index.md` (spine) and one markdown file per off-spine rep
 
 # Images
 
-Always absolute HTTPS URLs on the image host (catbox after upload). Do not commit local binaries for published notes. Working files sit in `assets/` (gitignored), not in `meta/attachments/` except unrelated Obsidian drops.
+Always absolute HTTPS URLs from the original provider when possible (`pbs.twimg.com`, `video.twimg.com`). The vault also retains a local, unpublished copy under `assets/` using the same relative taxonomy as the archive. A separately requested backup may mirror those assets to configured storage; alternative-host uploads are a manual fallback used only after the origin is confirmed unavailable, and the original URL and every fallback URL remain recorded in `media.json`. Do not commit local binaries for published notes. Working files sit in `assets/` (gitignored), not in `meta/attachments/` except unrelated Obsidian drops.
 
 ```md
 ![](https://files.catbox.moe/example.png)

@@ -29,22 +29,21 @@ in_reply_to: ""
 
 CRT emulation on LCDs can be hard. For example it's often easy to generate a pattern that causes a LCD hardware bug. NOT joking. Here is an example on the Steam Deck. The pattern in the window affects the scan (Deck scan is rotated) outside the window.
 
-Media (not lifted): `1688491417109196800_F265_JZXsAAInpa_orig.jpg` `1688491417109196800_F265_hLXkAAnfek_orig.jpg`
+![](https://pbs.twimg.com/media/F265_JZXsAAInpa?format=jpg&name=orig)
 
+![](https://pbs.twimg.com/media/F265_hLXkAAnfek?format=jpg&name=orig)
 Branches: [[archive/threads/NOTimothyLottes/2023-08-07-crt-emulation-on-lcds-can-be-hard-for-example-its/2023-08-10-BlurBusters-very-interesting-crosstalk-from-voltage-inversion]]
 
 **2/**
 
 The actual pattern is this (it's a 2x1 pixel checker of {G,RB}).
 
-Media (not lifted): `1688492237775142912_F266epnW4AAdCiK_orig.png`
-
+![](https://pbs.twimg.com/media/F266epnW4AAdCiK?format=png&name=orig)
 **3/**
 
 The theory: Deck's 90deg scan results in {(bottom)R, G, B (top)} sub-pixel components. So could alternate {G,RB} only per pixel in a checker pattern to generate a new sub-pixel pattern at a different resolution. In this case trying for 640x400 virtual resolution.
 
-Media (not lifted): `1688493686554849280_F267UYuXAAAO50A_orig.png`
-
+![](https://pbs.twimg.com/media/F267UYuXAAAO50A?format=png&name=orig)
 **4/**
 
 For virtual pixel, shift energy into masked virtual phosphor. So 50% brightness red, would be {100%, 0%} for {in, out} of phosphor pixels. Over 50% one starts to increase non-phosphor pixels until some maximum so mask is still visible, but brightness isn't too compromised.

@@ -29,8 +29,7 @@ in_reply_to: ""
 
 Linux by default doesn't allow any increase in scheduling priority. Users need to manually setup special user|group with elevated rights. Also system calls that try elevated scheduling don't clamp, instead they fail -EPREM if out of bounds. So all around a pain in the ass.
 
-Media (not lifted): `2072135292115427728_HMGz-64W4AABeaH_orig.png`
-
+![](https://pbs.twimg.com/media/HMGz-64W4AABeaH?format=png&name=orig)
 **2/**
 
 I'm a little lazy right now and don't feel like trying SteamOS big picture mode to see what the default ulimits are. Curious what they allow.
@@ -42,8 +41,9 @@ Linux priority workarounds
 (b.) Use setrlimit() to set 'soft=hard' limit
 (c.) Then set priority or nice based on new soft limit
 
-Media (not lifted): `2072147378480566273_HMG-UCRXIAEKbdj_orig.png` `2072147378480566273_HMG-zRxWwAAWtI4_orig.png`
+![](https://pbs.twimg.com/media/HMG-UCRXIAEKbdj?format=png&name=orig)
 
+![](https://pbs.twimg.com/media/HMG-zRxWwAAWtI4?format=png&name=orig)
 **4/**
 
 I don't do one-time global priority maximums, just in case someone sudo's higher priority hard limit dynamically it should pickup the new limit.
@@ -52,4 +52,4 @@ I don't do one-time global priority maximums, just in case someone sudo's higher
 
 Also while on setrlimit, I also bump up the RLIMIT_MEMLOCK to it's maximum just in case before the mlockall().
 
-Media (not lifted): `2072149707107787035_HMHBGTPXwAA_axg_orig.png`
+![](https://pbs.twimg.com/media/HMHBGTPXwAA_axg?format=png&name=orig)

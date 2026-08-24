@@ -30,8 +30,7 @@ parent_post_id: "2073406569459368226"
 
 @VictorTaelin Legend
 
-![](https://files.catbox.moe/55q672.jpg)
-
+![](https://pbs.twimg.com/media/HMb6HlXacAAgdAN?format=jpg&name=orig)
 ## Related
 
 - Spine: [[archive/threads/VictorTaelin/2026-07-04-sighs]]

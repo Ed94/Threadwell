@@ -29,4 +29,4 @@ in_reply_to: ""
 
 Yeah, perhaps wildly alien. But for those who grew up with MOD-like trackers (like Impulse Tracker below), the interface will almost feel like home (those had simple {instrument, pattern, arangement} editors, with a very spreadsheet feel).
 
-Media (not lifted): `1688286623375454208_F23_OOhXgAUBtlb_orig.png`
+![](https://pbs.twimg.com/media/F23_OOhXgAUBtlb?format=png&name=orig)

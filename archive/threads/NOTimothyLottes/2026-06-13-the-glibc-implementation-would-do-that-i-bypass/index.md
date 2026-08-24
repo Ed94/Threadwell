@@ -29,4 +29,4 @@ in_reply_to: "2065851939917906296"
 
 @axelgneiting The glibc implementation would do that. I bypass libc and just do it manually with perf_event_open syscall and mmap.
 
-Media (not lifted): `2065872197147578751_HKtzz5RXcAA6CIX_orig.jpg`
+![](https://pbs.twimg.com/media/HKtzz5RXcAA6CIX?format=jpg&name=orig)

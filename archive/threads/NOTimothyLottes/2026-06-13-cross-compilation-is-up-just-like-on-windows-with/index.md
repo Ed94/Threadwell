@@ -29,8 +29,9 @@ in_reply_to: ""
 
 Cross compilation is up. Just like on windows with GCC I have to disable all warnings because there is no way to turn off “function called through a non-compatible type”. They obviously should have had warning IDs and an ID based disable.
 
-Media (not lifted): `2065832746757341482_HKtP7aQXsAAtJ5X_orig.jpg` `2065832746757341482_HKtP7aTWEAAC_j4_orig.jpg`
+![](https://pbs.twimg.com/media/HKtP7aQXsAAtJ5X?format=jpg&name=orig)
 
+![](https://pbs.twimg.com/media/HKtP7aTWEAAC_j4?format=jpg&name=orig)
 Branches: [[archive/threads/NOTimothyLottes/2026-06-13-cross-compilation-is-up-just-like-on-windows-with/2026-06-13-tomcr2100-interesting-font-does-it-have-a-name]]
 
 **2/**

@@ -30,8 +30,7 @@ parent_post_id: "2073406569459368226"
 
 @VictorTaelin Bro, you dont hafta Grug-post to be popular with the right people.
 
-![](https://files.catbox.moe/uuordl.jpg)
-
+![](https://pbs.twimg.com/media/HMZQa0UXUAA3ZJp?format=jpg&name=orig)
 ## Related
 
 - Spine: [[archive/threads/VictorTaelin/2026-07-04-sighs]]

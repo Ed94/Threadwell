@@ -36,8 +36,7 @@ I will save your image for that day (if I get approval to use it), since Twitter
 
 @SebAaltonen "Approval", haha, sure it's covered under my favorite license
 
-![](https://files.catbox.moe/y9nkha.png)
-
+![](https://pbs.twimg.com/media/Fz3_kb8WYAMXvcT?format=png&name=orig)
 ## Related
 
 - Spine: [[archive/threads/NOTimothyLottes/2023-06-30-nothing-oriented-programming-nop-where-the-goal]]

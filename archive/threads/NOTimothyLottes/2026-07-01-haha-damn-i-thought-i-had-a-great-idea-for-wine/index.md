@@ -29,8 +29,7 @@ in_reply_to: ""
 
 Haha damn, I thought I had a great idea, for Wine workarounds, I could just detect Wine (easy), and then make the associated Linux system call from inside Wine using inline asm! [no surprise, it doesn't work]
 
-Media (not lifted): `2072445315370590266_HMLNdMOXkAAIoEj_orig.png`
-
+![](https://pbs.twimg.com/media/HMLNdMOXkAAIoEj?format=png&name=orig)
 Branches: [[archive/threads/NOTimothyLottes/2026-07-01-haha-damn-i-thought-i-had-a-great-idea-for-wine/2026-07-01-opdroid1234-the-two-truths-ive-come-to-accept-in-life-a]], [[archive/threads/NOTimothyLottes/2026-07-01-haha-damn-i-thought-i-had-a-great-idea-for-wine/2026-07-02-winning_tactic-you-could-pretend-to-be-an-audio-jack]]
 
 **2/**

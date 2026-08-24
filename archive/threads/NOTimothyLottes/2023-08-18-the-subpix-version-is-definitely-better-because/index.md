@@ -29,20 +29,15 @@ in_reply_to: ""
 
 SPC: CRT shader on the Deck. This time not doing subpix render. Yet RGB vs BGR order matters still. One way it becomes possible to simulate even spaced aperture grill (removing scan fx), and the other more of the scan effect.
 
-![](https://files.catbox.moe/mve2kr.jpg)
-
-![](https://files.catbox.moe/vis95s.jpg)
-
+![](https://pbs.twimg.com/media/F30tppDWwAAA-8J?format=jpg&name=orig)
+![](https://pbs.twimg.com/media/F30tqE8XYAAgrFv?format=jpg&name=orig)
 **2/**
 
 Comparing all methods (grille, bad convergence scan, subpix scan)
 
-![](https://files.catbox.moe/mve2kr.jpg)
-
-![](https://files.catbox.moe/vis95s.jpg)
-
-![](https://files.catbox.moe/34pnhf.jpg)
-
+![](https://pbs.twimg.com/media/F30uJoSWcAA7ICE?format=jpg&name=orig)
+![](https://pbs.twimg.com/media/F30uKJdXkAA4PV8?format=jpg&name=orig)
+![](https://pbs.twimg.com/media/F30uKouWQAAvY0q?format=jpg&name=orig)
 **3/**
 
 The non-subpix scan has 1-pixel separation of RGB (intentional bad convergence) to help hide scaling. The subpix scan uses 1/3-pixel separation (less visible misaligned convergence). Pixel as in output pixel.
@@ -51,6 +46,5 @@ The non-subpix scan has 1-pixel separation of RGB (intentional bad convergence) 
 
 The subpix version is definitely better. Because of the almost 3x doubling of scanline width detail, it just perceptually feels a lot cleaner and easier to reconstruct in the mind.
 
-![](https://files.catbox.moe/ugcsjy.jpg)
-
-![](https://files.catbox.moe/g42t2i.jpg)
+![](https://pbs.twimg.com/media/F30y9HPWUAAbmmw?format=jpg&name=orig)
+![](https://pbs.twimg.com/media/F30y9h3WAAETuui?format=jpg&name=orig)

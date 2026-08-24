@@ -35,10 +35,10 @@ in_reply_to: ""
 
 ## Media
 
-Images use absolute HTTPS URLs:
+Images use direct HTTPS URLs from the original provider when possible:
 
 ```md
-![](https://files.catbox.moe/example.png)
+![](https://pbs.twimg.com/media/EXAMPLE?format=png&name=orig)
 ```
 
 A live tweet embed is optional and is not the archive:

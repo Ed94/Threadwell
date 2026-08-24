@@ -35,4 +35,8 @@ code is awful because i'm using Java as if it's C, and it isn't optimized (plent
 
 the <\> represents NULL. (this was debugged with print 🙂).
 
-Media (not lifted): `1991383117571957052_G6LJrEgXkAA2Z26_orig.png` `1991383117571957052_G6LPXFOWAAABSVy_orig.jpg` `1991383117571957052_G6LPYhqXgAA2rvt_orig.jpg`
+![](https://pbs.twimg.com/media/G6LJrEgXkAA2Z26?format=png&name=orig)
+
+![](https://pbs.twimg.com/media/G6LPXFOWAAABSVy?format=jpg&name=orig)
+
+![](https://pbs.twimg.com/media/G6LPYhqXgAA2rvt?format=jpg&name=orig)

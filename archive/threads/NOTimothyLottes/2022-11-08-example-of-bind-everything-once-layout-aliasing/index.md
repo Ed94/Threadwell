@@ -29,4 +29,4 @@ in_reply_to: ""
 
 Example of "Bind-Everything-Once" Layout Aliasing in Vulkan. Storage image format by aliased name, also bound as sampled image. Choose buffer {readonly,writeonly,volatile (read uncached),atomic} access by aliased name, as either {uint,uint4,float,float4}.
 
-Media (not lifted): `1589810282104524800_FhAidkhUoAA3FJz_orig.png`
+![](https://pbs.twimg.com/media/FhAidkhUoAA3FJz?format=png&name=orig)

@@ -53,10 +53,10 @@ Templates: `templates/archive-source.md`, `templates/authored-note.md` (Template
 
 ## Images and embeds
 
-Images: absolute HTTPS URLs on your image host. Do not commit local binaries for published notes.
+Images: absolute HTTPS URLs from the original provider when possible. Notes do not embed local binaries.
 
 ```md
-![](https://files.catbox.moe/example.png)
+![](https://pbs.twimg.com/media/FhAidkhUoAA3FJz?format=png&name=orig)
 ```
 
 Keep local copies in `assets/` (not committed). Do not point notes at `assets/` or `./media/`.

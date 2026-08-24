@@ -30,8 +30,7 @@ parent_post_id: "1776597200073568623"
 
 @NOTimothyLottes @SebAaltonen @MartinJIFuller Ha! That won’t save you from my follow
 
-Media (not lifted): `1777246377824731474_GKoMKCHWwAAWLvG.mp4_orig.mp4`
-
+<video controls src="https://video.twimg.com/tweet_video/GKoMKCHWwAAWLvG.mp4"></video>
 ## Related
 
 - Spine: [[archive/threads/NOTimothyLottes/2024-04-06-on-https-mastodon-gamedev-place-notimothylottes]]

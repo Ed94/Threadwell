@@ -30,8 +30,7 @@ parent_post_id: "1950860870818439202"
 
 @NOTimothyLottes
 
-Media (not lifted): `1950900720770625916_GxL93LLW8AA-5hM.mp4_orig.mp4`
-
+<video controls src="https://video.twimg.com/tweet_video/GxL93LLW8AA-5hM.mp4"></video>
 ## Related
 
 - Spine: [[archive/threads/NOTimothyLottes/2025-07-31-people-claim-assembly-is-hard-a-good-counter-to]]

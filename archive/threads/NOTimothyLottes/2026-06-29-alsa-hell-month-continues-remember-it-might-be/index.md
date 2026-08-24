@@ -29,28 +29,24 @@ in_reply_to: ""
 
 ALSA hell month continues: remember it might be "open source" but it is definitely "closed documentation" [those docs are securely trapped in the minds of the authors]. Now that I have aplay playing a sound, it's time for garbage sifting through STRACE to see what is going on ...
 
-Media (not lifted): `2071706805114216559_HMAt1GiXAAAoahX_orig.png`
-
+![](https://pbs.twimg.com/media/HMAt1GiXAAAoahX?format=png&name=orig)
 Branches: [[archive/threads/NOTimothyLottes/2026-06-29-alsa-hell-month-continues-remember-it-might-be/2026-06-29-AlexABPerson-have-you-actually-reached-out-to-said-developers]]
 
 **2/**
 
 For devs working on linux, strace is a good friend, besides reverse engineering undocumented crap, it's useful to run on your own app as a bug test, like look what this idiot [me] did with nanosleep()
 
-Media (not lifted): `2071710958397898929_HMAx0PmW0AAdUAy_orig.png`
-
+![](https://pbs.twimg.com/media/HMAx0PmW0AAdUAy?format=png&name=orig)
 **3/**
 
 In my ALSA interface I war-dial the possible /dev/snd/pcm devices instead of just listing the directory. It's a lot easier in source code.
 
-Media (not lifted): `2071714384225681440_HMA1CA9XIAAwRAB_orig.png`
-
+![](https://pbs.twimg.com/media/HMA1CA9XIAAwRAB?format=png&name=orig)
 **4/**
 
 Using 'strace' showed another bug in my setting schedule priority code (I didn't yet validate that code and check for errors). Definitely my ALSA test app shows ZERO errors in ALSA system calls, but doesn't actually play anything. Broken without errors = crappy API.
 
-Media (not lifted): `2071715941688258752_HMA2LibWMAAMW3O_orig.png`
-
+![](https://pbs.twimg.com/media/HMA2LibWMAAMW3O?format=png&name=orig)
 **5/**
 
 In theory a good API, SNDRV_PCM_IOCTL_PREPARE would fail if the next SNDRV_PCM_IOCTL_WRITEI_FRAMES wouldn't accept the write. And that WRITEI should also fail instead of pass and setting .result=0 (of the snd xferi structure).
@@ -59,21 +55,18 @@ In theory a good API, SNDRV_PCM_IOCTL_PREPARE would fail if the next SNDRV_PCM_I
 
 The best I can guess thus far is that the aplay app goes through some HW_REFINE ioctls before setting the HW_PARAMS, and perhaps the "magic missing thing" is in that process.
 
-Media (not lifted): `2071717187623030935_HMA3sGVXwAAVDMT_orig.png`
-
+![](https://pbs.twimg.com/media/HMA3sGVXwAAVDMT?format=png&name=orig)
 **7/**
 
 Best docs on REFINE that I've found yet is indirectly through this. Note tinyalsa doesn't seem to use this interface other than through pcm_params_get(), not the interative process seen in aplay strace. Maybe because tinyalsa is for android (different drivers)
 
-Media (not lifted): `2071725181576319370_HMA-CDAXEAAw9ns_orig.jpg`
-
+![](https://pbs.twimg.com/media/HMA-CDAXEAAw9ns?format=jpg&name=orig)
 **8/**
 
 SNDRV_PCM_IOCTL_HW_REFINE
 If send out a zeroed snd_pcm_hw_params, the ioctl will fail. There is a special magic sauce to the structure that must be initialized correctly before you can even fetch hardware parameters. It's high level skill in Obfuscation. See *_any( in ALSA src
 
-Media (not lifted): `2071759816725311959_HMBePMXXwAE5_1M_orig.png`
-
+![](https://pbs.twimg.com/media/HMBePMXXwAE5_1M?format=png&name=orig)
 **9/**
 
 magiz/

@@ -36,7 +36,7 @@ Every imported thread starts with `archive`, `twitter`, and the author's handle.
 
 ## Images
 
-Pictures on the site are ordinary HTTPS URLs. Working copies of files live outside what GitHub Pages serves. A note that is still being prepared is marked `draft: true` and does not appear on the site.
+Pictures on the site are direct HTTPS URLs from the original image host when possible. Working copies of files live outside what GitHub Pages serves. A note that is still being prepared is marked `draft: true` and does not appear on the site.
 
 ## Reading
 

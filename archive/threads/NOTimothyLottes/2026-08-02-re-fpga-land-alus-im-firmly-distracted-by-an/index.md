@@ -49,26 +49,22 @@ In a traditional right-justified CPU, you'd have three ops {MUL, ADD, SHR} which
 
 Left justified variable bit-width loads make a lot more sense, partly because the LSBs index into bits (or sub-bits depending on mapping) effectively (instead of bytes), and one can do {4/8/16/32-bit} extraction with 8 SLICES and one CLB deep [a lot easier than right-justified]
 
-Media (not lifted): `2083764013570093330_HOsENEBXEAAoWlx_orig.png`
-
+![](https://pbs.twimg.com/media/HOsENEBXEAAoWlx?format=png&name=orig)
 **7/**
 
 The core normalized IMAD can easily be made -/+ symmetrical simply by feeding in truncated LSBs of the add operand with simple logic based on MSBs of mul operands. In the example below the {-4} represents {-1.0}. Of course -4*-4 overflows to -4 [2's comp]
 
-Media (not lifted): `2083765900436492692_HOsFs-nWAAAUlTy_orig.png`
-
+![](https://pbs.twimg.com/media/HOsFs-nWAAAUlTy?format=png&name=orig)
 **8/**
 
 Predicate/bool logic becomes {0.0, -1.0} based, can leverage {a+b} wrap around to implement XOR, and -(a*b) to implement AND.
 
-Media (not lifted): `2083766854980383071_HOsG3VBXAAA92kz_orig.png`
-
+![](https://pbs.twimg.com/media/HOsG3VBXAAA92kz?format=png&name=orig)
 **9/**
 
 Doing a "perspective divide" {s=x/z} can be transformed into a scaled perspective divide {s=x*(a/z)} to work around the {-1.0 to <1.0} range limitation. And one can transform the divide into a binary search for 's' - specifically largest 's' where {s*z<=x*a}
 
-Media (not lifted): `2083768129658765655_HOsIBCBWcAA79PL_orig.png`
-
+![](https://pbs.twimg.com/media/HOsIBCBWcAA79PL?format=png&name=orig)
 **10/**
 
 Notice this binary search test takes just one IMAD {s*z+t} where t=-x*a. Meaning a smart machine can do a test step in 2 ops on a DSP (one IMAD for the test, the next to ADD to 's' for the next search step) ...

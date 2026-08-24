@@ -29,8 +29,7 @@ in_reply_to: ""
 
 Working on the Linux thread priority code. Linux doesn't allow sched_attr.size to be minimized to just what is required for the scheduling mode (my prior bug). So I statically allocate the structures already filled in and cacheline aligned ...
 
-Media (not lifted): `2071937360288235902_HMD_iq0XcAASnSn_orig.png`
-
+![](https://pbs.twimg.com/media/HMD_iq0XcAASnSn?format=png&name=orig)
 **2/**
 
 Theory says: better for size, worse for perf! Global structure will miss the cache. The alternative is to allow the code to generate the structure on the stack, which is likely in cache, and burn a few more cachelines of code (which gets linear prefetch).
@@ -39,4 +38,4 @@ Theory says: better for size, worse for perf! Global structure will miss the cac
 
 Clearly the default linux won't allow my non-blessed user to get SCHED_FIFO, and it also seems like my nice(-20) SCHED_OTHER backup is also not allowed either. Damn. More stuff to workaround.
 
-Media (not lifted): `2071938677584863448_HMEBJNuW4AE8JUV_orig.png`
+![](https://pbs.twimg.com/media/HMEBJNuW4AE8JUV?format=png&name=orig)
