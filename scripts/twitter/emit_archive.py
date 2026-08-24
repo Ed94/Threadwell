@@ -269,22 +269,32 @@ def _split_frontmatter(text: str) -> tuple[str, str]:
 
 
 def _upsert_wikilink(path: Path, target: str) -> None:
+    """Insert or move a wikilink target on the handle index.
+
+    If the handle folder contains a directory whose name matches `target`,
+    any other wikilink whose basename does not match a real directory is
+    dropped. This keeps the handle index in sync when a folder is reused
+    with a new slug (e.g., a tip-climb refresh renames the folder).
+    """
     text = path.read_text(encoding="utf-8")
     fm, body = _split_frontmatter(text)
     kept: list[str] = []
     names: list[str] = []
+    handle_dir = path.parent
+    real_dirs = {d.name for d in handle_dir.iterdir() if d.is_dir()} if handle_dir.is_dir() else set()
     for line in body.splitlines():
         match = _WIKILINK_ITEM.match(line)
         if match:
             name = match.group(1)
-            if name not in names:
-                names.append(name)
+            # Drop stale wikilinks whose folder no longer exists under
+            # this handle. Same-slug duplicates still get collapsed.
+            if name in real_dirs or not real_dirs:
+                if name not in names:
+                    names.append(name)
         else:
             kept.append(line)
     if target not in names:
         names.append(target)
-    short = target.rsplit("/", 1)[-1]
-    names = [n for n in names if n == target or n != short]
     names.sort()
     while kept and kept[0] == "":
         kept.pop(0)

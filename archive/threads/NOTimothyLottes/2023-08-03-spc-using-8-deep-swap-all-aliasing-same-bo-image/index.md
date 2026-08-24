@@ -8,7 +8,7 @@ handle: NOTimothyLottes
 post_id: "1687062786273062912"
 date: 2023-08-03
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter

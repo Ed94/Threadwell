@@ -10,7 +10,7 @@ tags:
 ---
 
 - [[archive/threads/NOTimothyLottes/2022-11-04-vulkan-1500-lines-of-overhead-including-header]]
-- [[archive/threads/NOTimothyLottes/2022-11-05-19-even-without-double-rate-16-bit-16-bit-is-the]]
+- [[archive/threads/NOTimothyLottes/2022-11-05-19-GPU-Programming-Tip-Line-Thread]]
 - [[archive/threads/NOTimothyLottes/2022-11-08-example-of-bind-everything-once-layout-aliasing]]
 - [[archive/threads/NOTimothyLottes/2022-11-09-if-only-pc-vendors-with-open-isas-amd-intel-would]]
 - [[archive/threads/NOTimothyLottes/2022-11-13-my-prefered-method-of-managing-application-data]]
