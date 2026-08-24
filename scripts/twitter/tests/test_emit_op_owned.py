@@ -339,5 +339,182 @@ class OpOwnedEmitTipModeTests(unittest.TestCase):
         self.assertEqual(len(thread_data["posts"]), 7)
 
 
+class OrphansNotReusedTests(unittest.TestCase):
+    """An old archive keyed by a non-OP handle must not be reused.
+    A pre-existing tip-as-root archive of a cross-author conversation
+    is treated as orphan; the OP-owned emit produces a fresh dir at
+    the OP handle."""
+
+    def setUp(self) -> None:
+        self.tmp = Path(tempfile.mkdtemp(prefix="op_owned_orphan_"))
+        self.input_dir = self.tmp / "input"
+        self.input_dir.mkdir()
+        self.vault = self.tmp / "vault"
+        (self.vault / "archive" / "threads").mkdir(parents=True)
+        (self.vault / "assets" / "threads").mkdir(parents=True)
+
+    def tearDown(self) -> None:
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_old_archive_at_non_op_handle_is_not_reused(self) -> None:
+        """Pre-existing dir keyed by the tip's handle (lottes) must
+        not be reused when the OP is a different handle (kenpex).
+        The emit creates a fresh dir at the OP handle."""
+        # Simulate a pre-existing tip-as-root archive at NOTimothyLottes
+        legacy_archive = (
+            self.vault
+            / "archive"
+            / "threads"
+            / "NOTimothyLottes"
+            / "2023-04-26-legacy-slug"
+        )
+        legacy_archive.mkdir(parents=True)
+        (legacy_archive / "index.md").write_text(
+            (
+                "---\n"
+                "title: legacy\n"
+                "handle: NOTimothyLottes\n"
+                'post_id: "1651268028795961344"\n'
+                "draft: false\n"
+                "---\n\n"
+                "old single-post archive\n"
+            ),
+            encoding="utf-8",
+            newline="\n",
+        )
+        (legacy_archive.parent / "index.md").write_text(
+            (
+                "---\n"
+                "title: NOTimothyLottes\n"
+                "---\n\n"
+                "- [[archive/threads/NOTimothyLottes/2023-04-26-legacy-slug]]\n"
+            ),
+            encoding="utf-8",
+            newline="\n",
+        )
+
+        # Write the cross-author thread data (5 posts, kenpex OP)
+        thread_data = {
+            "root_post_id": "1651282559287042048",
+            "source_url": "https://x.com/i/status/1651282559287042048",
+            "posts": [
+                {
+                    "post_id": "1650678968255913985",
+                    "author": "c0de517e",
+                    "handle": "kenpex",
+                    "text": "Nerds are crazy",
+                    "timestamp": "2023-04-25 01:51:48",
+                    "media_urls": [],
+                    "reply_to_id": None,
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+                {
+                    "post_id": "1651056827839180800",
+                    "author": "wadetb",
+                    "handle": "wadetb",
+                    "text": "Forth is asm-level",
+                    "timestamp": "2023-04-26 02:53:17",
+                    "media_urls": [],
+                    "reply_to_id": "1650678968255913985",
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+                {
+                    "post_id": "1651253961524142081",
+                    "author": "kenpex",
+                    "handle": "kenpex",
+                    "text": "Yes of course",
+                    "timestamp": "2023-04-26 15:56:37",
+                    "media_urls": [],
+                    "reply_to_id": "1651056827839180800",
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+                {
+                    "post_id": "1651268028795961344",
+                    "author": "NOTimothyLottes",
+                    "handle": "NOTimothyLottes",
+                    "text": "Custom forth in few K",
+                    "timestamp": "2023-04-26 16:52:31",
+                    "media_urls": [],
+                    "reply_to_id": "1651253961524142081",
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+                {
+                    "post_id": "1651282559287042048",
+                    "author": "wvo",
+                    "handle": "wvo",
+                    "text": "Why not 1K?",
+                    "timestamp": "2023-04-26 17:50:16",
+                    "media_urls": [],
+                    "reply_to_id": "1651268028795961344",
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+            ],
+        }
+        (self.input_dir / "thread_data.json").write_text(
+            json.dumps(thread_data, indent=2),
+            encoding="utf-8",
+            newline="\n",
+        )
+
+        emit(
+            input_dir=self.input_dir,
+            vault=self.vault,
+            slug=None,
+            archived="2026-08-24",
+            force=True,
+            tip="1651282559287042048",
+        )
+
+        archive_root = self.vault / "archive" / "threads"
+        # The OP-owned archive lives under kenpex, not NOTimothyLottes
+        self.assertTrue(
+            (archive_root / "kenpex").is_dir(),
+            "OP-owned archive must live under the OP handle's dir",
+        )
+        kenpex_thread_dirs = sorted(
+            d.name
+            for d in (archive_root / "kenpex").iterdir()
+            if d.is_dir()
+        )
+        self.assertEqual(len(kenpex_thread_dirs), 1)
+
+        # The legacy NOTimothyLottes dir is left as orphan; this
+        # test does not auto-remove it (manual cleanup is operator
+        # responsibility).
+        self.assertTrue(
+            (archive_root / "NOTimothyLottes" / "2023-04-26-legacy-slug").is_dir(),
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

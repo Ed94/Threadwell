@@ -1,0 +1,46 @@
+---
+title: "Nerds are crazy https://git.sr.ht/~vdupras/duskos"
+type: archive
+source: twitter
+source_url: "https://x.com/kenpex/status/1650678968255913985"
+author: "c0de517e/AngeloPesce"
+handle: kenpex
+post_id: "1650678968255913985"
+date: 2023-04-25
+archived: 2026-08-24
+draft: false
+tags:
+  - archive
+  - twitter
+  - kenpex
+description: "Nerds are crazy https://git.sr.ht/~vdupras/duskos"
+in_reply_to: ""
+---
+
+## Source
+
+- URL: https://x.com/kenpex/status/1650678968255913985
+- Author: c0de517e/AngeloPesce (@kenpex)
+- Posted: 2023-04-25 01:51:48
+
+## Thread
+
+**1/**
+
+Nerds are crazy https://git.sr.ht/~vdupras/duskos
+
+**2/**
+
+@kenpex I find the context hilarious, but Forth as asm-level-yet-very-usable-mini-OS has been done, as the boot firmware for OLPC (http://laptop.org) for many years. Looks like it's currently open sourced as https://github.com/openbios/openbios.
+
+**3/**
+
+@wadetb Yes of course. Forth is a language that took me a while to grok (re:the why it makes sense) - but once I understood the context it totally does. @NOTimothyLottes experiments w/it are also fun.
+
+**4/**
+
+@kenpex @wadetb Can make a custom forth to binary in a few K. Bring up a runtime assembler in the language and do anything fast and simple from that point, load libraries, make system/dll C calls. 100,000x complexity reduction in compiler toolchain size.
+
+**5/**
+
+@NOTimothyLottes @kenpex @wadetb A few K? Why not just 1K? https://strlen.com/false-language/

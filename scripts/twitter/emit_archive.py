@@ -544,11 +544,18 @@ def emit(
 
     if reuse_dir is None and force:
         _existing_ids, spines = collect_existing_ids(vault)
-        reuse_dir = spines.get(thread.root_post_id)
+        # Only accept a candidate whose parent handle matches the
+        # OP handle. A thread previously archived at a different
+        # author's dir (e.g. an old tip-as-root archive of a cross-
+        # author conversation) is treated as orphan, not a reuse.
+        candidate = spines.get(thread.root_post_id)
+        if candidate is not None and candidate.parent.name == handle:
+            reuse_dir = candidate
         if reuse_dir is None:
             for post in thread.posts:
-                reuse_dir = spines.get(post.post_id)
-                if reuse_dir is not None:
+                candidate = spines.get(post.post_id)
+                if candidate is not None and candidate.parent.name == handle:
+                    reuse_dir = candidate
                     break
         if reuse_dir is None and slug:
             candidate = vault / "archive" / "threads" / handle / slug
