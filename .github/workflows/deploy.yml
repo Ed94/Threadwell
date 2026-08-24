@@ -29,6 +29,9 @@ jobs:
           repository: jackyzha0/quartz
           ref: v5
           path: site
+      - name: Apply SPA basepath patch
+        working-directory: site
+        run: python ../publish/quartz-patches/apply.py .
       - name: Apply publish overlay
         run: cp publish/quartz.config.yaml site/quartz.config.yaml
       - uses: actions/setup-node@v6
