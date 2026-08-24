@@ -6,7 +6,9 @@ configuration:
   enablePopovers: true
   analytics: null
   locale: en-US
-  baseUrl: ed94.github.io/Threadwell
+  # Site is served at /Threadwell/ (project Pages + custom domain).
+  # Without the path, ./archive/ from /Threadwell (no slash) becomes /archive/.
+  baseUrl: edsabode.dev/Threadwell
   ignorePatterns:
     - site
     - .github
