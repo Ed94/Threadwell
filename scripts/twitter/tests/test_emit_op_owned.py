@@ -15,7 +15,7 @@ import unittest
 from pathlib import Path
 
 from twitter.emit_archive import emit
-from twitter.models import PostData, PostMetrics
+from twitter.models import PostData, PostMetrics, ThreadData
 
 
 def make_post(
@@ -646,6 +646,170 @@ class SpinePrefersSameAuthorTests(unittest.TestCase):
         self.assertEqual(len(branch_files), 1)
         branch_text = branch_files[0].read_text(encoding="utf-8")
         self.assertIn("early reply from outsider", branch_text)
+
+
+class TipIsOpTests(unittest.TestCase):
+    """`--tip=<op>` where the tip's reply_to_id is None. The walker
+    must walk DOWN from the OP via children_map, not stop at the
+    OP because the back-walk has no parent."""
+
+    def test_tip_with_no_parent_walks_down(self) -> None:
+        from twitter.tree import spine_from_tip
+
+        thread_data = {
+            "root_post_id": "1000",
+            "source_url": "https://x.com/i/status/1000",
+            "posts": [
+                {
+                    "post_id": "1000",
+                    "author": "X",
+                    "handle": "X",
+                    "text": "OP post",
+                    "timestamp": "2023-01-01 00:00:00",
+                    "media_urls": [],
+                    "reply_to_id": None,
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+                {
+                    "post_id": "1001",
+                    "author": "X",
+                    "handle": "X",
+                    "text": "self-reply 1",
+                    "timestamp": "2023-01-01 00:05:00",
+                    "media_urls": [],
+                    "reply_to_id": "1000",
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+                {
+                    "post_id": "1002",
+                    "author": "X",
+                    "handle": "X",
+                    "text": "self-reply 2",
+                    "timestamp": "2023-01-01 00:10:00",
+                    "media_urls": [],
+                    "reply_to_id": "1001",
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+            ],
+        }
+        thread = ThreadData(
+            root_post_id="1000",
+            posts=tuple(
+                PostData(
+                    post_id=p["post_id"],
+                    author=p["author"],
+                    handle=p["handle"],
+                    text=p["text"],
+                    timestamp=p["timestamp"],
+                    media_urls=tuple(p["media_urls"]),
+                    reply_to_id=p["reply_to_id"],
+                    quote_of_id=p["quote_of_id"],
+                    metrics=PostMetrics(0, 0, 0, 0),
+                )
+                for p in thread_data["posts"]
+            ),
+            source_url="https://x.com/i/status/1000",
+        )
+        # --tip=OP, which has reply_to=None. Must walk DOWN.
+        spine = spine_from_tip(thread, "1000")
+        self.assertEqual(spine, ["1000", "1001", "1002"])
+
+    def test_tip_with_parent_walks_back(self) -> None:
+        from twitter.tree import spine_from_tip
+
+        thread_data = {
+            "root_post_id": "2000",
+            "source_url": "https://x.com/i/status/2000",
+            "posts": [
+                {
+                    "post_id": "2000",
+                    "author": "X",
+                    "handle": "X",
+                    "text": "OP",
+                    "timestamp": "2023-01-01 00:00:00",
+                    "media_urls": [],
+                    "reply_to_id": None,
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+                {
+                    "post_id": "2001",
+                    "author": "X",
+                    "handle": "X",
+                    "text": "self-reply",
+                    "timestamp": "2023-01-01 00:05:00",
+                    "media_urls": [],
+                    "reply_to_id": "2000",
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+                {
+                    "post_id": "2002",
+                    "author": "X",
+                    "handle": "X",
+                    "text": "tip reply",
+                    "timestamp": "2023-01-01 00:10:00",
+                    "media_urls": [],
+                    "reply_to_id": "2001",
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+            ],
+        }
+        thread = ThreadData(
+            root_post_id="2000",
+            posts=tuple(
+                PostData(
+                    post_id=p["post_id"],
+                    author=p["author"],
+                    handle=p["handle"],
+                    text=p["text"],
+                    timestamp=p["timestamp"],
+                    media_urls=tuple(p["media_urls"]),
+                    reply_to_id=p["reply_to_id"],
+                    quote_of_id=p["quote_of_id"],
+                    metrics=PostMetrics(0, 0, 0, 0),
+                )
+                for p in thread_data["posts"]
+            ),
+            source_url="https://x.com/i/status/2000",
+        )
+        # --tip=middle post (has parent). Walks back.
+        spine = spine_from_tip(thread, "2002")
+        self.assertEqual(spine, ["2000", "2001", "2002"])
 
 
 if __name__ == "__main__":

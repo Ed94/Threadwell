@@ -20,26 +20,43 @@ def children_map(thread: ThreadData) -> dict[str, list[str]]:
 
 
 def spine_from_tip(thread: ThreadData, tip_id: str) -> list[str]:
-    """Walk back from `tip_id` through `reply_to_id` to the OP (the
-    post with `reply_to_id == None` or a missing parent). Returns
-    all post ids on the linear chain in chronological order: OP at
-    index 0, tip at last.
+    """Resolve the OP chain from `tip_id`.
 
-    The walk crosses handle boundaries. For a chain that alternates
-    authors, every post is included. The archive dir for the
-    thread is owned by the OP at index 0.
+    If `tip_id` is the OP (its `reply_to_id` is `None`), walk DOWN
+    from it via `children_map` — same logic as `spine_ids`. This is
+    the common case when `--root=<op>` and `--tip=<op>` are the same
+    post id; the back-walk would otherwise return a single-element
+    chain and drop every self-reply.
+
+    If `tip_id` has a parent, walk BACK through `reply_to_id` to
+    the OP and return the chain in chronological order (OP at
+    index 0, tip at last). The walk crosses handle boundaries.
     """
     ids = by_id(thread)
     if tip_id not in ids:
         raise ValueError(f"tip {tip_id} not in dump")
+    if ids[tip_id].reply_to_id is None:
+        # Tip is the OP. Walk down its same-handle chain.
+        kids = children_map(thread)
+        handle = ids[tip_id].handle
+        out = [tip_id]
+        cur = tip_id
+        while True:
+            children = kids.get(cur, [])
+            if not children:
+                break
+            same = [c for c in children if ids[c].handle == handle]
+            cur = same[0] if same else children[0]
+            out.append(cur)
+        return out
     chain = [tip_id]
     cur = tip_id
     while True:
-        parent = ids[cur].reply_to_id
-        if not parent or parent not in ids:
+        parent_id = ids[cur].reply_to_id
+        if not parent_id or parent_id not in ids:
             break
-        chain.append(parent)
-        cur = parent
+        chain.append(parent_id)
+        cur = parent_id
     chain.reverse()
     return chain
 
