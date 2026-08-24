@@ -7,8 +7,8 @@ author: "Wouter van Oortmerssen"
 handle: wvo
 post_id: "1651282559287042048"
 date: 2023-04-26
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter
