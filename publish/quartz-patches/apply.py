@@ -44,7 +44,6 @@ INSERT_BLOCK = (
     "  if (last.includes(\".\")) return origin + pathname\n"
     "  return origin + pathname.replace(/[^/]*$/, \"\")\n"
     "})()\n\n"
-    "const isElement"
 )
 
 REPLACE_GETOPTS = (
@@ -79,7 +78,7 @@ def patch(path: Path) -> bool:
     if REPLACE_GETOPTS not in text:
         print(f"getOpts block missing in {path}")
         return False
-    text = text.replace(INSERT_AFTER, INSERT_BLOCK, 1)
+    text = text.replace(INSERT_AFTER, INSERT_BLOCK + INSERT_AFTER, 1)
     text = text.replace(REPLACE_GETOPTS, REPLACE_WITH, 1)
     path.write_text(text, encoding="utf-8")
     print(f"patched {path}")
