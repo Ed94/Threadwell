@@ -7,6 +7,7 @@ from pathlib import Path
 from twitter.backup_assets import backup_thread
 from twitter.media_audit import audit_thread
 from twitter.media_manifest import (
+    _from_wire_dict,
     canonical_manifest_bytes,
     hash_file,
     inventory_digest,
@@ -74,14 +75,15 @@ class BackupTests(unittest.TestCase):
                 now=NOW,
             )
             manifest = read_json(asset_dir / "media.json")
-            inventory = payload_inventory(asset_dir, manifest)
+            typed_manifest = _from_wire_dict(manifest)
+            inventory = payload_inventory(asset_dir, typed_manifest)
             self.assertEqual(
                 manifest["mirrors"][0]["inventory_digest"],
                 inventory_digest(inventory),
             )
-            backup_inventory_before = inventory_digest(payload_inventory(asset_dir, manifest))
+            backup_inventory_before = inventory_digest(payload_inventory(asset_dir, typed_manifest))
             (asset_dir / "100_AAA_orig.png").write_bytes(b"modified")
-            new_inventory = payload_inventory(asset_dir, manifest)
+            new_inventory = payload_inventory(asset_dir, typed_manifest)
             self.assertNotEqual(
                 inventory_digest(new_inventory),
                 backup_inventory_before,

@@ -1,3 +1,4 @@
+"""Tree-walking helpers for thread spine and branch construction."""
 from __future__ import annotations
 
 from .models import ThreadData, PostData

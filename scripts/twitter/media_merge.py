@@ -13,7 +13,22 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROLE_SUFFIX = {
+try:
+    from .media_manifest import (
+        _from_wire_dict,
+        _manifest_to_wire,
+        atomic_write_json,
+        upsert_derived_item,
+    )
+except ImportError:  # pragma: no cover - script-mode import
+    from media_manifest import (
+        _from_wire_dict,
+        _manifest_to_wire,
+        atomic_write_json,
+        upsert_derived_item,
+    )
+
+ROLE_SUFFIX: dict[str, str] = {
     "_crt.png": "crt",
     "_crt_outline.png": "crt_outline",
     "_denoise.png": "denoise",
@@ -22,6 +37,7 @@ ROLE_SUFFIX = {
 
 
 def role_of(name: str) -> str | None:
+    """Map a filename suffix (``_crt.png``, ``_ocr.txt``, ...) to a media role label."""
     for suffix, role in ROLE_SUFFIX.items():
         if name.endswith(suffix):
             return role
@@ -29,6 +45,8 @@ def role_of(name: str) -> str | None:
 
 
 def parse_ids(name: str) -> tuple[str, str]:
+    """Extract ``(post_id, media_id)`` from a derived filename; returns ``("", stem)`` on mismatch."""
+    stem = name
     stem = name
     for suffix in ROLE_SUFFIX:
         if stem.endswith(suffix):
@@ -52,15 +70,12 @@ def main(argv: list[str] | None = None) -> int:
         raise SystemExit(
             "legacy media.json requires: tw.py migrate-media --id <id> --apply"
         )
-    try:
-        from media_manifest import atomic_write_json, upsert_derived_item
-    except ImportError:  # pragma: no cover - script-mode import
-        from .media_manifest import atomic_write_json, upsert_derived_item
 
     now = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    items = list(data.get("items") or [])
-    have = {(str(i.get("filename") or ""), str(i.get("role") or "")) for i in items}
-    handles = {str(i.get("media_id") or ""): str(i.get("handle") or "") for i in items}
+    items_raw = list(data.get("items") or [])
+    have = {(str(i.get("filename") or ""), str(i.get("role") or "")) for i in items_raw}
+    handles = {str(i.get("media_id") or ""): str(i.get("handle") or "") for i in items_raw}
+    manifest = _from_wire_dict(data)
     added = 0
     for path in sorted(args.thread.iterdir()):
         role = role_of(path.name)
@@ -70,8 +85,8 @@ def main(argv: list[str] | None = None) -> int:
             continue
         post_id, media_id = parse_ids(path.name)
         handle = handles.get(media_id, "")
-        upsert_derived_item(
-            data,
+        manifest, _ = upsert_derived_item(
+            manifest,
             post_id=post_id,
             media_id=media_id,
             handle=handle,
@@ -82,7 +97,9 @@ def main(argv: list[str] | None = None) -> int:
         )
         added += 1
         print(f"restore {path.name} role={role}")
-    atomic_write_json(media_path, data)
+    wire = _manifest_to_wire(manifest)
+    wire["mirrors"] = list(data.get("mirrors") or [])
+    atomic_write_json(media_path, wire)
     print(f"added {added} -> {media_path}")
     return 0
 

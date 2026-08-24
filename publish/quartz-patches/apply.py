@@ -22,12 +22,12 @@ import re
 import sys
 from pathlib import Path
 
-SCRIPT = Path(__file__).resolve()
-VAULT = SCRIPT.parents[2]
-QUARTZ_REPO = VAULT / "site" / "quartz"
-SPA_FILE = QUARTZ_REPO / "components" / "scripts" / "spa.inline.ts"
-PUBLIC = VAULT / "site" / "public"
-OVERLAY = VAULT / "publish" / "quartz.config.yaml"
+SCRIPT: Path = Path(__file__).resolve()
+VAULT: Path = SCRIPT.parents[2]
+QUARTZ_REPO: Path = VAULT / "site" / "quartz"
+SPA_FILE: Path = QUARTZ_REPO / "components" / "scripts" / "spa.inline.ts"
+PUBLIC: Path = VAULT / "site" / "public"
+OVERLAY: Path = VAULT / "publish" / "quartz.config.yaml"
 
 
 def read_base_url() -> tuple[str, str]:
@@ -63,9 +63,9 @@ def read_base_url() -> tuple[str, str]:
 
 
 ABS_BASE, REL_BASE = read_base_url()
-HEAD_RE = re.compile(r"(<head[^>]*>)", re.IGNORECASE)
+HEAD_RE: re.Pattern[str] = re.compile(r"(<head[^>]*>)", re.IGNORECASE)
 BASE_TAG = f'<base href="{ABS_BASE}">\n'
-TITLE_LINK = re.compile(
+TITLE_LINK: re.Pattern[str] = re.compile(
     r'(<h2[^>]*class="page-title"><a\s+href=")[^"]*(">)'
 )
 

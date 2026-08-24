@@ -1,3 +1,4 @@
+"""Helpers for rewriting archive note media references to origin URLs."""
 from __future__ import annotations
 
 import os
@@ -7,13 +8,14 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-MEDIA_LINE = re.compile(r"(?m)^Media \(not lifted\):\s*(?P<body>.+?)\s*$")
-BACKTICK = re.compile(r"`([^`]+)`")
-IMAGE_LINE = re.compile(r"(?m)^!\[[^\]]*\]\((?P<url>https://[^)]+)\)\s*$")
+MEDIA_LINE: re.Pattern[str] = re.compile(r"(?m)^Media \(not lifted\):\s*(?P<body>.+?)\s*$")
+BACKTICK: re.Pattern[str] = re.compile(r"`([^`]+)`")
+IMAGE_LINE: re.Pattern[str] = re.compile(r"(?m)^!\[[^\]]*\]\((?P<url>https://[^)]+)\)\s*$")
 
 
 @dataclass(frozen=True)
 class FileRewrite:
+    """A single note-file before/after text pair queued for rewrite."""
     path: Path
     before: str
     after: str
@@ -21,6 +23,7 @@ class FileRewrite:
 
 @dataclass(frozen=True)
 class RewritePlan:
+    """A batch of FileRewrite entries plus any blocking issues found during planning."""
     files: tuple[FileRewrite, ...]
     issues: tuple[str, ...]
 

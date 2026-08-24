@@ -1,3 +1,5 @@
+"""Back up thread assets to a configured destination. Verifies every file."""
+
 from __future__ import annotations
 
 import json
@@ -9,30 +11,38 @@ from pathlib import Path
 
 try:
     from .media_manifest import (
+        _from_wire_dict,
+        _manifest_to_wire,
         atomic_write_json,
         hash_file,
         inventory_digest,
         payload_inventory,
     )
+    from .models import MediaManifest
 except ImportError:  # pragma: no cover - script-mode import
     if str(Path(__file__).resolve().parent) not in sys.path:
         sys.path.insert(0, str(Path(__file__).resolve().parent))
     from media_manifest import (
+        _from_wire_dict,
+        _manifest_to_wire,
         atomic_write_json,
         hash_file,
         inventory_digest,
         payload_inventory,
     )
+    from models import MediaManifest
 
 
 @dataclass(frozen=True)
 class BackupResult:
+    """Outcome of a single-thread backup attempt to one destination."""
     state: str
     destination: Path
     error: str | None
 
 
 def load_destination_root(vault: Path, destination_id: str) -> Path:
+    """Read the configured backup destination root from ``vault/secrets/credentials.toml``."""
     path = vault / "secrets" / "credentials.toml"
     if not path.is_file():
         raise RuntimeError(f"missing {path}")
@@ -71,13 +81,16 @@ def backup_thread(
     now: str,
     require_destination_root: bool = False,
 ) -> BackupResult:
+    """Mirror ``asset_dir`` into ``destination_root/<relative>`` and verify every payload by sha256."""
     media_path = asset_dir / "media.json"
-    manifest = json.loads(media_path.read_text(encoding="utf-8"))
+    media_path = asset_dir / "media.json"
+    raw = json.loads(media_path.read_text(encoding="utf-8"))
+    manifest = _from_wire_dict(raw)
     relative = asset_dir.relative_to(assets_root)
     destination = destination_root / relative
     inventory = payload_inventory(asset_dir, manifest)
     digest = inventory_digest(inventory)
-    mirror = {
+    mirror: dict = {
         "destination_id": destination_id,
         "relative_path": relative.as_posix(),
         "state": "error",
@@ -89,7 +102,7 @@ def backup_thread(
     }
     others = [
         entry
-        for entry in manifest.get("mirrors") or []
+        for entry in raw.get("mirrors") or []
         if entry.get("destination_id") != destination_id
     ]
     try:
@@ -110,13 +123,28 @@ def backup_thread(
         mirror["verified_at"] = now
     except OSError as exc:
         mirror["error"] = str(exc)[:300]
-    manifest["mirrors"] = others + [mirror]
-    atomic_write_json(media_path, manifest)
+    raw["mirrors"] = others + [mirror]
+    media_path.write_text(
+        json.dumps(_manifest_to_wire_for_disk(manifest, raw), indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
     if mirror["state"] == "synced":
         shutil.copy2(media_path, destination / "media.json")
         if hash_file(media_path) != hash_file(destination / "media.json"):
             mirror["state"] = "error"
             mirror["error"] = "final manifest verification failed"
-            atomic_write_json(media_path, manifest)
+            media_path.write_text(
+                json.dumps(_manifest_to_wire_for_disk(manifest, raw), indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+                newline="\n",
+            )
             return BackupResult("error", destination, mirror["error"])
     return BackupResult(mirror["state"], destination, mirror["error"])
+
+
+def _manifest_to_wire_for_disk(manifest: MediaManifest, raw: dict) -> dict:
+    """Merge typed manifest with the on-disk wire shape (incl. mirrors)."""
+    typed_wire = _manifest_to_wire(manifest)
+    typed_wire["mirrors"] = list(raw.get("mirrors") or [])
+    return typed_wire

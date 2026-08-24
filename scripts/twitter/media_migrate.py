@@ -1,3 +1,4 @@
+"""Migrate per-thread media.json from legacy wire shape to canonical v2."""
 from __future__ import annotations
 
 import copy
@@ -5,41 +6,57 @@ import json
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
 from urllib.parse import unquote, urlparse
 
 try:
     from .frozen import frozen_match
     from .media_manifest import (
         SCHEMA_VERSION,
+        _from_wire_dict,
+        _item_to_wire,
         atomic_write_json,
         find_location,
         hash_file,
+        location_of_kind,
         new_derived_item,
         new_fallback_location,
         new_original_item,
+        selected_url,
         validate_manifest,
     )
     from .media_refs import apply_rewrite_plan, atomic_write_text, plan_thread_rewrites
+    from .models import LegacyMediaJson, LegacyThreadData, MediaItem, MediaManifest
 except ImportError:  # pragma: no cover - script-mode import
     if str(Path(__file__).resolve().parent) not in sys.path:
         sys.path.insert(0, str(Path(__file__).resolve().parent))
     from frozen import frozen_match
     from media_manifest import (
         SCHEMA_VERSION,
+        _from_wire_dict,
+        _item_to_wire,
         atomic_write_json,
         find_location,
         hash_file,
+        location_of_kind,
         new_derived_item,
         new_fallback_location,
         new_original_item,
+        selected_url,
         validate_manifest,
     )
     from media_refs import apply_rewrite_plan, atomic_write_text, plan_thread_rewrites
+    from models import LegacyMediaJson, LegacyThreadData, MediaItem, MediaManifest
 
 
 @dataclass(frozen=True)
 class MigrationResult:
+    """Outcome of a per-thread legacy-to-canonical media.json migration.
+
+    ``state`` is one of ``current``, ``migratable``, ``blocked``. ``changed``
+    reports whether the apply pass wrote files. ``issues`` collects any
+    blocking findings; ``item_count`` echoes the number of legacy items
+    inspected.
+    """
     state: str
     changed: bool
     issues: tuple[str, ...]
@@ -51,49 +68,48 @@ def media_id_from_url(url: str, index: int) -> str:
     return segment if segment else f"m{index}"
 
 
-def source_urls(thread_data: dict[str, Any]) -> dict[tuple[str, str], str]:
+def source_urls(thread_data: LegacyThreadData) -> dict[tuple[str, str], str]:
+    """Map ``(post_id, media_id)`` to the original provider URL for each media reference.
+
+    Reads the post-level ``media_urls`` list from the typed ``LegacyThreadData``
+    and indexes each URL by a media id derived from its filename segment.
+    """
     result: dict[tuple[str, str], str] = {}
-    for post in thread_data.get("posts") or []:
-        post_id = str(post.get("post_id") or "")
-        for index, url in enumerate(post.get("media_urls") or [], start=1):
-            key = (post_id, media_id_from_url(str(url), index))
+    for post in thread_data.posts:
+        post_id = post.post_id
+        for index, url in enumerate(post.media_urls, start=1):
+            key = (post_id, media_id_from_url(url, index))
             if key in result and result[key] != url:
                 raise ValueError(f"duplicate source mapping for {key!r}")
-            result[key] = str(url)
+            result[key] = url
     return result
 
 
 def reference_maps(
-    legacy: dict[str, Any], canonical: dict[str, Any]
+    legacy: LegacyMediaJson, canonical: MediaManifest
 ) -> tuple[dict[str, str], dict[str, list[str]]]:
-    canonical_by_key = {
-        (
-            str(item.get("post_id") or ""),
-            str(item.get("media_id") or ""),
-            str(item.get("role") or ""),
-        ): item
-        for item in canonical.get("items") or []
-    }
+    """Build ``(filename → origin URL)`` and ``(legacy URL → origin URLs)`` maps for rewrite planning.
+
+    The filename map rewrites note references that still point at the local
+    file basename. The fallback URL map rewrites notes that still cite the
+    pre-migration fallback host.
+    """
+    canonical_by_key: dict[tuple[str, str, str], MediaItem] = {}
+    for item in canonical.items:
+        key = (item.post_id, item.media_id, item.kind or item.role or "")
+        canonical_by_key[key] = item
     filename_origins: dict[str, str] = {}
     fallback_origins: dict[str, list[str]] = {}
-    for old in legacy.get("items") or []:
-        if old.get("role") != "orig":
+    for old in legacy.items:
+        if (old.role or old.kind or "") != "orig":
             continue
-        key = (
-            str(old.get("post_id") or ""),
-            str(old.get("media_id") or ""),
-            "orig",
-        )
+        key = (old.post_id, old.media_id, "orig")
         item = canonical_by_key[key]
-        origin = next(
-            location
-            for location in item["locations"]
-            if location.get("kind") == "origin"
-        )["url"]
-        filename_origins[str(old.get("filename") or "")] = origin
-        old_url = str(old.get("url") or "")
+        origin = next(location for location in item.locations if location.kind == "origin")
+        filename_origins[old.filename or ""] = origin.url or ""
+        old_url = old.url or ""
         if old_url.startswith("https://"):
-            fallback_origins.setdefault(old_url, []).append(origin)
+            fallback_origins.setdefault(old_url, []).append(origin.url or "")
     return filename_origins, fallback_origins
 
 
@@ -103,7 +119,13 @@ def corpus_inventory(
     frozen_ids: set[str],
     *,
     now: str,
-) -> dict[str, object]:
+) -> dict:
+    """Walk the corpus and produce a typed-shape inventory ``dict`` (output of this function).
+
+    The inventory is a different document than ``media.json``; it is emitted
+    to disk as JSON, not consumed as ``LegacyMediaJson``. Internally, every
+    media.json read is parsed into ``LegacyMediaJson`` at the boundary.
+    """
     media_paths = sorted(assets_root.rglob("media.json"))
     counts: dict[str, int] = {
         "input_items": 0,
@@ -114,21 +136,17 @@ def corpus_inventory(
         "ambiguous_note_reference": 0,
         "invalid_legacy_row": 0,
     }
-    threads: list[dict[str, object]] = []
+    threads: list[dict] = []
     frozen_hashes: dict[str, str] = {}
     for media_path in media_paths:
         asset_dir = media_path.parent
         relative = asset_dir.relative_to(assets_root).as_posix()
         match = frozen_match(asset_dir, frozen_ids)
-        legacy = json.loads(media_path.read_text(encoding="utf-8"))
-        is_legacy = legacy.get("schema_version") != SCHEMA_VERSION
-        legacy_items = list(legacy.get("items") or [])
-        unique_legacy = {
-            (
-                str(item.get("post_id") or ""),
-                str(item.get("media_id") or ""),
-                str(item.get("role") or ""),
-            )
+        legacy = LegacyMediaJson.from_dict(json.loads(media_path.read_text(encoding="utf-8")))
+        is_legacy = legacy.schema_version != SCHEMA_VERSION
+        legacy_items = list(legacy.items)
+        unique_legacy: set[tuple[str, str, str]] = {
+            (item.post_id, item.media_id, item.role or item.kind or "")
             for item in legacy_items
         }
         counts["input_items"] += len(unique_legacy)
@@ -158,9 +176,11 @@ def corpus_inventory(
                 "issues": ["missing thread_data.json"],
             })
             continue
-        thread_data = json.loads(thread_data_path.read_text(encoding="utf-8"))
+        thread_data = LegacyThreadData.from_dict(
+            json.loads(thread_data_path.read_text(encoding="utf-8"))
+        )
         try:
-            canonical, issues = canonical_from_legacy(legacy, thread_data, asset_dir, now)
+            canonical_manifest, issues = canonical_from_legacy(legacy, thread_data, asset_dir, now)
         except Exception as exc:
             counts["invalid_legacy_row"] += len(unique_legacy)
             threads.append({
@@ -179,11 +199,11 @@ def corpus_inventory(
                 "issues": list(issues),
             })
             continue
-        counts["migratable"] += len(canonical["items"])
-        thread_entry: dict[str, object] = {
+        counts["migratable"] += len(canonical_manifest.items)
+        thread_entry: dict = {
             "relative": relative,
             "state": "migratable" if is_legacy else "current",
-            "item_count": len(canonical["items"]),
+            "item_count": len(canonical_manifest.items),
         }
         threads.append(thread_entry)
     expected_total = (
@@ -206,20 +226,28 @@ def corpus_inventory(
 
 
 def canonical_from_legacy(
-    legacy: dict[str, Any],
-    thread_data: dict[str, Any],
+    legacy: LegacyMediaJson,
+    thread_data: LegacyThreadData,
     asset_dir: Path,
     now: str,
-) -> tuple[dict[str, Any], tuple[str, ...]]:
+) -> tuple[MediaManifest, tuple[str, ...]]:
+    """Build a canonical ``MediaManifest`` from a legacy ``LegacyMediaJson`` + ``LegacyThreadData``.
+
+    Each legacy item produces a single canonical ``MediaItem``. Legacy
+    ``orig`` items gain a fallback ``MediaLocation`` if they already cited
+    the pre-migration fallback host on the wire.
+    """
     sources = source_urls(thread_data)
-    items: list[dict[str, Any]] = []
+    items: list[MediaItem] = []
     issues: list[str] = []
     seen: set[tuple[str, str, str]] = set()
-    for old in legacy.get("items") or []:
-        role = str(old.get("role") or "")
-        post_id = str(old.get("post_id") or "")
-        media_id = str(old.get("media_id") or "")
-        filename = str(old.get("filename") or "")
+    for old in legacy.items:
+        role = old.role or old.kind or ""
+        post_id = old.post_id
+        media_id = old.media_id
+        filename = old.filename or ""
+        handle = old.handle or ""
+        old_url = old.url or ""
         key = (post_id, media_id, role)
         if key in seen:
             continue
@@ -232,48 +260,79 @@ def canonical_from_legacy(
             item = new_original_item(
                 post_id=post_id,
                 media_id=media_id,
-                handle=str(old.get("handle") or ""),
+                handle=handle,
                 origin_url=origin_url,
                 filename=filename,
                 local_path=asset_dir / filename,
                 now=now,
             )
-            old_url = str(old.get("url") or "")
             if old_url.startswith("https://"):
                 local = find_location(item, "local")
-                item["locations"].append(
-                    new_fallback_location(
-                        provider="catbox",
-                        url=old_url,
-                        content_hash=str(local.get("sha256") or "") or None,
-                        recorded_at=now,
-                        uploaded_at=None,
-                    )
+                sha = local.sha256 if local is not None else None
+                item = MediaItem(
+                    post_id=item.post_id,
+                    media_id=item.media_id,
+                    kind=item.kind,
+                    role=item.role,
+                    handle=item.handle,
+                    embed=item.embed,
+                    locations=item.locations
+                    + (
+                        new_fallback_location(
+                            provider="catbox",
+                            url=old_url,
+                            content_hash=sha or None,
+                            recorded_at=now,
+                            uploaded_at=None,
+                        ),
+                    ),
+                    publication=item.publication,
+                    derived_from=item.derived_from,
+                    caption=item.caption,
                 )
             items.append(item)
         elif role in {"crt", "crt_outline", "denoise", "ocr"}:
-            item = new_derived_item(legacy=old, asset_dir=asset_dir, now=now)
-            old_url = str(old.get("url") or "")
+            item = new_derived_item(
+                post_id=post_id,
+                media_id=media_id,
+                handle=handle,
+                role=role,
+                filename=filename,
+                asset_dir=asset_dir,
+                now=now,
+            )
             if old_url.startswith("https://"):
                 local = find_location(item, "local")
-                item["locations"].append(
-                    new_fallback_location(
-                        provider="catbox",
-                        url=old_url,
-                        content_hash=str(local.get("sha256") or "") or None,
-                        recorded_at=now,
-                        uploaded_at=None,
-                    )
+                sha = local.sha256 if local is not None else None
+                item = MediaItem(
+                    post_id=item.post_id,
+                    media_id=item.media_id,
+                    kind=item.kind,
+                    role=item.role,
+                    handle=item.handle,
+                    embed=item.embed,
+                    locations=item.locations
+                    + (
+                        new_fallback_location(
+                            provider="catbox",
+                            url=old_url,
+                            content_hash=sha or None,
+                            recorded_at=now,
+                            uploaded_at=None,
+                        ),
+                    ),
+                    publication=item.publication,
+                    derived_from=item.derived_from,
+                    caption=item.caption,
                 )
             items.append(item)
         else:
             issues.append(f"invalid legacy role: {post_id}/{media_id}/{role}")
-    manifest = {
-        "schema_version": SCHEMA_VERSION,
-        "root_post_id": str(legacy.get("root_post_id") or ""),
-        "items": items,
-        "mirrors": copy.deepcopy(legacy.get("mirrors") or []),
-    }
+    manifest = MediaManifest(
+        schema_version=SCHEMA_VERSION,
+        root_post_id=legacy.root_post_id,
+        items=tuple(items),
+    )
     issues.extend(validate_manifest(manifest))
     return manifest, tuple(issues)
 
@@ -285,14 +344,24 @@ def migrate_legacy_thread(
     now: str,
     apply: bool,
 ) -> MigrationResult:
+    """Migrate a per-thread ``media.json`` to the canonical v2 shape in place.
+
+    Returns a ``MigrationResult`` describing the outcome (``current``,
+    ``blocked``, ``migratable``). When ``apply`` is False, no files are
+    written; when True, the canonical manifest is atomically written and
+    the corresponding note references are rewritten with rollback on
+    failure.
+    """
     media_path = asset_dir / "media.json"
-    legacy = json.loads(media_path.read_text(encoding="utf-8"))
-    if legacy.get("schema_version") == SCHEMA_VERSION:
-        return MigrationResult("current", False, (), len(legacy.get("items") or []))
-    thread_data = json.loads((asset_dir / "thread_data.json").read_text(encoding="utf-8"))
+    legacy = LegacyMediaJson.from_dict(json.loads(media_path.read_text(encoding="utf-8")))
+    if legacy.schema_version == SCHEMA_VERSION:
+        return MigrationResult("current", False, (), len(legacy.items))
+    thread_data = LegacyThreadData.from_dict(
+        json.loads((asset_dir / "thread_data.json").read_text(encoding="utf-8"))
+    )
     canonical, issues = canonical_from_legacy(legacy, thread_data, asset_dir, now)
     if issues:
-        return MigrationResult("blocked", False, issues, len(legacy.get("items") or []))
+        return MigrationResult("blocked", False, issues, len(legacy.items))
     if apply:
         filename_origins, fallback_origins = reference_maps(legacy, canonical)
         plan = plan_thread_rewrites(
@@ -301,15 +370,41 @@ def migrate_legacy_thread(
             fallback_origins=fallback_origins,
         )
         if plan.issues:
-            return MigrationResult("blocked", False, plan.issues, len(legacy.get("items") or []))
+            return MigrationResult("blocked", False, plan.issues, len(legacy.items))
         note_backup: dict[Path, str] = {}
         try:
             for rewrite in plan.files:
                 note_backup[rewrite.path] = rewrite.before
-            atomic_write_json(media_path, canonical)
+            atomic_write_json(
+                media_path,
+                _manifest_to_wire_shape(canonical, legacy),
+            )
             apply_rewrite_plan(plan)
         except Exception:
             for path, before in note_backup.items():
                 atomic_write_text(path, before)
             raise
-    return MigrationResult("migratable", apply, (), len(legacy.get("items") or []))
+    return MigrationResult("migratable", apply, (), len(legacy.items))
+
+
+def _manifest_to_wire_shape(
+    manifest: MediaManifest, legacy: LegacyMediaJson
+) -> dict:
+    """Convert a typed manifest back to a wire-shape dict for atomic_write_json.
+
+    Carries forward legacy mirrors (typed MediaManifest doesn't model
+    mirrors). Mirrors are written as a list to preserve wire compatibility
+    with downstream producers (the typed view keys them by destination id).
+    """
+    mirrors_out: list = []
+    if legacy.mirrors is not None:
+        mirrors_out = list(copy.deepcopy(legacy.mirrors).values())
+    out: dict = {
+        "schema_version": manifest.schema_version,
+        "root_post_id": manifest.root_post_id,
+        "items": [_item_to_wire(item) for item in manifest.items],
+        "mirrors": mirrors_out,
+    }
+    if manifest.captured_at is not None:
+        out["captured_at"] = manifest.captured_at
+    return out

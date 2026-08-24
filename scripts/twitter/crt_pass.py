@@ -29,30 +29,30 @@ import subprocess
 import sys
 from pathlib import Path
 
-LOTTES_SGP = Path(
+LOTTES_SGP: Path = Path(
     r"C:\Users\Ed\Downloads\ShaderGlass-1.2.2-win-x64"
     r"\LOTTES_CODE_(LOTTES_MULTIPASS 2X) V2.sgp"
 )
-CYCLON_SGP = Path(
+CYCLON_SGP: Path = Path(
     r"C:\Users\Ed\Downloads\ShaderGlass-1.2.2-win-x64"
     r"\LOTTES_CRT_CODE_(CYCLON 6X).sgp"
 )
-SLANG_LOTTES = Path(
+SLANG_LOTTES: Path = Path(
     r"C:\Users\Ed\scoop\apps\retroarch\1.22.2\shaders"
     r"\shaders_slang\crt\crt-lottes-multipass.slangp"
 )
-SLANG_CYCLON = Path(
+SLANG_CYCLON: Path = Path(
     r"C:\Users\Ed\scoop\apps\retroarch\1.22.2\shaders"
     r"\shaders_slang\crt\crt-Cyclon.slangp"
 )
-CLI_DEFAULT = Path(r"C:\Users\Ed\scoop\apps\librashader\0.12.0\librashader-cli.exe")
+CLI_DEFAULT: Path = Path(r"C:\Users\Ed\scoop\apps\librashader\0.12.0\librashader-cli.exe")
 
 # Knobs copied from the .sgp files. Not a substitute for PixelSize.
-LOTTES_PARAMS = (
+LOTTES_PARAMS: str = (
     "hardScan=-19,hardPix=-7,warpX=0,warpY=0,maskDark=1.3,maskLight=1.3,"
     "shadowMask=4,brightBoost=1.15,bloomAmount=0,shape=1.9"
 )
-CYCLON_PARAMS = (
+CYCLON_PARAMS: str = (
     "SCANLINE=0.2,INTERLACE=0,M_TYPE=0,SLOT=0,SLOTW=2,Maskl=0.55,Maskh=1,"
     "bzl=0,ambient=0,REFLECT=0,WARPX=0,WARPY=0,BR_DEP=0,BRIGHTNESS_=1.05,"
     "BLACK=0.01,vig=0"
@@ -60,6 +60,7 @@ CYCLON_PARAMS = (
 
 
 def probe_size(path: Path) -> tuple[int, int]:
+    """Return ``(width, height)`` of an image or video via ``ffprobe``."""
     raw = subprocess.check_output(
         [
             "ffprobe",
@@ -80,6 +81,7 @@ def probe_size(path: Path) -> tuple[int, int]:
 
 
 def pick_preset(width: int, height: int, name: str, auto_max: int) -> tuple[str, Path, Path, str]:
+    """Resolve the preset name to ``(name, .sgp_path, .slangp_path, params)``; ``auto`` picks cyclon under ``auto_max``."""
     if name == "auto":
         name = "cyclon" if max(width, height) <= auto_max else "lottes"
     if name == "lottes":
@@ -90,6 +92,7 @@ def pick_preset(width: int, height: int, name: str, auto_max: int) -> tuple[str,
 
 
 def find_cli(explicit: Path | None) -> Path:
+    """Locate ``librashader-cli``: explicit path, then PATH, then the scoop-installed default."""
     if explicit is not None:
         if not explicit.is_file():
             raise SystemExit(f"missing --cli {explicit}")
@@ -107,6 +110,7 @@ def find_cli(explicit: Path | None) -> Path:
 
 
 def parse_crop(spec: str) -> str | None:
+    """Parse a ``--crop`` value into an ffmpeg ``crop=...`` filter, or ``None`` to skip cropping."""
     if spec in ("none", "", "off"):
         return None
     if spec == "auto":
@@ -119,6 +123,7 @@ def parse_crop(spec: str) -> str | None:
 
 
 def detect_crop(path: Path) -> str | None:
+    """Run ``ffmpeg cropdetect`` on ``path`` and return the auto-detected crop filter (or ``None``)."""
     proc = subprocess.run(
         [
             "ffmpeg",
@@ -144,6 +149,7 @@ def detect_crop(path: Path) -> str | None:
 
 
 def run_ffmpeg(src: Path, dest: Path, vf: str) -> None:
+    """Run ``ffmpeg -y`` with the given ``-vf`` filter to render a single still ``src`` -> ``dest``."""
     dest.parent.mkdir(parents=True, exist_ok=True)
     subprocess.check_call(
         [
@@ -175,6 +181,8 @@ def run_librashader(
     dimensions: str,
     params: str,
 ) -> None:
+    """Render ``src`` through ``slang`` via the ``librashader-cli`` binary into ``dest``."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
     dest.parent.mkdir(parents=True, exist_ok=True)
     cmd = [
         str(cli),

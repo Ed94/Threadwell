@@ -28,10 +28,10 @@ import re
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-DEFAULT_VAULT = HERE.parent.parent
+HERE: Path = Path(__file__).resolve().parent
+DEFAULT_VAULT: Path = HERE.parent.parent
 
-_WIKILINK_ITEM = re.compile(r"^- \[\[([^\]|]+)\]\]\s*$")
+_WIKILINK_ITEM: re.Pattern[str] = re.compile(r"^- \[\[([^\]|]+)\]\]\s*$")
 
 
 def _split_frontmatter(text: str) -> tuple[str, str]:
@@ -62,7 +62,7 @@ def _index_links(idx_path: Path) -> set[str]:
     return out
 
 
-def audit_one(handle_dir: Path) -> dict[str, object]:
+def audit_one(handle_dir: Path) -> dict:
     idx_path = handle_dir / "index.md"
     real = {d.name for d in handle_dir.iterdir() if d.is_dir()}
     links = _index_links(idx_path)
@@ -78,7 +78,7 @@ def audit_one(handle_dir: Path) -> dict[str, object]:
     }
 
 
-def audit_threads_index(threads_root: Path) -> dict[str, object]:
+def audit_threads_index(threads_root: Path) -> dict:
     """Audit the top-level archive/threads/index.md against real
     handle dirs."""
     idx_path = threads_root / "index.md"
@@ -115,7 +115,7 @@ def main(argv: list[str] | None = None) -> int:
     if not threads_root.is_dir():
         raise SystemExit(f"missing {threads_root}")
 
-    reports: list[dict[str, object]] = []
+    reports: list[dict] = []
     for entry in sorted(threads_root.iterdir()):
         if not entry.is_dir() or entry.name.startswith("."):
             continue

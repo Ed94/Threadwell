@@ -1,3 +1,4 @@
+"""Catbox userhash loader and uploader (curl.exe wrapper)."""
 from __future__ import annotations
 
 import subprocess
@@ -6,6 +7,7 @@ from pathlib import Path
 
 
 def load_userhash(vault: Path) -> str:
+    """Load the catbox ``userhash`` from ``vault/secrets/credentials.toml`` (TOML or lenient line scan)."""
     path = vault / "secrets" / "credentials.toml"
     if not path.is_file():
         raise RuntimeError(f"missing {path}")
@@ -31,6 +33,7 @@ def load_userhash(vault: Path) -> str:
 
 
 def upload_file(path: Path, userhash: str) -> str:
+    """Upload ``path`` to catbox.moe via curl.exe and return the public HTTPS URL."""
     cmd = [
         "curl.exe",
         "-sS",

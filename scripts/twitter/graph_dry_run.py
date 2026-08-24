@@ -7,7 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from twitter.models import load_thread
+from twitter.models import PostData, ThreadData, load_thread
 from twitter.paths import SCRATCH
 from twitter.slug import slugify
 from twitter.tree import branch_roots, by_id, children_map, descendants, spine_ids
@@ -18,11 +18,11 @@ def _one_line(text: str, n: int = 56) -> str:
     return s if len(s) <= n else s[: n - 1] + "…"
 
 
-def _node(post) -> str:
+def _node(post: PostData) -> str:
     return f"[I:{post.handle}:{post.post_id}]"
 
 
-def render_ssdl(thread) -> str:
+def render_ssdl(thread: ThreadData) -> str:
     ids = by_id(thread)
     kids = children_map(thread)
     spine = spine_ids(thread)
@@ -45,7 +45,7 @@ def render_ssdl(thread) -> str:
     return "\n".join(lines)
 
 
-def render_ascii(thread) -> str:
+def render_ascii(thread: ThreadData) -> str:
     ids = by_id(thread)
     kids = children_map(thread)
     spine = spine_ids(thread)

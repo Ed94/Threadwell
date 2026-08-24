@@ -12,14 +12,28 @@ import sys
 from pathlib import Path
 
 try:
-    from .media_manifest import atomic_write_json, find_location, selected_url, validate_manifest
+    from .media_manifest import (
+        _from_wire_dict,
+        _item_to_wire,
+        atomic_write_json,
+        find_location,
+        selected_url,
+        validate_manifest,
+    )
 except ImportError:  # pragma: no cover - script-mode import
     if str(Path(__file__).resolve().parent) not in sys.path:
         sys.path.insert(0, str(Path(__file__).resolve().parent))
-    from media_manifest import atomic_write_json, find_location, selected_url, validate_manifest
+    from media_manifest import (
+        _from_wire_dict,
+        _item_to_wire,
+        atomic_write_json,
+        find_location,
+        selected_url,
+        validate_manifest,
+    )
 
 
-OCR_DETAILS = "<summary>Text from still</summary>"
+OCR_DETAILS: str = "<summary>Text from still</summary>"
 
 
 def ocr_block(text: str) -> str:
@@ -83,34 +97,36 @@ def main(argv: list[str] | None = None) -> int:
 
     media_path = args.thread / "media.json"
     data = json.loads(media_path.read_text(encoding="utf-8"))
-    issues = validate_manifest(data)
+    manifest = _from_wire_dict(data)
+    issues = validate_manifest(manifest)
     if issues:
         raise SystemExit(f"manifest invalid: {issues[0]}")
 
-    target = None
-    for item in data.get("items") or []:
+    raw_items: list[dict] = list(data.get("items") or [])
+    target_dict: dict | None = None
+    for item in raw_items:
         if (
             str(item.get("media_id") or "") == args.media_id
             and str(item.get("role") or "") == "ocr"
         ):
-            target = item
+            target_dict = item
             break
-    if target is None:
+    if target_dict is None:
         raise SystemExit(f"no role=ocr for {args.media_id}; run ocr_pass.py first")
-    ocr_path = args.thread / str(target.get("filename") or "")
+    ocr_path = args.thread / str(target_dict.get("filename") or "")
     if not ocr_path.is_file():
         raise SystemExit(f"missing {ocr_path}")
 
     visible = None
-    for item in data.get("items") or []:
-        if str(item.get("media_id") or "") != args.media_id:
+    for item in manifest.items:
+        if item.media_id != args.media_id:
             continue
-        if item.get("embed") and selected_url(item):
+        if item.embed and selected_url(item):
             visible = item
             break
     if visible is None:
         raise SystemExit("media group has no embedded origin")
-    image_token = str(selected_url(visible) or "")
+    image_token = selected_url(visible) or ""
     if not image_token:
         raise SystemExit("media group has no selected HTTPS location")
     attach_ocr(args.notes, image_token, ocr_path.read_text(encoding="utf-8"))

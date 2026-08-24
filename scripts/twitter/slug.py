@@ -1,9 +1,10 @@
+"""Slug helpers for archive dir and branch filenames."""
 from __future__ import annotations
 import re
 
-_MENTION = re.compile(r"^(@[A-Za-z0-9_]+(\s+|$))+")
-_APOS = re.compile(r"['\u2019\u2018]")
-_NON_SLUG = re.compile(r"[^a-z0-9]+")
+_MENTION: re.Pattern[str] = re.compile(r"^(@[A-Za-z0-9_]+(\s+|$))+")
+_APOS: re.Pattern[str] = re.compile(r"['\u2019\u2018]")
+_NON_SLUG: re.Pattern[str] = re.compile(r"[^a-z0-9]+")
 
 def date_prefix(timestamp: str) -> str:
     if len(timestamp) >= 10 and timestamp[4] == "-" and timestamp[7] == "-":

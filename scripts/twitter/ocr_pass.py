@@ -21,18 +21,36 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-UMI_URL = "http://127.0.0.1:1224/api/ocr"
+try:
+    from .media_manifest import (
+        _from_wire_dict,
+        _manifest_to_wire,
+        atomic_write_json,
+        upsert_derived_item,
+    )
+except ImportError:  # pragma: no cover - script-mode import
+    from media_manifest import (
+        _from_wire_dict,
+        _manifest_to_wire,
+        atomic_write_json,
+        upsert_derived_item,
+    )
+
+UMI_URL: str = "http://127.0.0.1:1224/api/ocr"
 
 
 def find_umi() -> str | None:
+    """Locate the ``umi-ocr`` / ``Umi-OCR`` binary on PATH (or ``None``)."""
     return shutil.which("umi-ocr") or shutil.which("Umi-OCR")
 
 
 def find_tesseract() -> str | None:
+    """Locate the ``tesseract`` binary on PATH (or ``None``)."""
     return shutil.which("tesseract")
 
 
 def umi_http_up() -> bool:
+    """Return True if Umi-OCR's HTTP server is reachable on 127.0.0.1:1224."""
     try:
         urllib.request.urlopen("http://127.0.0.1:1224/api/ocr/get_options", timeout=2)
         return True
@@ -41,6 +59,7 @@ def umi_http_up() -> bool:
 
 
 def run_umi(src: Path, dest: Path) -> None:
+    """OCR ``src`` via Umi-OCR's HTTP API and write UTF-8 text to ``dest``."""
     dest.parent.mkdir(parents=True, exist_ok=True)
     if not umi_http_up():
         exe = find_umi()
@@ -82,6 +101,8 @@ def run_umi(src: Path, dest: Path) -> None:
 
 
 def run_tesseract(src: Path, dest: Path) -> None:
+    """OCR ``src`` via the local ``tesseract`` binary and write UTF-8 text to ``dest``."""
+    exe = find_tesseract()
     exe = find_tesseract()
     if not exe:
         raise SystemExit("tesseract not on PATH. scoop install tesseract")
@@ -96,6 +117,7 @@ def run_tesseract(src: Path, dest: Path) -> None:
 
 
 def run_windows_ocr(src: Path, dest: Path) -> None:
+    """OCR ``src`` via the Windows.Media.Ocr PowerShell shim and write UTF-8 text to ``dest``."""
     ps = r"""
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Runtime.WindowsRuntime
@@ -135,10 +157,7 @@ $result = Await ($engine.RecognizeAsync($bitmap))
 
 
 def append_media_row(media_json: Path, src: Path, dest: Path) -> None:
-    try:
-        from media_manifest import atomic_write_json, upsert_derived_item
-    except ImportError:  # pragma: no cover - script-mode import
-        from .media_manifest import atomic_write_json, upsert_derived_item
+    """Append or update the ``role=ocr`` row in ``media_json`` for the (src -> dest) file pair."""
     data = json.loads(media_json.read_text(encoding="utf-8"))
     if data.get("schema_version") != 2:
         raise SystemExit(
@@ -158,8 +177,9 @@ def append_media_row(media_json: Path, src: Path, dest: Path) -> None:
         post_id = parts[0]
         media_id = parts[1] if len(parts) > 1 else ""
     asset_dir = media_json.parent
-    upsert_derived_item(
-        data,
+    manifest = _from_wire_dict(data)
+    manifest, _ = upsert_derived_item(
+        manifest,
         post_id=post_id,
         media_id=media_id,
         handle=handle,
@@ -168,7 +188,9 @@ def append_media_row(media_json: Path, src: Path, dest: Path) -> None:
         asset_dir=asset_dir,
         now=datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
     )
-    atomic_write_json(media_json, data)
+    wire = _manifest_to_wire(manifest)
+    wire["mirrors"] = list(data.get("mirrors") or [])
+    atomic_write_json(media_json, wire)
     print(f"updated {media_json}")
 
 

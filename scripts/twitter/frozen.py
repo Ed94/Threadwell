@@ -1,3 +1,4 @@
+"""Frozen-id helpers: refuse writes to threads matching the do-not-refetch list."""
 from __future__ import annotations
 
 import json

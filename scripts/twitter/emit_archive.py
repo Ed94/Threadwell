@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import re
 import shutil
 import sys
@@ -12,10 +13,14 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlparse
 
+logger = logging.getLogger(__name__)
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 try:
     from twitter.media_manifest import (
+        _from_wire_dict,
+        _item_to_wire,
         atomic_write_json,
         find_location,
         item_key,
@@ -24,7 +29,7 @@ try:
         selected_url,
     )
     from twitter.media_refs import remote_markup
-    from twitter.models import ThreadData, load_thread
+    from twitter.models import MediaItem, ThreadData, load_thread
     from twitter.render import render_branch, render_spine
     from twitter.slug import branch_file_name, date_prefix, thread_dir_name
     from twitter.tree import (
@@ -37,6 +42,8 @@ try:
     )
 except ImportError:  # pragma: no cover - script-mode import
     from media_manifest import (
+        _from_wire_dict,
+        _item_to_wire,
         atomic_write_json,
         find_location,
         item_key,
@@ -45,7 +52,7 @@ except ImportError:  # pragma: no cover - script-mode import
         selected_url,
     )
     from media_refs import remote_markup
-    from models import ThreadData, load_thread
+    from models import MediaItem, ThreadData, load_thread
     from render import render_branch, render_spine
     from slug import branch_file_name, date_prefix, thread_dir_name
     from tree import (
@@ -59,6 +66,7 @@ except ImportError:  # pragma: no cover - script-mode import
 
 
 def _frontmatter_lines(text: str) -> tuple[list[str], str]:
+    """Return (frontmatter_lines, body_after_closer) for an archive note."""
     if not text.startswith("---\n"):
         return [], text
     end = text.find("\n---", 4)
@@ -68,6 +76,7 @@ def _frontmatter_lines(text: str) -> tuple[list[str], str]:
 
 
 def _tag_values(lines: list[str]) -> list[str]:
+    """Extract tag strings from the ``tags:`` block of a YAML frontmatter lines list."""
     tags: list[str] = []
     in_tags = False
     for line in lines:
@@ -121,21 +130,22 @@ def preserve_review_state(
     return "---\n" + "\n".join(output) + "\n---" + fresh_body
 
 
-def missing_local_media(items: list[dict[str, object]]) -> list[str]:
+def missing_local_media(items: list[MediaItem]) -> list[str]:
     missing: list[str] = []
     for item in items:
         local = find_location(item, "local")
-        if local is not None and local.get("integrity") == "missing":
+        if local is not None and local.integrity == "missing":
             post_id, media_id, role = item_key(item)
             missing.append(f"{post_id}/{media_id}/{role}")
     return missing
 
-_POST_ID_LINE = re.compile(r'^post_id:\s*"?([^"\s]+)"?\s*$')
-_WIKILINK_ITEM = re.compile(r"^- \[\[([^\]|]+)\]\]\s*$")
+_POST_ID_LINE: re.Pattern[str] = re.compile(r'^post_id:\s*"?([^"\s]+)"?\s*$')
+_WIKILINK_ITEM: re.Pattern[str] = re.compile(r"^- \[\[([^\]|]+)\]\]\s*$")
 
 
 @dataclass(frozen=True)
 class EmitResult:
+    """Outcome of one emit pass: which post+handle were written and how many branches."""
     post_id: str
     handle: str
     dir_name: str
@@ -144,11 +154,13 @@ class EmitResult:
 
 
 def _url_media_id(url: str, index: int) -> str:
+    """Derive a stable media id from the URL's last path segment, falling back to ``m<index>``."""
     segment = Path(unquote(urlparse(url).path)).name
     return segment if segment else f"m{index}"
 
 
 def _url_ext(url: str) -> str | None:
+    """Extract a lowercase file extension from a URL's ``?format=`` query or path suffix."""
     parsed = urlparse(url)
     fmt = parse_qs(parsed.query).get("format", [None])[0]
     if fmt:
@@ -166,6 +178,7 @@ def _media_files(media_dir: Path) -> list[Path]:
 
 
 def _take_preferred(unused: list[Path], post_id: str, index: int) -> Path | None:
+    """Pop the unused file whose stem equals ``<post_id>_<index>`` if any."""
     want = f"{post_id}_{index}"
     for path in unused:
         if path.stem == want:
@@ -174,6 +187,7 @@ def _take_preferred(unused: list[Path], post_id: str, index: int) -> Path | None
 
 
 def _take_fallback(unused: list[Path], post_id: str) -> Path | None:
+    """Pop the first unused file whose name starts with ``<post_id>_`` if any."""
     prefix = f"{post_id}_"
     for path in unused:
         if path.name.startswith(prefix):
@@ -187,9 +201,10 @@ def collect_media(
     dest_dir: Path,
     *,
     now: str,
-) -> list[dict[str, object]]:
+) -> list[MediaItem]:
+    """Copy each post's media files from ``input_dir/media`` into ``dest_dir`` and build canonical MediaItems."""
     unused = _media_files(input_dir / "media")
-    items: list[dict[str, object]] = []
+    items: list[MediaItem] = []
     for post in thread.posts:
         for index, url in enumerate(post.media_urls, start=1):
             media_id = _url_media_id(url, index)
@@ -221,22 +236,23 @@ def collect_media(
 
 
 def selected_media_by_post(
-    items: list[dict[str, object]],
+    items: list[MediaItem],
 ) -> dict[str, tuple[str, ...]]:
+    """Group embedded items by post_id, returning the HTTPS URL of each visible location."""
     grouped: dict[str, list[str]] = {}
     for item in items:
-        if not item.get("embed"):
+        if not item.embed:
             continue
         url = selected_url(item)
         if url is not None:
-            grouped.setdefault(str(item.get("post_id") or ""), []).append(url)
+            grouped.setdefault(item.post_id, []).append(url)
     return {post_id: tuple(urls) for post_id, urls in grouped.items()}
 
 
 def merge_existing_media(
     dest_dir: Path,
-    items: list[dict[str, object]],
-) -> list[dict[str, object]]:
+    items: list[MediaItem],
+) -> list[MediaItem]:
     """Merge existing derived/fallback rows with fresh canonical items."""
     old_path = dest_dir / "media.json"
     if not old_path.is_file():
@@ -249,7 +265,8 @@ def merge_existing_media(
         raise SystemExit(
             "legacy media.json requires: tw.py migrate-media --id <id> --apply"
         )
-    return merge_manifest_items(list(old.get("items") or []), items)
+    existing = _from_wire_dict(old).items
+    return list(merge_manifest_items(existing, tuple(items)))
 
 
 def _legacy_emit_message(*args: object, **kwargs: object) -> None:
@@ -276,6 +293,7 @@ def empty_text_ids(thread: ThreadData) -> list[str]:
 
 
 def render_gaps(thread: ThreadData, spine: list[str], *, input_kind: str = "root") -> str:
+    """Render a human-readable gaps report (quote_of, missing_reply_to, empty_text) for the thread."""
     ids = by_id(thread)
     suggested = spine[-1] if spine else ""
     quote_ids = [p.post_id for p in thread.posts if p.quote_of_id]
@@ -304,6 +322,7 @@ def render_gaps(thread: ThreadData, spine: list[str], *, input_kind: str = "root
 
 
 def _frontmatter_block(text: str) -> str:
+    """Return the raw YAML block between the ``---`` fences, or ``""`` if not parseable."""
     if not text.startswith("---"):
         return ""
     rest = text[3:]
@@ -316,6 +335,7 @@ def _frontmatter_block(text: str) -> str:
 
 
 def _frontmatter_post_id(text: str) -> str | None:
+    """Pull ``post_id`` out of an archive note's YAML frontmatter (returns ``None`` if absent)."""
     for line in _frontmatter_block(text).splitlines():
         match = _POST_ID_LINE.match(line.strip())
         if match:
@@ -341,6 +361,7 @@ def collect_existing_ids(vault: Path) -> tuple[set[str], dict[str, Path]]:
 
 
 def unique_dir_name(parent: Path, base: str) -> str:
+    """Return ``base`` if unused, else ``base-2``, ``base-3``, ... until a free name is found."""
     if not (parent / base).exists():
         return base
     n = 2
@@ -350,6 +371,7 @@ def unique_dir_name(parent: Path, base: str) -> str:
 
 
 def _split_frontmatter(text: str) -> tuple[str, str]:
+    """Split an archive note into (frontmatter_with_closing_fence, body). Returns ``("", text)`` if no fence."""
     if not text.startswith("---"):
         return "", text
     end = text.find("\n---", 3)
@@ -425,14 +447,17 @@ def _upsert_wikilink(path: Path, target: str) -> None:
 
 
 def wiki_thread(handle: str, dir_name: str) -> str:
+    """Build the vault-root wikilink target for a thread spine folder."""
     return f"archive/threads/{handle}/{dir_name}"
 
 
 def wiki_branch(handle: str, dir_name: str, name: str) -> str:
+    """Build the vault-root wikilink target for one branch file."""
     return f"archive/threads/{handle}/{dir_name}/{name}"
 
 
 def ensure_handle_index(vault: Path, handle: str, dir_name: str) -> None:
+    """Create the per-handle index.md if missing, otherwise upsert the new thread wikilink."""
     path = vault / "archive" / "threads" / handle / "index.md"
     target = wiki_thread(handle, dir_name)
     if not path.is_file():
@@ -459,6 +484,7 @@ def ensure_handle_index(vault: Path, handle: str, dir_name: str) -> None:
 
 
 def ensure_threads_index(vault: Path, handle: str) -> None:
+    """Create the top-level archive/threads/index.md if missing, otherwise upsert the handle wikilink."""
     path = vault / "archive" / "threads" / "index.md"
     if not path.is_file():
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -492,6 +518,7 @@ def ensure_threads_index(vault: Path, handle: str) -> None:
 
 
 def discover_dumps(root: Path) -> list[Path]:
+    """Return the sorted list of dump subdirectories that contain ``thread_data.json``."""
     dumps = [
         path for path in root.iterdir()
         if path.is_dir() and (path / "thread_data.json").is_file()
@@ -642,7 +669,7 @@ def emit(
     media_doc = {
         "schema_version": 2,
         "root_post_id": thread.root_post_id,
-        "items": items,
+        "items": [_item_to_wire(item) for item in items],
         "mirrors": [],
     }
     atomic_write_json(asset_dir / "media.json", media_doc)
@@ -691,7 +718,8 @@ def emit_all(
             missing = missing_parent_ids(thread)
             empty = empty_text_ids(thread)
             post_id = thread.root_post_id
-        except Exception:
+        except Exception as exc:
+            logger.warning("emit_all: skipping %s: %s", dump, exc)
             lines.append(f"{dump.name} ? error - -")
             errors += 1
             continue
@@ -712,7 +740,8 @@ def emit_all(
                 force=force,
                 reuse_dir=reuse,
             )
-        except Exception:
+        except Exception as exc:
+            logger.warning("emit_all: skipping %s: %s", dump, exc)
             errors += 1
             continue
 

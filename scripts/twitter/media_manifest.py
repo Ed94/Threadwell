@@ -1,3 +1,4 @@
+"""Canonical media manifest: boundary parsing, validation, and wire round-trip."""
 from __future__ import annotations
 
 import copy
@@ -9,9 +10,28 @@ from hashlib import sha256
 from pathlib import Path
 from typing import Any
 
+try:
+    from .models import (
+        DerivedFromRef,
+        MediaItem,
+        MediaLocation,
+        MediaLocationCheck,
+        MediaManifest,
+        Publication,
+    )
+except ImportError:  # pragma: no cover - script-mode import
+    from models import (
+        DerivedFromRef,
+        MediaItem,
+        MediaLocation,
+        MediaLocationCheck,
+        MediaManifest,
+        Publication,
+    )
 
-SCHEMA_VERSION = 2
-VISUAL_ROLES = {"orig", "crt", "crt_outline", "denoise"}
+
+SCHEMA_VERSION: int = 2
+VISUAL_ROLES: set[str] = {"orig", "crt", "crt_outline", "denoise"}
 
 
 def utc_now() -> str:
@@ -41,40 +61,51 @@ def atomic_write_json(path: Path, data: dict) -> None:
             temp.unlink()
 
 
-def item_key(item: dict[str, Any]) -> tuple[str, str, str]:
-    return (
-        str(item.get("post_id") or ""),
-        str(item.get("media_id") or ""),
-        str(item.get("role") or ""),
-    )
+def _from_wire_dict(raw: dict[str, Any]) -> MediaManifest:
+    """Boundary parser: turn a wire-shape dict into a typed MediaManifest."""
+    return MediaManifest.from_dict(raw)
 
 
-def find_location(item: dict[str, Any], location_id: str) -> dict[str, Any] | None:
-    for location in item.get("locations") or []:
-        if str(location.get("id") or "") == location_id:
+def _from_wire_item(raw: dict[str, Any]) -> MediaItem:
+    """Boundary parser: turn a wire-shape dict into a typed MediaItem."""
+    return MediaItem.from_dict(raw)
+
+
+def _from_wire_items(raw: list[dict[str, Any]]) -> tuple[MediaItem, ...]:
+    """Boundary parser: turn a wire-shape items list into typed items."""
+    return tuple(MediaItem.from_dict(item) for item in raw)
+
+
+def item_key(item: MediaItem) -> tuple[str, str, str]:
+    return (item.post_id, item.media_id, item.kind or item.role or "")
+
+
+def find_location(item: MediaItem, location_id: str) -> MediaLocation | None:
+    for location in item.locations:
+        if location.id == location_id:
             return location
     return None
 
 
-def location_of_kind(item: dict[str, Any], kind: str) -> dict[str, Any] | None:
-    for location in item.get("locations") or []:
-        if location.get("kind") == kind:
+def location_of_kind(item: MediaItem, kind: str) -> MediaLocation | None:
+    for location in item.locations:
+        if location.kind == kind:
             return location
     return None
 
 
-def selected_location(item: dict[str, Any]) -> dict[str, Any] | None:
-    publication = item.get("publication")
-    if not isinstance(publication, dict):
+def selected_location(item: MediaItem) -> MediaLocation | None:
+    publication = item.publication
+    if publication is None:
         return None
-    return find_location(item, str(publication.get("selected_location_id") or ""))
+    return find_location(item, publication.selected_location_id)
 
 
-def selected_url(item: dict[str, Any]) -> str | None:
+def selected_url(item: MediaItem) -> str | None:
     location = selected_location(item)
-    if not location or location.get("kind") not in {"origin", "fallback"}:
+    if location is None or location.kind not in {"origin", "fallback"}:
         return None
-    value = str(location.get("url") or "")
+    value = location.url or ""
     return value if value.startswith("https://") else None
 
 
@@ -83,18 +114,18 @@ def _media_type(filename: str) -> str:
     return guessed or "application/octet-stream"
 
 
-def _local_location(filename: str, local_path: Path, now: str) -> dict[str, Any]:
+def _local_location(filename: str, local_path: Path, now: str) -> MediaLocation:
     present = local_path.is_file()
-    return {
-        "id": "local",
-        "kind": "local",
-        "path": filename,
-        "sha256": hash_file(local_path) if present else None,
-        "bytes": local_path.stat().st_size if present else None,
-        "media_type": _media_type(filename),
-        "integrity": "present" if present else "missing",
-        "verified_at": now,
-    }
+    return MediaLocation(
+        id="local",
+        kind="local",
+        local_path=Path(filename),
+        sha256=hash_file(local_path) if present else None,
+        bytes=local_path.stat().st_size if present else None,
+        media_type=_media_type(filename),
+        integrity="present" if present else "missing",
+        verified_at=now,
+    )
 
 
 def new_original_item(
@@ -106,73 +137,78 @@ def new_original_item(
     filename: str,
     local_path: Path,
     now: str,
-) -> dict[str, Any]:
-    return {
-        "post_id": post_id,
-        "media_id": media_id,
-        "handle": handle,
-        "role": "orig",
-        "derived_from": None,
-        "embed": True,
-        "locations": [
-            {
-                "id": "origin:x",
-                "kind": "origin",
-                "provider": "x",
-                "url": origin_url,
-                "availability": "unknown",
-                "checked_at": None,
-                "check": None,
-                "confirmed_unavailable_at": None,
-            },
+) -> MediaItem:
+    return MediaItem(
+        post_id=post_id,
+        media_id=media_id,
+        handle=handle,
+        kind="orig",
+        role="orig",
+        embed=True,
+        locations=(
+            MediaLocation(
+                id="origin:x",
+                kind="origin",
+                provider="x",
+                url=origin_url,
+                availability="unknown",
+            ),
             _local_location(filename, local_path, now),
-        ],
-        "publication": {
-            "selected_location_id": "origin:x",
-            "selected_at": now,
-            "reason": "default",
-        },
-    }
+        ),
+        publication=Publication(
+            selected_location_id="origin:x",
+            selected_at=now,
+            reason="default",
+        ),
+    )
 
 
-def merge_item(existing: dict[str, Any], fresh: dict[str, Any]) -> dict[str, Any]:
+def merge_item(existing: MediaItem, fresh: MediaItem) -> MediaItem:
     if item_key(existing) != item_key(fresh):
         raise ValueError("cannot merge different media items")
-    merged = copy.deepcopy(existing)
-    merged["handle"] = fresh["handle"]
+    fresh_handle = fresh.handle or existing.handle
     existing_origin = location_of_kind(existing, "origin")
     fresh_origin = location_of_kind(fresh, "origin")
     if (
         existing_origin is not None
         and fresh_origin is not None
-        and existing_origin.get("url") != fresh_origin.get("url")
+        and existing_origin.url != fresh_origin.url
     ):
         raise ValueError(f"origin URL changed for {item_key(existing)!r}")
     fresh_local = location_of_kind(fresh, "local")
-    locations = [
+    locations: list[MediaLocation] = [
         copy.deepcopy(location)
-        for location in merged.get("locations") or []
-        if location.get("kind") != "local"
+        for location in existing.locations
+        if location.kind != "local"
     ]
     if fresh_local is not None:
         locations.append(copy.deepcopy(fresh_local))
-    if location_of_kind(merged, "origin") is None:
-        fresh_origin = location_of_kind(fresh, "origin")
-        if fresh_origin is not None:
-            locations.insert(0, copy.deepcopy(fresh_origin))
-    merged["locations"] = locations
-    if merged.get("publication") is None:
-        merged["publication"] = copy.deepcopy(fresh.get("publication"))
+    if location_of_kind(existing, "origin") is None and fresh_origin is not None:
+        locations.insert(0, copy.deepcopy(fresh_origin))
+    merged = MediaItem(
+        post_id=existing.post_id,
+        media_id=existing.media_id,
+        kind=existing.kind,
+        role=existing.role,
+        handle=fresh_handle,
+        embed=existing.embed,
+        locations=tuple(locations),
+        publication=existing.publication
+        if existing.publication is not None
+        else copy.deepcopy(fresh.publication),
+    )
     return merged
 
 
 def merge_manifest_items(
-    existing_items: list[dict[str, Any]],
-    fresh_items: list[dict[str, Any]],
-) -> list[dict[str, Any]]:
-    existing_by_key = {item_key(item): item for item in existing_items}
+    existing_items: tuple[MediaItem, ...],
+    fresh_items: tuple[MediaItem, ...],
+) -> tuple[MediaItem, ...]:
+    existing_by_key: dict[tuple[str, str, str], MediaItem] = {
+        item_key(item): item for item in existing_items
+    }
     fresh_keys: set[tuple[str, str, str]] = set()
-    merged: list[dict[str, Any]] = []
+    merged: list[MediaItem] = []
     for fresh in fresh_items:
         key = item_key(fresh)
         fresh_keys.add(key)
@@ -181,7 +217,7 @@ def merge_manifest_items(
     for previous in existing_items:
         if item_key(previous) not in fresh_keys:
             merged.append(copy.deepcopy(previous))
-    return merged
+    return tuple(merged)
 
 
 def fallback_location_id(provider: str, url: str) -> str:
@@ -196,49 +232,20 @@ def new_fallback_location(
     content_hash: str | None,
     recorded_at: str,
     uploaded_at: str | None,
-) -> dict[str, Any]:
-    return {
-        "id": fallback_location_id(provider, url),
-        "kind": "fallback",
-        "provider": provider,
-        "url": url,
-        "sha256": content_hash,
-        "recorded_at": recorded_at,
-        "uploaded_at": uploaded_at,
-        "availability": "unknown",
-        "checked_at": None,
-        "check": None,
-    }
+) -> MediaLocation:
+    return MediaLocation(
+        id=fallback_location_id(provider, url),
+        kind="fallback",
+        provider=provider,
+        url=url,
+        sha256=content_hash,
+        recorded_at=recorded_at,
+        uploaded_at=uploaded_at,
+        availability="unknown",
+    )
 
 
 def new_derived_item(
-    *,
-    legacy: dict[str, Any],
-    asset_dir: Path,
-    now: str,
-) -> dict[str, Any]:
-    filename = str(legacy.get("filename") or "")
-    post_id = str(legacy.get("post_id") or "")
-    media_id = str(legacy.get("media_id") or "")
-    role = str(legacy.get("role") or "")
-    return {
-        "post_id": post_id,
-        "media_id": media_id,
-        "handle": str(legacy.get("handle") or ""),
-        "role": role,
-        "derived_from": {
-            "post_id": post_id,
-            "media_id": media_id,
-            "role": "orig",
-        },
-        "embed": False,
-        "locations": [_local_location(filename, asset_dir / filename, now)],
-        "publication": None,
-    }
-
-
-def upsert_derived_item(
-    manifest: dict[str, Any],
     *,
     post_id: str,
     media_id: str,
@@ -247,44 +254,178 @@ def upsert_derived_item(
     filename: str,
     asset_dir: Path,
     now: str,
-) -> dict[str, Any]:
-    legacy_shape = {
-        "post_id": post_id,
-        "media_id": media_id,
-        "handle": handle,
-        "role": role,
-        "filename": filename,
-    }
-    fresh = new_derived_item(legacy=legacy_shape, asset_dir=asset_dir, now=now)
+) -> MediaItem:
+    """Construct a MediaItem for a derived file (crt / crt_outline / denoise / ocr)."""
+    return MediaItem(
+        post_id=post_id,
+        media_id=media_id,
+        handle=handle,
+        kind=role,
+        role=role,
+        derived_from=DerivedFromRef(
+            post_id=post_id,
+            media_id=media_id,
+            role="orig",
+        ),
+        embed=False,
+        locations=(_local_location(filename, asset_dir / filename, now),),
+        publication=None,
+    )
+
+
+def upsert_derived_item(
+    manifest: MediaManifest,
+    *,
+    post_id: str,
+    media_id: str,
+    handle: str,
+    role: str,
+    filename: str,
+    asset_dir: Path,
+    now: str,
+) -> tuple[MediaManifest, MediaItem]:
+    """Insert or update a derived item. Returns (manifest, item)."""
+    fresh = new_derived_item(
+        post_id=post_id,
+        media_id=media_id,
+        handle=handle,
+        role=role,
+        filename=filename,
+        asset_dir=asset_dir,
+        now=now,
+    )
     key = item_key(fresh)
-    items = list(manifest.get("items") or [])
+    items: list[MediaItem] = list(manifest.items)
     for index, existing in enumerate(items):
         if item_key(existing) == key:
-            fresh["locations"] = [
-                location
-                for location in existing.get("locations") or []
-                if location.get("kind") != "local"
-            ] + fresh["locations"]
-            fresh["embed"] = bool(existing.get("embed"))
-            fresh["publication"] = copy.deepcopy(existing.get("publication"))
-            items[index] = fresh
-            manifest["items"] = items
-            return fresh
+            kept = tuple(loc for loc in existing.locations if loc.kind != "local")
+            updated = MediaItem(
+                post_id=fresh.post_id,
+                media_id=fresh.media_id,
+                kind=fresh.kind,
+                role=fresh.role,
+                handle=fresh.handle,
+                embed=existing.embed,
+                derived_from=fresh.derived_from,
+                locations=kept + fresh.locations,
+                publication=copy.deepcopy(existing.publication),
+            )
+            items[index] = updated
+            new_manifest = MediaManifest(
+                root_post_id=manifest.root_post_id,
+                items=tuple(items),
+                schema_version=manifest.schema_version,
+                captured_at=manifest.captured_at,
+            )
+            return new_manifest, updated
     items.append(fresh)
-    manifest["items"] = items
-    return fresh
+    new_manifest = MediaManifest(
+        root_post_id=manifest.root_post_id,
+        items=tuple(items),
+        schema_version=manifest.schema_version,
+        captured_at=manifest.captured_at,
+    )
+    return new_manifest, fresh
 
 
-def canonical_manifest_bytes(data: dict[str, Any]) -> bytes:
-    stable = copy.deepcopy(data)
-    stable["mirrors"] = []
+def _item_to_wire(item: MediaItem) -> dict[str, Any]:
+    """Convert a typed MediaItem back into a wire-shape dict for round-tripping to disk."""
+    locations: list[dict[str, Any]] = []
+    for loc in item.locations:
+        location_dict: dict[str, Any] = {"kind": loc.kind}
+        if loc.id is not None:
+            location_dict["id"] = loc.id
+        if loc.local_path is not None:
+            location_dict["path"] = str(loc.local_path)
+        if loc.url is not None:
+            location_dict["url"] = loc.url
+        if loc.bytes is not None:
+            location_dict["bytes"] = loc.bytes
+        if loc.sha256 is not None:
+            location_dict["sha256"] = loc.sha256
+        if loc.media_type is not None:
+            location_dict["media_type"] = loc.media_type
+        if loc.integrity is not None:
+            location_dict["integrity"] = loc.integrity
+        if loc.verified_at is not None:
+            location_dict["verified_at"] = loc.verified_at
+        if loc.provider is not None:
+            location_dict["provider"] = loc.provider
+        if loc.availability is not None:
+            location_dict["availability"] = loc.availability
+        if loc.checked_at is not None:
+            location_dict["checked_at"] = loc.checked_at
+        if loc.checked_status is not None:
+            location_dict["checked_status"] = loc.checked_status
+        if loc.recorded_at is not None:
+            location_dict["recorded_at"] = loc.recorded_at
+        if loc.uploaded_at is not None:
+            location_dict["uploaded_at"] = loc.uploaded_at
+        if loc.confirmed_unavailable_at is not None:
+            location_dict["confirmed_unavailable_at"] = loc.confirmed_unavailable_at
+        if loc.check is not None:
+            location_dict["check"] = {
+                "status": loc.check.status,
+                "result": loc.check.result,
+                "detail": loc.check.detail,
+            }
+        locations.append(location_dict)
+    out: dict[str, Any] = {
+        "post_id": item.post_id,
+        "media_id": item.media_id,
+        "locations": locations,
+    }
+    if item.kind is not None:
+        out["kind"] = item.kind
+    if item.handle is not None:
+        out["handle"] = item.handle
+    if item.role is not None:
+        out["role"] = item.role
+    if item.embed is not None:
+        out["embed"] = item.embed
+    if item.caption is not None:
+        out["caption"] = item.caption
+    if item.derived_from is not None:
+        out["derived_from"] = {
+            "post_id": item.derived_from.post_id,
+            "media_id": item.derived_from.media_id,
+            "role": item.derived_from.role,
+        }
+    if item.publication is not None:
+        out["publication"] = {
+            "selected_location_id": item.publication.selected_location_id,
+            "selected_at": item.publication.selected_at,
+            "reason": item.publication.reason,
+        }
+    return out
+
+
+def _manifest_to_wire(manifest: MediaManifest) -> dict[str, Any]:
+    """Convert a typed MediaManifest back into a wire-shape dict for JSON serialization.
+
+    Schema version, root_post_id, items, captured_at are copied through;
+    mirrors are reset to [] (per the original canonical_manifest_bytes contract).
+    """
+    out: dict[str, Any] = {
+        "schema_version": SCHEMA_VERSION,
+        "root_post_id": manifest.root_post_id,
+        "items": [_item_to_wire(item) for item in manifest.items],
+        "mirrors": [],
+    }
+    if manifest.captured_at is not None:
+        out["captured_at"] = manifest.captured_at
+    return out
+
+
+def canonical_manifest_bytes(manifest: MediaManifest) -> bytes:
+    stable = _manifest_to_wire(manifest)
     return (
         json.dumps(stable, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
         + "\n"
     ).encode("utf-8")
 
 
-def payload_inventory(asset_dir: Path, manifest: dict[str, Any]) -> dict[str, str]:
+def payload_inventory(asset_dir: Path, manifest: MediaManifest) -> dict[str, str]:
     inventory: dict[str, str] = {
         "media.json#canonical": sha256(canonical_manifest_bytes(manifest)).hexdigest()
     }
@@ -299,14 +440,14 @@ def inventory_digest(inventory: dict[str, str]) -> str:
     return sha256(encoded).hexdigest()
 
 
-def validate_manifest(data: dict[str, Any]) -> list[str]:
+def validate_manifest(manifest: MediaManifest) -> list[str]:
     issues: list[str] = []
-    if data.get("schema_version") != SCHEMA_VERSION:
+    if manifest.schema_version != SCHEMA_VERSION:
         issues.append(f"schema_version must be {SCHEMA_VERSION}")
-    if not str(data.get("root_post_id") or ""):
+    if not manifest.root_post_id:
         issues.append("root_post_id is empty")
     seen: set[tuple[str, str, str]] = set()
-    for index, item in enumerate(data.get("items") or []):
+    for index, item in enumerate(manifest.items):
         key = item_key(item)
         if not all(key):
             issues.append(f"items[{index}] has incomplete key {key!r}")
@@ -314,24 +455,30 @@ def validate_manifest(data: dict[str, Any]) -> list[str]:
             issues.append(f"items[{index}] duplicates key {key!r}")
         seen.add(key)
         location_ids: set[str] = set()
-        for location in item.get("locations") or []:
-            location_id = str(location.get("id") or "")
+        for location in item.locations:
+            location_id = location.id or ""
             if not location_id:
                 issues.append(f"items[{index}] has empty location id")
             elif location_id in location_ids:
                 issues.append(f"items[{index}] duplicates location {location_id}")
             location_ids.add(location_id)
-        publication = item.get("publication")
+        publication = item.publication
         if publication is None:
-            if item.get("role") in VISUAL_ROLES and item.get("embed"):
+            role = item.kind or item.role or ""
+            if role in VISUAL_ROLES and item.embed:
                 issues.append(f"items[{index}] embeds without publication")
             continue
-        selected_id = str(publication.get("selected_location_id") or "")
-        location = find_location(item, selected_id)
+        location = find_location(item, publication.selected_location_id)
         if location is None:
-            issues.append(f"items[{index}] selects missing location {selected_id}")
-        elif location.get("kind") not in {"origin", "fallback"}:
-            issues.append(f"items[{index}] selects non-HTTPS location {selected_id}")
-        elif not str(location.get("url") or "").startswith("https://"):
-            issues.append(f"items[{index}] selects non-HTTPS location {selected_id}")
+            issues.append(
+                f"items[{index}] selects missing location {publication.selected_location_id}"
+            )
+        elif location.kind not in {"origin", "fallback"}:
+            issues.append(
+                f"items[{index}] selects non-HTTPS location {publication.selected_location_id}"
+            )
+        elif location.url is None or not location.url.startswith("https://"):
+            issues.append(
+                f"items[{index}] selects non-HTTPS location {publication.selected_location_id}"
+            )
     return issues

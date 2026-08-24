@@ -30,6 +30,7 @@ def _first_line(text: str) -> str:
 
 
 def _title_text(text: str) -> str:
+    """Derive a title from the first line, truncating at the first sentence end (``. ``)."""
     line = _first_line(text)
     idx = line.find(". ")
     if idx >= 0:
@@ -59,6 +60,7 @@ def _frontmatter(
     in_reply_to: str,
     parent_post_id: str | None = None,
 ) -> str:
+    """Build the YAML frontmatter block for an archive note (always ``draft: true``)."""
     lines = [
         "---",
         f"title: {_yaml_quote(title)}",
@@ -85,6 +87,8 @@ def _frontmatter(
 
 
 def _source_block(post: PostData) -> str:
+    """Render the ``## Source`` block listing URL, author handle, and post timestamp."""
+    url = _status_url(post.handle, post.post_id)
     url = _status_url(post.handle, post.post_id)
     return (
         "## Source\n"
@@ -101,6 +105,8 @@ def _post_block(
     media_by_post: dict[str, tuple[str, ...]] | None,
     branch_links: list[str] | None = None,
 ) -> str:
+    """Render one post body (``**N/**`` + text + media embeds + branch links)."""
+    parts = [f"**{n}/**", "", post.text]
     parts = [f"**{n}/**", "", post.text]
     media = (media_by_post or {}).get(post.post_id) or ()
     if media:
@@ -117,6 +123,8 @@ def _foreign_parent(
     first: PostData,
     ids: dict[str, PostData],
 ) -> tuple[str, PostData | None]:
+    """Return ``(in_reply_to_url, parent_post)`` for the first spine post, when the parent belongs to another author."""
+    parent_id = first.reply_to_id or ""
     parent_id = first.reply_to_id or ""
     if not parent_id:
         return "", None

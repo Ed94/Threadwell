@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 from twitter.fallback_media import activate_fallback, restore_origin
-from twitter.media_manifest import selected_url
+from twitter.media_manifest import _from_wire_dict, selected_url
 from twitter.media_migrate import migrate_legacy_thread
 from twitter.tests.helpers import NOW, legacy_thread, read_json
 
@@ -34,8 +34,8 @@ class FallbackTests(unittest.TestCase):
             )
             self.assertEqual(calls, [])
             self.assertEqual(result.url, "https://files.catbox.moe/fallback.png")
-            manifest = read_json(asset_dir / "media.json")
-            self.assertEqual(selected_url(manifest["items"][0]), result.url)
+            manifest = _from_wire_dict(read_json(asset_dir / "media.json"))
+            self.assertEqual(selected_url(manifest.items[0]), result.url)
 
     def test_note_rewrite_failure_keeps_origin_selected(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
@@ -54,8 +54,10 @@ class FallbackTests(unittest.TestCase):
                     now=NOW,
                     upload=lambda _path: "https://files.catbox.moe/fallback.png",
                 )
-            manifest = read_json(asset_dir / "media.json")
-            self.assertTrue(selected_url(manifest["items"][0]).startswith("https://pbs.twimg.com/"))
+            manifest = _from_wire_dict(read_json(asset_dir / "media.json"))
+            self.assertTrue(
+                (selected_url(manifest.items[0]) or "").startswith("https://pbs.twimg.com/")
+            )
 
     def test_restore_origin_retains_fallback(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
@@ -73,9 +75,12 @@ class FallbackTests(unittest.TestCase):
                 upload=lambda _path: "https://files.catbox.moe/fallback.png",
             )
             restore_origin(asset_dir, note_dir, media_id="AAA", now=NOW)
-            item = read_json(asset_dir / "media.json")["items"][0]
-            self.assertTrue(selected_url(item).startswith("https://pbs.twimg.com/"))
-            self.assertTrue(any(loc.get("kind") == "fallback" for loc in item["locations"]))
+            manifest = _from_wire_dict(read_json(asset_dir / "media.json"))
+            item = manifest.items[0]
+            self.assertTrue(
+                (selected_url(item) or "").startswith("https://pbs.twimg.com/")
+            )
+            self.assertTrue(any(loc.kind == "fallback" for loc in item.locations))
 
 
 if __name__ == "__main__":

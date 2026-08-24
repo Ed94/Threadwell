@@ -4,8 +4,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from twitter.media_manifest import find_location, selected_url, validate_manifest
+from twitter.media_manifest import _from_wire_dict, find_location, selected_url, validate_manifest
 from twitter.media_migrate import migrate_legacy_thread
+from twitter.models import MediaItem
 from twitter.tests.helpers import NOW, legacy_thread, read_json
 
 
@@ -22,20 +23,19 @@ class LegacyMigrationTests(unittest.TestCase):
 
             applied = migrate_legacy_thread(asset_dir, note_dir, now=NOW, apply=True)
             self.assertTrue(applied.changed)
-            manifest = read_json(asset_dir / "media.json")
+            manifest_dict = read_json(asset_dir / "media.json")
+            manifest = _from_wire_dict(manifest_dict)
             self.assertEqual(validate_manifest(manifest), [])
-            item = manifest["items"][0]
+            item: MediaItem = manifest.items[0]
             self.assertEqual(
-                find_location(item, "origin:x")["url"],
+                find_location(item, "origin:x").url,
                 "https://pbs.twimg.com/media/AAA?format=png&name=orig",
             )
             fallback = next(
-                location
-                for location in item["locations"]
-                if location.get("kind") == "fallback"
+                location for location in item.locations if location.kind == "fallback"
             )
-            self.assertEqual(fallback["url"], "https://files.catbox.moe/fallback.png")
-            self.assertEqual(selected_url(item), find_location(item, "origin:x")["url"])
+            self.assertEqual(fallback.url, "https://files.catbox.moe/fallback.png")
+            self.assertEqual(selected_url(item), find_location(item, "origin:x").url)
 
     def test_second_migration_is_idempotent(self) -> None:
         with tempfile.TemporaryDirectory() as raw:

@@ -18,12 +18,11 @@ import argparse
 import json
 import subprocess
 import sys
+from collections.abc import Callable
+from datetime import datetime, timezone
 from pathlib import Path
 
-import sys
-from pathlib import Path
-
-_HERE = Path(__file__).resolve().parent
+_HERE: Path = Path(__file__).resolve().parent
 if str(_HERE) not in sys.path:
     sys.path.insert(0, str(_HERE))
 
@@ -46,10 +45,12 @@ except ImportError:  # pragma: no cover - script-mode import
 
 
 def frozen_ids() -> set[str]:
+    """Return the loaded set of frozen post_ids from the do-not-refetch list."""
     return load_frozen_ids(FROZEN)
 
 
 def check_frozen(post_id: str) -> None:
+    """Raise SystemExit if ``post_id`` or any of its captured descendants matches a frozen id."""
     direct = dump_dir(post_id)
     assets, _notes = locate(post_id)
     candidate = assets if assets is not None else direct
@@ -70,6 +71,8 @@ def scratch_dir(post_id: str) -> Path:
 
 
 def locate(post_id: str) -> tuple[Path | None, Path | None]:
+    """Return ``(asset_dir, note_dir)`` for the first media.json whose root or captured posts contain ``post_id``."""
+    assets_root = VAULT / "assets" / "threads"
     assets_root = VAULT / "assets" / "threads"
     notes_root = VAULT / "archive" / "threads"
     if not assets_root.is_dir():
@@ -150,7 +153,9 @@ def run(cmd: list[str]) -> None:
     subprocess.check_call(cmd)
 
 
-def cmd_locate(post_id: str) -> int:
+def cmd_locate(args: argparse.Namespace) -> int:
+    """Print the on-disk paths (dump / scratch / assets / notes) for ``args.id``."""
+    post_id = args.id
     dump = dump_dir(post_id)
     scratch = scratch_dir(post_id)
     assets, notes = locate(post_id)
@@ -161,7 +166,9 @@ def cmd_locate(post_id: str) -> int:
     return 0
 
 
-def cmd_graph(post_id: str) -> int:
+def cmd_graph(args: argparse.Namespace) -> int:
+    """Render the SSDL + ASCII graph for ``args.id`` into the scratch directory."""
+    post_id = args.id
     src = scratch_dir(post_id)
     if not (src / "thread_data.json").is_file():
         src = dump_dir(post_id)
@@ -171,7 +178,9 @@ def cmd_graph(post_id: str) -> int:
     return 0
 
 
-def cmd_refetch(post_id: str) -> int:
+def cmd_refetch(args: argparse.Namespace) -> int:
+    """gallery-dl a thread into the scratch dir, then run ``ingest_gallery.py`` to materialize thread_data.json."""
+    post_id = args.id
     check_frozen(post_id)
     if not COOKIES.is_file():
         raise SystemExit(f"missing {COOKIES}")
@@ -227,7 +236,11 @@ def cmd_refetch(post_id: str) -> int:
     return 0
 
 
-def cmd_emit(post_id: str, tip: bool, slug: str | None) -> int:
+def cmd_emit(args: argparse.Namespace) -> int:
+    """Run ``emit_archive.py`` for ``args.id`` and merge non-orig rows back into every per-author asset dir."""
+    post_id = args.id
+    tip = args.tip
+    slug = args.slug
     check_frozen(post_id)
     src = scratch_dir(post_id)
     if not (src / "thread_data.json").is_file():
@@ -279,7 +292,10 @@ def cmd_emit(post_id: str, tip: bool, slug: str | None) -> int:
     return 0
 
 
-def cmd_lift(post_id: str, orig: bool) -> int:
+def cmd_lift(args: argparse.Namespace) -> int:
+    """Invoke ``lift_catbox.py`` to swap fallback URLs into the notes for ``args.id`` (with ``--orig`` to restore)."""
+    post_id = args.id
+    orig = args.orig
     assets, notes = locate(post_id)
     if assets is None or notes is None:
         raise SystemExit(f"no vault thread for {post_id} — emit first")
@@ -297,7 +313,10 @@ def cmd_lift(post_id: str, orig: bool) -> int:
     return 0
 
 
-def cmd_ocr(post_id: str, engine: str) -> int:
+def cmd_ocr(args: argparse.Namespace) -> int:
+    """OCR every ``*_orig.{png,jpg}`` in the thread assets dir and write matching ``*_ocr.txt`` files."""
+    post_id = args.id
+    engine = args.engine
     assets, _notes = locate(post_id)
     if assets is None:
         raise SystemExit(f"no assets thread for {post_id}")
@@ -324,7 +343,9 @@ def cmd_ocr(post_id: str, engine: str) -> int:
     return 0
 
 
-def cmd_merge(post_id: str) -> int:
+def cmd_merge(args: argparse.Namespace) -> int:
+    """Run ``media_merge.py`` for ``args.id`` to restore non-orig rows after an ``emit --force``."""
+    post_id = args.id
     check_frozen(post_id)
     assets, _notes = locate(post_id)
     if assets is None:
@@ -333,19 +354,21 @@ def cmd_merge(post_id: str) -> int:
     return 0
 
 
-def cmd_refresh(post_id: str, tip: bool, slug: str | None) -> int:
-    check_frozen(post_id)
-    cmd_refetch(post_id)
-    cmd_graph(post_id)
-    cmd_emit(post_id, tip=tip, slug=slug)
+def cmd_refresh(args: argparse.Namespace) -> int:
+    """Convenience: ``refetch`` + ``graph`` + ``emit --force`` for ``args.id``."""
+    check_frozen(args.id)
+    cmd_refetch(args)
+    cmd_graph(args)
+    cmd_emit(args)
     return 0
 
 
-def cmd_sync(handle: str | None) -> int:
+def cmd_sync(args: argparse.Namespace) -> int:
     """Rebuild handle-index wikilinks from actual folder listing.
 
     Use after manual edits or a stale state. Idempotent.
     """
+    handle = args.handle
     root = VAULT / "archive" / "threads"
     targets = [root / handle] if handle else None
     changed = 0
@@ -390,7 +413,9 @@ def cmd_sync(handle: str | None) -> int:
     return 0
 
 
-def cmd_publish(post_id: str) -> int:
+def cmd_publish(args: argparse.Namespace) -> int:
+    """Flip ``draft: true`` to ``draft: false`` on the thread index (no-op if already published)."""
+    post_id = args.id
     check_frozen(post_id)
     _assets, notes = locate(post_id)
     if notes is None:
@@ -413,8 +438,6 @@ def cmd_publish(post_id: str) -> int:
 
 
 def _now_iso() -> str:
-    from datetime import datetime, timezone
-
     return (
         datetime.now(timezone.utc)
         .replace(microsecond=0)
@@ -423,7 +446,8 @@ def _now_iso() -> str:
     )
 
 
-def cmd_migrate_media(args) -> int:
+def cmd_migrate_media(args: argparse.Namespace) -> int:
+    """Dispatch the per-thread ``migrate_legacy_thread`` (dry-run by default; ``--apply`` to write)."""
     if bool(args.id) == bool(args.all_root):
         raise SystemExit("migrate-media requires exactly one of --id or --all")
     if args.id:
@@ -446,7 +470,8 @@ def cmd_migrate_media(args) -> int:
     return 0
 
 
-def cmd_audit_media(args) -> int:
+def cmd_audit_media(args: argparse.Namespace) -> int:
+    """Run ``audit_thread`` for ``args.id`` and print issues (non-zero exit if any found)."""
     assets, note_dir = locate(args.id)
     if assets is None or note_dir is None:
         raise SystemExit(f"no vault thread for {args.id}")
@@ -459,7 +484,8 @@ def cmd_audit_media(args) -> int:
     return 0
 
 
-def cmd_backup(args) -> int:
+def cmd_backup(args: argparse.Namespace) -> int:
+    """Mirror ``args.id``'s asset dir into the configured destination via ``backup_thread``."""
     check_frozen(args.id)
     assets, note_dir = locate(args.id)
     if assets is None or note_dir is None:
@@ -477,7 +503,8 @@ def cmd_backup(args) -> int:
     return 0 if result.state == "synced" else 2
 
 
-def cmd_fallback(args) -> int:
+def cmd_fallback(args: argparse.Namespace) -> int:
+    """Upload (or reuse) a fallback for ``args.id``/``args.media_id`` and rewrite the note references."""
     if not args.confirm_origin_unavailable:
         raise SystemExit("fallback requires --confirm-origin-unavailable")
     check_frozen(args.id)
@@ -508,7 +535,8 @@ def cmd_fallback(args) -> int:
     return 0
 
 
-def cmd_restore_origin(args) -> int:
+def cmd_restore_origin(args: argparse.Namespace) -> int:
+    """Switch ``args.id``/``args.media_id`` back to the original X URL and rewrite the note references."""
     check_frozen(args.id)
     assets, note_dir = locate(args.id)
     if assets is None or note_dir is None:
@@ -592,41 +620,30 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+_COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
+    "locate": cmd_locate,
+    "graph": cmd_graph,
+    "refetch": cmd_refetch,
+    "emit": cmd_emit,
+    "lift": cmd_lift,
+    "ocr": cmd_ocr,
+    "merge": cmd_merge,
+    "refresh": cmd_refresh,
+    "publish": cmd_publish,
+    "sync": cmd_sync,
+    "migrate-media": cmd_migrate_media,
+    "audit-media": cmd_audit_media,
+    "backup": cmd_backup,
+    "fallback": cmd_fallback,
+    "restore-origin": cmd_restore_origin,
+}
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
-    post_id = getattr(args, "id", None)
-    if args.cmd == "locate":
-        return cmd_locate(post_id)
-    if args.cmd == "graph":
-        return cmd_graph(post_id)
-    if args.cmd == "refetch":
-        return cmd_refetch(post_id)
-    if args.cmd == "emit":
-        return cmd_emit(post_id, tip=args.tip, slug=args.slug)
-    if args.cmd == "lift":
-        return cmd_lift(post_id, orig=args.orig)
-    if args.cmd == "ocr":
-        return cmd_ocr(post_id, engine=args.engine)
-    if args.cmd == "merge":
-        return cmd_merge(post_id)
-    if args.cmd == "refresh":
-        return cmd_refresh(post_id, tip=args.tip, slug=args.slug)
-    if args.cmd == "publish":
-        return cmd_publish(post_id)
-    if args.cmd == "sync":
-        return cmd_sync(handle=args.handle)
-    if args.cmd == "migrate-media":
-        return cmd_migrate_media(args)
-    if args.cmd == "audit-media":
-        return cmd_audit_media(args)
-    if args.cmd == "backup":
-        return cmd_backup(args)
-    if args.cmd == "fallback":
-        return cmd_fallback(args)
-    if args.cmd == "restore-origin":
-        return cmd_restore_origin(args)
-    raise SystemExit(f"unknown {args.cmd}")
+    handler = _COMMANDS[args.cmd]
+    return handler(args)
 
 
 if __name__ == "__main__":
