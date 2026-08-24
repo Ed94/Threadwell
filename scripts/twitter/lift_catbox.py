@@ -9,6 +9,9 @@ Default without --orig: only rows already publish=true.
 
 After upload, any note token that is the local filename (backticked or
 bare) or a previous url for that row becomes ![](https://files.catbox.moe/…).
+
+Per-upload curl: --max-time 120, --retry 3, --retry-delay 2, --retry-all-errors.
+Errors are sanitized to redact the userhash before printing.
 """
 from __future__ import annotations
 
@@ -17,12 +20,28 @@ import json
 import re
 import subprocess
 import sys
+import time
 import tomllib
 from pathlib import Path
 
 from paths import VAULT as VAULT_ROOT
 
 API = "https://catbox.moe/user/api.php"
+MAX_TIME = 120
+RETRIES = 3
+RETRY_DELAY = 5
+THROTTLE_SECS = 5.0
+LIMIT_RATE = "500k"
+
+
+def _redact_cmd(cmd: list[str]) -> str:
+    out: list[str] = []
+    for tok in cmd:
+        if tok.startswith("userhash="):
+            out.append("userhash=<redacted>")
+        else:
+            out.append(tok)
+    return " ".join(out)
 
 
 def load_userhash(vault: Path) -> str:
@@ -54,6 +73,15 @@ def upload(path: Path, userhash: str) -> str:
     cmd = [
         "curl.exe",
         "-sS",
+        "--max-time",
+        str(MAX_TIME),
+        "--retry",
+        str(RETRIES),
+        "--retry-delay",
+        str(RETRY_DELAY),
+        "--retry-all-errors",
+        "--limit-rate",
+        LIMIT_RATE,
         "-F",
         "reqtype=fileupload",
         "-F",
@@ -62,7 +90,13 @@ def upload(path: Path, userhash: str) -> str:
         f"fileToUpload=@{path}",
         API,
     ]
-    raw = subprocess.check_output(cmd, text=True, stderr=subprocess.STDOUT)
+    try:
+        raw = subprocess.check_output(cmd, text=True, stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as exc:
+        raise SystemExit(
+            f"catbox upload failed for {path.name} "
+            f"(curl exit {exc.returncode}): {_redact_cmd(cmd)}"
+        ) from None
     url = raw.strip()
     if not url.startswith("https://"):
         raise SystemExit(f"catbox refused {path.name}: {url[:200]}")
@@ -122,9 +156,10 @@ def main(argv: list[str] | None = None) -> int:
 
     userhash = None if args.dry_run else load_userhash(args.vault)
     uploaded = 0
-    for item in items:
-        if not item.get("publish"):
-            continue
+    publishable = [it for it in items if it.get("publish")]
+    for i, item in enumerate(publishable):
+        if i > 0 and not args.dry_run:
+            time.sleep(THROTTLE_SECS)
         name = str(item.get("filename") or "")
         src = args.thread / name
         if not src.is_file():
