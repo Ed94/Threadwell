@@ -278,6 +278,23 @@ def _upsert_wikilink(path: Path, target: str) -> None:
     """
     text = path.read_text(encoding="utf-8")
     fm, body = _split_frontmatter(text)
+    if not fm.strip():
+        # Frontmatter got nuked by a hand edit. Don't silently emit a
+        # bare wikilink list — fall back to a fresh standard frontmatter
+        # so the file remains a complete page.
+        handle = path.parent.name
+        fm = (
+            f"---\n"
+            f"title: {handle}\n"
+            f"type: note\n"
+            f"draft: false\n"
+            f"description: Archived threads by {handle}.\n"
+            f"tags:\n"
+            f"  - archive\n"
+            f"  - twitter\n"
+            f"  - {handle}\n"
+            f"---\n"
+        )
     kept: list[str] = []
     names: list[str] = []
     handle_dir = path.parent
@@ -286,8 +303,6 @@ def _upsert_wikilink(path: Path, target: str) -> None:
         match = _WIKILINK_ITEM.match(line)
         if match:
             name = match.group(1)
-            # Drop stale wikilinks whose folder no longer exists under
-            # this handle. Same-slug duplicates still get collapsed.
             if name in real_dirs or not real_dirs:
                 if name not in names:
                     names.append(name)
@@ -307,10 +322,7 @@ def _upsert_wikilink(path: Path, target: str) -> None:
     parts.extend(f"- [[{name}]]" for name in names)
     parts.append("")
     body_text = "\n".join(parts)
-    if fm:
-        path.write_text(fm.rstrip() + "\n\n" + body_text, encoding="utf-8", newline="\n")
-    else:
-        path.write_text(body_text, encoding="utf-8", newline="\n")
+    path.write_text(fm.rstrip() + "\n\n" + body_text, encoding="utf-8", newline="\n")
 
 
 def wiki_thread(handle: str, dir_name: str) -> str:

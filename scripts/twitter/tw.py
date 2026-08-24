@@ -259,6 +259,7 @@ def cmd_sync(handle: str | None) -> int:
     root = VAULT / "archive" / "threads"
     targets = [root / handle] if handle else None
     changed = 0
+    skipped = 0
     for handle_dir in targets or sorted(root.iterdir()):
         if not handle_dir.is_dir() or handle_dir.name.startswith("."):
             continue
@@ -268,8 +269,24 @@ def cmd_sync(handle: str | None) -> int:
         text = idx.read_text(encoding="utf-8")
         end = text.find("\n---", 3)
         if end < 0:
-            continue
-        fm = text[: end + 4]
+            # Frontmatter isn't closed — fall back to a fresh one rather
+            # than silently skipping.
+            fm = (
+                f"---\n"
+                f"title: {handle_dir.name}\n"
+                f"type: note\n"
+                f"draft: false\n"
+                f"description: Archived threads by {handle_dir.name}.\n"
+                f"tags:\n"
+                f"  - archive\n"
+                f"  - twitter\n"
+                f"  - {handle_dir.name}\n"
+                f"---\n"
+            )
+            skipped += 1
+            print(f"rebuilt frontmatter for {handle_dir.name}")
+        else:
+            fm = text[: end + 4]
         dirs = sorted(d.name for d in handle_dir.iterdir() if d.is_dir())
         links = "\n".join(f"- [[archive/threads/{handle_dir.name}/{d}]]" for d in dirs)
         new = fm + "\n\n" + links + "\n"
@@ -279,7 +296,7 @@ def cmd_sync(handle: str | None) -> int:
             print(f"rewrote {handle_dir.name}: {len(dirs)} dirs")
         else:
             print(f"ok {handle_dir.name}: {len(dirs)} dirs")
-    print(f"changed {changed}")
+    print(f"changed {changed}, skipped {skipped}")
     return 0
 
 

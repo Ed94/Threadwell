@@ -8,7 +8,7 @@ handle: NOTimothyLottes
 post_id: "1687250591813079041"
 date: 2023-08-03
 archived: 2026-08-24
-draft: false
+draft: true
 tags:
   - archive
   - twitter
@@ -29,29 +29,25 @@ in_reply_to: ""
 
 SPC: Left off with KEY and GAMEPAD input GPU-accessable. NOP design, no functions, no API, just a fixed VA address and data format to read, dead easy.
 
-![](https://files.catbox.moe/byezmh.jpg)
-
-![](https://files.catbox.moe/ds4l0q.jpg)
+Media (not lifted): `1687250591813079041_F2pRdu9WgAABCLE_orig.jpg` `1687250591813079041_F2pReKsXoAAPvow_orig.jpg`
 
 **2/**
 
 Wrote some console data dumping to aid in bringing up HID parsers for Deck and three generations of PlayStation controllers. Apparently XBox controllers aren't HIDs so not sure how one is supposed to access those.
 
-![](https://files.catbox.moe/rqfysy.jpg)
-
-![](https://files.catbox.moe/178u4a.jpg)
+Media (not lifted): `1687251721032978432_F2pSfIHXcAMI-IQ_orig.jpg` `1687251721032978432_F2pSfzAWcAMo6t7_orig.jpg`
 
 **3/**
 
 Supporting hot plug was a bit of a mess, just trying to open devices every second. Adding open devices to an epoll. {Product, vendor} isn't enough to ID a device, too much aliasing, so I use packet size as well.
 
-![](https://files.catbox.moe/o49sqe.jpg)
+Media (not lifted): `1687252813468852225_F2pTfekWYAAAwSi_orig.jpg`
 
 **4/**
 
 Open devices with matching packet size get set in a bit array, and I collect up to 4 of those device outputs to sent to the GPU. Special logic to always place Steam Deck controls last to make docking work well.
 
-![](https://files.catbox.moe/9onk7u.jpg)
+Media (not lifted): `1687253442643755008_F2pUEG0XwAEwYvP_orig.jpg`
 
 **5/**
 

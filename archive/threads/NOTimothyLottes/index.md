@@ -1,4 +1,13 @@
 ---
+title: NOTimothyLottes
+type: note
+draft: false
+description: Archived threads by NOTimothyLottes.
+tags:
+  - archive
+  - twitter
+  - NOTimothyLottes
+---
 
 - [[archive/threads/NOTimothyLottes/2022-11-04-vulkan-1500-lines-of-overhead-including-header]]
 - [[archive/threads/NOTimothyLottes/2022-11-05-19-GPU-Programming-Tip-Line-Thread]]
