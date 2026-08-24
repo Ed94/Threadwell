@@ -1,10 +1,18 @@
-"""Audit every handle index in the vault against real subdirectories.
+"""Audit every handle index in the vault against real subdirectories,
+and audit the top-level `archive/threads/index.md` against real
+handle dirs.
 
-Reports per handle:
+For each handle dir:
   real       — set of subdirectory basenames on disk
   links      — set of basenames extracted from index.md wikilinks
   missing    — subdirectories with no wikilink in index.md
   stale      — wikilinks in index.md whose subdirectory does not exist
+
+For the threads index (top-level archive/threads/index.md):
+  real       — set of handle dir basenames on disk
+  links      — set of handle basenames extracted from wikilinks
+  missing    — handle dirs with no wikilink
+  stale      — wikilinks whose handle dir does not exist
 
 Usage:
   python scripts/twitter/audit_handle_index.py            # text report
@@ -70,6 +78,26 @@ def audit_one(handle_dir: Path) -> dict[str, object]:
     }
 
 
+def audit_threads_index(threads_root: Path) -> dict[str, object]:
+    """Audit the top-level archive/threads/index.md against real
+    handle dirs."""
+    idx_path = threads_root / "index.md"
+    real = {
+        d.name for d in threads_root.iterdir() if d.is_dir() and not d.name.startswith(".")
+    }
+    links = _index_links(idx_path)
+    missing = sorted(real - links)
+    stale = sorted(links - real)
+    return {
+        "handle": "<threads>",
+        "has_index": idx_path.is_file(),
+        "real": sorted(real),
+        "links": sorted(links),
+        "missing": missing,
+        "stale": stale,
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -92,6 +120,7 @@ def main(argv: list[str] | None = None) -> int:
         if not entry.is_dir() or entry.name.startswith("."):
             continue
         reports.append(audit_one(entry))
+    reports.append(audit_threads_index(threads_root))
 
     if args.json:
         print(json.dumps(reports, indent=2, ensure_ascii=False))
@@ -120,20 +149,25 @@ def main(argv: list[str] | None = None) -> int:
 
     print()
     if flagged:
-        print(f"flagged {flagged} handle(s):")
+        print(f"flagged {flagged} entry/entries:")
         for r in reports:
             if not (r["missing"] or r["stale"]):
                 continue
+            label = (
+                "threads index"
+                if r["handle"] == "<threads>"
+                else f"{r['handle']} handle index"
+            )
             if r["missing"]:
                 missing_sample = ", ".join(r["missing"][:5])
                 if len(r["missing"]) > 5:
                     missing_sample += f", ... (+{len(r['missing']) - 5} more)"
-                print(f"  {r['handle']}: missing_in_index = {missing_sample}")
+                print(f"  {label}: missing_in_index = {missing_sample}")
             if r["stale"]:
                 stale_sample = ", ".join(r["stale"])
-                print(f"  {r['handle']}: stale_in_index = {stale_sample}")
+                print(f"  {label}: stale_in_index = {stale_sample}")
     else:
-        print("clean: no handle has missing or stale wikilinks")
+        print("clean: no handle or threads index has missing or stale wikilinks")
     return 0
 
 
