@@ -31,7 +31,7 @@ jobs:
           path: site
       - name: Apply SPA basepath patch
         working-directory: site
-        run: python ../publish/quartz-patches/apply.py .
+        run: python ../publish/quartz-patches/apply.py spa
       - name: Apply publish overlay
         run: cp publish/quartz.config.yaml site/quartz.config.yaml
       - uses: actions/setup-node@v6
@@ -49,8 +49,6 @@ jobs:
         with:
           path: site/.quartz/plugins
           key: ${{ runner.os }}-plugins-${{ hashFiles('site/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-plugins-
       - name: Install Dependencies
         working-directory: site
         run: npm ci
@@ -60,9 +58,8 @@ jobs:
       - name: Build Quartz
         working-directory: site
         run: npx quartz build -d ..
-      - name: Patch sidebar title link
-        working-directory: site
-        run: python ../publish/quartz-patches/patch-title-link.py
+      - name: Rewrite built HTML
+        run: python ../publish/quartz-patches/apply.py built
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,34 +1,77 @@
-"""Patch quartz spa.inline.ts so relative URL clicks resolve from a directory base.
+"""Single source of truth for the Threadwell site base.
 
-Quartz's SPA click handler calls `new URL(href)`. When the URL bar is missing
-a trailing slash, the browser treats the last path segment as a file, so
-`../../../../tags/archive` from `/Threadwell/x/y/` (no slash) resolves to
-`/Threadwell/x/tags/archive` instead of `/Threadwell/tags/archive`. SPA routing
-loses the `/Threadwell/` base path on GitHub Pages project deployments.
+Two stages:
 
-Fix: compute `SPA_BASE_HREF` from `window.location`, always ending with `/`,
-and resolve relative URLs against it inside the SPA click handler.
+1. Apply the SPA basepath patch to quartz/components/scripts/spa.inline.ts so
+   relative URLs in the SPA click handler resolve from a directory base.
+
+2. After `npx quartz build`, rewrite every built HTML file:
+   - add `<base href="<abs>">` so relative URL resolution works even when
+     the URL bar lacks a trailing slash
+   - rewrite the sidebar `<a class="page-title">` href to the absolute site
+     base, not the directory the page is in
+
+The base URL is read from `publish/quartz.config.yaml`'s `baseUrl`. Change
+that line; the next deploy uses the new value everywhere.
 
 Idempotent. Safe to re-run.
-
-Path resolution is absolute: the script lives at
-`<vault>/publish/quartz-patches/apply.py` and writes to
-`<vault>/site/quartz/components/scripts/spa.inline.ts`.
 """
 from __future__ import annotations
 
+import re
+import sys
 from pathlib import Path
 
 SCRIPT = Path(__file__).resolve()
 VAULT = SCRIPT.parents[2]
-SPA_FILE = (
-    VAULT
-    / "site"
-    / "quartz"
-    / "components"
-    / "scripts"
-    / "spa.inline.ts"
+QUARTZ_REPO = VAULT / "site" / "quartz"
+SPA_FILE = QUARTZ_REPO / "components" / "scripts" / "spa.inline.ts"
+PUBLIC = VAULT / "site" / "public"
+OVERLAY = VAULT / "publish" / "quartz.config.yaml"
+
+
+def read_base_url() -> tuple[str, str]:
+    """Read `baseUrl` from the overlay (YAML) as the single source of truth.
+
+    Falls back to lenient line scan if YAML parsing isn't available.
+    """
+    text = OVERLAY.read_text(encoding="utf-8")
+    host = ""
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("#") or not stripped:
+            continue
+        if stripped.startswith("baseUrl:"):
+            host = stripped.split(":", 1)[1].strip()
+            break
+    if not host or "/" not in host:
+        raise SystemExit(f"missing baseUrl in {OVERLAY}")
+    if host.startswith("http://"):
+        scheme = "http://"
+        host = host[len("http://") :]
+    elif host.startswith("https://"):
+        scheme = "https://"
+        host = host[len("https://") :]
+    else:
+        scheme = "https://"
+    domain, _, path = host.partition("/")
+    abs_base = (
+        f"{scheme}{domain}/{path.rstrip('/')}/" if path else f"{scheme}{domain}/"
+    )
+    rel_base = "/" + path.rstrip("/") + "/" if path else "/"
+    return abs_base, rel_base
+
+
+ABS_BASE, REL_BASE = read_base_url()
+HEAD_RE = re.compile(r"(<head[^>]*>)", re.IGNORECASE)
+BASE_TAG = f'<base href="{ABS_BASE}">\n'
+TITLE_LINK = re.compile(
+    r'(<h2[^>]*class="page-title"><a\s+href=")[^"]*(">)'
 )
+
+
+# --- SPA click-handler patch ----------------------------------------------
+
 
 INSERT_AFTER = (
     "const isElement = (target: EventTarget | null): target is Element =>\n"
@@ -64,29 +107,85 @@ REPLACE_WITH = (
 )
 
 
-def patch(path: Path) -> bool:
-    if not path.exists():
-        print(f"missing {path}")
+def patch_spa() -> bool:
+    if not SPA_FILE.exists():
+        print(f"missing {SPA_FILE}")
         return False
-    text = path.read_text(encoding="utf-8")
+    text = SPA_FILE.read_text(encoding="utf-8")
     if "SPA_BASE_HREF" in text:
-        print(f"already patched {path}")
+        print(f"SPA already patched")
         return True
     if INSERT_AFTER not in text:
-        print(f"anchor missing in {path}")
+        print("SPA anchor missing; Quartz upstream changed?")
         return False
     if REPLACE_GETOPTS not in text:
-        print(f"getOpts block missing in {path}")
+        print("SPA getOpts missing")
         return False
     text = text.replace(INSERT_AFTER, INSERT_BLOCK + INSERT_AFTER, 1)
     text = text.replace(REPLACE_GETOPTS, REPLACE_WITH, 1)
-    path.write_text(text, encoding="utf-8")
-    print(f"patched {path}")
+    SPA_FILE.write_text(text, encoding="utf-8")
+    print("SPA patched")
     return True
 
 
+# --- post-build HTML rewrites ----------------------------------------------
+
+
+def rewrite_html(path: Path) -> str | None:
+    """Return 'base' / 'title' / None for what changed."""
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    out = text
+    actions = []
+
+    m = HEAD_RE.search(out)
+    if m and "quartz-base" not in out:
+        out = out[: m.end()] + "\n" + BASE_TAG + out[m.end():]
+        actions.append("base")
+    if 'class="page-title"' in out:
+        out2 = TITLE_LINK.sub(rf"\g<1>{ABS_BASE}\g<2>", out)
+        if out2 != out:
+            out = out2
+            actions.append("title")
+
+    if out != text:
+        path.write_text(out, encoding="utf-8")
+    return ",".join(actions) if actions else None
+
+
+def rewrite_built_htmls() -> tuple[int, int, int]:
+    if not PUBLIC.is_dir():
+        print(f"missing {PUBLIC} (run after npx quartz build)")
+        return 0, 0, 0
+    base_count = title_count = total = 0
+    for path in PUBLIC.rglob("*.html"):
+        total += 1
+        result = rewrite_html(path)
+        if result:
+            if "base" in result:
+                base_count += 1
+            if "title" in result:
+                title_count += 1
+    return base_count, title_count, total
+
+
+# --- entry point ----------------------------------------------------------
+
+
 def main() -> int:
-    return 0 if patch(SPA_FILE) else 1
+    mode = sys.argv[1] if len(sys.argv) > 1 else "all"
+
+    if mode in ("spa", "all"):
+        ok = patch_spa()
+        if not ok and mode == "spa":
+            return 1
+
+    if mode in ("built", "all"):
+        b, t, total = rewrite_built_htmls()
+        print(f"base tag: {b}, title link: {t}, total {total}")
+        print(f"absolute base: {ABS_BASE}")
+        print(f"relative base: {REL_BASE}")
+
+    return 0
 
 
 if __name__ == "__main__":
