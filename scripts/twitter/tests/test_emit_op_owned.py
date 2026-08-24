@@ -516,5 +516,137 @@ class OrphansNotReusedTests(unittest.TestCase):
         )
 
 
+class SpinePrefersSameAuthorTests(unittest.TestCase):
+    """The spine walker must prefer the OP's own same-handle chain
+    over cross-author replies. When the OP has a self-reply plus
+    other-author replies to the same post, the self-reply continues
+    the spine and the cross-author replies become branches."""
+
+    def setUp(self) -> None:
+        self.tmp = Path(tempfile.mkdtemp(prefix="spine_same_author_"))
+        self.input_dir = self.tmp / "input"
+        self.input_dir.mkdir()
+        self.vault = self.tmp / "vault"
+        (self.vault / "archive" / "threads").mkdir(parents=True)
+        (self.vault / "assets" / "threads").mkdir(parents=True)
+
+    def tearDown(self) -> None:
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_op_with_self_reply_continues_spine(self) -> None:
+        """OP has children including a self-reply and a cross-author
+        reply that arrived FIRST chronologically. Spine should walk
+        the OP's self-reply chain, not stop at the cross-author reply.
+        """
+        # OP at 00:00. won3d replies at 00:01 (cross-author, earliest).
+        # Lottes self-replies at 00:05 (later, same handle, continues
+        # the spine).
+        thread_data = {
+            "root_post_id": "1000",
+            "source_url": "https://x.com/i/status/1000",
+            "posts": [
+                {
+                    "post_id": "1000",
+                    "author": "OP",
+                    "handle": "OP",
+                    "text": "OP post",
+                    "timestamp": "2023-01-01 00:00:00",
+                    "media_urls": [],
+                    "reply_to_id": None,
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+                {
+                    "post_id": "1001",
+                    "author": "won3d",
+                    "handle": "won3d",
+                    "text": "early reply from outsider",
+                    "timestamp": "2023-01-01 00:01:00",
+                    "media_urls": [],
+                    "reply_to_id": "1000",
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+                {
+                    "post_id": "1002",
+                    "author": "OP",
+                    "handle": "OP",
+                    "text": "OP self-reply continues the thread",
+                    "timestamp": "2023-01-01 00:05:00",
+                    "media_urls": [],
+                    "reply_to_id": "1000",
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+                {
+                    "post_id": "1003",
+                    "author": "OP",
+                    "handle": "OP",
+                    "text": "OP continues again",
+                    "timestamp": "2023-01-01 00:10:00",
+                    "media_urls": [],
+                    "reply_to_id": "1002",
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                },
+            ],
+        }
+        (self.input_dir / "thread_data.json").write_text(
+            json.dumps(thread_data, indent=2),
+            encoding="utf-8",
+            newline="\n",
+        )
+
+        emit(
+            input_dir=self.input_dir,
+            vault=self.vault,
+            slug=None,
+            archived="2026-08-24",
+            force=True,
+        )
+
+        archive_root = self.vault / "archive" / "threads"
+        thread_dir = next(
+            d for d in (archive_root / "OP").iterdir() if d.is_dir()
+        )
+        text = (thread_dir / "index.md").read_text(encoding="utf-8")
+        # The spine should have 3 OP posts in order: 1000, 1002, 1003.
+        # won3d's post 1001 should be a branch (separate file).
+        self.assertIn("**1/**", text)
+        self.assertIn("**2/**", text)
+        self.assertIn("**3/**", text)
+        # won3d's text appears only in the branch file, not in the spine.
+        won3d_spine_mentions = text.count("early reply from outsider")
+        self.assertEqual(won3d_spine_mentions, 0)
+        # A branch file for won3d exists.
+        branch_files = [
+            f for f in thread_dir.iterdir()
+            if f.is_file() and f.name != "index.md"
+        ]
+        self.assertEqual(len(branch_files), 1)
+        branch_text = branch_files[0].read_text(encoding="utf-8")
+        self.assertIn("early reply from outsider", branch_text)
+
+
 if __name__ == "__main__":
     unittest.main()

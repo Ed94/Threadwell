@@ -45,18 +45,22 @@ def spine_from_tip(thread: ThreadData, tip_id: str) -> list[str]:
 
 
 def spine_ids(thread: ThreadData) -> list[str]:
-    """Walk the linear reply chain from the OP (the post with
-    `reply_to_id == None`) down through `children_map`, picking the
-    first child at each level (already sorted by `(timestamp,
-    post_id)`).
+    """Walk the OP's own chain down through `children_map`.
 
-    The walk crosses handle boundaries. For a chain that alternates
-    authors (e.g., rianflo ↔ NOTimothyLottes), every post on the
-    chain is included. The archive dir for the thread is owned by
-    the OP — the first post in the returned list.
+    At each level, prefer a same-handle child (to continue the OP's
+    own chain) over any child. Fall back to the earliest child when
+    no same-handle child exists.
 
-    If no post has `reply_to_id == None`, the first post in
-    `thread.posts` is used as a fallback start.
+    The OP is the post with `reply_to_id == None`. The returned
+    list is the OP's chain: the OP at index 0, then same-author
+    replies in chronological order. Cross-author replies to spine
+    posts are branches (rendered as separate files by the emit).
+
+    For a thread where the OP has no self-replies but cross-author
+    replies (e.g., a post that attracted only outside replies), the
+    walker picks the earliest child to start a chain — that branch
+    becomes the only spine entry after the OP, and any other
+    children of the OP become branches.
     """
     ids = by_id(thread)
     kids = children_map(thread)
@@ -65,13 +69,15 @@ def spine_ids(thread: ThreadData) -> list[str]:
         start = ops[0]
     else:
         start = thread.posts[0].post_id
+    handle = ids[start].handle
     out = [start]
     cur = start
     while True:
         children = kids.get(cur, [])
         if not children:
             break
-        cur = children[0]
+        same = [c for c in children if ids[c].handle == handle]
+        cur = same[0] if same else children[0]
         out.append(cur)
     return out
 
