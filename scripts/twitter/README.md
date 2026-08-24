@@ -19,7 +19,7 @@ python C:\projects\Threadwell\scripts\twitter\tw.py migrate-media --all --apply
 
 `paths.py` sets vault = two parents above this file, dumps = `../manual_slop/docs/twitter`, scratch = `../Threadwell-ai/scratch`.
 
-`refresh` = refetch (cookies) + ingest + emit `--force` + media_merge. `--tip` treats `--id` as the tip (climb same-handle `reply_to`). Does not flip `draft`. Does not commit. Frozen ids abort.
+`refresh` = refetch (cookies) + ingest + emit `--force` + media_merge. `--tip` treats `--id` as the tip and walks back to the OP regardless of handle. Each thread emits exactly one archive directory owned by the OP (the post with `reply_to_id == None`); cross-author responders do not get a directory. Does not flip `draft`. Does not commit. Frozen ids abort.
 
 Usual publish path after you like the note:
 

@@ -401,7 +401,8 @@ def _upsert_wikilink(path: Path, target: str) -> None:
         match = _WIKILINK_ITEM.match(line)
         if match:
             name = match.group(1)
-            if name in real_dirs or not real_dirs:
+            # wikilinks are vault-root paths; compare the basename to real_dirs
+            if name.rsplit("/", 1)[-1] in real_dirs or not real_dirs:
                 if name not in names:
                     names.append(name)
         else:

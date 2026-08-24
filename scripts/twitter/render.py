@@ -178,6 +178,68 @@ def render_spine(
     return "\n".join(chunks).rstrip() + "\n"
 
 
+def render_per_author_spine(
+    handle: str,
+    author_posts: list[PostData],
+    ids: dict[str, PostData],
+    archived: str,
+    conversation_links: list[str],
+    media_by_post: dict[str, tuple[str, ...]] | None = None,
+) -> str:
+    """Render a per-author archive note.
+
+    `author_posts` is the author's posts in chronological order.
+    Cross-author parents appear as blockquotes immediately before the
+    post that replies to them. `conversation_links` is a list of
+    vault-root wikilink targets for the other authors' directories
+    in the same conversation; if non-empty, a `## Conversation`
+    section is appended.
+
+    The first post in `author_posts` is treated as the spine root for
+    the frontmatter. Its title is derived from its first line.
+    """
+    if not author_posts:
+        raise ValueError(
+            "render_per_author_spine requires a non-empty author_posts list"
+        )
+    first = author_posts[0]
+    title = _title_text(first.text)
+    source_url = _status_url(first.handle, first.post_id)
+    chunks: list[str] = [
+        _frontmatter(
+            title=title,
+            source_url=source_url,
+            author=first.author,
+            handle=first.handle,
+            post_id=first.post_id,
+            date=date_prefix(first.timestamp),
+            archived=archived,
+            spine_handle=first.handle,
+            in_reply_to="",
+        ),
+        "",
+        _source_block(first),
+        "",
+        "## Thread",
+        "",
+    ]
+    for n, post in enumerate(author_posts, 1):
+        parent_id = post.reply_to_id
+        if parent_id:
+            parent = ids.get(parent_id)
+            if parent is not None and parent.handle != handle:
+                chunks.append(_blockquote(parent.text))
+                chunks.append("")
+        chunks.append(_post_block(n, post, media_by_post))
+    if conversation_links:
+        chunks.append("## Conversation")
+        chunks.append("")
+        for link in conversation_links:
+            chunks.append(f"- [[{link}]]")
+        chunks.append("")
+    return "\n".join(chunks).rstrip() + "\n"
+
+
 def render_branch(
     thread: ThreadData,
     branch_root_id: str,

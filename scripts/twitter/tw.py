@@ -105,6 +105,46 @@ def locate(post_id: str) -> tuple[Path | None, Path | None]:
     return None, None
 
 
+def locate_all(post_id: str) -> list[tuple[Path, Path | None]]:
+    """Return every (asset_dir, note_dir) pair whose media.json,
+    thread_data.json, or captured posts contain post_id. Used by emit
+    to find per-author asset dirs after a cross-author refresh."""
+    assets_root = VAULT / "assets" / "threads"
+    notes_root = VAULT / "archive" / "threads"
+    if not assets_root.is_dir():
+        return []
+    out: list[tuple[Path, Path | None]] = []
+    for media in assets_root.rglob("media.json"):
+        try:
+            data = json.loads(media.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        hit = data.get("root_post_id") == post_id
+        if not hit:
+            for item in data.get("items") or []:
+                if str(item.get("post_id") or "") == post_id:
+                    hit = True
+                    break
+        if not hit:
+            td = media.parent / "thread_data.json"
+            if td.is_file():
+                try:
+                    t = json.loads(td.read_text(encoding="utf-8"))
+                except json.JSONDecodeError:
+                    t = {}
+                if t.get("root_post_id") == post_id:
+                    hit = True
+                else:
+                    hit = any(
+                        p.get("post_id") == post_id for p in (t.get("posts") or [])
+                    )
+        if hit:
+            rel = media.parent.relative_to(assets_root)
+            notes = notes_root / rel
+            out.append((media.parent, notes if notes.is_dir() else None))
+    return out
+
+
 def run(cmd: list[str]) -> None:
     print(">", " ".join(cmd))
     subprocess.check_call(cmd)
@@ -208,9 +248,34 @@ def cmd_emit(post_id: str, tip: bool, slug: str | None) -> int:
     if slug:
         cmd.extend(["--slug", slug])
     run(cmd)
-    assets, _notes = locate(post_id)
-    if assets is not None:
-        run([sys.executable, str(HERE / "media_merge.py"), "--thread", str(assets)])
+    # Cross-author threads emit one asset dir per author. The tip's
+    # post_id is only in the tip's author's asset dir; the other
+    # authors' per-author dirs are missed by a tip-only lookup.
+    # Iterate every post in the source dump and union the matches.
+    seen: set[Path] = set()
+    try:
+        thread_data = json.loads(
+            (src / "thread_data.json").read_text(encoding="utf-8")
+        )
+        post_ids = {
+            str(p.get("post_id"))
+            for p in thread_data.get("posts") or []
+        }
+    except (json.JSONDecodeError, OSError):
+        post_ids = {post_id}
+    for pid in post_ids:
+        for asset_dir, _ in locate_all(pid):
+            if asset_dir in seen:
+                continue
+            seen.add(asset_dir)
+            run(
+                [
+                    sys.executable,
+                    str(HERE / "media_merge.py"),
+                    "--thread",
+                    str(asset_dir),
+                ]
+            )
     return 0
 
 

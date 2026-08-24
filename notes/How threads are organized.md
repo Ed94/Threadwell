@@ -30,6 +30,10 @@ A reply from someone else, or a second chain the author started from an earlier 
 
 The spine links out under the post that grew the branch. Each branch note links back to `index`.
 
+## Cross-author conversations
+
+When a thread alternates between authors (A replies to B replies to A), the archive directory is owned by the OP — the post with no parent in the chain — and the spine walks every post in chronological order regardless of handle. Cross-author posts appear inline in the spine. Responder handles do not get their own directories; the conversation lives in one folder under the OP's name.
+
 ## Tags
 
 Every imported thread starts with `archive`, `twitter`, and the author's handle. Topic tags (`vulkan`, `crt`, `alsa`, …) are added by hand when the thread is reviewed.

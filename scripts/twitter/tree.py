@@ -19,17 +19,23 @@ def children_map(thread: ThreadData) -> dict[str, list[str]]:
 
 
 def spine_from_tip(thread: ThreadData, tip_id: str) -> list[str]:
+    """Walk back from `tip_id` through `reply_to_id` to the OP (the
+    post with `reply_to_id == None` or a missing parent). Returns
+    all post ids on the linear chain in chronological order: OP at
+    index 0, tip at last.
+
+    The walk crosses handle boundaries. For a chain that alternates
+    authors, every post is included. The archive dir for the
+    thread is owned by the OP at index 0.
+    """
     ids = by_id(thread)
     if tip_id not in ids:
         raise ValueError(f"tip {tip_id} not in dump")
-    handle = ids[tip_id].handle
     chain = [tip_id]
     cur = tip_id
     while True:
         parent = ids[cur].reply_to_id
         if not parent or parent not in ids:
-            break
-        if ids[parent].handle != handle:
             break
         chain.append(parent)
         cur = parent
@@ -38,17 +44,33 @@ def spine_from_tip(thread: ThreadData, tip_id: str) -> list[str]:
 
 
 def spine_ids(thread: ThreadData) -> list[str]:
+    """Walk the linear reply chain from the OP (the post with
+    `reply_to_id == None`) down through `children_map`, picking the
+    first child at each level (already sorted by `(timestamp,
+    post_id)`).
+
+    The walk crosses handle boundaries. For a chain that alternates
+    authors (e.g., rianflo ↔ NOTimothyLottes), every post on the
+    chain is included. The archive dir for the thread is owned by
+    the OP — the first post in the returned list.
+
+    If no post has `reply_to_id == None`, the first post in
+    `thread.posts` is used as a fallback start.
+    """
     ids = by_id(thread)
     kids = children_map(thread)
-    start = thread.root_post_id if thread.root_post_id in ids else thread.posts[0].post_id
-    handle = ids[start].handle
+    ops = [p.post_id for p in thread.posts if p.reply_to_id is None]
+    if ops:
+        start = ops[0]
+    else:
+        start = thread.posts[0].post_id
     out = [start]
     cur = start
     while True:
-        same = [c for c in kids[cur] if ids[c].handle == handle]
-        if not same:
+        children = kids.get(cur, [])
+        if not children:
             break
-        cur = same[0]
+        cur = children[0]
         out.append(cur)
     return out
 
