@@ -1,10 +1,12 @@
 """Front door for common Twitter archive ops.
 
-  python C:\\projects\\Threadwell\\scripts\\twitter\\tw.py graph --id 1692565070583136348
-  python C:\\projects\\Threadwell\\scripts\\twitter\\tw.py refresh --id 1692565070583136348 --tip
-  python C:\\projects\\Threadwell\\scripts\\twitter\\tw.py lift --id 1692565070583136348 --orig
-  python C:\\projects\\Threadwell\\scripts\\twitter\\tw.py ocr --id 1692565070583136348
-  python C:\\projects\\Threadwell\\scripts\\twitter\\tw.py locate --id 1692565070583136348
+From the vault root:
+
+  python scripts/twitter/tw.py graph --id 1692565070583136348
+  python scripts/twitter/tw.py refresh --id 1692565070583136348 --tip
+  python scripts/twitter/tw.py lift --id 1692565070583136348 --orig
+  python scripts/twitter/tw.py ocr --id 1692565070583136348
+  python scripts/twitter/tw.py locate --id 1692565070583136348
 
 refresh = refetch + emit --force (--tip uses the --id as tip).
 Does not commit. Does not flip draft. Never prints cookies or userhash.
@@ -17,12 +19,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-VAULT = Path(r"C:\projects\Threadwell")
-DUMPS = Path(r"C:\projects\manual_slop\docs\twitter")
-SCRATCH = Path(r"C:\projects\Threadwell-ai\scratch")
-COOKIES = VAULT / "secrets" / "twitter_cookies.txt"
-FROZEN = HERE / "do_not_refetch.txt"
+from paths import COOKIES, DUMPS, FROZEN, HERE, SCRATCH, VAULT
 
 
 def frozen_ids() -> set[str]:

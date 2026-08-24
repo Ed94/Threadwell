@@ -20,8 +20,9 @@ import sys
 import tomllib
 from pathlib import Path
 
+from paths import VAULT as VAULT_ROOT
+
 API = "https://catbox.moe/user/api.php"
-CREDS = Path("secrets/credentials.toml")
 
 
 def load_userhash(vault: Path) -> str:
@@ -98,7 +99,7 @@ def rewrite_notes(notes_dir: Path, old_tokens: list[str], url: str) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--vault", type=Path, default=Path(r"C:\projects\Threadwell"))
+    parser.add_argument("--vault", type=Path, default=VAULT_ROOT)
     parser.add_argument("--thread", type=Path, required=True)
     parser.add_argument("--notes", type=Path, required=True)
     parser.add_argument(

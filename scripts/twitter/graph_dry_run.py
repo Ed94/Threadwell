@@ -8,6 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from twitter.models import load_thread
+from twitter.paths import SCRATCH
 from twitter.slug import slugify
 from twitter.tree import branch_roots, by_id, children_map, descendants, spine_ids
 
@@ -99,7 +100,7 @@ def main(argv: list[str] | None = None) -> int:
     thread = load_thread(path)
     text = render_ssdl(thread) + "\n\n" + render_ascii(thread) + "\n"
     out = args.input if args.input.is_dir() else args.input.parent
-    dest = Path(r"C:\projects\Threadwell-ai\scratch") / f"graph_{thread.root_post_id}.txt"
+    dest = SCRATCH / f"graph_{thread.root_post_id}.txt"
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(text, encoding="utf-8")
     sys.stdout.buffer.write((str(dest) + "\n").encode("ascii", "replace"))
