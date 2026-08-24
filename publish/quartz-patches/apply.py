@@ -7,16 +7,27 @@ a trailing slash, the browser treats the last path segment as a file, so
 loses the `/Threadwell/` base path on GitHub Pages project deployments.
 
 Fix: compute `SPA_BASE_HREF` from `window.location`, always ending with `/`,
-and resolve relative URLs against it.
+and resolve relative URLs against it inside the SPA click handler.
 
-Idempotent: safe to re-run.
+Idempotent. Safe to re-run.
+
+Path resolution is absolute: the script lives at
+`<vault>/publish/quartz-patches/apply.py` and writes to
+`<vault>/site/quartz/components/scripts/spa.inline.ts`.
 """
 from __future__ import annotations
 
 from pathlib import Path
 
-TARGET = Path(
-    "quartz/components/scripts/spa.inline.ts"
+SCRIPT = Path(__file__).resolve()
+VAULT = SCRIPT.parents[2]
+SPA_FILE = (
+    VAULT
+    / "site"
+    / "quartz"
+    / "components"
+    / "scripts"
+    / "spa.inline.ts"
 )
 
 INSERT_AFTER = (
@@ -76,10 +87,7 @@ def patch(path: Path) -> bool:
 
 
 def main() -> int:
-    import sys
-
-    base = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(".")
-    return 0 if patch(base / TARGET) else 1
+    return 0 if patch(SPA_FILE) else 1
 
 
 if __name__ == "__main__":
