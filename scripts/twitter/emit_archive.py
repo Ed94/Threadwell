@@ -108,9 +108,54 @@ def collect_media(
                 "filename": filename,
                 "publish": False,
                 "url": None,
+                "embed": True,
             })
             by_post.setdefault(post.post_id, []).append(filename)
 
+    media_by_post = {pid: tuple(names) for pid, names in by_post.items()}
+    return items, media_by_post
+
+
+def merge_existing_media(
+    dest_dir: Path,
+    items: list[dict[str, object]],
+    media_by_post: dict[str, tuple[str, ...]],
+) -> tuple[list[dict[str, object]], dict[str, tuple[str, ...]]]:
+    """Keep CRT/OCR rows and prior lift URLs across --force emit."""
+    old_path = dest_dir / "media.json"
+    if not old_path.is_file():
+        return items, media_by_post
+    try:
+        old = json.loads(old_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return items, media_by_post
+    by_file = {str(i.get("filename") or ""): i for i in items}
+    for row in old.get("items") or []:
+        if not isinstance(row, dict):
+            continue
+        fn = str(row.get("filename") or "")
+        role = str(row.get("role") or "")
+        if role == "orig" and fn in by_file:
+            cur = by_file[fn]
+            if row.get("url"):
+                cur["url"] = row["url"]
+            if row.get("publish"):
+                cur["publish"] = row["publish"]
+            if "embed" in row:
+                cur["embed"] = row["embed"]
+            continue
+        if role in ("", "orig"):
+            continue
+        if fn in by_file:
+            continue
+        if fn and (dest_dir / fn).is_file():
+            items.append(row)
+    by_post: dict[str, list[str]] = {}
+    for item in items:
+        if item.get("role") == "orig" and item.get("embed", True):
+            by_post.setdefault(str(item.get("post_id") or ""), []).append(
+                str(item.get("filename") or "")
+            )
     media_by_post = {pid: tuple(names) for pid, names in by_post.items()}
     return items, media_by_post
 
@@ -381,6 +426,15 @@ def emit(
     if reuse_dir is None and force:
         _existing_ids, spines = collect_existing_ids(vault)
         reuse_dir = spines.get(thread.root_post_id)
+        if reuse_dir is None:
+            for post in thread.posts:
+                reuse_dir = spines.get(post.post_id)
+                if reuse_dir is not None:
+                    break
+        if reuse_dir is None and slug:
+            candidate = vault / "archive" / "threads" / handle / slug
+            if candidate.is_dir():
+                reuse_dir = candidate
 
     if reuse_dir is not None:
         dir_name = reuse_dir.name
@@ -412,6 +466,7 @@ def emit(
     asset_dir.mkdir(parents=True, exist_ok=True)
 
     items, media_by_post = collect_media(thread, input_dir, asset_dir)
+    items, media_by_post = merge_existing_media(asset_dir, items, media_by_post)
 
     branch_links = {
         rid: wiki_branch(handle, dir_name, name)

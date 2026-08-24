@@ -1,66 +1,39 @@
 # twitter
 
-Emit Threadwell archive notes from a `thread_data.json` dump. No fetch. Lift and CRT snapshot are still manual.
-
-## Emit
+Front door: `tw.py`. Individual scripts still work.
 
 ```
-python C:\projects\Threadwell\scripts\twitter\emit_archive.py --input C:\projects\manual_slop\docs\twitter\2064858927829745887 --vault C:\projects\Threadwell --slug steamos-init --archived 2026-08-23
+python C:\projects\Threadwell\scripts\twitter\tw.py locate  --id <snowflake>
+python C:\projects\Threadwell\scripts\twitter\tw.py graph   --id <snowflake>
+python C:\projects\Threadwell\scripts\twitter\tw.py refresh --id <snowflake> --tip
+python C:\projects\Threadwell\scripts\twitter\tw.py lift    --id <snowflake> --orig
+python C:\projects\Threadwell\scripts\twitter\tw.py ocr     --id <snowflake>
 ```
 
-`--tip <id>` climbs same-handle `reply_to` and uses that chain as `index.md`.
+`refresh` = refetch (cookies) + ingest + emit `--force` + media_merge. `--tip` treats `--id` as the tip (climb same-handle `reply_to`). Does not flip `draft`. Does not commit. Frozen Onat ids abort.
 
-`--all` skips a dump whose `post_id` already exists unless `--force`.
+Usual publish path after you like the note:
 
-`--force` rewrites `media.json` to orig-only. Restore CRT/OCR rows with `media_merge.py`.
+1. `tw.py graph --id …` — confirm tip vs root.
+2. `tw.py refresh --id … --tip` if the dump stored a tip as root.
+3. `tw.py lift --id … --orig` — catbox + rewrite `![](https://…)`.
+4. You set `draft: false` and commit.
 
-## Tip graph (no vault writes)
+Site wikilinks must be `[[archive/threads/<handle>/<date-slug>]]`. Short `[[slug]]` 404s.
 
-```
-python C:\projects\Threadwell\scripts\twitter\graph_dry_run.py --input C:\projects\manual_slop\docs\twitter\<id>
-```
+## Pieces
 
-## CRT (stock slang only)
+| Script | Job |
+|---|---|
+| `tw.py` | locate / graph / refetch / emit / refresh / lift / ocr / merge |
+| `graph_dry_run.py` | tip graph, no vault writes |
+| `ingest_gallery.py` | gallery-dl JSON → `thread_data.json` |
+| `emit_archive.py` | JSON → notes + assets. `--force` now keeps CRT/OCR rows and prior catbox URLs |
+| `lift_catbox.py` | upload `publish: true` (or `--orig`) |
+| `ocr_pass.py` | Umi HTTP `:1224` / tesseract / Windows OCR |
+| `media_embed.py` | `--show crt` / `--attach-ocr` |
+| `media_merge.py` | restore extra rows if you still need it |
+| `crt_pass.py` | stock slang only; ShaderGlass is the look reference |
+| `do_not_refetch.txt` | Onat freeze list |
 
-`crt_pass.py` nearest-scales, then runs **unpatched** `crt-lottes-multipass.slangp` / `crt-Cyclon.slangp` via `librashader-cli`. It does not edit shaders. ShaderGlass snapshot is still the look reference.
-
-```
-python C:\projects\Threadwell\scripts\twitter\crt_pass.py --in ORIG.png --out CRT.png --preset cyclon --nn 3 --shader-scale 100% --dry-run
-```
-
-`--nn 3` is Affinity 300%. `--shader-scale` is librashader `-d`. `--shaderglass` only launches the .sgp.
-
-If the plate is wrong, snapshot ShaderGlass yourself and drop `*_crt.png` next to the orig, then `media_merge.py`.
-
-## OCR
-
-```
-python C:\projects\Threadwell\scripts\twitter\ocr_pass.py --in ORIG.png --media-json THREAD\media.json
-```
-
-Prefers `umi-ocr` (`scoop install extras/umi-ocr`), then tesseract, then Windows.Media.Ocr. Writes `*_ocr.txt`. ShareX has no OCR CLI.
-
-## Select CRT vs orig in the note
-
-```
-python C:\projects\Threadwell\scripts\twitter\media_embed.py --thread ASSETS_THREAD --notes ARCHIVE_THREAD --media-id GBgHT_2WIAAKuNq --show crt
-python C:\projects\Threadwell\scripts\twitter\media_embed.py --thread ASSETS_THREAD --notes ARCHIVE_THREAD --media-id GBgHT_2WIAAKuNq --attach-ocr
-```
-
-## Lift to catbox
-
-```
-python C:\projects\Threadwell\scripts\twitter\lift_catbox.py --thread ASSETS_THREAD --notes ARCHIVE_THREAD --orig
-```
-
-Reads `[catbox] userhash` from `secrets/credentials.toml`. Never prints it. Rewrites `Media (not lifted): \`file\`` to `![](https://files.catbox.moe/…)`.
-
-## Restore extra media.json rows
-
-```
-python C:\projects\Threadwell\scripts\twitter\media_merge.py --thread ASSETS_THREAD
-```
-
-## Frozen Onat
-
-`do_not_refetch.txt` — do not overwrite those three dumps.
+Secrets: `secrets/twitter_cookies.txt`, `secrets/credentials.toml` `[catbox] userhash`. Never print them.
