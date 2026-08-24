@@ -2,9 +2,23 @@
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
+try:
+    from .media_refs import remote_markup
+except ImportError:  # pragma: no cover - script-mode import
+    if str(Path(__file__).resolve().parent) not in sys.path:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from media_refs import remote_markup
+
 from .models import PostData, ThreadData
 from .slug import date_prefix
 from .tree import by_id
+
+
+def render_media(url: str) -> str:
+    return remote_markup(url)
 
 
 def _yaml_quote(value: str) -> str:
@@ -91,7 +105,7 @@ def _post_block(
     media = (media_by_post or {}).get(post.post_id) or ()
     if media:
         parts.append("")
-        parts.append("Media (not lifted): " + " ".join(f"`{fn}`" for fn in media))
+        parts.extend(render_media(url) for url in media)
     if branch_links:
         parts.append("")
         parts.append("Branches: " + ", ".join(f"[[{name}]]" for name in branch_links))

@@ -20,23 +20,45 @@ import subprocess
 import sys
 from pathlib import Path
 
+import sys
+from pathlib import Path
+
+_HERE = Path(__file__).resolve().parent
+if str(_HERE) not in sys.path:
+    sys.path.insert(0, str(_HERE))
+
 from paths import COOKIES, DUMPS, FROZEN, HERE, SCRATCH, VAULT
+
+try:
+    from frozen import frozen_match, load_frozen_ids, require_writable
+    from backup_assets import backup_thread, load_destination_root
+    from catbox_client import load_userhash, upload_file
+    from fallback_media import activate_fallback, find_existing_fallback, restore_origin
+    from media_audit import audit_thread
+    from media_migrate import migrate_legacy_thread
+except ImportError:  # pragma: no cover - script-mode import
+    from frozen import frozen_match, load_frozen_ids, require_writable
+    from backup_assets import backup_thread, load_destination_root
+    from catbox_client import load_userhash, upload_file
+    from fallback_media import activate_fallback, find_existing_fallback, restore_origin
+    from media_audit import audit_thread
+    from media_migrate import migrate_legacy_thread
 
 
 def frozen_ids() -> set[str]:
-    out: set[str] = set()
-    if not FROZEN.is_file():
-        return out
-    for line in FROZEN.read_text(encoding="utf-8").splitlines():
-        s = line.strip()
-        if s and not s.startswith("#"):
-            out.add(s)
-    return out
+    return load_frozen_ids(FROZEN)
 
 
 def check_frozen(post_id: str) -> None:
+    direct = dump_dir(post_id)
+    assets, _notes = locate(post_id)
+    candidate = assets if assets is not None else direct
+    if candidate.is_dir():
+        match = frozen_match(candidate, frozen_ids())
+        if match is not None:
+            raise SystemExit(f"frozen: skipped ({match})")
     if post_id in frozen_ids():
-        raise SystemExit(f"frozen Onat dump {post_id} — will not refetch/overwrite")
+        raise SystemExit(f"frozen: skipped ({post_id})")
 
 
 def dump_dir(post_id: str) -> Path:
@@ -166,6 +188,7 @@ def cmd_refetch(post_id: str) -> int:
 
 
 def cmd_emit(post_id: str, tip: bool, slug: str | None) -> int:
+    check_frozen(post_id)
     src = scratch_dir(post_id)
     if not (src / "thread_data.json").is_file():
         src = dump_dir(post_id)
@@ -237,6 +260,7 @@ def cmd_ocr(post_id: str, engine: str) -> int:
 
 
 def cmd_merge(post_id: str) -> int:
+    check_frozen(post_id)
     assets, _notes = locate(post_id)
     if assets is None:
         raise SystemExit(f"no assets thread for {post_id}")
@@ -245,6 +269,7 @@ def cmd_merge(post_id: str) -> int:
 
 
 def cmd_refresh(post_id: str, tip: bool, slug: str | None) -> int:
+    check_frozen(post_id)
     cmd_refetch(post_id)
     cmd_graph(post_id)
     cmd_emit(post_id, tip=tip, slug=slug)
@@ -301,6 +326,7 @@ def cmd_sync(handle: str | None) -> int:
 
 
 def cmd_publish(post_id: str) -> int:
+    check_frozen(post_id)
     _assets, notes = locate(post_id)
     if notes is None:
         raise SystemExit(f"no vault thread for {post_id}")
@@ -321,7 +347,113 @@ def cmd_publish(post_id: str) -> int:
     return 0
 
 
-def main(argv: list[str] | None = None) -> int:
+def _now_iso() -> str:
+    from datetime import datetime, timezone
+
+    return (
+        datetime.now(timezone.utc)
+        .replace(microsecond=0)
+        .isoformat()
+        .replace("+00:00", "Z")
+    )
+
+
+def cmd_migrate_media(args) -> int:
+    if bool(args.id) == bool(args.all_root):
+        raise SystemExit("migrate-media requires exactly one of --id or --all")
+    if args.id:
+        asset = DUMPS / args.id / "thread_data.json"
+        if not asset.is_file():
+            scratch = SCRATCH / f"refetch_{args.id}"
+            if not (scratch / "thread_data.json").is_file():
+                raise SystemExit(f"no thread_data.json for {args.id}")
+        assets, note_dir = locate(args.id)
+        if assets is None or note_dir is None:
+            raise SystemExit(f"no vault thread for {args.id}")
+        check_frozen(args.id)
+        result = migrate_legacy_thread(assets, note_dir, now=_now_iso(), apply=args.apply)
+        print(result)
+        return 0 if result.state != "blocked" else 2
+    if not args.apply:
+        print("dry-run: explicit --apply required to write")
+        return 0
+    print("corpus migrate-media --apply not yet implemented; awaiting Task 11")
+    return 0
+
+
+def cmd_audit_media(args) -> int:
+    assets, note_dir = locate(args.id)
+    if assets is None or note_dir is None:
+        raise SystemExit(f"no vault thread for {args.id}")
+    report = audit_thread(assets, note_dir, load_frozen_ids(FROZEN))
+    if report.issues:
+        for issue in report.issues:
+            print(issue)
+        return 1
+    print("audit ok")
+    return 0
+
+
+def cmd_backup(args) -> int:
+    check_frozen(args.id)
+    assets, note_dir = locate(args.id)
+    if assets is None or note_dir is None:
+        raise SystemExit(f"no vault thread for {args.id}")
+    destination_root = load_destination_root(VAULT, args.destination)
+    result = backup_thread(
+        assets,
+        assets_root=VAULT / "assets" / "threads",
+        destination_root=destination_root,
+        destination_id=args.destination,
+        now=_now_iso(),
+        require_destination_root=True,
+    )
+    print(result)
+    return 0 if result.state == "synced" else 2
+
+
+def cmd_fallback(args) -> int:
+    if not args.confirm_origin_unavailable:
+        raise SystemExit("fallback requires --confirm-origin-unavailable")
+    check_frozen(args.id)
+    assets, note_dir = locate(args.id)
+    if assets is None or note_dir is None:
+        raise SystemExit(f"no vault thread for {args.id}")
+    userhash = load_userhash(VAULT)
+    assets_root = VAULT / "assets" / "threads"
+
+    def _upload(path: Path) -> str:
+        return upload_file(path, userhash)
+
+    def _lookup(provider: str, content_hash: str) -> str | None:
+        return find_existing_fallback(assets_root, provider, content_hash)
+
+    result = activate_fallback(
+        assets,
+        note_dir,
+        media_id=args.media_id,
+        role=args.role,
+        provider=args.provider,
+        confirm_origin_unavailable=True,
+        now=_now_iso(),
+        upload=_upload,
+        lookup=_lookup,
+    )
+    print(result)
+    return 0
+
+
+def cmd_restore_origin(args) -> int:
+    check_frozen(args.id)
+    assets, note_dir = locate(args.id)
+    if assets is None or note_dir is None:
+        raise SystemExit(f"no vault thread for {args.id}")
+    restore_origin(assets, note_dir, media_id=args.media_id, now=_now_iso())
+    print("restored origin")
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
     for name in (
@@ -352,6 +484,51 @@ def main(argv: list[str] | None = None) -> int:
         "sync", help="rebuild handle-index wikilinks from actual folder listing"
     )
     sync.add_argument("--handle", default=None, help="single handle, else all")
+
+    migrate = sub.add_parser(
+        "migrate-media", help="convert legacy media.json to canonical locations"
+    )
+    migrate.add_argument("--id", default=None)
+    migrate.add_argument("--all", dest="all_root", action="store_true")
+    migrate.add_argument("--apply", action="store_true")
+
+    audit = sub.add_parser(
+        "audit-media", help="local integrity and reference check"
+    )
+    audit.add_argument("--id", required=True)
+    audit.add_argument("--check-origin", action="store_true")
+    audit.add_argument("--record-checks", action="store_true")
+
+    backup_p = sub.add_parser(
+        "backup", help="sparse, hash-verified copy of one thread asset dir"
+    )
+    backup_p.add_argument("--id", required=True)
+    backup_p.add_argument("--destination", default="cozy")
+
+    fallback = sub.add_parser(
+        "fallback", help="upload one confirmed fallback host selection"
+    )
+    fallback.add_argument("--id", required=True)
+    fallback.add_argument("--media-id", required=True)
+    fallback.add_argument("--role", default="orig")
+    fallback.add_argument(
+        "--provider", default="catbox", choices=("catbox",)
+    )
+    fallback.add_argument(
+        "--confirm-origin-unavailable", action="store_true"
+    )
+
+    restore = sub.add_parser(
+        "restore-origin", help="select the immutable origin again"
+    )
+    restore.add_argument("--id", required=True)
+    restore.add_argument("--media-id", required=True)
+
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = build_parser()
     args = parser.parse_args(argv)
     post_id = getattr(args, "id", None)
     if args.cmd == "locate":
@@ -374,6 +551,16 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_publish(post_id)
     if args.cmd == "sync":
         return cmd_sync(handle=args.handle)
+    if args.cmd == "migrate-media":
+        return cmd_migrate_media(args)
+    if args.cmd == "audit-media":
+        return cmd_audit_media(args)
+    if args.cmd == "backup":
+        return cmd_backup(args)
+    if args.cmd == "fallback":
+        return cmd_fallback(args)
+    if args.cmd == "restore-origin":
+        return cmd_restore_origin(args)
     raise SystemExit(f"unknown {args.cmd}")
 
 

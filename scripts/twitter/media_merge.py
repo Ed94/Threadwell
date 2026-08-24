@@ -9,6 +9,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROLE_SUFFIX = {
@@ -46,8 +48,19 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     media_path = args.thread / "media.json"
     data = json.loads(media_path.read_text(encoding="utf-8"))
+    if data.get("schema_version") != 2:
+        raise SystemExit(
+            "legacy media.json requires: tw.py migrate-media --id <id> --apply"
+        )
+    try:
+        from media_manifest import atomic_write_json, upsert_derived_item
+    except ImportError:  # pragma: no cover - script-mode import
+        from .media_manifest import atomic_write_json, upsert_derived_item
+
+    now = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     items = list(data.get("items") or [])
-    have = {(i.get("filename"), i.get("role")) for i in items}
+    have = {(str(i.get("filename") or ""), str(i.get("role") or "")) for i in items}
+    handles = {str(i.get("media_id") or ""): str(i.get("handle") or "") for i in items}
     added = 0
     for path in sorted(args.thread.iterdir()):
         role = role_of(path.name)
@@ -56,25 +69,20 @@ def main(argv: list[str] | None = None) -> int:
         if (path.name, role) in have:
             continue
         post_id, media_id = parse_ids(path.name)
-        handle = ""
-        for item in items:
-            if item.get("media_id") == media_id:
-                handle = str(item.get("handle") or "")
-                break
-        items.append({
-            "post_id": post_id,
-            "media_id": media_id,
-            "handle": handle,
-            "role": role,
-            "filename": path.name,
-            "publish": False,
-            "url": None,
-            "embed": False,
-        })
+        handle = handles.get(media_id, "")
+        upsert_derived_item(
+            data,
+            post_id=post_id,
+            media_id=media_id,
+            handle=handle,
+            role=role,
+            filename=path.name,
+            asset_dir=args.thread,
+            now=now,
+        )
         added += 1
         print(f"restore {path.name} role={role}")
-    data["items"] = items
-    media_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    atomic_write_json(media_path, data)
     print(f"added {added} -> {media_path}")
     return 0
 

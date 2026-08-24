@@ -21,3 +21,4 @@ assets/*
 secrets/*
 !secrets/README.md
 scripts/twitter/__pycache__
+scripts/twitter/tests/__pycache__

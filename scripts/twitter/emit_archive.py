@@ -14,17 +14,121 @@ from urllib.parse import parse_qs, unquote, urlparse
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from twitter.models import ThreadData, load_thread
-from twitter.render import render_branch, render_spine
-from twitter.slug import branch_file_name, date_prefix, thread_dir_name
-from twitter.tree import (
-    by_id,
-    branch_roots,
-    children_map,
-    descendants,
-    spine_from_tip,
-    spine_ids,
-)
+try:
+    from twitter.media_manifest import (
+        atomic_write_json,
+        find_location,
+        item_key,
+        merge_manifest_items,
+        new_original_item,
+        selected_url,
+    )
+    from twitter.media_refs import remote_markup
+    from twitter.models import ThreadData, load_thread
+    from twitter.render import render_branch, render_spine
+    from twitter.slug import branch_file_name, date_prefix, thread_dir_name
+    from twitter.tree import (
+        by_id,
+        branch_roots,
+        children_map,
+        descendants,
+        spine_from_tip,
+        spine_ids,
+    )
+except ImportError:  # pragma: no cover - script-mode import
+    from media_manifest import (
+        atomic_write_json,
+        find_location,
+        item_key,
+        merge_manifest_items,
+        new_original_item,
+        selected_url,
+    )
+    from media_refs import remote_markup
+    from models import ThreadData, load_thread
+    from render import render_branch, render_spine
+    from slug import branch_file_name, date_prefix, thread_dir_name
+    from tree import (
+        by_id,
+        branch_roots,
+        children_map,
+        descendants,
+        spine_from_tip,
+        spine_ids,
+    )
+
+
+def _frontmatter_lines(text: str) -> tuple[list[str], str]:
+    if not text.startswith("---\n"):
+        return [], text
+    end = text.find("\n---", 4)
+    if end < 0:
+        return [], text
+    return text[4:end].splitlines(), text[end + 4 :]
+
+
+def _tag_values(lines: list[str]) -> list[str]:
+    tags: list[str] = []
+    in_tags = False
+    for line in lines:
+        if line == "tags:":
+            in_tags = True
+            continue
+        if in_tags and line.startswith("  - "):
+            tags.append(line[4:])
+            continue
+        if in_tags and line and not line.startswith(" "):
+            break
+    return tags
+
+
+def preserve_review_state(
+    old: str,
+    fresh: str,
+    *,
+    mechanical_tags: set[str],
+) -> str:
+    old_lines, _old_body = _frontmatter_lines(old)
+    fresh_lines, fresh_body = _frontmatter_lines(fresh)
+    if not old_lines or not fresh_lines:
+        return fresh
+    old_draft = next(
+        (line for line in old_lines if line.startswith("draft: ")),
+        "draft: true",
+    )
+    reviewed = [tag for tag in _tag_values(old_lines) if tag not in mechanical_tags]
+    output: list[str] = []
+    in_tags = False
+    inserted_reviewed = False
+    for line in fresh_lines:
+        if line.startswith("draft: "):
+            output.append(old_draft)
+            continue
+        if line == "tags:":
+            in_tags = True
+            output.append(line)
+            continue
+        if in_tags and line.startswith("  - "):
+            output.append(line)
+            continue
+        if in_tags and not inserted_reviewed:
+            output.extend(f"  - {tag}" for tag in reviewed if f"  - {tag}" not in output)
+            inserted_reviewed = True
+            in_tags = False
+        output.append(line)
+    if in_tags and not inserted_reviewed:
+        output.extend(f"  - {tag}" for tag in reviewed if f"  - {tag}" not in output)
+    return "---\n" + "\n".join(output) + "\n---" + fresh_body
+
+
+def missing_local_media(items: list[dict[str, object]]) -> list[str]:
+    missing: list[str] = []
+    for item in items:
+        local = find_location(item, "local")
+        if local is not None and local.get("integrity") == "missing":
+            post_id, media_id, role = item_key(item)
+            missing.append(f"{post_id}/{media_id}/{role}")
+    return missing
 
 _POST_ID_LINE = re.compile(r'^post_id:\s*"?([^"\s]+)"?\s*$')
 _WIKILINK_ITEM = re.compile(r"^- \[\[([^\]|]+)\]\]\s*$")
@@ -36,6 +140,7 @@ class EmitResult:
     handle: str
     dir_name: str
     branch_count: int
+    missing_media_count: int
 
 
 def _url_media_id(url: str, index: int) -> str:
@@ -80,11 +185,11 @@ def collect_media(
     thread: ThreadData,
     input_dir: Path,
     dest_dir: Path,
-) -> tuple[list[dict[str, object]], dict[str, tuple[str, ...]]]:
+    *,
+    now: str,
+) -> list[dict[str, object]]:
     unused = _media_files(input_dir / "media")
     items: list[dict[str, object]] = []
-    by_post: dict[str, list[str]] = {}
-
     for post in thread.posts:
         for index, url in enumerate(post.media_urls, start=1):
             media_id = _url_media_id(url, index)
@@ -97,67 +202,60 @@ def collect_media(
             else:
                 ext = _url_ext(url) or "bin"
             filename = f"{post.post_id}_{media_id}_orig.{ext}"
+            local_path = dest_dir / filename
             if src is not None:
                 dest_dir.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(src, dest_dir / filename)
-            items.append({
-                "post_id": post.post_id,
-                "media_id": media_id,
-                "handle": post.handle,
-                "role": "orig",
-                "filename": filename,
-                "publish": False,
-                "url": None,
-                "embed": True,
-            })
-            by_post.setdefault(post.post_id, []).append(filename)
+                shutil.copy2(src, local_path)
+            items.append(
+                new_original_item(
+                    post_id=post.post_id,
+                    media_id=media_id,
+                    handle=post.handle,
+                    origin_url=url,
+                    filename=filename,
+                    local_path=local_path,
+                    now=now,
+                )
+            )
+    return items
 
-    media_by_post = {pid: tuple(names) for pid, names in by_post.items()}
-    return items, media_by_post
+
+def selected_media_by_post(
+    items: list[dict[str, object]],
+) -> dict[str, tuple[str, ...]]:
+    grouped: dict[str, list[str]] = {}
+    for item in items:
+        if not item.get("embed"):
+            continue
+        url = selected_url(item)
+        if url is not None:
+            grouped.setdefault(str(item.get("post_id") or ""), []).append(url)
+    return {post_id: tuple(urls) for post_id, urls in grouped.items()}
 
 
 def merge_existing_media(
     dest_dir: Path,
     items: list[dict[str, object]],
-    media_by_post: dict[str, tuple[str, ...]],
-) -> tuple[list[dict[str, object]], dict[str, tuple[str, ...]]]:
-    """Keep CRT/OCR rows and prior lift URLs across --force emit."""
+) -> list[dict[str, object]]:
+    """Merge existing derived/fallback rows with fresh canonical items."""
     old_path = dest_dir / "media.json"
     if not old_path.is_file():
-        return items, media_by_post
+        return items
     try:
         old = json.loads(old_path.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
-        return items, media_by_post
-    by_file = {str(i.get("filename") or ""): i for i in items}
-    for row in old.get("items") or []:
-        if not isinstance(row, dict):
-            continue
-        fn = str(row.get("filename") or "")
-        role = str(row.get("role") or "")
-        if role == "orig" and fn in by_file:
-            cur = by_file[fn]
-            if row.get("url"):
-                cur["url"] = row["url"]
-            if row.get("publish"):
-                cur["publish"] = row["publish"]
-            if "embed" in row:
-                cur["embed"] = row["embed"]
-            continue
-        if role in ("", "orig"):
-            continue
-        if fn in by_file:
-            continue
-        if fn and (dest_dir / fn).is_file():
-            items.append(row)
-    by_post: dict[str, list[str]] = {}
-    for item in items:
-        if item.get("role") == "orig" and item.get("embed", True):
-            by_post.setdefault(str(item.get("post_id") or ""), []).append(
-                str(item.get("filename") or "")
-            )
-    media_by_post = {pid: tuple(names) for pid, names in by_post.items()}
-    return items, media_by_post
+        return items
+    if old.get("schema_version") != 2:
+        raise SystemExit(
+            "legacy media.json requires: tw.py migrate-media --id <id> --apply"
+        )
+    return merge_manifest_items(list(old.get("items") or []), items)
+
+
+def _legacy_emit_message(*args: object, **kwargs: object) -> None:
+    raise SystemExit(
+        "legacy media.json requires: tw.py migrate-media --id <id> --apply"
+    )
 
 
 def missing_parent_ids(thread: ThreadData) -> list[str]:
@@ -485,52 +583,66 @@ def emit(
     note_dir.mkdir(parents=True, exist_ok=True)
     asset_dir.mkdir(parents=True, exist_ok=True)
 
-    items, media_by_post = collect_media(thread, input_dir, asset_dir)
-    items, media_by_post = merge_existing_media(asset_dir, items, media_by_post)
+    now = archived + "T12:00:00Z"
+    fresh_items = collect_media(thread, input_dir, asset_dir, now=now)
+    items = merge_existing_media(asset_dir, fresh_items)
+    media_by_post = selected_media_by_post(items)
+    missing_keys = missing_local_media(items)
 
     branch_links = {
         rid: wiki_branch(handle, dir_name, name)
         for rid, name in branch_names.items()
     }
-    (note_dir / "index.md").write_text(
-        render_spine(
+
+    spine_text = render_spine(
+        thread,
+        spine,
+        roots,
+        branch_links,
+        archived,
+        media_by_post,
+    )
+    spine_path = note_dir / "index.md"
+    if spine_path.is_file():
+        spine_text = preserve_review_state(
+            spine_path.read_text(encoding="utf-8"),
+            spine_text,
+            mechanical_tags={"archive", "twitter", handle},
+        )
+    spine_path.write_text(spine_text, encoding="utf-8", newline="\n")
+
+    for rid in roots:
+        branch_path = note_dir / f"{branch_names[rid]}.md"
+        branch_text = render_branch(
             thread,
-            spine,
-            roots,
-            branch_links,
+            rid,
+            descendants(rid, kids),
+            first.handle,
             archived,
             media_by_post,
-        ),
-        encoding="utf-8",
-        newline="\n",
-    )
-    for rid in roots:
-        (note_dir / f"{branch_names[rid]}.md").write_text(
-            render_branch(
-                thread,
-                rid,
-                descendants(rid, kids),
-                first.handle,
-                archived,
-                media_by_post,
-                spine_wiki=wiki_thread(handle, dir_name),
-            ),
-            encoding="utf-8",
-            newline="\n",
+            spine_wiki=wiki_thread(handle, dir_name),
         )
+        if branch_path.is_file():
+            branch_text = preserve_review_state(
+                branch_path.read_text(encoding="utf-8"),
+                branch_text,
+                mechanical_tags={"archive", "twitter", handle},
+            )
+        branch_path.write_text(branch_text, encoding="utf-8", newline="\n")
 
     shutil.copy2(src, asset_dir / "thread_data.json")
     media_doc = {
+        "schema_version": 2,
         "root_post_id": thread.root_post_id,
         "items": items,
+        "mirrors": [],
     }
-    (asset_dir / "media.json").write_text(
-        json.dumps(media_doc, indent=2) + "\n",
-        encoding="utf-8",
-        newline="\n",
-    )
+    atomic_write_json(asset_dir / "media.json", media_doc)
+    gaps_text = render_gaps(thread, spine, input_kind=input_kind)
+    if missing_keys:
+        gaps_text += "\nmissing_media_local:\n" + "\n".join(missing_keys) + "\n"
     (asset_dir / "gaps.md").write_text(
-        render_gaps(thread, spine, input_kind=input_kind),
+        gaps_text,
         encoding="utf-8",
         newline="\n",
     )
@@ -543,6 +655,7 @@ def emit(
         handle=handle,
         dir_name=dir_name,
         branch_count=len(roots),
+        missing_media_count=len(missing_keys),
     )
 
 

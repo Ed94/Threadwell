@@ -18,6 +18,7 @@ import subprocess
 import sys
 import urllib.error
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 
 UMI_URL = "http://127.0.0.1:1224/api/ocr"
@@ -134,14 +135,20 @@ $result = Await ($engine.RecognizeAsync($bitmap))
 
 
 def append_media_row(media_json: Path, src: Path, dest: Path) -> None:
+    try:
+        from media_manifest import atomic_write_json, upsert_derived_item
+    except ImportError:  # pragma: no cover - script-mode import
+        from .media_manifest import atomic_write_json, upsert_derived_item
     data = json.loads(media_json.read_text(encoding="utf-8"))
-    items = data.setdefault("items", [])
-    stem = src.name
+    if data.get("schema_version") != 2:
+        raise SystemExit(
+            "legacy media.json requires: tw.py migrate-media --id <id> --apply"
+        )
     post_id = ""
     media_id = ""
     handle = ""
-    for item in items:
-        if item.get("filename") == src.name or item.get("filename") == dest.name:
+    for item in data.get("items") or []:
+        if str(item.get("filename") or "") in {src.name, dest.name}:
             post_id = str(item.get("post_id") or "")
             media_id = str(item.get("media_id") or "")
             handle = str(item.get("handle") or "")
@@ -150,21 +157,18 @@ def append_media_row(media_json: Path, src: Path, dest: Path) -> None:
         parts = src.stem.split("_")
         post_id = parts[0]
         media_id = parts[1] if len(parts) > 1 else ""
-    row = {
-        "post_id": post_id,
-        "media_id": media_id,
-        "handle": handle,
-        "role": "ocr",
-        "filename": dest.name,
-        "publish": False,
-        "url": None,
-        "embed": False,
-        "source_filename": src.name,
-    }
-    items = [i for i in items if not (i.get("role") == "ocr" and i.get("source_filename") == src.name)]
-    items.append(row)
-    data["items"] = items
-    media_json.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    asset_dir = media_json.parent
+    upsert_derived_item(
+        data,
+        post_id=post_id,
+        media_id=media_id,
+        handle=handle,
+        role="ocr",
+        filename=dest.name,
+        asset_dir=asset_dir,
+        now=datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+    )
+    atomic_write_json(media_json, data)
     print(f"updated {media_json}")
 
 
