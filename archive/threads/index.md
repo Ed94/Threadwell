@@ -15,4 +15,5 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 
 - [[archive/threads/NOTimothyLottes]]
 - [[archive/threads/VPCOMPRESSB]]
+- [[archive/threads/VictorTaelin]]
 - [[archive/threads/winning_tactic]]
