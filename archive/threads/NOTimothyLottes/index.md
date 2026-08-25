@@ -28,6 +28,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2023-12-19-multi-session-is-nice-since-the-binary-auto]]
 - [[archive/threads/NOTimothyLottes/2024-04-06-on-https-mastodon-gamedev-place-notimothylottes]]
 - [[archive/threads/NOTimothyLottes/2024-05-04-it-was-only-later-when-systems-forced-c-abi]]
+- [[archive/threads/NOTimothyLottes/2024-11-16-0-what-a-horrible-term-printf-debugging]]
 - [[archive/threads/NOTimothyLottes/2024-11-16-that-line-of-thinking-is-universal-solution-to]]
 - [[archive/threads/NOTimothyLottes/2024-11-19-after-vk-device-is-open-i-signal-a-background]]
 - [[archive/threads/NOTimothyLottes/2024-11-21-32-oh-damn-32-should-probably-stop-now-until-next]]
