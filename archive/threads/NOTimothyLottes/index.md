@@ -32,6 +32,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2024-11-16-that-line-of-thinking-is-universal-solution-to]]
 - [[archive/threads/NOTimothyLottes/2024-11-19-after-vk-device-is-open-i-signal-a-background]]
 - [[archive/threads/NOTimothyLottes/2024-11-21-32-oh-damn-32-should-probably-stop-now-until-next]]
+- [[archive/threads/NOTimothyLottes/2024-11-22-sometimes-you-only-want-to-wave-coherent-branch]]
 - [[archive/threads/NOTimothyLottes/2024-12-15-texel-buffer-is-needed-for-whatever-formats-one]]
 - [[archive/threads/NOTimothyLottes/2024-12-16-also-i-wouldnt-just-modify-an-existing-compiler]]
 - [[archive/threads/NOTimothyLottes/2024-12-16-then-there-are-rough-edges-to-texel-buffer]]
