@@ -44,6 +44,8 @@ A ... coherent (atomics)
 E ... streaming readonly (aka [E]xclusive)
 F ... streaming writeonly (aka [F]inal)
 
+Branches: [[archive/threads/NOTimothyLottes/2024-12-21-not-sure-if-this-is-the-end-of-this-story-yet-but/2024-12-21-AgileJebrim-have-you-tried-using-the-intel-cache-controls]]
+
 **4/**
 
 
