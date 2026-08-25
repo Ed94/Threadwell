@@ -24,7 +24,7 @@ class EmitMediaTests(unittest.TestCase):
         old = (
             "---\n"
             "title: Old\n"
-            "draft: false\n"
+            "draft: true\n"
             "tags:\n"
             "  - archive\n"
             "  - twitter\n"
@@ -35,7 +35,7 @@ class EmitMediaTests(unittest.TestCase):
         fresh = (
             "---\n"
             "title: Fresh\n"
-            "draft: true\n"
+            "draft: false\n"
             "tags:\n"
             "  - archive\n"
             "  - twitter\n"
@@ -43,7 +43,7 @@ class EmitMediaTests(unittest.TestCase):
             "---\n\nFresh body\n"
         )
         merged = preserve_review_state(old, fresh, mechanical_tags={"archive", "twitter", "example"})
-        self.assertIn("draft: false", merged)
+        self.assertIn("draft: true", merged)
         self.assertIn("  - vulkan", merged)
         self.assertIn("Fresh body", merged)
         self.assertNotIn("Old body", merged)

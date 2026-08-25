@@ -59,8 +59,9 @@ def _frontmatter(
     spine_handle: str,
     in_reply_to: str,
     parent_post_id: str | None = None,
+    draft: bool = False,
 ) -> str:
-    """Build the YAML frontmatter block for an archive note (always ``draft: true``)."""
+    """Build the YAML frontmatter block for an archive note. New notes default to ``draft: false`` (publish by default); pass ``draft=True`` to override."""
     lines = [
         "---",
         f"title: {_yaml_quote(title)}",
@@ -72,7 +73,7 @@ def _frontmatter(
         f"post_id: {_yaml_quote(post_id)}",
         f"date: {date}",
         f"archived: {archived}",
-        "draft: true",
+        f"draft: {'true' if draft else 'false'}",
         "tags:",
         "  - archive",
         "  - twitter",

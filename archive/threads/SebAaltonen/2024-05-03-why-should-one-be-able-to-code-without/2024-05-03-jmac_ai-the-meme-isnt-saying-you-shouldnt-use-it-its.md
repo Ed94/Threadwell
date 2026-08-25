@@ -60,18 +60,6 @@ Further inteli often gets it wrong so you have to know what ur doing. It's  !cop
 
 @the_vertigamer @SebAaltonen Plausibly you could learn all the foundations in different ways. The meme isn't prescriptive that you learn by doing it the hard way, only that you *could* do it the hard way. If you couldn't, then it suggests you haven't learned all the foundations.
 
-**8/**
-
-@jmac_ai @SebAaltonen Fair enough you've got me there. Overall I do think this debate is pretty meaningless though. It often devolves into the 'real programers code by doing {insane antiquated thing}' argument. 
-
-Which reminds me of how people used to get mad at the idea of compilers
-
-**9/**
-
-@the_vertigamer @SebAaltonen You'll get no objection from me on using tools! In fact, I am continually dissatisfied that our tools and languages are not better. 
-
-I think learning foundations is important, but progress is made by being dissatisfied with the status quo.
-
 ## Related
 
 - Spine: [[archive/threads/SebAaltonen/2024-05-03-why-should-one-be-able-to-code-without]]
