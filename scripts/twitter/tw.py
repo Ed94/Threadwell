@@ -36,6 +36,7 @@ try:
     from frozen import frozen_match, load_frozen_ids, require_writable
     from backup_assets import backup_thread, load_destination_root
     from catbox_client import load_userhash, upload_file
+    from emit_archive import apply_reslug_plan, format_reslug_plan, plan_reslug
     from fallback_media import activate_fallback, find_existing_fallback, restore_origin
     from media_audit import audit_thread
     from media_migrate import migrate_legacy_thread
@@ -43,6 +44,7 @@ except ImportError:  # pragma: no cover - script-mode import
     from frozen import frozen_match, load_frozen_ids, require_writable
     from backup_assets import backup_thread, load_destination_root
     from catbox_client import load_userhash, upload_file
+    from emit_archive import apply_reslug_plan, format_reslug_plan, plan_reslug
     from fallback_media import activate_fallback, find_existing_fallback, restore_origin
     from media_audit import audit_thread
     from media_migrate import migrate_legacy_thread
@@ -809,6 +811,19 @@ def cmd_restore_origin(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_reslug(args: argparse.Namespace) -> int:
+    """Audit or apply the one-time corpus-wide thread-directory rename."""
+    plan = plan_reslug(VAULT, load_frozen_ids(FROZEN))
+    print(format_reslug_plan(plan), end="")
+    if plan.conflicts:
+        return 2
+    if not args.apply:
+        print("dry-run: explicit --apply required to write")
+        return 0
+    apply_reslug_plan(plan, SCRATCH)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -907,6 +922,13 @@ def build_parser() -> argparse.ArgumentParser:
         help="capture this reply node's visible subtree; repeatable",
     )
 
+    reslug = sub.add_parser(
+        "reslug",
+        help="audit or apply canonical thread directory names",
+    )
+    reslug.add_argument("--all", dest="all_threads", action="store_true", required=True)
+    reslug.add_argument("--apply", action="store_true")
+
     return parser
 
 
@@ -927,6 +949,7 @@ _COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "backup": cmd_backup,
     "fallback": cmd_fallback,
     "restore-origin": cmd_restore_origin,
+    "reslug": cmd_reslug,
 }
 
 

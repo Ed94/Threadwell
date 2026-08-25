@@ -11,6 +11,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from twitter import tw as tw_module
+from twitter.emit_archive import ReslugConflict, ReslugPlan
 from twitter.models import PostData, PostMetrics, ThreadData, load_thread
 from twitter.tw import (
     _capture_ids,
@@ -24,6 +25,7 @@ from twitter.tw import (
     build_parser,
     cmd_add_branch,
     cmd_emit,
+    cmd_reslug,
 )
 
 
@@ -456,6 +458,92 @@ class TwMediaCommandTests(unittest.TestCase):
         )
         self.assertEqual(args.media_id, "AAA")
         self.assertTrue(args.confirm_origin_unavailable)
+
+
+class ReslugCommandParserTests(unittest.TestCase):
+    def test_reslug_parser_dry_run_defaults(self) -> None:
+        args = build_parser().parse_args(["reslug", "--all"])
+        self.assertEqual(args.cmd, "reslug")
+        self.assertTrue(args.all_threads)
+        self.assertFalse(args.apply)
+
+    def test_reslug_parser_apply_flag(self) -> None:
+        args = build_parser().parse_args(["reslug", "--all", "--apply"])
+        self.assertEqual(args.cmd, "reslug")
+        self.assertTrue(args.all_threads)
+        self.assertTrue(args.apply)
+
+
+class ReslugCommandDispatchTests(unittest.TestCase):
+    def test_reslug_dry_run_does_not_apply(self) -> None:
+        plan = ReslugPlan(
+            vault=Path("/tmp"),
+            moves=(),
+            noops=(),
+            frozen=(),
+            frozen_dirs=(),
+            conflicts=(),
+        )
+        with (
+            patch.object(tw_module, "plan_reslug", return_value=plan) as plan_fn,
+            patch.object(tw_module, "format_reslug_plan", return_value="") as fmt,
+            patch.object(tw_module, "apply_reslug_plan") as apply,
+            redirect_stdout(StringIO()),
+        ):
+            result = cmd_reslug(Namespace(all_threads=True, apply=False))
+        self.assertEqual(result, 0)
+        plan_fn.assert_called_once()
+        fmt.assert_called_once()
+        apply.assert_not_called()
+
+    def test_reslug_conflicts_return_two_without_apply(self) -> None:
+        plan = ReslugPlan(
+            vault=Path("/tmp"),
+            moves=(),
+            noops=(),
+            frozen=(),
+            frozen_dirs=(),
+            conflicts=(ReslugConflict(Path("/tmp/x"), "bad"),),
+        )
+        with (
+            patch.object(tw_module, "plan_reslug", return_value=plan),
+            patch.object(tw_module, "format_reslug_plan", return_value=""),
+            patch.object(tw_module, "apply_reslug_plan") as apply,
+            redirect_stdout(StringIO()),
+        ):
+            result = cmd_reslug(Namespace(all_threads=True, apply=False))
+        self.assertEqual(result, 2)
+        apply.assert_not_called()
+
+    def test_reslug_clean_apply_calls_apply_once_with_plan_and_scratch(self) -> None:
+        plan = ReslugPlan(
+            vault=Path("/tmp"),
+            moves=(),
+            noops=(),
+            frozen=(),
+            frozen_dirs=(),
+            conflicts=(),
+        )
+        with (
+            patch.object(tw_module, "plan_reslug", return_value=plan),
+            patch.object(tw_module, "format_reslug_plan", return_value=""),
+            patch.object(tw_module, "apply_reslug_plan", return_value=()) as apply,
+            redirect_stdout(StringIO()),
+        ):
+            result = cmd_reslug(Namespace(all_threads=True, apply=True))
+        self.assertEqual(result, 0)
+        apply.assert_called_once()
+        positional = apply.call_args.args
+        self.assertEqual(positional[0], plan)
+        self.assertEqual(positional[1], tw_module.SCRATCH)
+
+
+class ReslugParserNoCrossContaminationTests(unittest.TestCase):
+    def test_emit_and_refresh_parser_have_no_reslug_attr(self) -> None:
+        emit_args = build_parser().parse_args(["emit", "--id", "100"])
+        refresh_args = build_parser().parse_args(["refresh", "--id", "100"])
+        self.assertFalse(hasattr(emit_args, "reslug"))
+        self.assertFalse(hasattr(refresh_args, "reslug"))
 
 
 if __name__ == "__main__":

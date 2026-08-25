@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import os
 import re
 import shutil
 import sys
@@ -18,6 +19,7 @@ logger = logging.getLogger(__name__)
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 try:
+    from twitter.frozen import frozen_match, load_frozen_ids
     from twitter.media_manifest import (
         _from_wire_dict,
         _item_to_wire,
@@ -30,7 +32,8 @@ try:
     )
     from twitter.media_refs import remote_markup
     from twitter.models import MediaItem, ThreadData, load_thread
-    from twitter.render import render_branch, render_spine
+    from twitter.paths import FROZEN, SCRATCH
+    from twitter.render import render_branch, render_spine, title_text
     from twitter.slug import branch_file_name, date_prefix, thread_dir_name
     from twitter.tree import (
         by_id,
@@ -41,6 +44,7 @@ try:
         spine_ids,
     )
 except ImportError:  # pragma: no cover - script-mode import
+    from frozen import frozen_match, load_frozen_ids
     from media_manifest import (
         _from_wire_dict,
         _item_to_wire,
@@ -53,7 +57,8 @@ except ImportError:  # pragma: no cover - script-mode import
     )
     from media_refs import remote_markup
     from models import MediaItem, ThreadData, load_thread
-    from render import render_branch, render_spine
+    from paths import FROZEN, SCRATCH
+    from render import render_branch, render_spine, title_text
     from slug import branch_file_name, date_prefix, thread_dir_name
     from tree import (
         by_id,
@@ -360,16 +365,6 @@ def collect_existing_ids(vault: Path) -> tuple[set[str], dict[str, Path]]:
     return ids, spines
 
 
-def unique_dir_name(parent: Path, base: str) -> str:
-    """Return ``base`` if unused, else ``base-2``, ``base-3``, ... until a free name is found."""
-    if not (parent / base).exists():
-        return base
-    n = 2
-    while (parent / f"{base}-{n}").exists():
-        n += 1
-    return f"{base}-{n}"
-
-
 def _split_frontmatter(text: str) -> tuple[str, str]:
     """Split an archive note into (frontmatter_with_closing_fence, body). Returns ``("", text)`` if no fence."""
     if not text.startswith("---"):
@@ -547,6 +542,8 @@ def emit(
     force: bool = False,
     reuse_dir: Path | None = None,
     tip: str | None = None,
+    reconcile_scratch: Path = SCRATCH,
+    frozen_ids: set[str] | None = None,
 ) -> EmitResult:
     src = input_dir / "thread_data.json"
     if not src.is_file():
@@ -567,7 +564,8 @@ def emit(
     kids = children_map(thread)
     first = ids[spine[0]]
     handle = first.handle
-    first_line = (first.text or "").split("\n", 1)[0]
+    rendered_title = title_text(first.text)
+    desired_dir_name = thread_dir_name(date_prefix(first.timestamp), rendered_title, slug)
 
     if reuse_dir is None and force:
         _existing_ids, spines = collect_existing_ids(vault)
@@ -590,19 +588,47 @@ def emit(
                 reuse_dir = candidate
 
     if reuse_dir is not None:
-        dir_name = reuse_dir.name
         handle = reuse_dir.parent.name
+        dir_name = reuse_dir.name
         note_dir = reuse_dir
         asset_dir = vault / "assets" / "threads" / handle / dir_name
-    else:
-        dir_name = thread_dir_name(date_prefix(first.timestamp), first_line, slug)
-        if slug is None:
-            dir_name = unique_dir_name(
-                vault / "archive" / "threads" / handle,
-                dir_name,
+        if dir_name != desired_dir_name:
+            active_frozen_ids = (
+                frozen_ids if frozen_ids is not None else load_frozen_ids(FROZEN)
             )
+            match = frozen_match(asset_dir, active_frozen_ids)
+            if match is not None:
+                raise SystemExit(f"frozen: skipped ({match})")
+            new_archive = vault / "archive" / "threads" / handle / desired_dir_name
+            new_asset = vault / "assets" / "threads" / handle / desired_dir_name
+            move = ReslugMove(
+                handle=handle,
+                old_dir_name=dir_name,
+                new_dir_name=desired_dir_name,
+                archive_old=reuse_dir,
+                archive_new=new_archive,
+                asset_old=asset_dir,
+                asset_new=new_asset,
+            )
+            rename_thread_pair(move)
+            frozen_dirs = plan_reslug(vault, active_frozen_ids).frozen_dirs
+            old_prefix = f"archive/threads/{handle}/{dir_name}"
+            new_prefix = f"archive/threads/{handle}/{desired_dir_name}"
+            rewrite_archive_paths(
+                vault,
+                reconcile_scratch,
+                {old_prefix: new_prefix},
+                frozen_dirs,
+            )
+            dir_name = desired_dir_name
+            note_dir = new_archive
+            asset_dir = new_asset
+    else:
+        dir_name = desired_dir_name
         note_dir = vault / "archive" / "threads" / handle / dir_name
         asset_dir = vault / "assets" / "threads" / handle / dir_name
+        if note_dir.exists() or asset_dir.exists():
+            raise SystemExit(f"destination occupied: {note_dir}")
 
     branch_names: dict[str, str] = {}
     for rid in roots:
@@ -752,6 +778,361 @@ def emit_all(
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
     return len(dumps), skipped, written, errors
+
+
+# --- reslug (one-time bulk title/path reconciliation) ---
+
+
+@dataclass(frozen=True)
+class ReslugMove:
+    """One paired archive/asset directory rename."""
+    handle: str
+    old_dir_name: str
+    new_dir_name: str
+    archive_old: Path
+    archive_new: Path
+    asset_old: Path
+    asset_new: Path
+
+
+@dataclass(frozen=True)
+class ReslugConflict:
+    """One bulk preflight failure surfaced before any rename."""
+    path: Path
+    reason: str
+
+
+@dataclass(frozen=True)
+class ReslugPlan:
+    """Small immutable one-time corpus repair plan."""
+    vault: Path
+    moves: tuple[ReslugMove, ...]
+    noops: tuple[Path, ...]
+    frozen: tuple[Path, ...]
+    frozen_dirs: tuple[Path, ...]
+    conflicts: tuple[ReslugConflict, ...]
+
+    @property
+    def can_apply(self) -> bool:
+        return not self.conflicts
+
+
+_TITLE_LINE: re.Pattern[str] = re.compile(r"^title:\s*(.+?)\s*$")
+_DATE_LINE: re.Pattern[str] = re.compile(r"^date:\s*(\d{4}-\d{2}-\d{2})\s*$")
+
+
+def _yaml_scalar_value(raw: str) -> str:
+    """Decode a single-line YAML scalar that is either JSON-quoted or unquoted."""
+    s = raw.strip()
+    if len(s) >= 2 and s.startswith('"') and s.endswith('"'):
+        body = s[1:-1]
+        body = body.replace("\\\\", "\x00").replace('\\"', '"').replace("\x00", "\\")
+        return body
+    return s
+
+
+def _frontmatter_title_date(text: str) -> tuple[str, str] | None:
+    """Return (title, date) from an archive note's frontmatter or ``None`` when unparseable."""
+    block = _frontmatter_block(text)
+    if not block:
+        return None
+    title: str | None = None
+    date_value: str | None = None
+    for line in block.splitlines():
+        stripped = line.strip()
+        if title is None:
+            match = _TITLE_LINE.match(line)
+            if match:
+                title = _yaml_scalar_value(match.group(1))
+                continue
+        if date_value is None:
+            match = _DATE_LINE.match(line)
+            if match:
+                date_value = match.group(1)
+                continue
+    if title is None or date_value is None:
+        return None
+    return title, date_value
+
+
+_RESLUG_EXCLUDED_TOP_LEVEL: tuple[str, ...] = (
+    ".git",
+    "site",
+    "assets",
+    "secrets",
+    "node_modules",
+)
+
+
+def plan_reslug(vault: Path, frozen_ids: set[str]) -> ReslugPlan:
+    """Build an immutable repair plan for ``archive/threads/<handle>/<thread>`` directories."""
+    moves: list[ReslugMove] = []
+    noops: list[Path] = []
+    frozen_entries: list[Path] = []
+    frozen_dirs: list[Path] = []
+    conflicts: list[ReslugConflict] = []
+
+    threads_root = vault / "archive" / "threads"
+    assets_root = vault / "assets" / "threads"
+
+    if not threads_root.is_dir():
+        return ReslugPlan(vault, (), (), (), (), ())
+
+    for handle_dir in sorted(threads_root.iterdir(), key=lambda p: p.name):
+        if not handle_dir.is_dir():
+            continue
+        handle = handle_dir.name
+        for thread_dir in sorted(handle_dir.iterdir(), key=lambda p: p.name):
+            if not thread_dir.is_dir():
+                continue
+            old_dir_name = thread_dir.name
+            index_path = thread_dir / "index.md"
+            asset_dir = assets_root / handle / old_dir_name
+            try:
+                if not index_path.is_file():
+                    conflicts.append(
+                        ReslugConflict(thread_dir, "missing index.md")
+                    )
+                    continue
+                try:
+                    text = index_path.read_text(encoding="utf-8")
+                except OSError as exc:
+                    conflicts.append(
+                        ReslugConflict(index_path, f"unreadable frontmatter: {exc}")
+                    )
+                    continue
+                parsed = _frontmatter_title_date(text)
+                if parsed is None:
+                    conflicts.append(
+                        ReslugConflict(
+                            index_path,
+                            "missing or malformed frontmatter title/date",
+                        )
+                    )
+                    continue
+                title, date_value = parsed
+                if not asset_dir.is_dir():
+                    conflicts.append(
+                        ReslugConflict(
+                            index_path,
+                            f"missing asset pair at {asset_dir}",
+                        )
+                    )
+                    continue
+                thread_data = asset_dir / "thread_data.json"
+                media_json = asset_dir / "media.json"
+                if not thread_data.is_file():
+                    conflicts.append(
+                        ReslugConflict(index_path, "missing thread_data.json")
+                    )
+                    continue
+                if not media_json.is_file():
+                    conflicts.append(
+                        ReslugConflict(index_path, "missing media.json")
+                    )
+                    continue
+                try:
+                    json.loads(thread_data.read_text(encoding="utf-8"))
+                except (OSError, ValueError) as exc:
+                    conflicts.append(
+                        ReslugConflict(
+                            index_path,
+                            f"invalid thread_data.json: {exc}",
+                        )
+                    )
+                    continue
+                try:
+                    json.loads(media_json.read_text(encoding="utf-8"))
+                except (OSError, ValueError) as exc:
+                    conflicts.append(
+                        ReslugConflict(
+                            index_path,
+                            f"invalid media.json: {exc}",
+                        )
+                    )
+                    continue
+                expected = thread_dir_name(date_value, title, None)
+                match = frozen_match(asset_dir, frozen_ids)
+                if old_dir_name == expected:
+                    noops.append(thread_dir)
+                    if match is not None:
+                        frozen_dirs.append(thread_dir)
+                    continue
+                if match is not None:
+                    frozen_entries.append(thread_dir)
+                    frozen_dirs.append(thread_dir)
+                    continue
+                new_archive = threads_root / handle / expected
+                new_asset = assets_root / handle / expected
+                if new_archive.exists():
+                    conflicts.append(
+                        ReslugConflict(
+                            thread_dir,
+                            f"destination occupied: {new_archive}",
+                        )
+                    )
+                    continue
+                if new_asset.exists():
+                    conflicts.append(
+                        ReslugConflict(
+                            thread_dir,
+                            f"destination occupied: {new_asset}",
+                        )
+                    )
+                    continue
+                moves.append(
+                    ReslugMove(
+                        handle=handle,
+                        old_dir_name=old_dir_name,
+                        new_dir_name=expected,
+                        archive_old=thread_dir,
+                        archive_new=new_archive,
+                        asset_old=asset_dir,
+                        asset_new=new_asset,
+                    )
+                )
+            except OSError as exc:
+                conflicts.append(
+                    ReslugConflict(thread_dir, f"filesystem error: {exc}")
+                )
+                continue
+
+    moves.sort(key=lambda m: str(m.archive_old))
+    noops.sort(key=str)
+    frozen_entries.sort(key=str)
+    frozen_dirs.sort(key=str)
+    conflicts.sort(key=lambda c: str(c.path))
+    return ReslugPlan(
+        vault,
+        tuple(moves),
+        tuple(noops),
+        tuple(frozen_entries),
+        tuple(frozen_dirs),
+        tuple(conflicts),
+    )
+
+
+def rename_thread_pair(move: ReslugMove) -> None:
+    """Validate, rename assets first, then archive; roll the asset back on archive failure."""
+    if not move.archive_old.is_dir() or not move.asset_old.is_dir():
+        raise RuntimeError(f"source pair missing: {move.archive_old}")
+    if move.archive_new.exists() or move.asset_new.exists():
+        raise RuntimeError(f"destination occupied: {move.archive_new}")
+    move.asset_old.rename(move.asset_new)
+    try:
+        move.archive_old.rename(move.archive_new)
+    except OSError:
+        move.asset_new.rename(move.asset_old)
+        raise
+
+
+def rewrite_archive_paths(
+    vault: Path,
+    scratch: Path,
+    replacements: dict[str, str],
+    frozen_dirs: tuple[Path, ...],
+) -> tuple[Path, ...]:
+    """Recursively rewrite exact vault-root prefixes in mutable Markdown and Canvas files."""
+    if not replacements:
+        return ()
+
+    keys = sorted(replacements.keys(), key=len, reverse=True)
+    pattern = re.compile("|".join(re.escape(key) for key in keys))
+
+    changed: list[Path] = []
+    stage_dir = scratch / "reslug_text"
+    sequence = 0
+    for path in sorted(vault.rglob("*")):
+        if not path.is_file():
+            continue
+        if path.suffix.lower() not in (".md", ".canvas"):
+            continue
+        try:
+            rel_parts = path.relative_to(vault).parts
+        except ValueError:
+            continue
+        if rel_parts and rel_parts[0] in _RESLUG_EXCLUDED_TOP_LEVEL:
+            continue
+        skip = False
+        for frozen in frozen_dirs:
+            try:
+                path.relative_to(frozen)
+                skip = True
+                break
+            except ValueError:
+                continue
+        if skip:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        new_text = pattern.sub(lambda m: replacements[m.group(0)], text)
+        if new_text == text:
+            continue
+        stage_dir.mkdir(parents=True, exist_ok=True)
+        stage_path = stage_dir / f"{sequence}.tmp"
+        sequence += 1
+        stage_path.write_text(new_text, encoding="utf-8", newline="\n")
+        os.replace(stage_path, path)
+        changed.append(path)
+
+    try:
+        stage_dir.rmdir()
+    except OSError:
+        pass
+
+    changed.sort(key=str)
+    return tuple(changed)
+
+
+def apply_reslug_plan(plan: ReslugPlan, scratch: Path) -> tuple[Path, ...]:
+    """Run every rename, then recursively rewrite mutable paths; refuse on conflict."""
+    if plan.conflicts:
+        reasons = ", ".join(c.reason for c in plan.conflicts)
+        raise RuntimeError(
+            f"reslug blocked by {len(plan.conflicts)} conflict(s): {reasons}"
+        )
+    replacements: dict[str, str] = {}
+    for move in plan.moves:
+        rename_thread_pair(move)
+        old_prefix = f"archive/threads/{move.handle}/{move.old_dir_name}"
+        new_prefix = f"archive/threads/{move.handle}/{move.new_dir_name}"
+        replacements[old_prefix] = new_prefix
+        print(f"renamed -> {move.archive_new}")
+    rewritten = (
+        rewrite_archive_paths(
+            plan.vault,
+            scratch,
+            replacements,
+            plan.frozen_dirs,
+        )
+        if plan.moves
+        else ()
+    )
+    for path in rewritten:
+        print(f"rewrote -> {path}")
+    return rewritten
+
+
+def format_reslug_plan(plan: ReslugPlan) -> str:
+    """Return a deterministic human-readable summary of a repair plan."""
+    lines: list[str] = []
+    for path in plan.noops:
+        lines.append(f"[noop] {path.as_posix()}")
+    for move in plan.moves:
+        lines.append(
+            f"[rename] {move.archive_old.as_posix()} -> {move.archive_new.as_posix()}"
+        )
+    for path in plan.frozen:
+        lines.append(f"[frozen] {path.as_posix()}")
+    for conflict in plan.conflicts:
+        lines.append(f"[conflict] {conflict.path.as_posix()}: {conflict.reason}")
+    lines.append(
+        f"summary: moves={len(plan.moves)} noops={len(plan.noops)} "
+        f"frozen={len(plan.frozen)} conflicts={len(plan.conflicts)}"
+    )
+    return "\n".join(lines) + "\n"
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:

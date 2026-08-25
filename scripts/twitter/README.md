@@ -18,6 +18,8 @@ python C:\projects\Threadwell\scripts\twitter\tw.py fallback --id <snowflake> --
 python C:\projects\Threadwell\scripts\twitter\tw.py restore-origin --id <snowflake> --media-id <media-id>
 python C:\projects\Threadwell\scripts\twitter\tw.py migrate-media --id <snowflake>
 python C:\projects\Threadwell\scripts\twitter\tw.py migrate-media --all --apply
+python C:\projects\Threadwell\scripts\twitter\tw.py reslug --all
+python C:\projects\Threadwell\scripts\twitter\tw.py reslug --all --apply
 ```
 
 `paths.py` sets vault = two parents above this file, dumps = `../manual_slop/docs/twitter`, scratch = `../Threadwell-ai/scratch`.
@@ -44,6 +46,12 @@ Published Twitter/X media cites the original provider's HTTPS URL by default. Th
 The `lift` command is retired. Use `fallback` for a single media item after explicit confirmation, or `restore-origin` to select the immutable provider URL again. The Catbox userhash and backup destination id/root are read from `secrets/credentials.toml` by the script. Never paste them into chat.
 
 Frozen threads (ids listed in `do_not_refetch.txt`, matched against every captured post id) are read-only across refetch, refresh, emit, manifest migration, note rewrite, fallback, publication selection, and tracked backup operations. Read-only `audit-media` may still inspect them.
+
+## Canonical thread directories
+
+Each thread archive directory is named from the rendered title that appears in `index.md` (`<YYYY-MM-DD>-<slugified rendered title>`). `tw.py reslug --all` reads each existing `index.md` frontmatter date and title, derives the expected directory, and reports every mapping without writing. `tw.py reslug --all --apply` preflights every pair, refuses the entire apply on any non-frozen conflict, and moves assets first with the archive directory immediately after; if the archive move fails, assets roll back. If a destination is occupied, the apply aborts without `-2`, `-3`, or any other suffix. Frozen ids in `do_not_refetch.txt` are reported as `frozen` and skipped.
+
+Future emits use the same rendered title for the directory and `index.md` frontmatter, so normal emit does this automatically — no flag is needed on emit, refresh, or add-branch. Hand-move only the archive or only the asset is not supported; both must move as a pair. Each old archive prefix is replaced exactly once in mutable `*.md` and `*.canvas` outside `.git/`, `site/`, `assets/`, `secrets/`, `node_modules/`, and frozen archive dirs, so mappings do not cascade. No aliases, redirect pages, compatibility folders, suffix fallback, or network contact.
 
 ## Pieces
 

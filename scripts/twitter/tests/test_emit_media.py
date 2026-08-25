@@ -6,7 +6,7 @@ from pathlib import Path
 
 from twitter.emit_archive import missing_local_media, preserve_review_state
 from twitter.media_manifest import new_original_item
-from twitter.render import render_media
+from twitter.render import render_media, title_text
 
 
 class EmitMediaTests(unittest.TestCase):
@@ -61,6 +61,13 @@ class EmitMediaTests(unittest.TestCase):
                 now="2026-08-24T12:00:00Z",
             )
             self.assertEqual(missing_local_media([item]), ["100/AAA/orig"])
+
+    def test_title_text_is_shared_by_frontmatter_and_slug(self) -> None:
+        self.assertEqual(
+            title_text("Root title. Extra first-line detail"),
+            "Root title.",
+        )
+        self.assertEqual(title_text("One uninterrupted title"), "One uninterrupted title")
 
 
 if __name__ == "__main__":

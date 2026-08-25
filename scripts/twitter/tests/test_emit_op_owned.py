@@ -13,6 +13,7 @@ import shutil
 import tempfile
 import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 from twitter.emit_archive import emit
 from twitter.models import PostData, PostMetrics, ThreadData
@@ -810,6 +811,389 @@ class TipIsOpTests(unittest.TestCase):
         # --tip=middle post (has parent). Walks back.
         spine = spine_from_tip(thread, "2002")
         self.assertEqual(spine, ["2000", "2001", "2002"])
+
+
+class ReslugReuseTests(unittest.TestCase):
+    """Compact same-handle integration tests for the emit-side rename flow.
+
+    Each test pre-populates one or more archive/asset pairs under the
+    vault, invokes ``emit`` with explicit ``reconcile_scratch`` and
+    ``frozen_ids`` so nothing is written to the workspace scratch and
+    no frozen list is read from secrets.
+    """
+
+    HANDLE = "alice"
+    ROOT_ID = "1000"
+    TIMESTAMP = "2026-08-24 12:00:00"
+    ROOT_TEXT = "Root title. Extra first-line detail that should be dropped."
+    EXPECTED_CANONICAL = "2026-08-24-root-title"
+
+    def setUp(self) -> None:
+        self.tmp = Path(tempfile.mkdtemp(prefix="reslug_reuse_"))
+        self.input_dir = self.tmp / "input"
+        self.input_dir.mkdir()
+        self.vault = self.tmp / "vault"
+        (self.vault / "archive" / "threads").mkdir(parents=True)
+        (self.vault / "assets" / "threads").mkdir(parents=True)
+
+    def tearDown(self) -> None:
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _write_thread(self) -> None:
+        thread = {
+            "root_post_id": self.ROOT_ID,
+            "source_url": f"https://x.com/{self.HANDLE}/status/{self.ROOT_ID}",
+            "posts": [
+                {
+                    "post_id": self.ROOT_ID,
+                    "author": self.HANDLE,
+                    "handle": self.HANDLE,
+                    "text": self.ROOT_TEXT,
+                    "timestamp": self.TIMESTAMP,
+                    "media_urls": [],
+                    "reply_to_id": None,
+                    "quote_of_id": None,
+                    "metrics": {
+                        "reply_count": 0,
+                        "repost_count": 0,
+                        "like_count": 0,
+                        "view_count": 0,
+                    },
+                }
+            ],
+        }
+        (self.input_dir / "thread_data.json").write_text(
+            json.dumps(thread, indent=2),
+            encoding="utf-8",
+            newline="\n",
+        )
+
+    def _write_existing_pair(
+        self,
+        *,
+        dir_name: str,
+        post_id: str,
+        index_body: str = "",
+        editorial_tag: str | None = None,
+        draft: str = "true",
+        timestamp: str | None = None,
+    ) -> tuple[Path, Path]:
+        archive = self.vault / "archive" / "threads" / self.HANDLE / dir_name
+        asset = self.vault / "assets" / "threads" / self.HANDLE / dir_name
+        archive.mkdir(parents=True)
+        asset.mkdir(parents=True)
+        body_timestamp = timestamp or self.TIMESTAMP
+        date_value = body_timestamp[:10]
+        tags_lines = (
+            "tags:\n"
+            "  - archive\n"
+            "  - twitter\n"
+            f"  - {self.HANDLE}\n"
+        )
+        if editorial_tag:
+            tags_lines += f"  - {editorial_tag}\n"
+        (archive / "index.md").write_text(
+            "---\n"
+            'title: "Old title."\n'
+            f"handle: {self.HANDLE}\n"
+            f'post_id: "{post_id}"\n'
+            f"date: {date_value}\n"
+            f"draft: {draft}\n"
+            f"{tags_lines}---\n\n{index_body}",
+            encoding="utf-8",
+            newline="\n",
+        )
+        (asset / "thread_data.json").write_text(
+            json.dumps(
+                {
+                    "root_post_id": post_id,
+                    "source_url": f"https://x.com/{self.HANDLE}/status/{post_id}",
+                    "posts": [
+                        {
+                            "post_id": post_id,
+                            "author": self.HANDLE,
+                            "handle": self.HANDLE,
+                            "text": "Old body.",
+                            "timestamp": body_timestamp,
+                            "media_urls": [],
+                            "reply_to_id": None,
+                            "quote_of_id": None,
+                            "metrics": {},
+                        }
+                    ],
+                },
+                indent=2,
+            ),
+            encoding="utf-8",
+            newline="\n",
+        )
+        (asset / "media.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": 2,
+                    "root_post_id": post_id,
+                    "items": [],
+                    "mirrors": [],
+                },
+                indent=2,
+            ),
+            encoding="utf-8",
+            newline="\n",
+        )
+        return archive, asset
+
+    def test_emit_renames_reused_pair_to_canonical_dir(self) -> None:
+        """Existing archive/asset pair found by post identity is renamed
+        to date + rendered-title canonical directory."""
+        old_dir = "2026-08-24-stale-slug"
+        archive_old, asset_old = self._write_existing_pair(
+            dir_name=old_dir,
+            post_id=self.ROOT_ID,
+        )
+        self._write_thread()
+
+        with TemporaryDirectory() as scratch_raw:
+            emit(
+                input_dir=self.input_dir,
+                vault=self.vault,
+                slug=None,
+                archived="2026-08-24",
+                force=True,
+                reconcile_scratch=Path(scratch_raw),
+                frozen_ids=set(),
+            )
+
+        self.assertFalse(archive_old.exists())
+        self.assertFalse(asset_old.exists())
+        archive_new = (
+            self.vault
+            / "archive"
+            / "threads"
+            / self.HANDLE
+            / self.EXPECTED_CANONICAL
+        )
+        asset_new = (
+            self.vault
+            / "assets"
+            / "threads"
+            / self.HANDLE
+            / self.EXPECTED_CANONICAL
+        )
+        self.assertTrue(archive_new.is_dir())
+        self.assertTrue(asset_new.is_dir())
+        self.assertTrue((asset_new / "thread_data.json").is_file())
+        self.assertTrue((asset_new / "media.json").is_file())
+        self.assertTrue((archive_new / "index.md").is_file())
+
+    def test_emit_handle_index_links_to_new_path_after_rename(self) -> None:
+        """The handle index wikilink is updated from the old prefix to
+        the new canonical prefix after rename."""
+        old_dir = "2026-08-24-stale-slug"
+        self._write_existing_pair(
+            dir_name=old_dir,
+            post_id=self.ROOT_ID,
+        )
+        self._write_thread()
+
+        with TemporaryDirectory() as scratch_raw:
+            emit(
+                input_dir=self.input_dir,
+                vault=self.vault,
+                slug=None,
+                archived="2026-08-24",
+                force=True,
+                reconcile_scratch=Path(scratch_raw),
+                frozen_ids=set(),
+            )
+
+        handle_index = self.vault / "archive" / "threads" / self.HANDLE / "index.md"
+        self.assertTrue(handle_index.is_file())
+        text = handle_index.read_text(encoding="utf-8")
+        self.assertIn(
+            f"archive/threads/{self.HANDLE}/{self.EXPECTED_CANONICAL}",
+            text,
+        )
+        self.assertNotIn(f"archive/threads/{self.HANDLE}/{old_dir}", text)
+
+    def test_emit_preserves_draft_false_and_editorial_tags_across_rename(self) -> None:
+        """Existing ``draft: false`` and a non-mechanical editorial tag
+        survive the rename."""
+        old_dir = "2026-08-24-stale-slug"
+        self._write_existing_pair(
+            dir_name=old_dir,
+            post_id=self.ROOT_ID,
+            editorial_tag="editorial",
+            draft="false",
+        )
+        self._write_thread()
+
+        with TemporaryDirectory() as scratch_raw:
+            emit(
+                input_dir=self.input_dir,
+                vault=self.vault,
+                slug=None,
+                archived="2026-08-24",
+                force=True,
+                reconcile_scratch=Path(scratch_raw),
+                frozen_ids=set(),
+            )
+
+        archive_new = (
+            self.vault
+            / "archive"
+            / "threads"
+            / self.HANDLE
+            / self.EXPECTED_CANONICAL
+        )
+        text = (archive_new / "index.md").read_text(encoding="utf-8")
+        self.assertIn("draft: false", text)
+        self.assertIn("- editorial", text)
+
+    def test_emit_slug_override_uses_explicit_suffix(self) -> None:
+        """An explicit ``--slug`` override produces a ``date-manual-name``
+        directory even when a reused old pair exists."""
+        old_dir = "2026-08-24-stale-slug"
+        self._write_existing_pair(
+            dir_name=old_dir,
+            post_id=self.ROOT_ID,
+        )
+        self._write_thread()
+
+        with TemporaryDirectory() as scratch_raw:
+            emit(
+                input_dir=self.input_dir,
+                vault=self.vault,
+                slug="manual-name",
+                archived="2026-08-24",
+                force=True,
+                reconcile_scratch=Path(scratch_raw),
+                frozen_ids=set(),
+            )
+
+        expected = "2026-08-24-manual-name"
+        self.assertTrue(
+            (self.vault / "archive" / "threads" / self.HANDLE / expected).is_dir()
+        )
+        self.assertTrue(
+            (self.vault / "assets" / "threads" / self.HANDLE / expected).is_dir()
+        )
+        self.assertFalse(
+            (self.vault / "archive" / "threads" / self.HANDLE / old_dir).exists()
+        )
+
+    def test_emit_occupied_canonical_target_refuses_before_move(self) -> None:
+        """A new-thread emit whose desired canonical target is already
+        occupied by another pair must abort with ``SystemExit`` before any
+        write, with no ``-2`` suffix fallback."""
+        canonical_archive, canonical_asset = self._write_existing_pair(
+            dir_name=self.EXPECTED_CANONICAL,
+            post_id="9999",
+        )
+        self._write_thread()
+
+        with TemporaryDirectory() as scratch_raw:
+            with self.assertRaisesRegex(SystemExit, "destination occupied"):
+                emit(
+                    input_dir=self.input_dir,
+                    vault=self.vault,
+                    slug=None,
+                    archived="2026-08-24",
+                    force=True,
+                    reconcile_scratch=Path(scratch_raw),
+                    frozen_ids=set(),
+                )
+
+        self.assertFalse(
+            (
+                self.vault
+                / "archive"
+                / "threads"
+                / self.HANDLE
+                / f"{self.EXPECTED_CANONICAL}-2"
+            ).exists()
+        )
+        self.assertFalse(
+            (
+                self.vault
+                / "assets"
+                / "threads"
+                / self.HANDLE
+                / f"{self.EXPECTED_CANONICAL}-2"
+            ).exists()
+        )
+        self.assertTrue(canonical_archive.is_dir())
+        self.assertTrue(canonical_asset.is_dir())
+
+    def test_emit_frozen_mismatch_refuses_before_move(self) -> None:
+        """A frozen mismatch on the existing asset dir must abort with
+        ``SystemExit`` before either directory is moved."""
+        old_dir = "2026-08-24-stale-slug"
+        archive_old, asset_old = self._write_existing_pair(
+            dir_name=old_dir,
+            post_id=self.ROOT_ID,
+        )
+        self._write_thread()
+
+        with TemporaryDirectory() as scratch_raw:
+            with self.assertRaisesRegex(SystemExit, "frozen"):
+                emit(
+                    input_dir=self.input_dir,
+                    vault=self.vault,
+                    slug=None,
+                    archived="2026-08-24",
+                    force=True,
+                    reconcile_scratch=Path(scratch_raw),
+                    frozen_ids={self.ROOT_ID},
+                )
+
+        self.assertTrue(archive_old.is_dir())
+        self.assertTrue(asset_old.is_dir())
+        self.assertFalse(
+            (
+                self.vault
+                / "archive"
+                / "threads"
+                / self.HANDLE
+                / self.EXPECTED_CANONICAL
+            ).exists()
+        )
+        self.assertFalse(
+            (
+                self.vault
+                / "assets"
+                / "threads"
+                / self.HANDLE
+                / self.EXPECTED_CANONICAL
+            ).exists()
+        )
+
+    def test_emit_matching_existing_name_emits_normally(self) -> None:
+        """If the existing reused pair already matches the desired name,
+        emit reuses it without rename and writes the fresh note + media."""
+        archive_canonical, asset_canonical = self._write_existing_pair(
+            dir_name=self.EXPECTED_CANONICAL,
+            post_id=self.ROOT_ID,
+        )
+        self._write_thread()
+
+        with TemporaryDirectory() as scratch_raw:
+            emit(
+                input_dir=self.input_dir,
+                vault=self.vault,
+                slug=None,
+                archived="2026-08-24",
+                force=True,
+                reconcile_scratch=Path(scratch_raw),
+                frozen_ids=set(),
+            )
+
+        self.assertTrue(archive_canonical.is_dir())
+        self.assertTrue(asset_canonical.is_dir())
+        self.assertTrue((archive_canonical / "index.md").is_file())
+        self.assertTrue((asset_canonical / "thread_data.json").is_file())
+        handle_dir = self.vault / "archive" / "threads" / self.HANDLE
+        dirs = sorted(d.name for d in handle_dir.iterdir() if d.is_dir())
+        self.assertEqual(dirs, [self.EXPECTED_CANONICAL])
 
 
 if __name__ == "__main__":

@@ -29,8 +29,8 @@ def _first_line(text: str) -> str:
     return (text or "").split("\n", 1)[0].rstrip("\r")
 
 
-def _title_text(text: str) -> str:
-    """Derive a title from the first line, truncating at the first sentence end (``. ``)."""
+def title_text(text: str) -> str:
+    """Derive the rendered title from the first sentence of the first line."""
     line = _first_line(text)
     idx = line.find(". ")
     if idx >= 0:
@@ -149,7 +149,7 @@ def render_spine(
     first = ids[spine[0]]
     spine_handle = first.handle
     in_reply_to, parent = _foreign_parent(first, ids)
-    title = _title_text(first.text)
+    title = title_text(first.text)
     source_url = _status_url(first.handle, first.post_id)
     chunks = [
         _frontmatter(
@@ -211,7 +211,7 @@ def render_per_author_spine(
             "render_per_author_spine requires a non-empty author_posts list"
         )
     first = author_posts[0]
-    title = _title_text(first.text)
+    title = title_text(first.text)
     source_url = _status_url(first.handle, first.post_id)
     chunks: list[str] = [
         _frontmatter(
@@ -260,7 +260,7 @@ def render_branch(
     """descendant_ids are posts after the root, in display order (tree.descendants)."""
     ids = by_id(thread)
     root = ids[branch_root_id]
-    title = _title_text(root.text)
+    title = title_text(root.text)
     source_url = _status_url(root.handle, root.post_id)
     chunks = [
         _frontmatter(
