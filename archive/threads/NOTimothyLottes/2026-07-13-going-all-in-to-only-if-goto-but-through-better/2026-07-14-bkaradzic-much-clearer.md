@@ -7,7 +7,7 @@ author: "Бранимир Караџић"
 handle: bkaradzic
 post_id: "2076844424236265641"
 date: 2026-07-14
-archived: 2026-08-23
+archived: 2026-08-25
 draft: true
 tags:
   - archive
@@ -32,4 +32,4 @@ parent_post_id: "2076833886827376782"
 
 ## Related
 
-- Spine: [[archive/threads/NOTimothyLottes/2026-07-14-example-usage-after-clean-up]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-07-13-going-all-in-to-only-if-goto-but-through-better]]
