@@ -40,6 +40,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2024-12-16-also-i-wouldnt-just-modify-an-existing-compiler]]
 - [[archive/threads/NOTimothyLottes/2024-12-16-then-there-are-rough-edges-to-texel-buffer]]
 - [[archive/threads/NOTimothyLottes/2024-12-21-not-sure-if-this-is-the-end-of-this-story-yet-but]]
+- [[archive/threads/NOTimothyLottes/2025-01-04-for-the-love-of-octahedrons-https-fileadmin-cs]]
 - [[archive/threads/NOTimothyLottes/2025-01-26-often-overlooked-aspect-of-gpu-perf-scaling]]
 - [[archive/threads/NOTimothyLottes/2025-04-16-cs-optimization-brain-dumping]]
 - [[archive/threads/NOTimothyLottes/2025-04-30-3-i-got-side-tracked-by-building-a-language-that]]
