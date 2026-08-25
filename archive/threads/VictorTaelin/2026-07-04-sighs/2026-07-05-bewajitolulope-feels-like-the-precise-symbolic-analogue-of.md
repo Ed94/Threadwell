@@ -26,7 +26,7 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @bewajitolulope
 
 @VictorTaelin Feels like the precise, symbolic analogue of implementing LLM guard rails that aren't too strict and aren't too lax.
 

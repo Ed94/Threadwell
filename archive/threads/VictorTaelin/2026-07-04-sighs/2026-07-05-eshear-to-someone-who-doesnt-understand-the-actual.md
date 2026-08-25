@@ -26,7 +26,7 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @eshear
 
 @VictorTaelin To someone who doesn’t understand the actual content, AI psychosis and expert use of AI to drive a breakthrough look the same (modulo institutional credentials). It’s not their fault, it’s literally impossible for them to tell the two cases apart.
 

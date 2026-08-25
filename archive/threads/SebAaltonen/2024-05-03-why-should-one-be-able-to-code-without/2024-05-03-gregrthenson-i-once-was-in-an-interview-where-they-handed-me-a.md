@@ -26,7 +26,7 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/**
+**1/** @gregrthenson
 
 @SebAaltonen I once was in an interview where they handed me a pen and paper and said "write this program"
 I started writing pseudo code and they stopped me and said "no, actually write it"

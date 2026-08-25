@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @SebAaltonen
 
 Stupid hardware question: Why does AMD use several counters instead of one u64 bitmask for memory ops? 
 Each load/store would have a bit index and wait would have a bitmask (marked bits need to be set = finished).
@@ -34,10 +34,10 @@ Each load/store would have a bit index and wait would have a bitmask (marked bit
 
 Branches: [[archive/threads/SebAaltonen/2025-03-08-stupid-hardware-question-why-does-amd-use-several/2025-03-08-NOTimothyLottes-actually-this-is-a-super-important-question-imo]]
 
-**2/**
+**2/** @SebAaltonen
 
 I am glad that RDNA4 has separate counters for sampling (long latency) and lower latency raw loads now. That's a good improvement.
 
-**3/**
+**3/** @SebAaltonen
 
 Some thoughts: Compiler managed bitfield slot indices would be iffy with loops and branches. One bit per register (big bitfield) would always work, but that would be much more than 64 bits. And wait instructions would be iffy (how to describe a massive bitfield).

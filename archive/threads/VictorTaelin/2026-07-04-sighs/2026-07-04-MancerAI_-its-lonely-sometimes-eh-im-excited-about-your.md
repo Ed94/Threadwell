@@ -26,7 +26,7 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @MancerAI_
 
 @VictorTaelin It's lonely sometimes eh? I'm excited about your stuff and love your posts but I don't know a lot about lambda calculus etc. Applications are amazing though
 

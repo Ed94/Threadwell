@@ -26,11 +26,11 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @Rafa_Schwinger
 
 @VictorTaelin No, I prefer the previous angry rhetoric pls revert the edit
 
-**2/**
+**2/** @VictorTaelin
 
 @Rafa_Schwinger these are only for close followers, enjoy
 

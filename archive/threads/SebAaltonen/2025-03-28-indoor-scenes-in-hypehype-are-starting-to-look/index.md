@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @SebAaltonen
 
 Indoor scenes in HypeHype are starting to look acceptable. This has no baked lighting. Only a single oct-map (conv.mips) for indirect specular and diffuse, masked with screen space AO (GTAO). No sunlight and no local lights (local lights are coming in a few months).
 
@@ -35,15 +35,15 @@ Game by Allu
 
 Branches: [[archive/threads/SebAaltonen/2025-03-28-indoor-scenes-in-hypehype-are-starting-to-look/2025-03-28-VoxelBoy-any-tips-or-existing-solutions-on-achieving]]
 
-**2/**
+**2/** @SebAaltonen
 
 We just shipped textures. This game is using older "pixart" assets only, which allows you to put diffuse-only textures in sprites. The ground and walls are 3d sprites in this game. The new material system allows full PBR texture sets (diffuse, normal, roughness, metallic, AO).
 
-**3/**
+**3/** @SebAaltonen
 
 Local light system is shipping before summer. This will be a big improvement for indoor game visual quality. Direct lighting is important, especially when you can't bake lightmaps. Our local lights also have shadows. One big texture atlas caches all local light shadow maps.
 
-**4/**
+**4/** @SebAaltonen
 
 Example of a game textured with the new PBR material system:
 https://x.com/JohannesVuorine/status/1903305450969526504
@@ -52,7 +52,7 @@ Both games are running smoothly on dirt cheap <$99 phones with all the tech runn
 
 Game by @DanielPalmiArt
 
-**5/**
+**5/** @SebAaltonen
 
 @DanielPalmiArt Old HypeHype indoor pictures before we landed screen space AO (GTAO) and oct-map indirect lighting. Old version had gradient based indirect lighting. Gradient is bad for indoors, since all wall normals face to horizon direction == same gradient color. And shadow masks sun out.
 
@@ -60,7 +60,7 @@ Game by @DanielPalmiArt
 ![](https://pbs.twimg.com/media/GnHLO2zXEAAhygZ?format=jpg&name=orig)
 ![](https://pbs.twimg.com/media/GnHLQDVXEAAmBJ6?format=jpg&name=orig)
 
-**6/**
+**6/** @SebAaltonen
 
 @DanielPalmiArt Exactly one-year-old build versus the latest build. Quite a massive improvement in one year in visuals.
 

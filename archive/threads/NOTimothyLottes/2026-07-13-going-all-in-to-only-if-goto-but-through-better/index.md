@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 Going all in to only {if,goto} but through better macros,
 label:
@@ -37,17 +37,17 @@ Can fix up nanorc syntax highlight by layering rules that override color, works 
 ![](https://pbs.twimg.com/media/HNJAmyHXkAESBFF?format=png&name=orig)
 ![](https://pbs.twimg.com/media/HNJAuMwXQAABZQ1?format=png&name=orig)
 
-**2/**
+**2/** @NOTimothyLottes
 
 Haha no surprise they didn't invite me to the "better software" conference!
 
-**3/**
+**3/** @NOTimothyLottes
 
 Easy set of powerful macros. Brutal customization of C.
 
 ![](https://pbs.twimg.com/media/HNJguqvWMAAIZJN?format=png&name=orig)
 
-**4/**
+**4/** @NOTimothyLottes
 
 Example usage after clean-up.
 

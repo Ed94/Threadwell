@@ -26,23 +26,23 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @o1lo01ol1o
 
 @VictorTaelin Do you allow for non-termination on total functions on codata?
 
-**2/**
+**2/** @VictorTaelin
 
 @o1lo01ol1o no codata yet :(
 
-**3/**
+**3/** @o1lo01ol1o
 
 @VictorTaelin You just use really big counters for services?
 
-**4/**
+**4/** @VictorTaelin
 
 @o1lo01ol1o ah, yes you could, but on V1 you'd just disable termination checking there. I don't think proving stuff about IO is a big demand, not a priority for V1. we can add support that later
 
-**5/**
+**5/** @o1lo01ol1o
 
 @VictorTaelin Good
 

@@ -26,7 +26,7 @@ parent_post_id: "1990506460531601538"
 
 ## Branch
 
-**1/**
+**1/** @TheBonkMaykr
 
 It is confusing if you aren't used to it, that is true. But if you care about portability, letting the C compiler decide what the size of a pointer is, and how to handle pointer arithmetic, is better long-term.
 

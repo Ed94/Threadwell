@@ -26,15 +26,15 @@ parent_post_id: "1692560907988029769"
 
 ## Branch
 
-**1/**
+**1/** @tomcr2100
 
 @NOTimothyLottes i am not quite sure what do you mean by subpixel scan? do you override the normal (refresh) scanout process?
 
-**2/**
+**2/** @NOTimothyLottes
 
 @tomcr2100 It's like "clear-type" font rendering where if you know the LCD sub-pixel configuration for the RGB components of a pixel, you can do a much better job of computing and outputing the value at the specific RGB sub-pixel element. So i'm doing this for CRT-like emulation on the Deck
 
-**3/**
+**3/** @tomcr2100
 
 @NOTimothyLottes just curious, i started doing something similar, but this year i have focused more on rest&recover. i went with a trilinear style aperture grill approximation, and just allow prim components to leak into the two others.
 

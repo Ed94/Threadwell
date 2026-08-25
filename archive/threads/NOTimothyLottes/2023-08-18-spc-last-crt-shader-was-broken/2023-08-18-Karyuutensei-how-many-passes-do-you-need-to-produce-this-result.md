@@ -26,11 +26,11 @@ parent_post_id: "1692397318471926054"
 
 ## Branch
 
-**1/**
+**1/** @Karyuutensei
 
 @NOTimothyLottes How many passes do you need to produce this result?
 
-**2/**
+**2/** @NOTimothyLottes
 
 @Karyuutensei 1 pass: 12 fetches/outpix, in 2 batches. I use 6 gather4's to grab a 4-wide(x)2-line region for the {R,G,B} channels. Then 6 more fetches to do energy conserving computation of output for each {nearest 2 lines}x{R,G,B} channel based {intensity, position vertically on scan}.
 

@@ -26,7 +26,7 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @rom1504
 
 @VictorTaelin Very cool. Indeed hard but important to pick the right line on what coding model do vs what you do. One way to think about it is what requires being able to see the consequences 10 years away of some design choices and keep those to yourself.
 

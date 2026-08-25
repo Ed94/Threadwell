@@ -26,7 +26,7 @@ parent_post_id: "1868716773937414589"
 
 ## Branch
 
-**1/**
+**1/** @AgileJebrim
 
 @NOTimothyLottes @GustavSterbrant Fair enough. Current compilers are a bloated mess anyways and you’d get much faster times with your own assembler.
 

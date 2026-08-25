@@ -26,19 +26,19 @@ parent_post_id: "1857813028349128825"
 
 ## Branch
 
-**1/**
+**1/** @bmcnett
 
 @NOTimothyLottes So each line is 63 spaces followed by a \n, and those 63 spaces get replaced by printable characters dynamically? I have long dreamed of a text format with a fixed 128 byte line width, and cache line size is gradually switching over from 64 to 128
 
-**2/**
+**2/** @NOTimothyLottes
 
 @bmcnett Yes fixed character[63]='\n', string fills until then or spaces out. I did 128-char once, but still sometimes use small VGA resolutions. Also written a source editor a few times with this fixed line size, makes for a very simple implementation ...
 
-**3/**
+**3/** @bmcnett
 
 @NOTimothyLottes Variable line width ASCII text files made a lot of sense when storage was 100KB or 100MB or 100GB, but now that it's in the terabytes, why even bother
 
-**4/**
+**4/** @NOTimothyLottes
 
 @bmcnett That line of thinking is universal solution to most self-inflicted problems of the modern era.
 

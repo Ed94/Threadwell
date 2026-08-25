@@ -25,16 +25,16 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 no-debugger-debug / console / printf-style - prior evolved to one mmapped fixed-width-height log file with an atomic for multi-thread|process messages - but even that seems too complexy ...
 
 Branches: [[archive/threads/NOTimothyLottes/2026-05-31-no-debugger-debug-console-printf-style-prior/2026-05-31-retrotink2-here-i-am-still-debugging-by-looking-at-if-a]]
 
-**2/**
+**2/** @NOTimothyLottes
 
 moving to this >>> CART file is mmapped on CPU with mapped GPU access (no file IO) - background page walker to ensure OS won't page it out - beginning of CART file is a grid of 32-bit unsigned values - hex dumping that as my 'log file' - either to term or GPU render
 
-**3/**
+**3/** @NOTimothyLottes
 
 hits the easy to debug CPU or GPU stuff in the same framework (simply write and it just appears) - it's always a HEX dump, but can show decimal by pretending it's a 4-bit/character terminal with a hex font :)

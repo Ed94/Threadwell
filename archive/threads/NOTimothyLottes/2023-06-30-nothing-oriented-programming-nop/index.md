@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 "Nothing Oriented Programming" (NOP). Where the goal is to achieve minimal enlightenment by writing as little possible code: no dynamic memory allocation, no thousand files of glue, no includes, no objects. Write nothing, be happy. Even applied it to the logo, zero effort.
 

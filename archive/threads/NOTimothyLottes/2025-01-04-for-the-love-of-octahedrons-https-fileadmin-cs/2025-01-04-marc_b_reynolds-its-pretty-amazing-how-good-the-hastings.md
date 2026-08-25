@@ -26,7 +26,7 @@ parent_post_id: "1875589737282679108"
 
 ## Branch
 
-**1/**
+**1/** @marc_b_reynolds
 
 @NOTimothyLottes It's pretty amazing how good the Hastings approximations still are.  I'd note that they are designed for minimizing absolute error which isn't what you'd want for general purpose usage but it's the right answer for "all angles are equally important" problems.
 

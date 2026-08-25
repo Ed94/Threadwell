@@ -26,19 +26,19 @@ parent_post_id: "2066184005632786736"
 
 ## Branch
 
-**1/**
+**1/** @GrowlerEnjooyer
 
 @NOTimothyLottes There is 0 chance you actually use this font. It's for the meme, right?
 
-**2/**
+**2/** @NOTimothyLottes
 
 @GrowlerEnjooyer Oh I definitely use this font, was designed to be extremely easy to visually parse for code.
 
-**3/**
+**3/** @GrowlerEnjooyer
 
 @NOTimothyLottes Bravo, well played Mr troll
 
-**4/**
+**4/** @NOTimothyLottes
 
 @GrowlerEnjooyer Not trolling, actually do use the font for my terminals on that dev box
 

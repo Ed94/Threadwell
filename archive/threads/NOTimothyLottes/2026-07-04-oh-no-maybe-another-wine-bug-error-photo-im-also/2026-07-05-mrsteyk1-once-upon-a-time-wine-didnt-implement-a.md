@@ -26,7 +26,7 @@ parent_post_id: "2073539101320417502"
 
 ## Branch
 
-**1/**
+**1/** @mrsteyk1
 
 @NOTimothyLottes Once upon a time Wine didn’t implement a particular cryptography path and game broke when trying to verify file integrity, had to patch it out. It was so bad that Valve made a Proton Hotfix version (I think it ignored integrity check and returned success regardless).
 

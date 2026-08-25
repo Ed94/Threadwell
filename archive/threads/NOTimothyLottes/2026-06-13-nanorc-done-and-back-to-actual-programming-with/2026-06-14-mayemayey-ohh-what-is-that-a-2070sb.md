@@ -26,27 +26,27 @@ parent_post_id: "2065804972378243476"
 
 ## Branch
 
-**1/**
+**1/** @mayemayey
 
 @NOTimothyLottes ohh what is that? a 2070SB?
 
-**2/**
+**2/** @NOTimothyLottes
 
 @mayemayey FP2141SB
 
-**3/**
+**3/** @mayemayey
 
 @NOTimothyLottes yep. that's a rebranded 2070sb haha. there's an hsync/vsync (~152khz, 254hz) overclocking tutorial if you ever feel daring enough to. 😉
 
-**4/**
+**4/** @NOTimothyLottes
 
 @mayemayey Those crazy refresh rates are long past diminishing returns though due to the fixed phosphor decay. Great display, only big flaw is the vertical nonlinearity at the extreme top and bottom.
 
-**5/**
+**5/** @mayemayey
 
 @NOTimothyLottes do you have any blurriness in the corners?
 
-**6/**
+**6/** @NOTimothyLottes
 
 @mayemayey It might if I ran it at peak resolutions but I mostly stick to higher refresh rates instead, so wouldn’t notice.
 

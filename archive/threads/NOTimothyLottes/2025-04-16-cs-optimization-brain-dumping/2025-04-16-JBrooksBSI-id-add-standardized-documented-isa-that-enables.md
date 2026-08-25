@@ -26,7 +26,7 @@ parent_post_id: "1912483968563269946"
 
 ## Branch
 
-**1/**
+**1/** @JBrooksBSI
 
 @NOTimothyLottes I'd add:
 
@@ -34,25 +34,25 @@ Standardized, documented ISA that enables compatibility across multiple GPU gene
 
 WGP (WorkGroup Processor) mode which doubles the # of SIMD units executing a single threadgroup, halving latency for bottleneck operations.
 
-**2/**
+**2/** @NOTimothyLottes
 
 @JBrooksBSI Personally I still don't like the WGP+wave32 stuff. Limited dual issue instructions with less operand flexibility (wave64 back to back issue IMO is better, just HW dual pipe transcendentals). WGP's two L0 cache and related resource split issues.
 
-**3/**
+**3/** @JBrooksBSI
 
 @NOTimothyLottes WGP mode and wave32 are separate features. WGP mode schedules waves within a threadgroup across both CUs (4x SIMDs) in each WGP instead of limiting waves to a single CU (2x SIMD).
 
-**4/**
+**4/** @NOTimothyLottes
 
 @JBrooksBSI Yeah so it's more the wave32 that I don't like
 
-**5/**
+**5/** @JBrooksBSI
 
 @NOTimothyLottes I'd like to discuss this in more detail, as I have found wave32 to be faster than wave64 for everything except some vertex shaders.
 
 I think the reason wave64 can be faster for vertex shaders is that only half the VS waves get launched, so more occupancy for PS/CS waves per WGP.
 
-**6/**
+**6/** @JBrooksBSI
 
 @NOTimothyLottes The reasons Wave64 has been slower for me:
 1) More VGPR pressure = less occupancy
@@ -62,7 +62,7 @@ I think the reason wave64 can be faster for vertex shaders is that only half the
 
 I spot-unroll 2x-4x for more intra-wave parallelism as needed.
 
-**7/**
+**7/** @NOTimothyLottes
 
 @JBrooksBSI Re
 1) With what I do, high occupancy is often slower
@@ -70,7 +70,7 @@ I spot-unroll 2x-4x for more intra-wave parallelism as needed.
 3) It's half the K$ loads for wave64
 4) I use DPP16 at most (no dynamic shuffle)
 
-**8/**
+**8/** @JBrooksBSI
 
 @NOTimothyLottes Wow, that is wildly different from what I do.
 

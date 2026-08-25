@@ -25,22 +25,22 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 https://gpuopen.com/learn/rgp-1-15-enhanced-isa-view/ Nice Disasm View :) - However op  latency isn't useful. Need to see multiwave instruction trace across time, colored by instruction type, enhanced with mark if wave is waiting to issue a given functional unit. Only then will great optimization be possible.
 
-**2/**
+**2/** @NOTimothyLottes
 
 It would also be best to see overlay of board power (because !/W is the end goal), and an overlay of exactly where there are bubbles in DRAM traffic. Because anything memory bound, the goal is to minimize DRAM bubbles. Need to see how they form dynamically over time to fix ...
 
-**3/**
+**3/** @NOTimothyLottes
 
 For GPU profilers, might see say {92% ALU, 50% TEX, 21% L2}, then wonder, where is 8% I'm missing. And only way to start to understand that, is to be seeing how waves are executing instruction wise against each other. CPU-profiler-like averages per disassembly line won't cut it.
 
-**4/**
+**4/** @NOTimothyLottes
 
 Parallel machines can only be understood by seeing the parallel execution. I still have examples today of taking a vanila 32-bit shader (already designed to be fast) and getting 30% returns on all micro optimizations.
 
-**5/**
+**5/** @NOTimothyLottes
 
 Lastly, side with enabling. Remember people can learn too. And there is typically super skilled people seeded at all companies that teach others how to use advanced tools when they are available.

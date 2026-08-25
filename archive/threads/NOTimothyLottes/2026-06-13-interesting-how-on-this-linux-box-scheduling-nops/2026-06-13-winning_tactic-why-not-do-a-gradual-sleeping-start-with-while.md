@@ -26,7 +26,7 @@ parent_post_id: "2065840191340707905"
 
 ## Branch
 
-**1/**
+**1/** @winning_tactic
 
 Why not do a gradual sleeping? Start with
 while (spin--) {
@@ -39,21 +39,21 @@ You can have power modes that sets a lower threshhold to always yield and not sp
 
 But I've never considered a write to a dummy file as a legitimate yield/wait trigger. I wonder how that would fit in to my solution...
 
-**2/**
+**2/** @NOTimothyLottes
 
 @winning_tactic I don’t design around waiting for a specific point in time, I do other things, but talk about them when I can easily show the results
 
-**3/**
+**3/** @winning_tactic
 
 Correct. But that's the point of gradually backoff, active spinlocking, then green thread yielding (cooperative other tasks, maybe even the one contesting) then kernel_poke (I guess that's what I would call that writing to file its a return from kernel-land immediately) then timer fired, the idea isn't to wait on a time, it's wait on an increasing value that changes tactics from the previous waits so that you don't really have to keep track of when what happens.
 https://gitlab.com/qsrc.net/Lampyr/-/blob/dev/rt/time.c?ref_type=heads#L78
 But I've got to work on the power stuff and steal your idea of course.
 
-**4/**
+**4/** @NOTimothyLottes
 
 @winning_tactic Ahh the illusion of nonblocking execution on consumer devices. The moment the os decides to preempt your thread, there no longer exists a non blocking interface. A single thread never gets a guarantee of execution, so waiting for some exact point in time is failed design
 
-**5/**
+**5/** @winning_tactic
 
 @NOTimothyLottes It's green threads multiplexed on pinned threads both cooperatively and preemptively. I beg your pardon!~
 https://gitlab.com/qsrc.net/Lampyr/-/blob/dev/rt/task.c?ref_type=heads

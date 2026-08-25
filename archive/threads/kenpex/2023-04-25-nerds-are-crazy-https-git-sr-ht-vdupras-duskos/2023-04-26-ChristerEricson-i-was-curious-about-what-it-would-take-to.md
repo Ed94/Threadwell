@@ -26,7 +26,7 @@ parent_post_id: "1650678968255913985"
 
 ## Branch
 
-**1/**
+**1/** @ChristerEricson
 
 @kenpex I was curious about what it would take to recreate today’s tech “from scratch” if a giant EMP went off. It’s clearly a crazy number of bootstrap steps needed.
 
@@ -36,21 +36,21 @@ No EMPs pls!
 
 ![](https://pbs.twimg.com/media/FunW0KyaYAAPSv1?format=jpg&name=orig)
 
-**2/**
+**2/** @kenpex
 
 @ChristerEricson Reminds me of when people used/could to write engines from scratch at every new game/project. Perhaps it's the best way to improve though.
 
-**3/**
+**3/** @npatsiouras
 
 @kenpex @ChristerEricson There's an anime series called 7 seeds, where civ ends due to predicted meteorite shower. Each gov selects a bunch of people based on their knowledge, including trained guides, in an attempt to repopulate earth in the aftermath.......and not one of them, knew Forth......amateurs!
 
-**4/**
+**4/** @ChristerEricson
 
 @npatsiouras @kenpex Don’t get me wrong, I have fondness for Forth, but if my generation had grown up on Forth instead of Basic, I suspect this would be our world today.
 
 ![](https://pbs.twimg.com/media/FutX-exaMAAag8N?format=jpg&name=orig)
 
-**5/**
+**5/** @ChristerEricson
 
 @npatsiouras @kenpex Also, it “almost” happened. One of my friends had one of these:
 

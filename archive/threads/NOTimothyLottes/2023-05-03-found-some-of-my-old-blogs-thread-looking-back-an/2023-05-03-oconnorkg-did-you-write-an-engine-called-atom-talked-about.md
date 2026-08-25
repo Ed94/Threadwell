@@ -26,11 +26,11 @@ parent_post_id: "1653556990302470151"
 
 ## Branch
 
-**1/**
+**1/** @oconnorkg
 
 @NOTimothyLottes Did you write an engine called Atom? Talked about it on the http://OpenGL.org forum?
 
-**2/**
+**2/** @NOTimothyLottes
 
 @oconnorkg There was also Atomontage or something like that by another person. I had a project called Atom, but I don't remember if I was on the OGL message board
 

@@ -25,13 +25,13 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 Debug for majority-GPU-side game dev? Run-time recompile and hex viewer. If I want to see a value it is 'ramWI1.hxd[pos]=value;' (write to the memory that the hex dump reads from). Everything else is automatic, just save source and the results show up on screen. Zero's not drawn.
 
 ![](https://pbs.twimg.com/media/GC91mNxXEAAaovO?format=png&name=orig)
 
-**2/**
+**2/** @NOTimothyLottes
 
 IMO this is preferred to a 'debugger'. I can fill values from all workgroups simply by placing them at different positions, etc. Can get timings via shader clock for profiling even. It is transformative in dev productivity.
 

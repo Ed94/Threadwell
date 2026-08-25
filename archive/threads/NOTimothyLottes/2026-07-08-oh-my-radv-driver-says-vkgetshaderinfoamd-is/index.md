@@ -25,26 +25,26 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 Oh, my RADV driver says vkGetShaderInfoAMD is available [GPU disassembly dumps]. Going to be exciting to see how RADV compiler does. Will definitely be filing optimization bugs, would like to help the RADV team make this the best AMD Vulkan driver that can exist.
 
-**2/**
+**2/** @NOTimothyLottes
 
 One other concern was if RADV would support DEVICE_UNCACHED_BIT_AMD - and looks like RADV already has that, which means low-latency CPU/GPU communication should just work out of the box
 
 ![](https://pbs.twimg.com/media/HMrkGrMXwAA9Cr0?format=jpg&name=orig)
 
-**3/**
+**3/** @NOTimothyLottes
 
 One of the pain points of doing header-free Vulkan is the VkPhysicalDeviceLimits structure. I avoid it completely and replace the structure with an equal size array of 63 64-bit values (504 bytes total). Then use direct byte offset for timestampPeriod (only thing useful in there)
 
 ![](https://pbs.twimg.com/media/HMrlR1cWQAAsqXD?format=png&name=orig)
 
-**4/**
+**4/** @NOTimothyLottes
 
 The other component of vkGetPhysicalDeviceProperties that is useful is the vendorID, which is important for vendor specific engine permutations -> I use to enable vkGetShaderInfoAMD disassembly dumps automatically on all shaders
 
-**5/**
+**5/** @NOTimothyLottes
 
 Next pre-device opening activity is choosing queue(s). Going to make another effort at beam racing, this time on Linux, so probably want a separate queue for presentation only. To fully decouple {dispatch, and swap}. Will see why later ...

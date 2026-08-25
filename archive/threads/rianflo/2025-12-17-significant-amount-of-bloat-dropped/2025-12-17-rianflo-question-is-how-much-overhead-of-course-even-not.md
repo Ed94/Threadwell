@@ -26,15 +26,15 @@ parent_post_id: "2001106069238563204"
 
 ## Branch
 
-**1/**
+**1/** @rianflo
 
 @NOTimothyLottes question is how much overhead. of course even not knowing how it was implemented, its obviously complex. but i’d take a bit of overhead in favor of writing a “program” top down on the gpu.
 
-**2/**
+**2/** @rianflo
 
 @NOTimothyLottes you already know we’re on the same page wrt to rendering stuff differently, but it would be fun to show a proof of concept for rendering trad stuff this way, even just to proof a point. like load and render any gltf. :-)
 
-**3/**
+**3/** @NOTimothyLottes
 
 @rianflo I just need to get off the R&D train at some point and actually ship something :)
 

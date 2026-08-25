@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 I'll mark this down a more code obfustication for most humans, but for me it's another useful shorthand.
 define X_ return
@@ -33,12 +33,12 @@ define G_(x) goto x
 
 ![](https://pbs.twimg.com/media/HNEuyadXoAAVxgG?format=png&name=orig)
 
-**2/**
+**2/** @NOTimothyLottes
 
 Not been happy with traditional C style {if,while,do,switch,for} so moving to more assembly style {if,goto} instead. This way static branch prediction {backward=taken,forward=not_taken} is more explicit in the code. Prototyping it in the Library loader below
 
 ![](https://pbs.twimg.com/media/HNExHNRWIAAimHM?format=png&name=orig)
 
-**3/**
+**3/** @NOTimothyLottes
 
 Another quality of life change, exit with error now triggers the background console render thread to actually quit, so it always draws the console, then draws the error code, then exits.

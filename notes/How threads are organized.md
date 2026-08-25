@@ -20,7 +20,9 @@ archive/threads/<handle>/<YYYY-MM-DD-slug>/
 
 ## Spine
 
-`index.md` is only what the author posted as a single chain: each post replies to the previous one of theirs. Posts are numbered **1/** **2/** in that order. Other people do not appear in this numbering.
+`index.md` is the opening author's chain. Posts are numbered **1/** **2/**. Each number line names who spoke: `**1/** @SebAaltonen`. A mention inside the tweet is not the author.
+
+Cross-author spines list every post in time order. The handle on the number line is who spoke.
 
 If the first post is a reply to someone else, that other tweet is quoted at the top as context. It is not numbered as part of the spine.
 

@@ -26,7 +26,7 @@ parent_post_id: "2078349730204078527"
 
 ## Branch
 
-**1/**
+**1/** @noop_dev
 
 @NOTimothyLottes Even smaller code size possible with custom compression scheme, where you design bytecode not for immediate execution but to be decompressed on load.
 

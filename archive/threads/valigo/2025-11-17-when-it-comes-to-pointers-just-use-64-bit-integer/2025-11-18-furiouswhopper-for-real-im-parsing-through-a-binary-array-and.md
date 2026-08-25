@@ -26,7 +26,7 @@ parent_post_id: "1990506460531601538"
 
 ## Branch
 
-**1/**
+**1/** @furiouswhopper
 
 @valigo For real I'm parsing through a binary array and trying to say "the next byte is a uint8_t, the next two bytes are a uint16_t" and the most elegant way to do it is mind-numbingly ugly pointer bullshit.
 

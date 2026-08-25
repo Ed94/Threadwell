@@ -25,17 +25,17 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 So most run Linux from a graphical login, I still prefer to boot into a framebuffer console. Next step for me is to get my LottesCode6x12 font into PSF2 so I can use it in a framebuffer terminal for editing source. So I can try for Vulkan swap bringup without X/Wayland.
 
-**2/**
+**2/** @NOTimothyLottes
 
 If we want a true console or arcade like experience on Linux, you'd want nothing else running on the machine, so running without X/Wayland is the way to do that.
 
 Branches: [[archive/threads/NOTimothyLottes/2026-07-09-so-most-run-linux-from-a-graphical-login-i-still/2026-07-10-darrellprograms-i-think-this-is-simply-available-as-a-kmsdrm]]
 
-**3/**
+**3/** @NOTimothyLottes
 
 One major option with Linux is the ability for the owner of the box to allow realtime priority scheduling, along with locking memory, and taking CPU cores out of general scheduling. Meaning transform Linux into something as close as possible to a realtime system.
 

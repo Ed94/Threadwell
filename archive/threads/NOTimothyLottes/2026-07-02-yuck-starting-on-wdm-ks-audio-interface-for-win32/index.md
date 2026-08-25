@@ -25,23 +25,23 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 Yuck, starting on WDM/KS audio interface for WIN32, much more painful than ALSA. But I've been here before. Starting with the include bloat ... the real question is if I'm going to need to file more Wine bugs.
 
 ![](https://pbs.twimg.com/media/HMQT-ALWoAAABEe?format=png&name=orig)
 
 ![](https://pbs.twimg.com/media/HMQUVgpXYAA3h6r?format=png&name=orig)
-**2/**
+**2/** @NOTimothyLottes
 
 Wine has a lot of problems with SetConsoleMode() I had to include an extra ENABLE_WRAP_AT_EOL_OUTPUT, and then force a newline right after ASCI ESC[H else it would screw up (and it still does at the end with the ??). But at least the debug is usable now.
 
 ![](https://pbs.twimg.com/media/HMQnWmJXcAAOiSS?format=png&name=orig)
-**3/**
+**3/** @NOTimothyLottes
 
 But of course instant bad news, I cannot open the WinMM DRV_QUERYDEVICEINTERFACE, it returned ~0 (INVALID_HANDLE_VALUE). So I'm dead in the water in Wine again. Honestly getting sick of filing bugs in Wine, all the important stuff I do is broken. So what, no games use WDM/KS?
 
 ![](https://pbs.twimg.com/media/HMQoTiQWkAAbwj1?format=png&name=orig)
-**4/**
+**4/** @NOTimothyLottes
 
 https://forum.winehq.org/viewtopic.php?t=10225 - Looks like I'm 16 years late to the answer, if they didn't get in WDM/KS in 16 years, certainly it won't happen. Still surprised that all PC games are using the higher level garbage-ware sound APIs on Windows.

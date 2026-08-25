@@ -26,7 +26,7 @@ parent_post_id: "1990260050485797063"
 
 ## Branch
 
-**1/**
+**1/** @Alecazam123
 
 @NOTimothyLottes Infinite far doesn’t apply to ortho, and many of editors/engines need to switch camera viewports.  But it’s great for persp.  Also too much code handing modeInv for normals, which is wrong and unneeded.
 

@@ -35,7 +35,14 @@ try:
     from frozen import frozen_match, load_frozen_ids, require_writable
     from backup_assets import backup_thread, load_destination_root
     from catbox_client import load_userhash, upload_file
-    from emit_archive import apply_reslug_plan, format_reslug_plan, plan_reslug
+    from emit_archive import (
+        apply_relabel,
+        apply_reslug_plan,
+        format_relabel_plan,
+        format_reslug_plan,
+        plan_relabel,
+        plan_reslug,
+    )
     from fallback_media import activate_fallback, find_existing_fallback, restore_origin
     from media_audit import audit_thread
     from media_migrate import migrate_legacy_thread
@@ -43,7 +50,14 @@ except ImportError:  # pragma: no cover - script-mode import
     from frozen import frozen_match, load_frozen_ids, require_writable
     from backup_assets import backup_thread, load_destination_root
     from catbox_client import load_userhash, upload_file
-    from emit_archive import apply_reslug_plan, format_reslug_plan, plan_reslug
+    from emit_archive import (
+        apply_relabel,
+        apply_reslug_plan,
+        format_relabel_plan,
+        format_reslug_plan,
+        plan_relabel,
+        plan_reslug,
+    )
     from fallback_media import activate_fallback, find_existing_fallback, restore_origin
     from media_audit import audit_thread
     from media_migrate import migrate_legacy_thread
@@ -811,6 +825,19 @@ def cmd_reslug(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_relabel(args: argparse.Namespace) -> int:
+    """Patch ``**N/**`` lines from on-disk JSON. Notes only."""
+    if not args.all_threads:
+        raise SystemExit("relabel requires --all")
+    plan = plan_relabel(VAULT)
+    print(format_relabel_plan(plan), end="")
+    conflicts = any(item.state == "conflict" for item in plan.items)
+    if not args.apply:
+        return 2 if conflicts else 0
+    apply_relabel(plan)
+    return 2 if conflicts else 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -916,6 +943,13 @@ def build_parser() -> argparse.ArgumentParser:
     reslug.add_argument("--all", dest="all_threads", action="store_true", required=True)
     reslug.add_argument("--apply", action="store_true")
 
+    relabel = sub.add_parser(
+        "relabel",
+        help="patch **N/** lines with @handle from on-disk JSON",
+    )
+    relabel.add_argument("--all", dest="all_threads", action="store_true", required=True)
+    relabel.add_argument("--apply", action="store_true")
+
     return parser
 
 
@@ -937,6 +971,7 @@ _COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "fallback": cmd_fallback,
     "restore-origin": cmd_restore_origin,
     "reslug": cmd_reslug,
+    "relabel": cmd_relabel,
 }
 
 

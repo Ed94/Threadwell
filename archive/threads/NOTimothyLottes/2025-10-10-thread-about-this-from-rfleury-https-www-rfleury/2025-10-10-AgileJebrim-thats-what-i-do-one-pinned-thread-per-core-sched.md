@@ -26,7 +26,7 @@ parent_post_id: "1976637149387587994"
 
 ## Branch
 
-**1/**
+**1/** @AgileJebrim
 
 @NOTimothyLottes That’s what I do. One pinned thread per core. SCHED_FIFO, highest priority, and reconfigure various settings within the OS to avoid preemptions/interrupts/hyperthreading.
 

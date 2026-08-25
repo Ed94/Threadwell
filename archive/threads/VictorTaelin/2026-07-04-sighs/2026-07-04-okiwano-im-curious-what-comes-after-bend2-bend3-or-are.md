@@ -26,19 +26,19 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @okiwano
 
 @VictorTaelin I'm curious. What comes after Bend2? Bend3 or are you going to move onto smaller more personally satisfying projects after this?
 
-**2/**
+**2/** @VictorTaelin
 
 @okiwano on HOC, 100% focus on Symbolic AI research
 
-**3/**
+**3/** @Pitometsu
 
 @VictorTaelin @okiwano Any possibility to join the party? 😅
 
-**4/**
+**4/** @VictorTaelin
 
 @Pitometsu @okiwano yess
 

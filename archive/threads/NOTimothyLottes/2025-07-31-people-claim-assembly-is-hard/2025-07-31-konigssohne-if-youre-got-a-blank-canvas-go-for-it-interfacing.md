@@ -26,7 +26,7 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/**
+**1/** @konigssohne
 
 @NOTimothyLottes If you're got a blank `canvas` go for it.
 Interfacing to a kernel interrupt is one thing, hooking up to a toolkit ui is another I haven't ever seen, in asm.
@@ -34,7 +34,7 @@ Interfacing to a kernel interrupt is one thing, hooking up to a toolkit ui is an
 That leaves it all to command lines.
 And meh.
 
-**2/**
+**2/** @NOTimothyLottes
 
 @konigssohne Look at the older music trackers. All ASM and quite good UIs from a workflow efficiency perspective. They don't emulate a 'windowing system UI' for good reason, it wouldn't ever be as good as what they did do.
 

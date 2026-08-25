@@ -26,11 +26,11 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/**
+**1/** @Stererence
 
 @NOTimothyLottes I've been doing assembly a bit in D with the inline assembler and it's very fun to the point where it's too distracting for me, I don't really get why people are so averse to it generally.
 
-**2/**
+**2/** @NOTimothyLottes
 
 @Stererence Inline assembly in GCC has been a cornerstone of my C code for a long time.
 

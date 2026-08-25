@@ -780,6 +780,211 @@ def emit_all(
     return len(dumps), skipped, written, errors
 
 
+# --- relabel (patch **N/** lines with @handle from on-disk JSON) ---
+
+
+_NUMBER_LINE: re.Pattern[str] = re.compile(
+    r"^(\*\*(\d+)/\*\*)(?: +@([A-Za-z0-9_]+))?[ \t]*$",
+    re.MULTILINE,
+)
+
+
+@dataclass(frozen=True)
+class RelabelItem:
+    """One note's in-place number-line patch outcome."""
+    path: Path
+    state: str
+    reason: str
+
+
+@dataclass(frozen=True)
+class RelabelPlan:
+    """Corpus plan for patching ``**N/**`` lines. Notes only."""
+    vault: Path
+    items: tuple[RelabelItem, ...]
+
+    @property
+    def can_apply(self) -> bool:
+        return not any(item.state == "conflict" for item in self.items)
+
+
+def _first_nonempty_line(text: str) -> str:
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped:
+            return stripped
+    return ""
+
+
+def _extract_post_body(after_number_line: str) -> str:
+    """Text after a ``**N/**`` line, stopping at media, branches, or a heading."""
+    lines: list[str] = []
+    for line in after_number_line.lstrip("\n").splitlines():
+        if line.startswith("![") or line.startswith("<video"):
+            break
+        if line.startswith("Branches:"):
+            break
+        if line.startswith("## "):
+            break
+        if _NUMBER_LINE.match(line):
+            break
+        lines.append(line)
+    return "\n".join(lines).strip()
+
+
+def _frontmatter_handle(text: str) -> str:
+    """Return the note-root ``handle:`` value, or empty."""
+    in_front = False
+    for line in text.splitlines():
+        if line.strip() == "---":
+            if in_front:
+                return ""
+            in_front = True
+            continue
+        if in_front and line.startswith("handle:"):
+            return line.split(":", 1)[1].strip()
+    return ""
+
+
+def match_post_for_body(
+    body: str,
+    posts: tuple,
+    used: set[str],
+) -> object | None:
+    """Return one unused post whose first line matches ``body``.
+
+    Duplicate first lines are fine when every hit has the same handle.
+    Mixed-handle collisions return ``None``.
+    """
+    first = _first_nonempty_line(body)
+    if not first:
+        return None
+    hits = [
+        post
+        for post in posts
+        if post.post_id not in used
+        and _first_nonempty_line(post.text) == first
+    ]
+    if not hits:
+        return None
+    handles = {str(post.handle or "") for post in hits}
+    if len(handles) > 1:
+        return None
+    hits.sort(key=lambda post: (post.timestamp, post.post_id))
+    return hits[0]
+
+
+def patch_note_text(text: str, posts: tuple) -> tuple[str, str, str]:
+    """Patch ``**N/**`` lines in ``text``. Returns ``(new_text, state, reason)``."""
+    matches = list(_NUMBER_LINE.finditer(text))
+    if not matches:
+        return text, "noop", "no number lines"
+    pieces: list[str] = []
+    last = 0
+    changed = False
+    unmatched: list[str] = []
+    used: set[str] = set()
+    root_handle = _frontmatter_handle(text)
+    for index, match in enumerate(matches):
+        pieces.append(text[last:match.start()])
+        number = match.group(2)
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        body = _extract_post_body(text[match.end():end])
+        post = match_post_for_body(body, posts, used)
+        handle = ""
+        if post is not None:
+            handle = str(post.handle or "")
+            if handle:
+                used.add(post.post_id)
+        if not handle and index == 0 and root_handle:
+            handle = root_handle
+        if not handle:
+            unmatched.append(f"**{number}/**")
+            pieces.append(match.group(0).rstrip())
+            last = match.end()
+            continue
+        new_line = f"**{number}/** @{handle}"
+        if new_line != match.group(0).rstrip():
+            changed = True
+        pieces.append(new_line)
+        last = match.end()
+    pieces.append(text[last:])
+    new_text = "".join(pieces)
+    reason = ",".join(unmatched)
+    if unmatched and not changed:
+        return text, "conflict", reason
+    if changed:
+        return new_text, "rewrite", reason
+    return text, "noop", ""
+
+
+def plan_relabel(vault: Path) -> RelabelPlan:
+    """Walk on-disk ``thread_data.json`` and classify each thread note."""
+    assets_root = vault / "assets" / "threads"
+    notes_root = vault / "archive" / "threads"
+    items: list[RelabelItem] = []
+    if not assets_root.is_dir():
+        return RelabelPlan(vault, ())
+    for data_path in sorted(assets_root.rglob("thread_data.json")):
+        relative = data_path.parent.relative_to(assets_root)
+        note_dir = notes_root / relative
+        if not note_dir.is_dir():
+            items.append(RelabelItem(note_dir, "conflict", "missing note dir"))
+            continue
+        try:
+            thread = load_thread(data_path)
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            items.append(RelabelItem(data_path, "conflict", str(exc)[:200]))
+            continue
+        notes = sorted(path for path in note_dir.glob("*.md") if path.is_file())
+        if not notes:
+            items.append(RelabelItem(note_dir, "conflict", "no notes"))
+            continue
+        for note_path in notes:
+            text = note_path.read_text(encoding="utf-8")
+            _new, state, reason = patch_note_text(text, thread.posts)
+            items.append(RelabelItem(note_path, state, reason))
+    return RelabelPlan(vault, tuple(items))
+
+
+def apply_relabel(plan: RelabelPlan) -> None:
+    """Write ``rewrite`` notes. Leave conflicts and JSON/media untouched."""
+    assets_root = plan.vault / "assets" / "threads"
+    notes_root = plan.vault / "archive" / "threads"
+    for item in plan.items:
+        if item.state != "rewrite":
+            continue
+        try:
+            relative = item.path.parent.relative_to(notes_root)
+        except ValueError:
+            continue
+        data_path = assets_root / relative / "thread_data.json"
+        if not data_path.is_file():
+            continue
+        thread = load_thread(data_path)
+        text = item.path.read_text(encoding="utf-8")
+        new_text, state, _reason = patch_note_text(text, thread.posts)
+        if state != "rewrite":
+            continue
+        item.path.write_text(new_text, encoding="utf-8", newline="\n")
+
+
+def format_relabel_plan(plan: RelabelPlan) -> str:
+    """Print one line per note plus counts."""
+    lines: list[str] = []
+    counts = {"rewrite": 0, "noop": 0, "conflict": 0}
+    for item in plan.items:
+        counts[item.state] = counts.get(item.state, 0) + 1
+        extra = f" {item.reason}" if item.reason else ""
+        lines.append(f"{item.state} {item.path}{extra}")
+    lines.append(
+        f"rewrite={counts.get('rewrite', 0)} "
+        f"noop={counts.get('noop', 0)} "
+        f"conflict={counts.get('conflict', 0)}"
+    )
+    return "\n".join(lines) + "\n"
+
+
 # --- reslug (one-time bulk title/path reconciliation) ---
 
 

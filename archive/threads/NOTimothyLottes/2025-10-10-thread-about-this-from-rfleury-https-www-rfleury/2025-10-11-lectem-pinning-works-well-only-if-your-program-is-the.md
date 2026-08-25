@@ -26,7 +26,7 @@ parent_post_id: "1976637149387587994"
 
 ## Branch
 
-**1/**
+**1/** @lectem
 
 @NOTimothyLottes Pinning works well only if your program is the only one working. Any modern computer most likely have things running in the background. If any thread gets preempted in the middle of an execution block (that happens even with job stealing) you're screwed.
 

@@ -26,7 +26,7 @@ parent_post_id: "2065804972378243476"
 
 ## Branch
 
-**1/**
+**1/** @winning_tactic
 
 @NOTimothyLottes Hz sharing? I wonder if CRTs can be changed like 60 -> 59 Hz, and if that would correct it? I do not know whether any is correct, but I'd betcha there's some kinda thing there about that. Why would the iphone has .. no it's not mechanical, so I have no clue but that is a puzzle
 

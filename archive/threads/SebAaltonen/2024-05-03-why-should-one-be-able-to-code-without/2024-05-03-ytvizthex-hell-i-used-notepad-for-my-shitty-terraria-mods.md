@@ -26,7 +26,7 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/**
+**1/** @ytvizthex
 
 @SebAaltonen Hell, I used notepad++ for my shitty terraria mods and the TML discord act like I sacrificed them all to Satan lmfao
 

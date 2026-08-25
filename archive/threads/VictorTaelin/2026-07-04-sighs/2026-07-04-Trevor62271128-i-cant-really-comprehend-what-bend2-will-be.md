@@ -26,7 +26,7 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @Trevor62271128
 
 @VictorTaelin I can't really comprehend what Bend2 will be useful for except helping to make bug free software. With AI constantly getting better and better that purpose sounds mundane to me now. However, I'm very interested to see what you come up with for symbolic AI.
 

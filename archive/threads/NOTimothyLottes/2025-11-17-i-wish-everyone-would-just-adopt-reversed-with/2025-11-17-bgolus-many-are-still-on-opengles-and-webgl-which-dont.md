@@ -26,7 +26,7 @@ parent_post_id: "1990260050485797063"
 
 ## Branch
 
-**1/**
+**1/** @bgolus
 
 @NOTimothyLottes Many are still on OpenGLES and WebGL, which don’t properly support inverse depth due to still using a -1 to 1 clip space. Not really a problem for inverse depth in its own, but does cause problems for infinite far depth.
 

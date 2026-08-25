@@ -26,19 +26,19 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @NickChapmn
 
 @VictorTaelin y-combinators don't have valid types, so you are safe from them in statically typed functional languages.
 
-**2/**
+**2/** @VictorTaelin
 
 @NickChapmn that's absolutely false. you can construct the Y-Combinator and even λf.f(f) λf.f(f) in Haskell, Rust, TypeScript, and so on, even though these are statically typed functional language, through paradoxes like the ones I mentioned above. non-terminating languages are inconsistent
 
-**3/**
+**3/** @NickChapmn
 
 @VictorTaelin Ok they are invalid if you don't allow recursive types
 
-**4/**
+**4/** @VictorTaelin
 
 @NickChapmn yes
 

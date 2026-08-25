@@ -106,9 +106,10 @@ def _post_block(
     media_by_post: dict[str, tuple[str, ...]] | None,
     branch_links: list[str] | None = None,
 ) -> str:
-    """Render one post body (``**N/**`` + text + media embeds + branch links)."""
-    parts = [f"**{n}/**", "", post.text]
-    parts = [f"**{n}/**", "", post.text]
+    """Render one post body (``**N/** @handle`` + text + media + branch links)."""
+    if not post.handle:
+        raise ValueError(f"empty handle on post {post.post_id}")
+    parts = [f"**{n}/** @{post.handle}", "", post.text]
     media = (media_by_post or {}).get(post.post_id) or ()
     if media:
         parts.append("")

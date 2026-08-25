@@ -26,7 +26,7 @@ parent_post_id: "2065851939917906296"
 
 ## Branch
 
-**1/**
+**1/** @NOTimothyLottes
 
 @axelgneiting The glibc implementation would do that. I bypass libc and just do it manually with perf_event_open syscall and mmap.
 

@@ -26,7 +26,7 @@ parent_post_id: "1890348863287943363"
 
 ## Branch
 
-**1/**
+**1/** @matiasgoldberg
 
 @simplex_fx @SebAaltonen @NOTimothyLottes You can do whatever you want the API. Just because you can read from a GPU buffer you just wrote doesn't mean you should.
 

@@ -26,7 +26,7 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @Kmmer11133
 
 @VictorTaelin I enjoyed reading this post. I think that what you're currently working on is the most profound and important thing next to AI. I believe that it will practically open the door to reaching kolmogorov complexity compression and as we all know:
 

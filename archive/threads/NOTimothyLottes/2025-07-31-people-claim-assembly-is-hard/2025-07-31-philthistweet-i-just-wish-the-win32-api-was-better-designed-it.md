@@ -26,15 +26,15 @@ parent_post_id: "1950866703342088407"
 
 ## Branch
 
-**1/**
+**1/** @philthistweet
 
 @NOTimothyLottes I just wish the win32 API was better designed. It would essentially be perfect for cross dev then.
 
-**2/**
+**2/** @NOTimothyLottes
 
 @philthistweet Certainly it could be, but as is, it's easy to use and not strictly limiting. Id be curious what people don't like about it. Maybe the winproc interface?
 
-**3/**
+**3/** @philthistweet
 
 Just a few examples:
 1) thread/process creation and management 
@@ -47,7 +47,7 @@ Whoever sat down to create it probably said: "How can I create the most annoying
 
 Honestly, I may start a wrapper project though, because it's the only stable API that works
 
-**4/**
+**4/** @NOTimothyLottes
 
 @philthistweet Clone is nicer and having ability to own cores should be great. But at least you get affinity and schedule priority. Yeah agree the file interface is poor, but I just memmap and manually page warm to bypass most of that.
 

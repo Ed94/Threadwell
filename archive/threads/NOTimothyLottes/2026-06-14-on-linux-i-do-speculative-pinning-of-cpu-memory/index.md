@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 On Linux I do speculative pinning of CPU memory via mlockall. Learned that later Linux actually allows some amount of pinned memory without admin. So this is succeeding on my new Artix box.
 

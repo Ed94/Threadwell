@@ -26,7 +26,7 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/**
+**1/** @Naam_Hai_Bulla
 
 @SebAaltonen MAJOR DISAGREE
 Especially if you're learning a new tech stack modern IDEs are too user friendly

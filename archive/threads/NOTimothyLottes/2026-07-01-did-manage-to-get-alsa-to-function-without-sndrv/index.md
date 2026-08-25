@@ -25,11 +25,11 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 Did manage to get ALSA to function without SNDRV_PCM_IOCTL_HW_REFINE and only with SNDRV_PCM_IOCTL_HW_PARAMS. My structures are different but aliased (snd_interval.interger -> .flag=4). Apparently setting the core values is enough for the driver.
 
 ![](https://pbs.twimg.com/media/HMHoiZAWcAAjn6j?format=png&name=orig)
-**2/**
+**2/** @NOTimothyLottes
 
 Don't actually have to set {.flags,.rmask,.info} on my machine. Absolutely do have to set ".max=~0" for the intervals not being hardcoded. I only do double buffered, 48000Hz stereo, and just vary the frames/period sizing.

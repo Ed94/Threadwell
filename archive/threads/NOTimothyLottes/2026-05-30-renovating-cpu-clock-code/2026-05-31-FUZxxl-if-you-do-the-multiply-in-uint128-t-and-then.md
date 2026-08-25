@@ -26,15 +26,15 @@ parent_post_id: "2060730425929080874"
 
 ## Branch
 
-**1/**
+**1/** @FUZxxl
 
 @NOTimothyLottes If you do the multiply in uint128_t and then right-shift by 64 places, the compiler should do the right thing.
 
-**2/**
+**2/** @NOTimothyLottes
 
 @FUZxxl “Should” is exactly why I prefer the actual instruction instrinsics or just inline asm (which is what I use on C CPU land)
 
-**3/**
+**3/** @FUZxxl
 
 @NOTimothyLottes Have fun with a solution that the compiler optimises worse and that is not portable.
 

@@ -25,33 +25,33 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 Another memorial weekend thought: for either 
 (a.) single use code - [majority of slopware]
 (b.) cold cache code - [also typical of slopware]
 the CPU loading the code is a significant amount of the burned memory bandwidth ...
 
-**2/**
+**2/** @NOTimothyLottes
 
 Meaning in C/C++ land where "programmers" (or rather slop-rammers) mostly sniff argument sloshing glue, moving to a scatter instead of gather based language with a single common "call" that just overreads all the register args, would likely be significantly faster ...
 
-**3/**
+**3/** @NOTimothyLottes
 
 The analog for the syscall side is to work from a 'tape' pointer read the 7 registers (syscall number in rax, and the 6 max args) always from a linear stream, but advance the read pointer by the number of actual registers used. So the overfetch is just a linear prefetch ...
 
-**4/**
+**4/** @NOTimothyLottes
 
 If working with only 32-bit args (see the MAP_32BIT comment), it would be efficient. Add a post-syscall address to call in the common syscall loop, the part that does post-syscall logic like scattering data to future argument read slots (aka the scatter part) ...
 
-**5/**
+**5/** @NOTimothyLottes
 
 Now if it was possible to uber-op the post call logic, meaning a fixed logic block that is just data configurable, that call goes away, and it's all probably executing instructions out of the cache (at some level) ...
 
-**6/**
+**6/** @NOTimothyLottes
 
 Effectively you'd have an 'initialization language' which is designed to workaround cold execution paths, but with linear CPU prefetch friendly data access for reads, and random scatter for stores (where latency don't matter) ...
 
-**7/**
+**7/** @NOTimothyLottes
 
 Most crap-o-grammers today in the user-space C++ bloat-ware domain have not really optimized for performance, rather they optimized for maximum bloat generation. Just add up how much the installed libraries weigh in MiB on a clean OS install.

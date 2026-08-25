@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 Haha damn, I thought I had a great idea, for Wine workarounds, I could just detect Wine (easy), and then make the associated Linux system call from inside Wine using inline asm! [no surprise, it doesn't work]
 
@@ -33,7 +33,7 @@ Haha damn, I thought I had a great idea, for Wine workarounds, I could just dete
 
 Branches: [[archive/threads/NOTimothyLottes/2026-07-01-haha-damn-i-thought-i-had-a-great-idea-for-wine/2026-07-01-opdroid1234-the-two-truths-ive-come-to-accept-in-life-a]], [[archive/threads/NOTimothyLottes/2026-07-01-haha-damn-i-thought-i-had-a-great-idea-for-wine/2026-07-02-winning_tactic-you-could-pretend-to-be-an-audio-jack]]
 
-**2/**
+**2/** @NOTimothyLottes
 
 https://gpfault.net/posts/drunk-exe.html - So it apparently is possible, likely I'm screwing up my register saves for the ABI differences ...
 

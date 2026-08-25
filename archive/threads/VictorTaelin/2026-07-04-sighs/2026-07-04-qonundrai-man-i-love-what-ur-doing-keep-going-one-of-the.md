@@ -26,7 +26,7 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @qonundrai
 
 @VictorTaelin man I love what ur doing, keep going! one of the few good uses of AI!
 

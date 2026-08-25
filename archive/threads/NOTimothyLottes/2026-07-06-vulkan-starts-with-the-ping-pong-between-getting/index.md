@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 Vulkan starts with the ping pong between getting an instance proc addr so one can get vkCreateInstance, then using that to create an instance so one can get the remaining functions. I reuse my Lib() code modified for VK, that keeps a 64-bit base and 32-bit offsets for symbols.
 

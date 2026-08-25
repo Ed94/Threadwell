@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 Cross compilation is up. Just like on windows with GCC I have to disable all warnings because there is no way to turn off “function called through a non-compatible type”. They obviously should have had warning IDs and an ID based disable.
 
@@ -34,11 +34,11 @@ Cross compilation is up. Just like on windows with GCC I have to disable all war
 
 Branches: [[archive/threads/NOTimothyLottes/2026-06-13-cross-compilation-is-up/2026-06-13-tomcr2100-interesting-font-does-it-have-a-name]]
 
-**2/**
+**2/** @NOTimothyLottes
 
 Found my first of perhaps many Wine “fix me”s looks like they didn’t emulate NtQuerySystemInformation() for use to get the TSC time scalar. Also implies all PC devs do this wrong, else Valve would have had this implemented already.
 
-**3/**
+**3/** @never_released
 
 @NOTimothyLottes Intriguingly Microsoft documentation has this bit
 
@@ -48,6 +48,6 @@ https://learn.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolutio
 
 ![](https://pbs.twimg.com/media/HKv7lkRXAAA5ZdO?format=jpg&name=orig)
 
-**4/**
+**4/** @NOTimothyLottes
 
 @never_released It will be a sad day when we have to be concerned about VM migration while playing a game on a local machine

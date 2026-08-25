@@ -28,7 +28,7 @@ in_reply_to: "1588331007622930432"
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 @rianflo Vulkan: ~1500 lines of overhead (including header src, as I don't include) for complete hotrod bind-everything-only-once compute-only gfx engine. Not a fan of VK bloatware API complexity, but frankly it can be minimized, and exposes enough to do wonderfull things to the hardware.
 

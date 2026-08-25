@@ -17,6 +17,8 @@ python scripts/twitter/tw.py restore-origin --id <snowflake> --media-id <id>
 python scripts/twitter/tw.py migrate-media --id <snowflake>
 python scripts/twitter/tw.py reslug --all
 python scripts/twitter/tw.py reslug --all --apply
+python scripts/twitter/tw.py relabel --all
+python scripts/twitter/tw.py relabel --all --apply
 ```
 
 `paths.py` finds the vault two parents above this file. Dumps live at `../manual_slop/docs/twitter`. Scratch lives at `../Threadwell-ai/scratch`.
@@ -59,6 +61,8 @@ A thread folder is named from the title in `index.md`: `<YYYY-MM-DD>-<slug>`. `r
 
 Later emits use that same title for the folder and the frontmatter. Move both sides together. Each old archive prefix is replaced once in mutable `*.md` and `*.canvas` outside `.git/`, `site/`, `assets/`, `secrets/`, `node_modules/`, and frozen archive dirs.
 
+`relabel --all` patches existing `**N/**` lines to `**N/** @handle` from on-disk `thread_data.json`. No scrape. No folder rename. `--apply` writes notes only.
+
 ## Secrets
 
 `secrets/twitter_cookies.txt` and `secrets/credentials.toml` stay on the machine that runs the capture. The scripts read them. They never print them. The Catbox hash goes in an HTTPS form body, not on a process command line. The backup command prints `synced` or `error`, not the destination path.
@@ -67,7 +71,7 @@ Later emits use that same title for the folder and the frontmatter. Move both si
 
 | Script | Job |
 |---|---|
-| `tw.py` | locate / graph / refetch / add-branch / emit / refresh / ocr / merge / sync / publish / migrate-media / backup / fallback / restore-origin / reslug |
+| `tw.py` | locate / graph / refetch / add-branch / emit / refresh / ocr / merge / sync / publish / migrate-media / backup / fallback / restore-origin / reslug / relabel |
 | `graph_dry_run.py` | tip graph, no vault writes |
 | `ingest_gallery.py` | gallery-dl JSON → `thread_data.json` |
 | `emit_archive.py` | JSON → notes + assets. `--force` keeps derived and fallback rows |

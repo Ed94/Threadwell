@@ -25,16 +25,16 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 Short talk on how I do CPU-side debugging without a debugger using a simple memory mapped file message logging system with lock-free atomic and file-io-free message store: https://www.youtube.com/watch?v=EaUSAVcXwEc ... contains the implementation as well
 
 Branches: [[archive/threads/NOTimothyLottes/2025-10-13-short-talk-on-how-i-do-cpu-side-debugging-without/2025-10-13-questorInter-no-floats-ever-logged-or-some-agreement-that-its]], [[archive/threads/NOTimothyLottes/2025-10-13-short-talk-on-how-i-do-cpu-side-debugging-without/2025-10-17-Karyuutensei-i-watched-the-video-and-one-thing-that-was-not]]
 
-**2/**
+**2/** @AgileJebrim
 
 @NOTimothyLottes No retries - you should call it wait-free too.
 
-**3/**
+**3/** @NOTimothyLottes
 
 @AgileJebrim Good point, I'm going to adopt that 'wait-free' term moving forward :)

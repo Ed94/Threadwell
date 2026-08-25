@@ -26,7 +26,7 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/**
+**1/** @IncidentNoodle
 
 @VictorTaelin This is a great post! I can’t pretend that I really get the math, but it’s obvious that you understand what you’re talking about.
 

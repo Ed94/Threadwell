@@ -25,19 +25,19 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 At least for my next at home project, I think the right answer is a building it from assembly scratch series on video with a public domain release of the 'engine' which will be a live edit toy for hardcore GPU-side PC game dev in certain constraints [which keep it simple]
 
 Branches: [[archive/threads/NOTimothyLottes/2025-08-01-at-least-for-my-next-at-home-project-i-think-the/2025-08-02-whereisratman-really-hope-you-do-this-find-your-posts-so]]
 
-**2/**
+**2/** @NOTimothyLottes
 
 It won't require RT, but it also won't run on Intel iGPUs [to low binding limits, etc]. Memory model will be 'CART' style where you get the a RAM CART [buffer] in memory which gets state snapshot, followed by dynamic GPU memory which is not snapshotted
 
 Branches: [[archive/threads/NOTimothyLottes/2025-08-01-at-least-for-my-next-at-home-project-i-think-the/2025-08-01-VPCOMPRESSB-elaborate-on-the-cart-style-memory-model-i-assume]]
 
-**3/**
+**3/** @NOTimothyLottes
 
 Also run-from GPU-side editing tools for shader source and bind everything tables. And build-the-editors-in-it style. Which load/store to the CART. So it won't be for people who want TBs of giant team gen content, but rather sized for what a single person could pull off
 

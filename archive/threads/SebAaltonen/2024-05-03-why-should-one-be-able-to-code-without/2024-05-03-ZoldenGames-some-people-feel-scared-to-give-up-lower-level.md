@@ -26,7 +26,7 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/**
+**1/** @ZoldenGames
 
 @SebAaltonen Some people feel scared to give up lower level tasks to automatization. But that's how progress works and productivity grows.
 

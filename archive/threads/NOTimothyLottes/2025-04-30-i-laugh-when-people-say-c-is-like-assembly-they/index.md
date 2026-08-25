@@ -25,6 +25,6 @@ in_reply_to: "1917653631651729876"
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 @onatt0 I laugh when people say C is like assembly, they are missing what we actually did in assembly back then, which was all registers and globals and gotos, no stacks. It's radically different than good assembly.

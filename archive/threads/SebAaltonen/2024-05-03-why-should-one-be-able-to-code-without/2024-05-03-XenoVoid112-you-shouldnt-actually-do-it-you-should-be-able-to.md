@@ -26,7 +26,7 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/**
+**1/** @XenoVoid112
 
 @SebAaltonen You shouldn't actually do it. You should be *ABLE* to do it. They mean you should be able to know a language enough that you don't need tools to assist. At least, that is my interpretation
 

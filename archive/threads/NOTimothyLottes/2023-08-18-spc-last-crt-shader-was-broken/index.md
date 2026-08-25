@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @NOTimothyLottes
 
 SPC: Last CRT shader was broken. Corrected it. It's energy conserving now, and correctly doing sub-pixel line width raster using the individual channels. Cell camera  shots below at different zooms.
 
@@ -33,16 +33,16 @@ SPC: Last CRT shader was broken. Corrected it. It's energy conserving now, and c
 ![](https://pbs.twimg.com/media/F3yYZQwXcAABFvi?format=jpg&name=orig)
 ![](https://pbs.twimg.com/media/F3yYZo5WAAA0aRS?format=jpg&name=orig)
 
-**2/**
+**2/** @NOTimothyLottes
 
 Each scan line is simulated with only 3 pixels. But you get 9 sub-pixels to play with, so that is where the quality comes from. It reaches 7/8th of the display peak brightness, this compromise was so there is always some amount of perceptual scan effect.
 
-**3/**
+**3/** @NOTimothyLottes
 
 The scan line thickness is adaptive proportional to linear brightness. When the scan thins out it is energy conserving and increases the thin pixel brightness to compensate. When it needs to go bright, it blooms the line. Lines have some overlap in bloom.
 
 Branches: [[archive/threads/NOTimothyLottes/2023-08-18-spc-last-crt-shader-was-broken/2023-08-18-Karyuutensei-how-many-passes-do-you-need-to-produce-this-result]]
 
-**4/**
+**4/** @NOTimothyLottes
 
 One human perceptual reason CRTs feel like they have more contrast than they do, is because an individual scan line is super bright when in focus. So the black surround feels darker to the mind.

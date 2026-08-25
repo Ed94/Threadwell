@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/**
+**1/** @valigo
 
 People who say "C is modern-day assembly" usually way undershoot it. This guy actually writes C like it's asm:
 - No types - uints everywhere until a cast to actual type on access.
@@ -35,7 +35,7 @@ Is this how all GPU programmers write C?
 ![](https://pbs.twimg.com/media/G5-G1WZXoAIm5WW?format=jpg&name=orig)
 ![](https://pbs.twimg.com/media/G5-HR8yXoAEae5Z?format=jpg&name=orig)
 
-**2/**
+**2/** @valigo
 
 This is @NOTimothyLottes btw, with his "Fixing C" talk, it's very cool. I really like mixing up shader code and regular C code in the same file and just ifdefind it out depending on which compiler you runt it through: https://www.youtube.com/watch?v=RrL7121MOeA
 

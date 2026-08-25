@@ -26,7 +26,7 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/**
+**1/** @BugoTheCat
 
 @SebAaltonen Nothing wrong with new tools, it's just that most people get used to them and can never go back. It then feels to them like the old ways were horrific or they have an exaggerated negative response about the past.
 
