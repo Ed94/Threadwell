@@ -35,6 +35,8 @@ in_reply_to: ""
 
 ![](https://pbs.twimg.com/media/Gc3OqZkWsAAeP9s?format=png&name=orig)
 
+Branches: [[archive/threads/NOTimothyLottes/2024-11-21-32-oh-damn-32-should-probably-stop-now-until-next/2024-11-20-AgileJebrim-how-reliable-in-your-experience-in-code-like-that]]
+
 **3/**
 
 [2] Looking at FSR1: https://github.com/GPUOpen-Effects/FidelityFX-FSR/blob/master/ffx-fsr/ffx_fsr1.h - that had 3 permutations {32-bit, 16-bit unpacked, 16-bit packed}, where the packed one maps to how AMD's packed instructions work (everything explicitly packed)
