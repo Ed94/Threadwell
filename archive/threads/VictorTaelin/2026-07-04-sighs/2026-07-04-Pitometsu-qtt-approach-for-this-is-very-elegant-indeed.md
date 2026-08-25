@@ -7,7 +7,7 @@ author: "Netsu🇺🇦"
 handle: Pitometsu
 post_id: "2073540037300412645"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

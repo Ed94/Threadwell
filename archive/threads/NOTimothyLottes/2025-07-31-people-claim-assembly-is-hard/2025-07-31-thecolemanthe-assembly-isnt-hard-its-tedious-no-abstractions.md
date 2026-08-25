@@ -7,7 +7,7 @@ author: "Mark Coleman"
 handle: thecolemanthe
 post_id: "1950956186783895852"
 date: 2025-07-31
-archived: 2026-08-24
+archived: 2026-08-25
 draft: false
 tags:
   - archive

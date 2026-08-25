@@ -7,7 +7,7 @@ author: "Wanpoch Tales"
 handle: okiwano
 post_id: "2073433180397302126"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

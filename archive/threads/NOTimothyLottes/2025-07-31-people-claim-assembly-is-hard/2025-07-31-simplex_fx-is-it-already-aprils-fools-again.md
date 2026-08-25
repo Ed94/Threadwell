@@ -7,7 +7,7 @@ author: "Simplex"
 handle: simplex_fx
 post_id: "1951011391827010009"
 date: 2025-07-31
-archived: 2026-08-24
+archived: 2026-08-25
 draft: false
 tags:
   - archive

@@ -7,7 +7,7 @@ author: "Chris Allen"
 handle: theodorvaryag
 post_id: "2073563133323477361"
 date: 2026-07-05
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

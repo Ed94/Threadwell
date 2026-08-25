@@ -7,7 +7,7 @@ author: "GandalfOne"
 handle: Kmmer11133
 post_id: "2073479163550241020"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

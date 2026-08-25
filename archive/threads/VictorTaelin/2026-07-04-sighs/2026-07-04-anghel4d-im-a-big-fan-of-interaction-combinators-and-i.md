@@ -7,7 +7,7 @@ author: "Anghel"
 handle: anghel4d
 post_id: "2073421838068191714"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

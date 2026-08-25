@@ -7,7 +7,7 @@ author: "Madison Powell"
 handle: MadisonP94618
 post_id: "2073702157933518998"
 date: 2026-07-05
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

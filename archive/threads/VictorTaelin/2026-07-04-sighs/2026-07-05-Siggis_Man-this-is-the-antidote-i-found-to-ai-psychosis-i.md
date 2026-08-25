@@ -7,7 +7,7 @@ author: "sg123"
 handle: Siggis_Man
 post_id: "2073573831370039610"
 date: 2026-07-05
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

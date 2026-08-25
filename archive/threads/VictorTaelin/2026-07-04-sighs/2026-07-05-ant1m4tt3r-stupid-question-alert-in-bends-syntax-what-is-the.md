@@ -7,7 +7,7 @@ author: "Hugo Azevedo"
 handle: ant1m4tt3r
 post_id: "2073770708182720952"
 date: 2026-07-05
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

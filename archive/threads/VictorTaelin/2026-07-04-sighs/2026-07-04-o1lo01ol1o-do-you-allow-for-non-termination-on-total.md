@@ -7,7 +7,7 @@ author: "o1lo01ol1o"
 handle: o1lo01ol1o
 post_id: "2073412350493753796"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

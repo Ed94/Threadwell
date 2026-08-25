@@ -7,7 +7,7 @@ author: "Boga"
 handle: o__boga
 post_id: "1950939824183001106"
 date: 2025-07-31
-archived: 2026-08-24
+archived: 2026-08-25
 draft: false
 tags:
   - archive

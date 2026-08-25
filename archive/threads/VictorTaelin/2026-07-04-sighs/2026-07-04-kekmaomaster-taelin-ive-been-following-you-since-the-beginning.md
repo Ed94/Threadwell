@@ -7,7 +7,7 @@ author: "kirbo"
 handle: kekmaomaster
 post_id: "2073503384791912785"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

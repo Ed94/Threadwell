@@ -7,7 +7,7 @@ author: "Marcelo Prado"
 handle: mprado
 post_id: "2073424030481174585"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

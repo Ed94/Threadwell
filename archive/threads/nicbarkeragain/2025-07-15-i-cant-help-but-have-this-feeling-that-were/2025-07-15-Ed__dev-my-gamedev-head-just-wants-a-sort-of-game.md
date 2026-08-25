@@ -39,9 +39,9 @@ This may have been done already I haven't done that much studies on this.
 You could do more composition by having calls to procs, but it would be the async/await situation where now that proc must be a rail proc for the specific width. 
 All operations within the procs must end up being simd, but the slices from arbitrary pointers can come from any struct in memory.
 
-**3/** @Ed__dev
+**3/** **@Ed__dev** ^1944934840710914209
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 ![](https://pbs.twimg.com/media/Gv3L4JqXAAA22Q4?format=png&name=orig)
 

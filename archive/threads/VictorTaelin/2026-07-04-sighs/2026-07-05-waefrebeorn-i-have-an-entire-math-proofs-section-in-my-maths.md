@@ -7,7 +7,7 @@ author: "WuBu ⪋ WaefreBeorn 🇺🇸 👑"
 handle: waefrebeorn
 post_id: "2073664245816758563"
 date: 2026-07-05
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive
@@ -35,6 +35,7 @@ i have an entire math proofs section in my maths repos
 so “+1”
 
 ![](https://pbs.twimg.com/media/HMcipC5WUAA44VI?format=jpg&name=orig)
+
 ## Related
 
 - Spine: [[archive/threads/VictorTaelin/2026-07-04-sighs]]

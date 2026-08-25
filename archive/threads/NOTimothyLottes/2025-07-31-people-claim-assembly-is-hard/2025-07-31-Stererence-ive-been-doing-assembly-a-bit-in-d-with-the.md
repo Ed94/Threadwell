@@ -7,7 +7,7 @@ author: "Sterence"
 handle: Stererence
 post_id: "1950970860694913461"
 date: 2025-07-31
-archived: 2026-08-24
+archived: 2026-08-25
 draft: false
 tags:
   - archive

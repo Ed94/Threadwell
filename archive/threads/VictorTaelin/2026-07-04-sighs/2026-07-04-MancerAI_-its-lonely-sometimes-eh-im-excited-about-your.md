@@ -7,7 +7,7 @@ author: "MancerAI"
 handle: MancerAI_
 post_id: "2073410416667959304"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

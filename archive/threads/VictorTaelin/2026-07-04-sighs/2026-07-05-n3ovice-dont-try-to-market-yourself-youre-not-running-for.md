@@ -7,7 +7,7 @@ author: "zoo zoo"
 handle: n3ovice
 post_id: "2073683342059622543"
 date: 2026-07-05
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

@@ -7,7 +7,7 @@ author: "Ian Hanschen"
 handle: furan
 post_id: "1950955895351083303"
 date: 2025-07-31
-archived: 2026-08-24
+archived: 2026-08-25
 draft: false
 tags:
   - archive

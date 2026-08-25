@@ -7,7 +7,7 @@ author: "Palochinero"
 handle: AutorRecomienda
 post_id: "2073410146189877657"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

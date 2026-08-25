@@ -7,7 +7,7 @@ author: "𝖒𝖒𝖆𝖑𝖊𝖝"
 handle: mmalex
 post_id: "1950886322341630045"
 date: 2025-07-31
-archived: 2026-08-24
+archived: 2026-08-25
 draft: false
 tags:
   - archive

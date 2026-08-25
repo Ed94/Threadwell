@@ -7,7 +7,7 @@ author: "carmim333"
 handle: carmim_13
 post_id: "2073461299040616534"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

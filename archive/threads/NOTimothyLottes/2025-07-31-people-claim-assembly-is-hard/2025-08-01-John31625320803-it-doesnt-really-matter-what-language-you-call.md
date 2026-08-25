@@ -7,7 +7,7 @@ author: "Ægis Stranding"
 handle: John31625320803
 post_id: "1951198394329829393"
 date: 2025-08-01
-archived: 2026-08-24
+archived: 2026-08-25
 draft: false
 tags:
   - archive

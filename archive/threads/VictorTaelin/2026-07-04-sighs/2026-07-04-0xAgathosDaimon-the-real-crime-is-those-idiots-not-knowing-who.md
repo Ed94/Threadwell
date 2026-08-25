@@ -7,7 +7,7 @@ author: "A Wandering Daimon"
 handle: 0xAgathosDaimon
 post_id: "2073442728617365698"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

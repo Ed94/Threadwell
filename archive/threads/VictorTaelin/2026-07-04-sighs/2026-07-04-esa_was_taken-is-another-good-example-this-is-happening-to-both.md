@@ -7,7 +7,7 @@ author: "Esa"
 handle: esa_was_taken
 post_id: "2073467375505039462"
 date: 2026-07-04
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

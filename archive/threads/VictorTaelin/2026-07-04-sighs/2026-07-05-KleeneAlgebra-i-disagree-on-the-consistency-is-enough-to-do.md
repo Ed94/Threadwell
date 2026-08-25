@@ -7,7 +7,7 @@ author: "Alecs, B.P.Ed."
 handle: KleeneAlgebra
 post_id: "2073769031467766029"
 date: 2026-07-05
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive
