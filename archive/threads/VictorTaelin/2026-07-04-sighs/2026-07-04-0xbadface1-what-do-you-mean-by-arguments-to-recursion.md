@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @0xbadface1
+**1/** **@0xbadface1** ^2073533148101526002
 
-@VictorTaelin
+**@VictorTaelin**
 
 What do you mean by arguments to recursion "decreasing"? ... that looks a bit too "specific" - is that just some layman description of something more general and rigorous?
 

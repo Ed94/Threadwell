@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @hasen_95dx
+**1/** **@hasen_95dx** ^1693179795423867063
 
-@cmuratori
+**@cmuratori**
 
 Architecture is difficult, and most people have no idea how to approach it.
 

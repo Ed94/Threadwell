@@ -26,15 +26,15 @@ parent_post_id: "1912477061467304351"
 
 ## Branch
 
-**1/** @BoganBits
+**1/** **@BoganBits** ^1912556384572653833
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Could a shader compiler not do this?  i.e. detect such inefficient code, and "re-vectorise" it, so to speak i.e. have each shader instance do 2 at once, interleaved
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1912564973638726123
 
-@BoganBits
+**@BoganBits**
 
 This is something to be done at the dispatch level, not something a compiler knows about
 

@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @Tankerbot
+**1/** **@Tankerbot** ^1786435736582906182
 
-@SebAaltonen
+**@SebAaltonen**
 
 Yeah if it's available use it. Though in my case I end up using Notepad (Notepad++) for most of the C++ stuff I code mostly because it's Nintendo DS/DSi homebrew and setting them up in a IDE would be a pain given the build system they use so I've never bothered doing it. :P
 

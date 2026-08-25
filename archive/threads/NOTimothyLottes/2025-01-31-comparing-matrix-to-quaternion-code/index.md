@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1885175713638076657
 
 Comparing matrix to quaternion code:
 (A.) https://d3cw3dd2w32x2b.cloudfront.net/wp-content/uploads/2015/01/matrix-to-quat.pdf
@@ -37,7 +37,7 @@ Anything better than those?
 
 ![](https://pbs.twimg.com/media/Gil71jfXEAAhOJa?format=png&name=orig)
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1885182390978429048
 
 The (B.) alternative method might be just 32 VALU clocks on AMD, wrote up the code below (but warning didn't test it yet).
 

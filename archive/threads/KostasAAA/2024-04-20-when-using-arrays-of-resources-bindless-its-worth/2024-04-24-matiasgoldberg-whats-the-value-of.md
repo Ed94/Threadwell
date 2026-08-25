@@ -26,9 +26,9 @@ parent_post_id: "1781724279798686001"
 
 ## Branch
 
-**1/** @matiasgoldberg
+**1/** **@matiasgoldberg** ^1783166450733113360
 
-@KostasAAA
+**@KostasAAA**
 
 What's the value of shaderSampledImageArrayDynamicIndexing?
 

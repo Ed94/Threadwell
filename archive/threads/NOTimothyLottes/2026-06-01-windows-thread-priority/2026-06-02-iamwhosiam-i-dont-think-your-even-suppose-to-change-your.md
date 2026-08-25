@@ -26,15 +26,15 @@ parent_post_id: "2061416116694442141"
 
 ## Branch
 
-**1/** @iamwhosiam
+**1/** **@iamwhosiam** ^2061658841360589225
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I don’t think your even suppose to change your thread’s priority in general anymore, it just messes with scheduling.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2061757874297065775
 
-@iamwhosiam
+**@iamwhosiam**
 
 Try using low latency pro audio tools and disabling the app’s authorization for high priority scheduling
 

@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @andrew_v10209
+**1/** **@andrew_v10209** ^1944934680404389997
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Maybe Futhark, or array programming. There's an entire compiler that runs on the GPU written in Futhark (i.e. it does parsing, lexing, register allocation, etc on the GPU). It's called Pareas
 

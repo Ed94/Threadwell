@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @TheBuzzSaw
+**1/** **@TheBuzzSaw** ^1691222152853491714
 
-@cmuratori
+**@cmuratori**
 
 Just today, in VS 2022, the semantic analyzer crashed on me.
 

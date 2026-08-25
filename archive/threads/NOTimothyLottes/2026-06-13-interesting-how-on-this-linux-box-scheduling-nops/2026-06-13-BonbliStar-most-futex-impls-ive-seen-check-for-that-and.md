@@ -26,15 +26,15 @@ parent_post_id: "2065840191340707905"
 
 ## Branch
 
-**1/** @BonbliStar
+**1/** **@BonbliStar** ^2065944487075975648
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 most futex impls i've seen check for that and early return before the syscall, but you likely already knew that
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2065998673117376693
 
-@BonbliStar
+**@BonbliStar**
 
 Yes, the comment was more the point of designing for the worst case, the limit of possibly blocking calls that interact with the scheduling.
 

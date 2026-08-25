@@ -25,6 +25,6 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1591646625692553216
 
 My prefered method of managing application data was the 'self-modifying-binary': (a.) on launch copy binary to temp file, (b.) launch temp file, (c.) exit, (d.) now temp file execution can freely modify origional binary :)

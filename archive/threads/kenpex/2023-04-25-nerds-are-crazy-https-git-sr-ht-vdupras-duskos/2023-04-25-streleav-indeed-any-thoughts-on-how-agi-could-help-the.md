@@ -26,9 +26,9 @@ parent_post_id: "1650678968255913985"
 
 ## Branch
 
-**1/** @streleav
+**1/** **@streleav** ^1650915682136240129
 
-@kenpex
+**@kenpex**
 
 Indeed. Any thoughts on how AGI could help the situation?
 

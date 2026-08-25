@@ -26,9 +26,9 @@ parent_post_id: "1786349827669790823"
 
 ## Branch
 
-**1/** @dmitriid
+**1/** **@dmitriid** ^1786352488557191368
 
-@SebAaltonen
+**@SebAaltonen**
 
 The anti-tooling discourse in programming is quite tiring
 

@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @billylevin
+**1/** **@billylevin** ^2073418462626455984
 
-@VictorTaelin
+**@VictorTaelin**
 
 This is so cool and inspiring (not that I understand all of it; that’s part of what makes it inspiring!). I hope you won’t be dissuaded from posting this kind of thing if you want to in future. Many people (such as me who rarely engages with stuff on here) will be thankful!
 

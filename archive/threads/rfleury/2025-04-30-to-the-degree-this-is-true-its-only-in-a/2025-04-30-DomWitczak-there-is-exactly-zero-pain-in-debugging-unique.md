@@ -26,9 +26,9 @@ parent_post_id: "1917431895786414425"
 
 ## Branch
 
-**1/** @DomWitczak
+**1/** **@DomWitczak** ^1917469208335507559
 
-@rfleury
+**@rfleury**
 
 There is exactly zero pain in debugging unique_ptr variables these days. Even with gdb.
 

@@ -27,8 +27,8 @@ in_reply_to: "2063730754861822129"
 
 ## Thread
 
-**1/** @winning_tactic
+**1/** **@winning_tactic** ^2063733456144597200
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I see!

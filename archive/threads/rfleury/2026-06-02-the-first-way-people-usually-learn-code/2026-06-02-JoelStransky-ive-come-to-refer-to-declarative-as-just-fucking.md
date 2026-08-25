@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @JoelStransky
+**1/** **@JoelStransky** ^2061851334278877273
 
-@rfleury
+**@rfleury**
 
 I've come to refer to declarative as "just fucking say it" coding.
 

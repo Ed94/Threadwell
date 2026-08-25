@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @pegvvin
+**1/** **@pegvvin** ^2061783632067633224
 
-@rfleury
+**@rfleury**
 
 Can't tell just how many times I've pulled out something into it's own function only to use it once. I was taught "clean code" incorrectly.
 

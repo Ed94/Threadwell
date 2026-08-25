@@ -102,7 +102,7 @@ def _source_block(post: PostData) -> str:
 
 
 _LEADING_MENTIONS: re.Pattern[str] = re.compile(
-    r"^((?:@[A-Za-z0-9_]+(?:[ \t]+@[A-Za-z0-9_]+)*)[ \t]*)(.*)$",
+    r"^((?:(?:\*\*)?@[A-Za-z0-9_]+(?:\*\*)?(?:[ \t]+(?:\*\*)?@[A-Za-z0-9_]+(?:\*\*)?)*)[ \t]*)(.*)$",
     re.DOTALL,
 )
 
@@ -113,21 +113,34 @@ def split_leading_mentions(text: str) -> tuple[str, str]:
     match = _LEADING_MENTIONS.match(raw)
     if match is None:
         return "", raw
-    mentions = " ".join(match.group(1).split())
+    mentions = " ".join(
+        part.strip("*") for part in match.group(1).split() if part.strip("*")
+    )
     rest = match.group(2).lstrip(" \t")
     if rest.startswith("\n"):
         rest = rest.lstrip("\n")
     return mentions, rest
 
 
+def format_mention_line(mentions: str) -> str:
+    """Bold each leading reply handle."""
+    handles = [
+        part.strip("*")
+        for part in mentions.split()
+        if part.strip("*").startswith("@")
+    ]
+    return " ".join(f"**{handle}**" for handle in handles)
+
+
 def format_post_text(text: str) -> str:
-    """Put leading reply mentions on their own line, then the tweet body."""
+    """Put leading reply mentions on their own bold line, then the tweet body."""
     mentions, rest = split_leading_mentions(text)
     if not mentions:
         return text
+    line = format_mention_line(mentions)
     if not rest:
-        return mentions
-    return f"{mentions}\n\n{rest}"
+        return line
+    return f"{line}\n\n{rest}"
 
 
 def _post_block(
@@ -136,10 +149,11 @@ def _post_block(
     media_by_post: dict[str, tuple[str, ...]] | None,
     branch_links: list[str] | None = None,
 ) -> str:
-    """Render one post body (``**N/** @handle`` + text + media + branch links)."""
+    """Render one post: number, bold speaker, block id, mentions, text, media."""
     if not post.handle:
         raise ValueError(f"empty handle on post {post.post_id}")
-    parts = [f"**{n}/** @{post.handle}", "", format_post_text(post.text)]
+    head = f"**{n}/** **@{post.handle}** ^{post.post_id}"
+    parts = [head, "", format_post_text(post.text)]
     media = (media_by_post or {}).get(post.post_id) or ()
     if media:
         parts.append("")

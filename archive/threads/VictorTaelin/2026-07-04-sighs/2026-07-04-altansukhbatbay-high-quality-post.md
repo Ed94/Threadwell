@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @altansukhbatbay
+**1/** **@altansukhbatbay** ^2073493266209690083
 
-@VictorTaelin
+**@VictorTaelin**
 
 high quality post!
 

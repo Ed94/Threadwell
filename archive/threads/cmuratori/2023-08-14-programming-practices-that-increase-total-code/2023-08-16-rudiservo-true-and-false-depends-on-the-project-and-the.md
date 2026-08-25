@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @rudiservo
+**1/** **@rudiservo** ^1691743453527294388
 
-@cmuratori
+**@cmuratori**
 
 True and false, depends on the project and the compiler.
 CPUs hate jumping around, so having a compiler like C that allows inline functions helps with that, if you try and do DRY in assembly, your program will be slow, sometimes to the extreme.

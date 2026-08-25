@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @anghel4d
+**1/** **@anghel4d** ^2073421838068191714
 
-@VictorTaelin
+**@VictorTaelin**
 
 I'm a big fan of Interaction Combinators and I hope you keep going. Git push your changes to bend sometime :p
 

@@ -26,13 +26,13 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @eron_wolf
+**1/** **@eron_wolf** ^2061625769684566075
 
-@rfleury
+**@rfleury**
 
 I like giant matching functions with lots of helper functions as closures with limited scope.  At least then you're kinda containing the mess.
 
-**2/** @rfleury
+**2/** **@rfleury** ^2061627148432216213
 
 That is definitely fair; I build as C (and I want to build with MSVC as well as the others, so I don't have all of the extensions), so I do not have local functions and certainly not closures, but I often find myself approximating similar patterns with command buffers. That said, I still find the statically linear flow preferable when possible.
 

@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @simplex_fx
+**1/** **@simplex_fx** ^1890348863287943363
 
 Hey, gpu guys like @SebAaltonen @NOTimothyLottes why do rendering guys usually wrap 3d apis at low level in engines, creating some generic mid-low level API?
 
@@ -35,8 +35,8 @@ Unless you go with some super generic game engine (bad idea on it's own anyway),
 
 Branches: [[archive/threads/simplex_fx/2025-02-14-hey-gpu-guys-like-sebaaltonen-notimothylottes-why/2025-02-14-count_mascetti-every-time-i-abstract-at-a-higher-level-i-end-up]], [[archive/threads/simplex_fx/2025-02-14-hey-gpu-guys-like-sebaaltonen-notimothylottes-why/2025-02-14-SebAaltonen-i-briefly-discussed-this-topic-in-my-siggraph]], [[archive/threads/simplex_fx/2025-02-14-hey-gpu-guys-like-sebaaltonen-notimothylottes-why/2025-02-14-matiasgoldberg-you-can-do-whatever-you-want-the-api-just-because]], [[archive/threads/simplex_fx/2025-02-14-hey-gpu-guys-like-sebaaltonen-notimothylottes-why/2025-02-14-NOTimothyLottes-yeah-its-a-common-problem-thin-wrapper-interfaces]], [[archive/threads/simplex_fx/2025-02-14-hey-gpu-guys-like-sebaaltonen-notimothylottes-why/2025-02-15-RyDawgE256-i-dont-disagree-but-the-reason-is-that-99-of]], [[archive/threads/simplex_fx/2025-02-14-hey-gpu-guys-like-sebaaltonen-notimothylottes-why/2025-02-15-matthewcraig42-usually-the-key-benefit-is-two-fold-making-the]], [[archive/threads/simplex_fx/2025-02-14-hey-gpu-guys-like-sebaaltonen-notimothylottes-why/2025-02-15-pagedeux-the-render-pipeline-is-basically-a-full-piece-of]], [[archive/threads/simplex_fx/2025-02-14-hey-gpu-guys-like-sebaaltonen-notimothylottes-why/2025-02-15-vanderschnarzen-i-have-exactly-that-my-abstraction-is-basically]]
 
-**2/** @songohab
+**2/** **@songohab** ^1890350151862018290
 
-@simplex_fx @SebAaltonen @NOTimothyLottes
+**@simplex_fx** **@SebAaltonen** **@NOTimothyLottes**
 
 Exactly the question I was asking myself lol. Always felt like 3D apis SHOULD be specific. But I’m just a noob

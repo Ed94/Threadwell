@@ -47,3 +47,9 @@ Pictures on the site are the original host URLs. Working copies live outside wha
 ## Reading
 
 Start at [[archive/threads/index|Threads]], pick a handle, then a date. The spine is the essay. Branch files are the conversation around it.
+
+On the site: click an image to enlarge it (Esc or click to close). Use **Wide** to grow the reading column.
+
+To point a note at one reply, wikilink the block id on that post:
+
+`[[archive/threads/SebAaltonen/2025-03-08-stupid-hardware-question-why-does-amd-use-several/2025-03-08-NOTimothyLottes-actually-this-is-a-super-important-question-imo#^1898440015182729598]]`

@@ -26,27 +26,27 @@ parent_post_id: "2065840191340707905"
 
 ## Branch
 
-**1/** @rflaherty71
+**1/** **@rflaherty71** ^2065859701909459406
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Seems like people trying to push high frame rates would be perfectly fine with just busy spinning at that point
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2065876612881551764
 
-@rflaherty71
+**@rflaherty71**
 
 Not exactly true, the larger problem is getting context switched at a bad time, so getting non-blocking bound comes with another set of dangers (higher bad preemption risk)
 
-**3/** @AgileJebrim
+**3/** **@AgileJebrim** ^2065902481918341310
 
-@NOTimothyLottes @rflaherty71
+**@NOTimothyLottes** **@rflaherty71**
 
 All the more reason to go GPU-side where that can’t occur.
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^2066002894877266034
 
-@AgileJebrim @rflaherty71
+**@AgileJebrim** **@rflaherty71**
 
 Consumer GPU side is littered with junk these days, starting with multi display compositors.
 

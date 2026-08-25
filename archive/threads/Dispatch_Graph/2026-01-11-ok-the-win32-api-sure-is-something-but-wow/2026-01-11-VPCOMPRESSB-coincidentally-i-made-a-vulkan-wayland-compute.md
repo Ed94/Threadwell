@@ -26,9 +26,9 @@ parent_post_id: "2010303501851877740"
 
 ## Branch
 
-**1/** @VPCOMPRESSB
+**1/** **@VPCOMPRESSB** ^2010378880209871041
 
-@Dispatch_Graph
+**@Dispatch_Graph**
 
 coincidentally, i made a Vulkan Wayland compute engine yesterday in ~600 LoC.
 

@@ -26,9 +26,9 @@ parent_post_id: "2010303501851877740"
 
 ## Branch
 
-**1/** @linux_version
+**1/** **@linux_version** ^2010740512769404946
 
-@Dispatch_Graph
+**@Dispatch_Graph**
 
 Oddly enough, with how old the wine project is, Win32 might be the most stable API on Linux.
 

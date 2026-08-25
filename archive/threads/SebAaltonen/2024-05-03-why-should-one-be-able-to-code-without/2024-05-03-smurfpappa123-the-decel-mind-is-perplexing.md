@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @smurfpappa123
+**1/** **@smurfpappa123** ^1786489038234382830
 
-@SebAaltonen
+**@SebAaltonen**
 
 The decel mind is perplexing 🤔
 

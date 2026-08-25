@@ -26,15 +26,15 @@ parent_post_id: "1869409243251827152"
 
 ## Branch
 
-**1/** @Walley_Alex1
+**1/** **@Walley_Alex1** ^1869875982645244406
 
-@rfleury
+**@rfleury**
 
 I completely agree. I am interested in your thoughts on allowing these megastructure/product types to be used as part of a user API? One issue with product types: it is harder to see what a “valid” set of fields are. With a sum type, they are type checked
 
-**2/** @rfleury
+**2/** **@rfleury** ^1869879204361507032
 
-@Walley_Alex1
+**@Walley_Alex1**
 
 The idea is more that there *aren’t* invalid subsets of fields. All possibilities are on the table. This is actually more useful for usage code, because the underlying mechanisms are more flexible.
 

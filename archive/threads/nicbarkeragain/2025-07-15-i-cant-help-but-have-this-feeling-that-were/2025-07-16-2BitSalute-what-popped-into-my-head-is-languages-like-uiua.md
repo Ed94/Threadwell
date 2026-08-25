@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @2BitSalute
+**1/** **@2BitSalute** ^1945487552011722857
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 What popped into my head is languages like Uiua
 

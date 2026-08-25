@@ -26,15 +26,15 @@ parent_post_id: "2074108624553554387"
 
 ## Branch
 
-**1/** @nullspector
+**1/** **@nullspector** ^2074888721959149995
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 That's very neat, but is it really true in practice that the max distance between symbols can't exceed 4GB? I think it would be a sane guarantee that it can't, but I assumed the worst and got scared off from the idea...
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2074892435038077125
 
-@nullspector
+**@nullspector**
 
 It’s working thus far, if I find a case it doesn’t work I’ll change it. I keep a different base per library, so likely safe enough.
 

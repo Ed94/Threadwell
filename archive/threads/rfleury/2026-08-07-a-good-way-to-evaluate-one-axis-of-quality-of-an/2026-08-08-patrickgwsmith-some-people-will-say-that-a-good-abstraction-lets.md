@@ -26,9 +26,9 @@ parent_post_id: "2085786822387609939"
 
 ## Branch
 
-**1/** @patrickgwsmith
+**1/** **@patrickgwsmith** ^2085887028353441943
 
-@rfleury
+**@rfleury**
 
 Some people will say that a good abstraction lets you understand the loops underneath, and some will say that a good abstraction means you don’t have to understand the loops underneath.
 

@@ -796,7 +796,7 @@ def emit_all(
 
 
 _NUMBER_LINE: re.Pattern[str] = re.compile(
-    r"^(\*\*(\d+)/\*\*)(?: +@([A-Za-z0-9_]+))?[ \t]*$",
+    r"^(\*\*(\d+)/\*\*)(?: +(?:\*\*)?@([A-Za-z0-9_]+)(?:\*\*)?)?(?: +\^([A-Za-z0-9_]+))?[ \t]*$",
     re.MULTILINE,
 )
 
@@ -855,6 +855,20 @@ def _frontmatter_handle(text: str) -> str:
             continue
         if in_front and line.startswith("handle:"):
             return line.split(":", 1)[1].strip()
+    return ""
+
+
+def _frontmatter_post_id(text: str) -> str:
+    """Return the note-root ``post_id:`` value, or empty."""
+    in_front = False
+    for line in text.splitlines():
+        if line.strip() == "---":
+            if in_front:
+                return ""
+            in_front = True
+            continue
+        if in_front and line.startswith("post_id:"):
+            return line.split(":", 1)[1].strip().strip("\"'")
     return ""
 
 
@@ -935,12 +949,15 @@ def patch_note_text(text: str, posts: tuple) -> tuple[str, str, str]:
         body = _extract_post_body(text[match.end():end])
         post = match_post_for_body(body, posts, used)
         handle = ""
+        post_id = ""
         if post is not None:
             handle = str(post.handle or "")
+            post_id = str(post.post_id or "")
             if handle:
                 used.add(post.post_id)
         if not handle and index == 0 and root_handle:
             handle = root_handle
+            post_id = _frontmatter_post_id(text)
         region = text[match.end():end]
         if not handle:
             unmatched.append(f"**{number}/**")
@@ -948,7 +965,9 @@ def patch_note_text(text: str, posts: tuple) -> tuple[str, str, str]:
             pieces.append(region)
             last = end
             continue
-        new_line = f"**{number}/** @{handle}"
+        new_line = f"**{number}/** **@{handle}**"
+        if post_id:
+            new_line += f" ^{post_id}"
         if new_line != match.group(0).rstrip():
             changed = True
         formatted = format_post_text(body)

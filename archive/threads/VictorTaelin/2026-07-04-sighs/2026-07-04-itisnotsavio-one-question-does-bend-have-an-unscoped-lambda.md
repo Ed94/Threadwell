@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @itisnotsavio
+**1/** **@itisnotsavio** ^2073467107937792311
 
-@VictorTaelin
+**@VictorTaelin**
 
 One question: does bend have an unscoped lambda?
 

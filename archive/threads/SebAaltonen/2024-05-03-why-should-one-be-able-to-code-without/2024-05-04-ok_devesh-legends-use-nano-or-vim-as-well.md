@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @ok_devesh
+**1/** **@ok_devesh** ^1786591865829015630
 
-@SebAaltonen
+**@SebAaltonen**
 
 Legends use nano or vim as well!
 

@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @ThePunkHucker
+**1/** **@ThePunkHucker** ^1786378176765059276
 
-@SebAaltonen
+**@SebAaltonen**
 
 It’s a showcase of the « I’m stronger than you » syndrome so many programmers have. It’s stupid.
 

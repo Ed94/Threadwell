@@ -26,23 +26,23 @@ parent_post_id: "1917646466417381426"
 
 ## Branch
 
-**1/** @onatt0
+**1/** **@onatt0** ^1917651417487036446
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 IMO code compilation is inherently sequential+ "execution contextual", dynamic logic execution to get the binary as the essence vs a static lang
 
 codegen with execution on GPU could work as 2-items(vreg)/stack and 32K cells per lane for AI to map code to data instead of weights?
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1917654997895983255
 
-@onatt0
+**@onatt0**
 
 So for x86 I've many times written code gen with extra nop-prefix padding to fix all instructions to a multiple of known 32-bits. Which means you know in advance sizing of everything, then you can easily do parallel code generation. So need not necessarily all be serial
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^1917655990792560843
 
-@onatt0
+**@onatt0**
 
 However I'm often building then instantly using code while generating a baked binary to use later, so that regard much is inherently serially dependent. This bootstrapping technique is perhaps one the great things to learn from things like color forth IMO.
 

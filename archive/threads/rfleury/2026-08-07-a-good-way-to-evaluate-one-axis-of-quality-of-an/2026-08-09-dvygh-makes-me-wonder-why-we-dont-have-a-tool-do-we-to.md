@@ -26,9 +26,9 @@ parent_post_id: "2085786822387609939"
 
 ## Branch
 
-**1/** @dvygh
+**1/** **@dvygh** ^2086445668743168442
 
-@rfleury
+**@rfleury**
 
 makes me wonder why we don't have a tool (do we?) to visualize inlining like that (without actually doing it). maybe stop inlining at certain library call boundaries. not only to evaluate quality, but also to understand what the hell a function is doing.
 

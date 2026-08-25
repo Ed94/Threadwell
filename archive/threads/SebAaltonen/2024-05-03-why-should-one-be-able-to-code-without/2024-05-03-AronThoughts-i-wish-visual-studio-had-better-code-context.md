@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @AronThoughts
+**1/** **@AronThoughts** ^1786371614994493715
 
-@SebAaltonen
+**@SebAaltonen**
 
 I wish visual studio had better code context colorization. At one point I was using a source editor called source insight. It had amazing code colorization and I had this theme where warm/cool colors meant certain things so I could instantly look at a variable know about it
 

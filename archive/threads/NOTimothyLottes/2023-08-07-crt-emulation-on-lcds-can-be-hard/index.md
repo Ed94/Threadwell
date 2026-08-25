@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1688491417109196800
 
 CRT emulation on LCDs can be hard. For example it's often easy to generate a pattern that causes a LCD hardware bug. NOT joking. Here is an example on the Steam Deck. The pattern in the window affects the scan (Deck scan is rotated) outside the window.
 
@@ -34,22 +34,22 @@ CRT emulation on LCDs can be hard. For example it's often easy to generate a pat
 
 Branches: [[archive/threads/NOTimothyLottes/2023-08-07-crt-emulation-on-lcds-can-be-hard/2023-08-10-BlurBusters-very-interesting-crosstalk-from-voltage-inversion]]
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1688492237775142912
 
 The actual pattern is this (it's a 2x1 pixel checker of {G,RB}).
 
 ![](https://pbs.twimg.com/media/F266epnW4AAdCiK?format=png&name=orig)
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^1688493686554849280
 
 The theory: Deck's 90deg scan results in {(bottom)R, G, B (top)} sub-pixel components. So could alternate {G,RB} only per pixel in a checker pattern to generate a new sub-pixel pattern at a different resolution. In this case trying for 640x400 virtual resolution.
 
 ![](https://pbs.twimg.com/media/F267UYuXAAAO50A?format=png&name=orig)
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1688494811366506496
 
 For virtual pixel, shift energy into masked virtual phosphor. So 50% brightness red, would be {100%, 0%} for {in, out} of phosphor pixels. Over 50% one starts to increase non-phosphor pixels until some maximum so mask is still visible, but brightness isn't too compromised.
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^1688496100460605442
 
 Of course this is done in linear, so it's energy conserving in theory. But when the panel fails, it breaks down and doesn't work. I see this problem on a bunch of different devices. My personal AMD laptop has the exact same fail case (but rotated differently).

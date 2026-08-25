@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @MacGyver1618
+**1/** **@MacGyver1618** ^1786373263947432188
 
-@SebAaltonen
+**@SebAaltonen**
 
 You should be able to code in Notepad just so you can truly relish the joy of not having to.
 

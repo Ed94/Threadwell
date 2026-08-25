@@ -26,9 +26,9 @@ parent_post_id: "2010303501851877740"
 
 ## Branch
 
-**1/** @JoaoBapt
+**1/** **@JoaoBapt** ^2010753110805979471
 
-@Dispatch_Graph
+**@Dispatch_Graph**
 
 I suggest you to stick with GLFW if you’re only doing Vulkan.
 

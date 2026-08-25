@@ -26,9 +26,9 @@ parent_post_id: "1869409243251827152"
 
 ## Branch
 
-**1/** @wetfsdffsdasd
+**1/** **@wetfsdffsdasd** ^1870045591582933041
 
-@rfleury
+**@rfleury**
 
 interesting projection of combinatorics system into coding system. problem is, none of this yields always. an eg. is when you decouple the system into axbxcxd... such as the space of any of a,b,.. is small, you will be losing sanity and time. there are many other cases too
 

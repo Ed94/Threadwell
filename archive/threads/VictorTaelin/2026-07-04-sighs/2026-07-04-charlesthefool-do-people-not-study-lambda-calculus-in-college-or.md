@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @charlesthefool
+**1/** **@charlesthefool** ^2073522750782833148
 
-@VictorTaelin
+**@VictorTaelin**
 
 Do people not study lambda calculus in college or at any other point when looking into programming languages?
 

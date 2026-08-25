@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @ren_metal_n_dev
+**1/** **@ren_metal_n_dev** ^1787076046405464324
 
-@SebAaltonen
+**@SebAaltonen**
 
 It’s about leveraging the tools to be as productive as possible. Who cares if you use an IDE. If someone on my team is dragging behind because of their tool choice on the other hand, that would be annoying.
 

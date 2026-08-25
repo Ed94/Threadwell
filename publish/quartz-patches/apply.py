@@ -78,6 +78,10 @@ BASE_RE: re.Pattern[str] = re.compile(
 TITLE_LINK: re.Pattern[str] = re.compile(
     r'(<h2[^>]*class="page-title"><a\s+href=")[^"]*(">)'
 )
+SCRIPT_TAG: str = (
+    '<script src="/static/threadwell-reader.js" defer></script>'
+)
+BODY_CLOSE: re.Pattern[str] = re.compile(r"</body>", re.IGNORECASE)
 
 
 # --- SPA click-handler patch ----------------------------------------------
@@ -200,6 +204,9 @@ def rewrite_html(path: Path) -> str | None:
         if out2 != out:
             out = out2
             actions.append("title")
+    if SCRIPT_TAG not in out and BODY_CLOSE.search(out):
+        out = BODY_CLOSE.sub(SCRIPT_TAG + "\n</body>", out, count=1)
+        actions.append("script")
 
     if out != text:
         path.write_text(out, encoding="utf-8")

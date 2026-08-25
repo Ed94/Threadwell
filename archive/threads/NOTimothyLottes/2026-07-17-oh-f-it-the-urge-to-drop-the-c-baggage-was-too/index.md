@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2078257788732461389
 
 Oh, F-it! The urge to drop the C baggage was too strong, using nasm to bootstrap another radical Forth for Linux. Will see how far I can get in a 4 KiB binary to start. Apparently this wants to exist, and I have no choice but to lend some fingers. ELF64 out of the way.
 

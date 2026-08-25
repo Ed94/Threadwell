@@ -26,9 +26,9 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/** @2Sexy4MyGPU
+**1/** **@2Sexy4MyGPU** ^1950935584714654191
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 It was never hard, just tedious.
 

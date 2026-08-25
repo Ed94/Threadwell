@@ -26,9 +26,9 @@ parent_post_id: "2036653149948424230"
 
 ## Branch
 
-**1/** @_flashman_harry
+**1/** **@_flashman_harry** ^2036755293187592636
 
-@BOENSAW
+**@BOENSAW**
 
 Finding out being Turing complete just requires less and not more?
 

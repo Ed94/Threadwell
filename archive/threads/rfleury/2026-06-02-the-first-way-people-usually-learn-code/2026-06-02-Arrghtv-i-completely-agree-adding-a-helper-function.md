@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @Arrghtv
+**1/** **@Arrghtv** ^2061670156401611263
 
-@rfleury
+**@rfleury**
 
 I completely agree, adding a helper function rarely reduces complexity and often leads to a lot of argument bloat.
 

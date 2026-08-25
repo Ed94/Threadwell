@@ -26,17 +26,17 @@ parent_post_id: "1990506460531601538"
 
 ## Branch
 
-**1/** @attamayte1
+**1/** **@attamayte1** ^1990701881744896485
 
-@valigo
+**@valigo**
 
 Pointer arithmetic based on type sizes makes sense when considering aligned load/store memory operations.
 
 I’d argue that even today, with relaxed rules, we commonly use typed arrays and calculate offsets in bytes only when working with generic buffers, like binary data blobs.
 
-**2/** @valigo
+**2/** **@valigo** ^1990702455730929959
 
-@attamayte1
+**@attamayte1**
 
 Yeah it makes sense for it to be the default. It's still confusing :)
 

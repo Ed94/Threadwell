@@ -26,9 +26,9 @@ parent_post_id: "1674757854471806977"
 
 ## Branch
 
-**1/** @claudiogonzalo
+**1/** **@claudiogonzalo** ^1675054802265423872
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 c++ to √c
 

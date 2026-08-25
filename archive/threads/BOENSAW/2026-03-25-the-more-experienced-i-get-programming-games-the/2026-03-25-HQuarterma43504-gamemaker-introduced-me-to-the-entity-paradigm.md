@@ -26,9 +26,9 @@ parent_post_id: "2036653149948424230"
 
 ## Branch
 
-**1/** @HQuarterma43504
+**1/** **@HQuarterma43504** ^2036819288124985764
 
-@BOENSAW
+**@BOENSAW**
 
 GameMaker introduced me to the Entity paradigm. Each entity has "events" like On Create, On Destroy, Every Step, On Draw, On Collision, Timer, and so on. And you write code for these events.
 

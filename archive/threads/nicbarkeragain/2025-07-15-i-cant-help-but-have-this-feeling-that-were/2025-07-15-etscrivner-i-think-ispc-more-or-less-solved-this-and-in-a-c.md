@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @etscrivner
+**1/** **@etscrivner** ^1944916196429848910
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 I think ISPC more or less solved this and in a C-compatible way.
 

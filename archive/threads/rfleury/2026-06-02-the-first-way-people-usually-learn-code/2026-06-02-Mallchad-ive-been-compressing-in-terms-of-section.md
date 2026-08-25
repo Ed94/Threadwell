@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @Mallchad
+**1/** **@Mallchad** ^2061632296784941234
 
-@rfleury
+**@rfleury**
 
 I've been compressing in terms of "section functions" as opposed to helper functions. I find the concept of small functions teniously useful.
 

@@ -26,33 +26,33 @@ parent_post_id: "1950935464149483683"
 
 ## Branch
 
-**1/** @olson_dan
+**1/** **@olson_dan** ^1951144195843928435
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 What's the top "something else"?  I've been out of the space for a while.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1951295915274240375
 
-@olson_dan
+**@olson_dan**
 
 Wanting to build something that effectively loads/stores a 'cart' file which contains all the 'code+data' of the game in a restartable package. The code cannot be GLSL because I'm not going to link in a huge compiler. Leaves something that generates SPIR-V on the fly. New lang
 
-**3/** @EskilSteenberg
+**3/** **@EskilSteenberg** ^1951331025986134342
 
-@NOTimothyLottes @olson_dan
+**@NOTimothyLottes** **@olson_dan**
 
 For a long time i have contemplated writing a small GLSL->SPIR-V compiler. I think you could get away with something very simple, if you are conservative with your language use.
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1951340035996815801
 
-@EskilSteenberg @olson_dan
+**@EskilSteenberg** **@olson_dan**
 
 Have a crazy idea for GPU shader dev inspired by a C64 SID tracker where you have a 'pattern' for the 'instrument' which shows SID fx changing over time, along with the standard multi-channel pattern nestily using the instrument ...
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^1951340632183583076
 
-@EskilSteenberg @olson_dan
+**@EskilSteenberg** **@olson_dan**
 
 ... Effectively a macro assembly language style thing where defines can be played back interleaved for things like ILP or loop unrolling etc. But programmer controlling interleaving, and register offsets, etc. Then ultimately output to SPIR-V direct (no GLSL step).
 

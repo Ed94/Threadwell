@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2071706805114216559
 
 ALSA hell month continues: remember it might be "open source" but it is definitely "closed documentation" [those docs are securely trapped in the minds of the authors]. Now that I have aplay playing a sound, it's time for garbage sifting through STRACE to see what is going on ...
 
@@ -33,35 +33,35 @@ ALSA hell month continues: remember it might be "open source" but it is definite
 
 Branches: [[archive/threads/NOTimothyLottes/2026-06-29-alsa-hell-month-continues-remember-it-might-be/2026-06-29-AlexABPerson-have-you-actually-reached-out-to-said-developers]]
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2071710958397898929
 
 For devs working on linux, strace is a good friend, besides reverse engineering undocumented crap, it's useful to run on your own app as a bug test, like look what this idiot [me] did with nanosleep()
 
 ![](https://pbs.twimg.com/media/HMAx0PmW0AAdUAy?format=png&name=orig)
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^2071714384225681440
 
 In my ALSA interface I war-dial the possible /dev/snd/pcm devices instead of just listing the directory. It's a lot easier in source code.
 
 ![](https://pbs.twimg.com/media/HMA1CA9XIAAwRAB?format=png&name=orig)
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^2071715941688258752
 
 Using 'strace' showed another bug in my setting schedule priority code (I didn't yet validate that code and check for errors). Definitely my ALSA test app shows ZERO errors in ALSA system calls, but doesn't actually play anything. Broken without errors = crappy API.
 
 ![](https://pbs.twimg.com/media/HMA2LibWMAAMW3O?format=png&name=orig)
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^2071716495667708051
 
 In theory a good API, SNDRV_PCM_IOCTL_PREPARE would fail if the next SNDRV_PCM_IOCTL_WRITEI_FRAMES wouldn't accept the write. And that WRITEI should also fail instead of pass and setting .result=0 (of the snd xferi structure).
 
-**6/** @NOTimothyLottes
+**6/** **@NOTimothyLottes** ^2071717187623030935
 
 The best I can guess thus far is that the aplay app goes through some HW_REFINE ioctls before setting the HW_PARAMS, and perhaps the "magic missing thing" is in that process.
 
 ![](https://pbs.twimg.com/media/HMA3sGVXwAAVDMT?format=png&name=orig)
 
-**7/** @NOTimothyLottes
+**7/** **@NOTimothyLottes** ^2071725181576319370
 
 Best docs on REFINE that I've found yet is indirectly through this. Note tinyalsa doesn't seem to use this interface other than through pcm_params_get(), not the interative process seen in aplay strace. Maybe because tinyalsa is for android (different drivers)
 
@@ -69,14 +69,14 @@ Best docs on REFINE that I've found yet is indirectly through this. Note tinyals
 
 Branches: [[archive/threads/NOTimothyLottes/2026-06-29-alsa-hell-month-continues-remember-it-might-be/2026-06-30-mrsteyk1-tinyplay-does-sndrv-pcm-ioctl-hw-params-ioctl]]
 
-**8/** @NOTimothyLottes
+**8/** **@NOTimothyLottes** ^2071759816725311959
 
 SNDRV_PCM_IOCTL_HW_REFINE
 If send out a zeroed snd_pcm_hw_params, the ioctl will fail. There is a special magic sauce to the structure that must be initialized correctly before you can even fetch hardware parameters. It's high level skill in Obfuscation. See *_any( in ALSA src
 
 ![](https://pbs.twimg.com/media/HMBePMXXwAE5_1M?format=png&name=orig)
 
-**9/** @NOTimothyLottes
+**9/** **@NOTimothyLottes** ^2071760520852410838
 
 magiz/
 clear snd_pcm_hw_params
@@ -85,11 +85,11 @@ set intervals[0 ... 11].max=~0
 set rmask=~0
 set info=~0
 
-**10/** @NOTimothyLottes
+**10/** **@NOTimothyLottes** ^2071767401411084399
 
 The rmask and cmask use bit indexed by the DEFINE so 
 1<<SNDRV_PCM_HW_PARAM_{thing}
 
-**11/** @NOTimothyLottes
+**11/** **@NOTimothyLottes** ^2071769518246953293
 
 Hats off to Abramo Bagnara of the ALSA project for the worst kernel system interface I have ever used in my life. This refinement required just to configure an audio device is a master class on the worst way to do something. And still have a few hours left in reverse engineering

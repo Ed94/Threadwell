@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @bozoid
+**1/** **@bozoid** ^1786382993696727539
 
-@SebAaltonen
+**@SebAaltonen**
 
 it's just coder bravado to show off toy algorithms
 

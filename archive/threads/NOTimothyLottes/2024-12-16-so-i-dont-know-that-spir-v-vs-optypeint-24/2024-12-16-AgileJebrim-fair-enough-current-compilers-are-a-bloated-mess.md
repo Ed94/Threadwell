@@ -26,9 +26,9 @@ parent_post_id: "1868716773937414589"
 
 ## Branch
 
-**1/** @AgileJebrim
+**1/** **@AgileJebrim** ^1868717227866046808
 
-@NOTimothyLottes @GustavSterbrant
+**@NOTimothyLottes** **@GustavSterbrant**
 
 Fair enough. Current compilers are a bloated mess anyways and you’d get much faster times with your own assembler.
 

@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1589810282104524800
 
 Example of "Bind-Everything-Once" Layout Aliasing in Vulkan. Storage image format by aliased name, also bound as sampled image. Choose buffer {readonly,writeonly,volatile (read uncached),atomic} access by aliased name, as either {uint,uint4,float,float4}.
 

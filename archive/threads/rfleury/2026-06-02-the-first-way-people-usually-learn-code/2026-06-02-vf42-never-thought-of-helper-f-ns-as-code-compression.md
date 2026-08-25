@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @vf42
+**1/** **@vf42** ^2061694115520164235
 
-@rfleury
+**@rfleury**
 
 Never thought of helper f-ns as code compression, you still have all the same stuff elsewhere. Not to say it's useless.
 For the compression exercise ypu mention, I like to add a twist "...and make it easier to understand", which unlocks a whole new level to it.

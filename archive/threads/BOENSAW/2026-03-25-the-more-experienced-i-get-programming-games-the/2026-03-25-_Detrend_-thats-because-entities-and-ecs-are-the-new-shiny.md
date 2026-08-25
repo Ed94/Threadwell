@@ -26,9 +26,9 @@ parent_post_id: "2036653149948424230"
 
 ## Branch
 
-**1/** @_Detrend_
+**1/** **@_Detrend_** ^2036773206984470619
 
-@BOENSAW
+**@BOENSAW**
 
 Thats because entities and ECS are the new shiny thing and everyone loves to jump on the cool train.
 

@@ -26,41 +26,41 @@ parent_post_id: "1890348863287943363"
 
 ## Branch
 
-**1/** @SebAaltonen
+**1/** **@SebAaltonen** ^1890383966600888652
 
-@simplex_fx @NOTimothyLottes
+**@simplex_fx** **@NOTimothyLottes**
 
 I briefly discussed this topic in my SIGGRAPH 2022 talk.  The problem is that if you write a completely custom renderer for each platform, you have LOTS of platform specific code, which is super hard to maintain when your requirements change. 5x work for refactor is not fun.
 
-**2/** @SebAaltonen
+**2/** **@SebAaltonen** ^1890384155315249394
 
-@simplex_fx @NOTimothyLottes
+**@simplex_fx** **@NOTimothyLottes**
 
 Also with good design, you can almost 1:1 wrap Vulkan/Metal/DX12 under the same thin wrapper, so you don't end up wasting performance in a wrapper. Now you can write your low level rendering code once.
 
-**3/** @SebAaltonen
+**3/** **@SebAaltonen** ^1890384463625875663
 
-@simplex_fx @NOTimothyLottes
+**@simplex_fx** **@NOTimothyLottes**
 
 Good design == use placement heaps everywhere, use argument buffers (also in Metal) so that your memory management and binding model is identical. This way you don't need to send any data though the API wrapper. Write data directly to GPU memory, then call the wrapper to draw.
 
-**4/** @SebAaltonen
+**4/** **@SebAaltonen** ^1890384839938895966
 
-@simplex_fx @NOTimothyLottes
+**@simplex_fx** **@NOTimothyLottes**
 
 Also separating CPU->GPU data upload completely from drawing allows you to upload data at change frequency instead of draw frequency. Many big engines are slow as they upload data per draw call. That's bad design. Couples upload/draw tightly together. Must pay for both.
 
-**5/** @yuusakumenka
+**5/** **@yuusakumenka** ^1890523901886660651
 
-@SebAaltonen @simplex_fx @NOTimothyLottes
+**@SebAaltonen** **@simplex_fx** **@NOTimothyLottes**
 
 I've seen advised to use graphics queue (supporting transfer) for cpu write once gpu draw once data (immediate data recreated every frame).
 Then use separate data upload for data that suffers less frequent update (like per-instance scene data of a level editor).
 Is it bad advice?
 
-**6/** @yetmania
+**6/** **@yetmania** ^1890567591438983201
 
-@SebAaltonen @simplex_fx @NOTimothyLottes
+**@SebAaltonen** **@simplex_fx** **@NOTimothyLottes**
 
 Would this work for mobile phones?
 I thought that keeping the scene resident on the GPU relies on indirect draws with a count buffer (filled by a GPU culling computer shader) and bindless resources.

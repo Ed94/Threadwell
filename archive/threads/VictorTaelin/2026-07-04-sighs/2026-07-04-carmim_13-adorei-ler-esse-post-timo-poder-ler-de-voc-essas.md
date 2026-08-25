@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @carmim_13
+**1/** **@carmim_13** ^2073461299040616534
 
-@VictorTaelin
+**@VictorTaelin**
 
 adorei ler esse post. é ótimo poder ler de você essas explicações. só uma pergunta. você diria que é *confortável* replicar o Mathlib do Lean para o Bend? acho o Bend muito interessante por conta do IC, acho a teoria elegante. mas, claro, gostaria que o Bend fosse bom em math.
 

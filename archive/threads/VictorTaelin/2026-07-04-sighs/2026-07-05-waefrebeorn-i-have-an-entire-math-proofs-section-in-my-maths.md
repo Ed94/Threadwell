@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @waefrebeorn
+**1/** **@waefrebeorn** ^2073664245816758563
 
-@VictorTaelin
+**@VictorTaelin**
 
 i have an entire math proofs section in my maths repos
 

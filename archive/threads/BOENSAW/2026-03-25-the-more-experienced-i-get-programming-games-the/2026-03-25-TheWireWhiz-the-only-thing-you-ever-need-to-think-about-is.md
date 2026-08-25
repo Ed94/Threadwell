@@ -26,9 +26,9 @@ parent_post_id: "2036653149948424230"
 
 ## Branch
 
-**1/** @TheWireWhiz
+**1/** **@TheWireWhiz** ^2036795872302739892
 
-@BOENSAW
+**@BOENSAW**
 
 The only thing you ever need to think about is how the data flows, and sometimes when it flows if the paths leak. Everything else is an abstraction over that.
 

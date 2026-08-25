@@ -26,16 +26,16 @@ parent_post_id: "1990260050485797063"
 
 ## Branch
 
-**1/** @stainless_code
+**1/** **@stainless_code** ^1991219165978370275
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I haven't really done graphics in a while, but I've never heard about infinite far nor reversed z, where can I read up on it more?
 Some cursory googling didn't return anything useful on this topic.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1991352784529289269
 
-@stainless_code
+**@stainless_code**
 
 I put some docs (based on an old blog post) on projection matrix stuff inside STP source: https://github.com/Unity-Technologies/Graphics/blob/master/Packages/com.unity.render-pipelines.core/Runtime/STP/Stp.hlsl - Documents the maths to take depth and 2 projections and get a static reprojection vector for example.
 

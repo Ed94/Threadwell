@@ -26,27 +26,27 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @okiwano
+**1/** **@okiwano** ^2073433180397302126
 
-@VictorTaelin
+**@VictorTaelin**
 
 I'm curious. What comes after Bend2? Bend3 or are you going to move onto smaller more personally satisfying projects after this?
 
-**2/** @VictorTaelin
+**2/** **@VictorTaelin** ^2073445519930634656
 
-@okiwano
+**@okiwano**
 
 on HOC, 100% focus on Symbolic AI research
 
-**3/** @Pitometsu
+**3/** **@Pitometsu** ^2073550595747619120
 
-@VictorTaelin @okiwano
+**@VictorTaelin** **@okiwano**
 
 Any possibility to join the party? 😅
 
-**4/** @VictorTaelin
+**4/** **@VictorTaelin** ^2073552983820775569
 
-@Pitometsu @okiwano
+**@Pitometsu** **@okiwano**
 
 yess
 

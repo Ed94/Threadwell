@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @javiercbk
+**1/** **@javiercbk** ^2061970388205146329
 
-@rfleury
+**@rfleury**
 
 rad debugger is easy to read for such a complex project, I'm experimenting with the same long proc and noticed that when I add something I'm not constrained to early abstractions, I can connect dots much easier. Yet  I have to resist years of brain programming for programming
 

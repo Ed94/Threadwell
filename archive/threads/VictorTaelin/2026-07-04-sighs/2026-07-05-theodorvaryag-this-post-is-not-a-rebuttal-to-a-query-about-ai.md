@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @theodorvaryag
+**1/** **@theodorvaryag** ^2073563133323477361
 
-@VictorTaelin
+**@VictorTaelin**
 
 this post is not a rebuttal to a query about ai psychosis regardless of the merits and robust technical details behind it
 

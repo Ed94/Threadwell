@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @DarthJahus
+**1/** **@DarthJahus** ^1786491957369352622
 
-@SebAaltonen
+**@SebAaltonen**
 
 Being able to code without assistant is a good thing, maybe?
 

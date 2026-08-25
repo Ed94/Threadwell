@@ -26,9 +26,9 @@ parent_post_id: "2036653149948424230"
 
 ## Branch
 
-**1/** @galactix____
+**1/** **@galactix____** ^2036789325338194102
 
-@BOENSAW
+**@BOENSAW**
 
 There are no universal pattern common to every game, especially if you are searching for efficiency. Each game have its own optimization specifics
 

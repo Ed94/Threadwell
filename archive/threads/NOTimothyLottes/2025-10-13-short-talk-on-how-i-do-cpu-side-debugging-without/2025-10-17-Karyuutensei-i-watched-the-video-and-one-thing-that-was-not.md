@@ -26,15 +26,15 @@ parent_post_id: "1977570893309321268"
 
 ## Branch
 
-**1/** @Karyuutensei
+**1/** **@Karyuutensei** ^1979085608040489019
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I watched the video and one thing that was not clear to me is why is half of the file wasted. Aren’t you using all upper 16 bits of the counter for the lines? Also, what do you mean with “no retries”?
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1979208516733698451
 
-@Karyuutensei
+**@Karyuutensei**
 
 Could have just used pow2 pages + 1 page for counter, but I got lazy. Yes could use more than 16-bits for line counter too. Reload counter could be 4-bits. Lock-free typically implies a retry-loop (non-wait-free). This however is wait-free (no retry-loop).
 

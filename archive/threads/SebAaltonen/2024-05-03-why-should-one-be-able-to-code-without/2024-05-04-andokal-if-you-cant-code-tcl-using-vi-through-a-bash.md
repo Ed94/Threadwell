@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @andokal
+**1/** **@andokal** ^1786764675725541769
 
-@SebAaltonen
+**@SebAaltonen**
 
 If you can’t code TCL using VI through a bash terminal on a remote Unix box with CVS SC, you can’t code. But seriously, more than half of the modern internet ran on that for about a decade (AOL).
 

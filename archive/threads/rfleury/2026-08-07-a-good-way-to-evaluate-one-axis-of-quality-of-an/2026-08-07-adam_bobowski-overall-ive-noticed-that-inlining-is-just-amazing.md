@@ -26,9 +26,9 @@ parent_post_id: "2085786822387609939"
 
 ## Branch
 
-**1/** @adam_bobowski
+**1/** **@adam_bobowski** ^2085799786717049322
 
-@rfleury
+**@rfleury**
 
 Overall I’ve noticed that inlining is just amazing at surfacing issues with what the actual „abstraction” is - kind of that if I carve the function too early I’ll obfuscate the fact that maybe the actual function (behaviour) bends to that function rather than the other way around
 

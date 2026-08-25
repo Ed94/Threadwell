@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @Pitometsu
+**1/** **@Pitometsu** ^2073536226678714478
 
-@VictorTaelin
+**@VictorTaelin**
 
 Impossibility to write *fast* interpreter looks like a hardware architecture or compiler issue, not the language expressive power problem.
 

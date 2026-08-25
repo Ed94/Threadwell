@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @etozheya42
+**1/** **@etozheya42** ^1955797197108236796
 
-@vkrajacic
+**@vkrajacic**
 
 Let's go 10k likes.
 

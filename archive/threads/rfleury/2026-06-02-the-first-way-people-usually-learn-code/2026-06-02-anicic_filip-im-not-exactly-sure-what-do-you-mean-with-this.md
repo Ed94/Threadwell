@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @anicic_filip
+**1/** **@anicic_filip** ^2061769712824995927
 
-@rfleury
+**@rfleury**
 
 I'm not exactly sure what do you mean with this statement. Could you give a comparison example to solidify the statement with something we could analyse?
 

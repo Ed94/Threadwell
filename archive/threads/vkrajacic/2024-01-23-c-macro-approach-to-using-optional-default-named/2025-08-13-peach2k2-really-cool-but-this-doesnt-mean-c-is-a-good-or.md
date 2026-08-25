@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @peach2k2
+**1/** **@peach2k2** ^1955706381077496306
 
-@vkrajacic
+**@vkrajacic**
 
 really cool, but this doesn't mean c is a good or nice language in modern standards.
 

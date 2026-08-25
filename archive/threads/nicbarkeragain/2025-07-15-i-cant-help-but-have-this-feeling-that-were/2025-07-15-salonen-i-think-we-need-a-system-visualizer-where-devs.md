@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @salonen
+**1/** **@salonen** ^1945116028540784694
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 I think we need a system visualizer where devs can view their implementation running through the processor/gpus/memory/network.
 

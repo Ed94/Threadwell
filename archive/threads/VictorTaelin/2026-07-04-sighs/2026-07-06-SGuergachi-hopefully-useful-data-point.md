@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @SGuergachi
+**1/** **@SGuergachi** ^2073924504544280752
 
-@VictorTaelin @Jonathan_Blow
+**@VictorTaelin** **@Jonathan_Blow**
 
 hopefully useful data point.
 

@@ -26,9 +26,9 @@ parent_post_id: "2084072929780998198"
 
 ## Branch
 
-**1/** @Tomi_Tapio
+**1/** **@Tomi_Tapio** ^2084605612764078535
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 function "draw string, for debug, in my game's 3d graphical space"
 

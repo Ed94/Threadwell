@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @meglio
+**1/** **@meglio** ^1944957913279422515
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 The "average programmer" you mentioned uses OOP and other things that make their programs so slower and fatter that SIMD would make literally zero impact within that scale of inefficiency through bad programming practices. You are attacking the wrong problem.
 

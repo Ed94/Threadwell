@@ -26,9 +26,9 @@ parent_post_id: "2084072929780998198"
 
 ## Branch
 
-**1/** @_can1357
+**1/** **@_can1357** ^2084128363652775945
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-exallocatepool2 🤘
 

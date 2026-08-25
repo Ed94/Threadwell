@@ -26,9 +26,9 @@ parent_post_id: "1990260050485797063"
 
 ## Branch
 
-**1/** @terekhov_de
+**1/** **@terekhov_de** ^1990284522508927371
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I've never had real depth precision issues in our game ports but I guess I'd better just adopt and get used to reversed infinite projection cause it's objectively better. Promise to try it for our next project :)
 

@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @SinghSwapneil
+**1/** **@SinghSwapneil** ^2073606758073864493
 
-@VictorTaelin
+**@VictorTaelin**
 
 Are languages built on Bend incapable of representing “eval” then? And/or disallowed from looping possibly-infinitely based on an external signal?
 (In-practice both of those are useful operations to interface with reality outside the language VM)

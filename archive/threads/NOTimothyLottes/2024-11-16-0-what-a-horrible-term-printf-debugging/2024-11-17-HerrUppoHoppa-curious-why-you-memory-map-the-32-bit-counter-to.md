@@ -26,21 +26,21 @@ parent_post_id: "1857804669994565771"
 
 ## Branch
 
-**1/** @HerrUppoHoppa
+**1/** **@HerrUppoHoppa** ^1858039804551663740
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Curious why you memory map the 32 bit counter to the file. Also why does it get half the file as opposed to just the end of the mapped region?
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1858152609149804727
 
-@HerrUppoHoppa
+**@HerrUppoHoppa**
 
 It's pow2 message lines so fixing wrap is AND(cnt,lines-1). Counter after that and needs to take a page minimum. So yes I could make the size slightly smaller, but just lazy. Counter in file because then multiple runs accumulate in the file for comparison.
 
-**3/** @HerrUppoHoppa
+**3/** **@HerrUppoHoppa** ^1858226056244899980
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Ah I see, interesting solution!
 

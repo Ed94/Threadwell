@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @Lascif
+**1/** **@Lascif** ^1786353508901384368
 
-@SebAaltonen
+**@SebAaltonen**
 
 People have a superiority complex for working in the hardest way possible because “that’s how I had to do it”.
 They forget that they should work smarter not harder.

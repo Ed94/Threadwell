@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @Hannomalie1
+**1/** **@Hannomalie1** ^1691483523385880576
 
-@cmuratori
+**@cmuratori**
 
 Does more code automatically mean more code paths? In the sense of different states your program can have? Or is it Just sth that is "typical".
 

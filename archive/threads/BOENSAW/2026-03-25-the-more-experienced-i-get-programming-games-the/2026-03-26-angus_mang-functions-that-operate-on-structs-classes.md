@@ -26,9 +26,9 @@ parent_post_id: "2036653149948424230"
 
 ## Branch
 
-**1/** @angus_mang
+**1/** **@angus_mang** ^2037008038134006163
 
-@BOENSAW
+**@BOENSAW**
 
 Functions that Operate on Structs/Classes/Entities/Objects makes things simple. C++ or heavy, container-ized / encapsulated Class/Structs muddies. Serves for poor organization and juggling abstract ideas instead of. 
 Big ass block thing

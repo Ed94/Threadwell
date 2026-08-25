@@ -25,41 +25,41 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1868444111390249140
 
 "Buffer zoo" is more about the silly season of things needed on the Vulkan shader side to do what you actually want which is just get instruction intrinsics. Just the layout and SSBO aliasing (below) hints at brutal stupid API/shader design
 
 ![](https://pbs.twimg.com/media/Ge4LfQvWwAAwgwz?format=png&name=orig)
 
-**2/** @kechogarcia
+**2/** **@kechogarcia** ^1868450660485919082
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Dxc hlsl sm 6.5 lets you index into ResourceDescriptorHeap directly and cast to whatever resource type. That and mutable vulkan descriptors, you wouldn't need to go the buffer Zoo route.... But then dxc spirv ...
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^1868466254849212427
 
-@kechogarcia
+**@kechogarcia**
 
 Read<32,64,128>(uint64_t base, uint32_t offset, uint32_t immediate, uint32_t cacheControl, uint32_t format);
 
 And be done with this stupid mess
 
-**4/** @axelgneiting
+**4/** **@axelgneiting** ^1868487894169796789
 
-@NOTimothyLottes @kechogarcia
+**@NOTimothyLottes** **@kechogarcia**
 
 NVidia can't just do random format conversions without it being a texture descriptor I thought?
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^1868492072166326484
 
-@axelgneiting @kechogarcia
+**@axelgneiting** **@kechogarcia**
 
 Can get the non-conversion {signed/unsigned short/int/long and half/float/double, of {1-4} components}. Which is good enough to start the interface. Then yes for NV you'd need to alias via a storage_texel_buffer to get {10:11:11,10:10:10:2,<u/s>norm*}
 
-**6/** @NOTimothyLottes
+**6/** **@NOTimothyLottes** ^1868492851170205803
 
-@axelgneiting @kechogarcia
+**@axelgneiting** **@kechogarcia**
 
 Then there are rough edges to TEXEL_BUFFER
 

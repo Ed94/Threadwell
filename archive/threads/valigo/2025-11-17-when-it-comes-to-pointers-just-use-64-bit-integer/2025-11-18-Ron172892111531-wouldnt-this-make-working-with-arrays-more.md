@@ -26,21 +26,21 @@ parent_post_id: "1990506460531601538"
 
 ## Branch
 
-**1/** @Ron172892111531
+**1/** **@Ron172892111531** ^1990816225815875661
 
-@valigo
+**@valigo**
 
 Wouldn't this make working with arrays more difficult? Array[1] would have to be Array[sizeof(data)] etc
 
-**2/** @valigo
+**2/** **@valigo** ^1990816587268452795
 
-@Ron172892111531
+**@Ron172892111531**
 
 As I said somewhere else, it makes sense sizeof pointer math to be the default. I was just saying that it's confusing because "+1" is not actually "plus one"
 
-**3/** @Ron172892111531
+**3/** **@Ron172892111531** ^1990919087174672673
 
-@valigo
+**@valigo**
 
 Ptr+1. It's not plus one byte (or int addition), it's plus one object. I think it's only confusing when people assume pointers are just fancy integers. They're meant to work with arrays, and they do flawlessly as long as one remembers that they are an extension of the array
 

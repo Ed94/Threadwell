@@ -26,9 +26,9 @@ parent_post_id: "2072445315370590266"
 
 ## Branch
 
-**1/** @opdroid1234
+**1/** **@opdroid1234** ^2072447876987314447
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 the two truths ive come to accept in life
 

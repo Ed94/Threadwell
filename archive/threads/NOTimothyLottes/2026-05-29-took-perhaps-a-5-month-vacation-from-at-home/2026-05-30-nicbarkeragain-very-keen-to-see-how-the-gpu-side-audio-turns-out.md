@@ -26,15 +26,15 @@ parent_post_id: "2060186437820010850"
 
 ## Branch
 
-**1/** @nicbarkeragain
+**1/** **@nicbarkeragain** ^2060515066919936097
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Very keen to see how the GPU side audio turns out!
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2060530551753191644
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 To get the low latency Im looking for will require chunking up all work on the GPU and interleaving slots for audio processing. Lower bound on processing granularity is 32 stereo samples in a 64 wave, so less than a millisecond of representative time
 

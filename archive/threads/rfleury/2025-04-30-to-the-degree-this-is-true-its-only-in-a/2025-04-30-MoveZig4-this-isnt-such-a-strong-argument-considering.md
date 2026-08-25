@@ -26,9 +26,9 @@ parent_post_id: "1917431895786414425"
 
 ## Branch
 
-**1/** @MoveZig4
+**1/** **@MoveZig4** ^1917463363300610136
 
-@rfleury
+**@rfleury**
 
 This isn't such a strong argument considering there's a "leak" with the regular call to `new`. To my untrained eye under clang-19 the generated assembly for unique_ptr is a bit smaller/slimmer, with less stack usage - https://godbolt.org/z/sxejEsbe4 - can't turn on -O anything sadly
 

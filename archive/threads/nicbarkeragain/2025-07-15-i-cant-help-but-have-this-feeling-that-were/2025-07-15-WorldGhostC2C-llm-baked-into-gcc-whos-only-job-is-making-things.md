@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @WorldGhostC2C
+**1/** **@WorldGhostC2C** ^1944921404933120353
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Llm baked into gcc who’s only job is making things simd where possible. Sinple
 

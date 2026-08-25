@@ -26,9 +26,9 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/** @plasmabitcoin
+**1/** **@plasmabitcoin** ^1950963702569771336
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Very interested!
 

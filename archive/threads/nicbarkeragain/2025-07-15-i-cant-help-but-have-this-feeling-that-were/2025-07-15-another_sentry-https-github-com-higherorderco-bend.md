@@ -26,21 +26,21 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @another_sentry
+**1/** **@another_sentry** ^1944914198397624515
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 https://github.com/HigherOrderCO/Bend
 
-**2/** @nicbarkeragain
+**2/** **@nicbarkeragain** ^1944915365009744092
 
-@another_sentry
+**@another_sentry**
 
 I've been keeping an eye on this & the HVM work, there is some really interesting stuff happening there. My issue however is this doesn't feel like a general purpose language, more something that you would reach for if you already knew you had a massively parallel problem.
 
-**3/** @AgileJebrim
+**3/** **@AgileJebrim** ^1944948376086139203
 
-@nicbarkeragain @another_sentry
+**@nicbarkeragain** **@another_sentry**
 
 Not even. Their performance is atrocious and their recursive programming model doesn’t map well to GPUs.
 

@@ -26,7 +26,7 @@ parent_post_id: "2084851804224004329"
 
 ## Branch
 
-**1/** @real_philogy
+**1/** **@real_philogy** ^2085401818083824080
 
 Rust's ownership + RAII makes such patterns really easy and nice to encode statically, no debug strings needed if the compiler guarantees you can't open another object at the same level if the previous one wasn't closed.
 

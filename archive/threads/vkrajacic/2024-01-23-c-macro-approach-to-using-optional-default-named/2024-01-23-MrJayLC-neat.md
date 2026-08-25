@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @MrJayLC
+**1/** **@MrJayLC** ^1749843481822900718
 
-@vkrajacic
+**@vkrajacic**
 
 Neat!
 

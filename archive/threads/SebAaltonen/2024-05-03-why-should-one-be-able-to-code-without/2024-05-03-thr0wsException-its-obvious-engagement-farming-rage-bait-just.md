@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @thr0wsException
+**1/** **@thr0wsException** ^1786437232456278458
 
-@SebAaltonen
+**@SebAaltonen**
 
 It's obvious engagement farming / rage bait. Just ignore it tbh
 

@@ -26,9 +26,9 @@ parent_post_id: "1875583660545732960"
 
 ## Branch
 
-**1/** @JBrooksBSI
+**1/** **@JBrooksBSI** ^1876298864736801016
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Some optimization ideas:
 
@@ -38,15 +38,15 @@ Some optimization ideas:
 
 3) If FP16 range is ok, gives 2x VALU speed
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1876329313668366624
 
-@JBrooksBSI
+**@JBrooksBSI**
 
 Lack of ABS modifiers on V_PK ops basically kills FP16 benefit here unfortunately. I do unroll when not VGPR limited (favorite optimization). Wary though of SALU/VALU crossings due to latency + scheduling behavior (loss of operand cache, etc). VCC probably has special forwarding
 
-**3/** @JBrooksBSI
+**3/** **@JBrooksBSI** ^1876355942960570458
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I did an approx equal-area mapping to a 2D texture in 2018
 

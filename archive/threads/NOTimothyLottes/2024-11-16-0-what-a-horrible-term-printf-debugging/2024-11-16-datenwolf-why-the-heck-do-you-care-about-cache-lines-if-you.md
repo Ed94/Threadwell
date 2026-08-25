@@ -26,46 +26,46 @@ parent_post_id: "1857805438151983120"
 
 ## Branch
 
-**1/** @datenwolf
+**1/** **@datenwolf** ^1857820149039947846
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Why the heck do you care about cache lines, if you write to a mmaped file? Of course there's overhead: TLBs aren't free. And TLBs matter… at lot in fact. When you map the file, initially the kernel marks some address space, but doesn't populate it with pages. 1/
 
-**2/** @datenwolf
+**2/** **@datenwolf** ^1857820901644882115
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 On the first write to a non-faulted page, the kernel has to find a free page in memory, associate it in the page table, all the while keeping an eye on all threads process, since changes to a process virtual address space must appear atomic. 2/
 
-**3/** @datenwolf
+**3/** **@datenwolf** ^1857821143752749469
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Memory maps aren't free. Simple writes to a file will easily outperform and cause less overhead, than naively implemented mmaped I/O. 3/
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1857824230416470516
 
-@datenwolf
+**@datenwolf**
 
 BTW, I pre-fault my mapped files. Just like I pre-fault the binary and data segments too. But sure the pre-fault could go stale. And yes TLBs are a system perf issue, but atlas you need admin priv on Windows to play 2 MiB pages for data, so it's off the table
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^1857824874061828526
 
-@datenwolf
+**@datenwolf**
 
 Why cacheline aligned and sized on the CPU? In theory store the entire line in a short enough timeframe and your Read-Modify-Write becomes just a Write! CPU doesn't have byte-write-mask (I think). If SW+HW is good. And threads keeping to isolated lines means no false sharing. Etc
 
-**6/** @datenwolf
+**6/** **@datenwolf** ^1857825772590731292
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 (That cacheline remark was meant rhetorically; between cache misses and page faults, a page fault will largely overshadow a cache miss in performance overhead.
 But yes, if you prefault, then that problem is mitigated.)
 
-**7/** @NOTimothyLottes
+**7/** **@NOTimothyLottes** ^1857827620701761746
 
-@datenwolf
+**@datenwolf**
 
 'Smart' people keep trying to impose (aka force) their will on others through poor system APIs, like not being able to pre-pin pages. Good look buddy, I'll just run a background task that continuously touch walks the pages I want pinned anyway.
 

@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @FrawaMudi
+**1/** **@FrawaMudi** ^1955896975330582796
 
-@vkrajacic
+**@vkrajacic**
 
 Honestly I don't know what I am looking at anymore
 

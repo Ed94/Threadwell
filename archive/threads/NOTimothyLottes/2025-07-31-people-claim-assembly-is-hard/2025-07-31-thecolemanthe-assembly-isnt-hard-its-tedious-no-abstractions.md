@@ -26,9 +26,9 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/** @thecolemanthe
+**1/** **@thecolemanthe** ^1950956186783895852
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Assembly isn't hard, it's tedious. No abstractions, only the raw building blocks of computing. A lot of people just aren't ready or willing to deal with what the reality of an if or string concatenation much less the horrors of what their overly abstract oop code actually is.
 

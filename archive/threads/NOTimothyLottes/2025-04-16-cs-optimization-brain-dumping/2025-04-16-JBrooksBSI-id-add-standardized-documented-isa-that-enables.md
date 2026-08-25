@@ -26,9 +26,9 @@ parent_post_id: "1912483968563269946"
 
 ## Branch
 
-**1/** @JBrooksBSI
+**1/** **@JBrooksBSI** ^1912487286190797257
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I'd add:
 
@@ -36,35 +36,35 @@ Standardized, documented ISA that enables compatibility across multiple GPU gene
 
 WGP (WorkGroup Processor) mode which doubles the # of SIMD units executing a single threadgroup, halving latency for bottleneck operations.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1912492806150508755
 
-@JBrooksBSI
+**@JBrooksBSI**
 
 Personally I still don't like the WGP+wave32 stuff. Limited dual issue instructions with less operand flexibility (wave64 back to back issue IMO is better, just HW dual pipe transcendentals). WGP's two L0 cache and related resource split issues.
 
-**3/** @JBrooksBSI
+**3/** **@JBrooksBSI** ^1912494958248149451
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 WGP mode and wave32 are separate features. WGP mode schedules waves within a threadgroup across both CUs (4x SIMDs) in each WGP instead of limiting waves to a single CU (2x SIMD).
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1912563170138542436
 
-@JBrooksBSI
+**@JBrooksBSI**
 
 Yeah so it's more the wave32 that I don't like
 
-**5/** @JBrooksBSI
+**5/** **@JBrooksBSI** ^1912585972698710273
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I'd like to discuss this in more detail, as I have found wave32 to be faster than wave64 for everything except some vertex shaders.
 
 I think the reason wave64 can be faster for vertex shaders is that only half the VS waves get launched, so more occupancy for PS/CS waves per WGP.
 
-**6/** @JBrooksBSI
+**6/** **@JBrooksBSI** ^1912589134969073756
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 The reasons Wave64 has been slower for me:
 1) More VGPR pressure = less occupancy
@@ -74,9 +74,9 @@ The reasons Wave64 has been slower for me:
 
 I spot-unroll 2x-4x for more intra-wave parallelism as needed.
 
-**7/** @NOTimothyLottes
+**7/** **@NOTimothyLottes** ^1912626987858059469
 
-@JBrooksBSI
+**@JBrooksBSI**
 
 Re
 1) With what I do, high occupancy is often slower
@@ -84,9 +84,9 @@ Re
 3) It's half the K$ loads for wave64
 4) I use DPP16 at most (no dynamic shuffle)
 
-**8/** @JBrooksBSI
+**8/** **@JBrooksBSI** ^1912631441516839042
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Wow, that is wildly different from what I do.
 

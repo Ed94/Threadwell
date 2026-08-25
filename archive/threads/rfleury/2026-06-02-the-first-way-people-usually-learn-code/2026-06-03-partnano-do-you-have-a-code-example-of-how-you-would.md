@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @partnano
+**1/** **@partnano** ^2062209120782966979
 
-@rfleury
+**@rfleury**
 
 Do you have a code example of how you would compress / simplify something?
 I think I agree, and really need to be more mindful in my next coding session about it, but there's nothing specific coming to my mind, reading your post 😅

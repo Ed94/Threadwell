@@ -26,7 +26,7 @@ parent_post_id: "2073539101320417502"
 
 ## Branch
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2073543950497898839
 
 Wine's IAudioClient::GetDevicePeriod() returns 53333 for minimum (which is 256 samples at 48KHz - really crappy) and 100000 for default (which is 480 samples at 48Khz - even worse), neither which work with EXCLUSIVE mode. Man Wine sucks, nothing but constant show stopping bugs.
 

@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @frostyfrog
+**1/** **@frostyfrog** ^1786446908376166773
 
-@SebAaltonen
+**@SebAaltonen**
 
 I started in notepad, now I use vim for all my programming needs
 

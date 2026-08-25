@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @SebAaltonen
+**1/** **@SebAaltonen** ^1869350790487523825
 
 Fixed all our Vulkan bugs:
 - ARM: BGR swapchain handled incorrectly (our bug)
@@ -37,6 +37,6 @@ Now we are ready to ship Vulkan for end users.
 
 ![](https://pbs.twimg.com/media/GfFDoE5XYAAprel?format=jpg&name=orig)
 
-**2/** @SebAaltonen
+**2/** **@SebAaltonen** ^1869361815454699648
 
 Our Vulkan backend has been in internal production for 1.5 years already. We were just waiting for Google to ship the Vulkan renderer on Flutter. We have a custom Flutter version that allows us to run our engine in the side. I carved holes to get their Vulkan device ptr, etc.

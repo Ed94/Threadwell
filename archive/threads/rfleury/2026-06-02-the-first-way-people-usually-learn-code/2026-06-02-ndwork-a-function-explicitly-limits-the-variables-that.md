@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @ndwork
+**1/** **@ndwork** ^2061896821023383829
 
-@rfleury
+**@rfleury**
 
 A function explicitly limits the variables that its code depends on.
 
@@ -36,15 +36,15 @@ For many functions, they can be independently tested. When possible, that also s
 
 These things make functions extremely useful.
 
-**2/** @rfleury
+**2/** **@rfleury** ^2061955393216200840
 
 No. By adding entry points which are independently tested (e.g. in a vacuum, removed from context), you are combinatorially increasing the number of possible test cases. It’s vastly easier to exercise one single codepath than several thousands.
 
 Second of all, sub-scopes also allow limiting exposed variables to other scopes. If a scope fairly far into a function depends on the entire set of exposed variables that came before, functions do not stop that, because you’d simply need to pass them all. There is way less boilerplate and way less complexity in the single codepath version.
 
-**3/** @ndwork
+**3/** **@ndwork** ^2062015909842350192
 
-@rfleury
+**@rfleury**
 
 I’m taking the fact that you didn’t tell me to delete my account as a huge mark of success.  :)
 

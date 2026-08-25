@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @real_philogy
+**1/** **@real_philogy** ^2073558721368576160
 
-@VictorTaelin
+**@VictorTaelin**
 
 don't you want to be able to copy lambdas though? Or how do you do a lot of the typical FP stuff if you can't pass around and copy functions as you otherwise would?
 

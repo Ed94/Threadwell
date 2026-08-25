@@ -26,9 +26,9 @@ parent_post_id: "2084072929780998198"
 
 ## Branch
 
-**1/** @RazorSharpFang
+**1/** **@RazorSharpFang** ^2084147756646670657
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 I don't suppose you could demonstrate this with a small code snippet/example that shows HOW one can label an allocation?
 

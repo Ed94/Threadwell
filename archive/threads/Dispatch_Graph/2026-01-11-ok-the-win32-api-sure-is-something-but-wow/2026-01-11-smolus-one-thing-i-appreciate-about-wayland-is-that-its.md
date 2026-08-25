@@ -26,9 +26,9 @@ parent_post_id: "2010303501851877740"
 
 ## Branch
 
-**1/** @smolus
+**1/** **@smolus** ^2010450157222154626
 
-@Dispatch_Graph
+**@Dispatch_Graph**
 
 one thing I appreciate about wayland is that it's just a simple protocol spec so you are not married to any particular API/library but yeah it can be a lot of work to get basic things working
 

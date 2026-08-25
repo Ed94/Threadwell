@@ -26,9 +26,9 @@ parent_post_id: "1944937375001666018"
 
 ## Branch
 
-**1/** @jon_roelofs
+**1/** **@jon_roelofs** ^1944944456056365486
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 the industry is trying to do that with vector-length-agnostic architectures, like SVE, RVV, and others.
 

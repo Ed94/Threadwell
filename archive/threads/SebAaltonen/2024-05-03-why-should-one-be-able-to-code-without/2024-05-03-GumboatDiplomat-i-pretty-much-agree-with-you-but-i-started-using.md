@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @GumboatDiplomat
+**1/** **@GumboatDiplomat** ^1786354483758330313
 
-@SebAaltonen
+**@SebAaltonen**
 
 I pretty much agree with you, but I started using nvim recently, and it doesn't have an LSP for the a language that I already know very well (gml)  And I did learn stuff forgoing the autocomplete, I feel like my knowledge deepened, if that makes sense.
 

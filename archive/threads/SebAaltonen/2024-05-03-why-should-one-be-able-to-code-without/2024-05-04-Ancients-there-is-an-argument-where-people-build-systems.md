@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @Ancients
+**1/** **@Ancients** ^1786548526392254591
 
-@SebAaltonen
+**@SebAaltonen**
 
 There is an argument where people build systems as complex and resource intensive as their tooling will allow. 
 

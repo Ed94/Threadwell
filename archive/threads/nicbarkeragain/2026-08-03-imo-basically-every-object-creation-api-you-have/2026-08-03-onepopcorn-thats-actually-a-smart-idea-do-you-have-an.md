@@ -26,15 +26,15 @@ parent_post_id: "2084072929780998198"
 
 ## Branch
 
-**1/** @onepopcorn
+**1/** **@onepopcorn** ^2084163142041427988
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 That's actually a smart idea. Do you have an example of how you would implement that?
 
-**2/** @nicbarkeragain
+**2/** **@nicbarkeragain** ^2084852229291516401
 
-@onepopcorn
+**@onepopcorn**
 
 Here's an example I came across just now: https://x.com/nicbarkeragain/status/2084851804224004329?s=20
 

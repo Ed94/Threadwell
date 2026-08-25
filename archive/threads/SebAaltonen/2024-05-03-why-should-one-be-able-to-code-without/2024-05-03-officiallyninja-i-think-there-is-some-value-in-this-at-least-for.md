@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @officiallyninja
+**1/** **@officiallyninja** ^1786436393788653753
 
-@SebAaltonen
+**@SebAaltonen**
 
 I think there is some value in this. At least for a beginner. You should be able to use notepad + terminal to write simple programs. That doesn't mean it's practical. But any intermediate dev should be able to do it, it'll be annoying yes, but not *that* hard for small problems
 

@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @CHChistris
+**1/** **@CHChistris** ^1786749107635154982
 
-@SebAaltonen
+**@SebAaltonen**
 
 I guess this is just another expression of the "if I had to suffer, you should too. To give sense to why I had to suffer" school of thought. 
 I prefer the "this sucks, and I hope I can make it better for everyone" school of thought

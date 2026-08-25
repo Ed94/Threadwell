@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2062031187023982879
 
 Back running 640x480 on my VGA CRTs to prep for workflow that ports down to 480i60 for NTSC. Using my 'right' font. Fully decoupling from all system calls for time is working out great. And yes I'm using all the stuff I talked about in my Advanced Aliasing talk too (joy to code).
 

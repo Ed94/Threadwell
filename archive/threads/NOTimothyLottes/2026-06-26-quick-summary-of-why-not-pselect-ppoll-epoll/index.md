@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2070337342854832468
 
 Quick summary of why not {pselect, ppoll, epoll_pwait2} style non-TCP IO [it can amplify kernel transitions]. For UDP stuff blocking {sendmmsg,recvmmsg (with timeout)} amortizes out kernel transitions.
 

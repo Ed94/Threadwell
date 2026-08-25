@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @_Felipe
+**1/** **@_Felipe** ^1945156422716535136
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Relational model + columnar data. SQL lands itself very well to vectorization and scatter+gather algorithms. We need a general purpose language that can express SQL semantics in some places.
 

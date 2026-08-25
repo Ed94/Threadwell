@@ -26,9 +26,9 @@ parent_post_id: "2036653149948424230"
 
 ## Branch
 
-**1/** @RafaAsor
+**1/** **@RafaAsor** ^2037115807667232798
 
-@BOENSAW
+**@BOENSAW**
 
 This is a take for the whole software industry
 

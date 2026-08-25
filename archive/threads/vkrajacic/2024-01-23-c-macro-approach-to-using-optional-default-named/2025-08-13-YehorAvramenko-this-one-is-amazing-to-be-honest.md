@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @YehorAvramenko
+**1/** **@YehorAvramenko** ^1955676990754934991
 
-@vkrajacic
+**@vkrajacic**
 
 this one is amazing to be honest
 

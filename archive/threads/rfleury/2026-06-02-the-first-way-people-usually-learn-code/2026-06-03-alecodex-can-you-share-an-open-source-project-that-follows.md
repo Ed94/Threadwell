@@ -26,15 +26,15 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @alecodex
+**1/** **@alecodex** ^2062309622510170465
 
-@rfleury
+**@rfleury**
 
 Can you share an open source project that follows this strategy? As someone deeply entrenched in the web and java world, I am finding it hard to wrap my head around.
 
-**2/** @rfleury
+**2/** **@rfleury** ^2062314977915294078
 
-@alecodex
+**@alecodex**
 
 https://github.com/EpicGamesExt/raddebugger
 

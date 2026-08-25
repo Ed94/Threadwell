@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @heyotetsuo
+**1/** **@heyotetsuo** ^1786388450779824330
 
-@SebAaltonen @SebAaltonen
+**@SebAaltonen** **@SebAaltonen**
 
 use whatever you want
 

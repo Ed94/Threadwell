@@ -26,9 +26,9 @@ parent_post_id: "2084851804224004329"
 
 ## Branch
 
-**1/** @choco_dolphin7
+**1/** **@choco_dolphin7** ^2084879873491779719
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 1. Got into the habit of immediately writing free()/close()/etc before anything else 2. Leaks are not that common or scary 3. If it was malloc'd memory, clang catches it for me before I even review + commit it 4. Too much hassle and clutter assigning unique strings to everything
 

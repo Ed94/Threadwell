@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @asdhuqiwuhdais
+**1/** **@asdhuqiwuhdais** ^1945222545709453526
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 It hasn't been stabilized yet but Rust's portable SIMD was pretty easy to work with https://doc.rust-lang.org/std/simd/index.html
 

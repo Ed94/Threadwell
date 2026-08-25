@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @SoritesMinor
+**1/** **@SoritesMinor** ^2073476545935462869
 
-@VictorTaelin
+**@VictorTaelin**
 
 Keep posting and I'll keep reading. Or trying to.
 

@@ -26,9 +26,9 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/** @o__boga
+**1/** **@o__boga** ^1950939824183001106
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I'm staying maybe for Vulkan, depending on how manageable it gets to me. (Assembly or not)
 

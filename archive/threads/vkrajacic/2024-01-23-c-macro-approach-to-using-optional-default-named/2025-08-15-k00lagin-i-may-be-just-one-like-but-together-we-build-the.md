@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @k00lagin
+**1/** **@k00lagin** ^1956460989324710205
 
-@vkrajacic
+**@vkrajacic**
 
 I may be just one like, but together we build the whole 10k.
 

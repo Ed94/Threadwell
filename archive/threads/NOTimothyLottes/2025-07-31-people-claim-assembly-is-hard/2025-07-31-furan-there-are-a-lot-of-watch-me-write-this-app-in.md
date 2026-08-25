@@ -26,9 +26,9 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/** @furan
+**1/** **@furan** ^1950955895351083303
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 There are a lot of "watch me write this app in assembly" yt videos
 

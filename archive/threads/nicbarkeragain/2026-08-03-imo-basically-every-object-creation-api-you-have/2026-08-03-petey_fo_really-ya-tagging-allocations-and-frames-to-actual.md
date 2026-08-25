@@ -26,9 +26,9 @@ parent_post_id: "2084072929780998198"
 
 ## Branch
 
-**1/** @petey_fo_really
+**1/** **@petey_fo_really** ^2084134337105314188
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 ya tagging allocations, and frames to actual assets in-game is absolutely necessary for development once your game stops being a small thing
 

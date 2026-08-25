@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @thewillsykes
+**1/** **@thewillsykes** ^1786531082961141959
 
-@SebAaltonen
+**@SebAaltonen**
 
 i sort of agree, but i'm so often forced to code with no functional IDE when teaching students (cos they haven't set up correctly) that i can say it's a helpful skill to keep. When i started coding C, I used "Edit" in Dos... I hugely prefer auto complete but it has made me weaker
 

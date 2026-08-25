@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @ruch483
+**1/** **@ruch483** ^1786443239559504004
 
-@SebAaltonen
+**@SebAaltonen**
 
 they just gaslight themselves that their broken vim config is equivalent to a proper IDE
 

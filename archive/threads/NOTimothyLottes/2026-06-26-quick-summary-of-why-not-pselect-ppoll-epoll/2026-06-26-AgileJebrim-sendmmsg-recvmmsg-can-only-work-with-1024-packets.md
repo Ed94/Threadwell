@@ -26,37 +26,37 @@ parent_post_id: "2070337342854832468"
 
 ## Branch
 
-**1/** @AgileJebrim
+**1/** **@AgileJebrim** ^2070338320765165758
 
 sendmmsg/recvmmsg can only work with 1024 packets at a time unfortunately. You’ve gotta loop them. While they’re surprisingly fairly deterministic in execution times, their throughput isn’t the best. The Linux kernel takes far longer to process sending the packets out than my own code does to process the sim and build the packets in the first place lol.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2070343193963397129
 
-@AgileJebrim
+**@AgileJebrim**
 
 Yes 1024 max, so best case 1/1024 the syscall count (well factored). As for overhead, for a co-located server you could always hijack the network card driver and just move your server into it and run kernel side if you really wanted to.
 
-**3/** @AgileJebrim
+**3/** **@AgileJebrim** ^2070343454048039360
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 If you want to be locked in to a particular NIC yeah.
 
-**4/** @aepau2
+**4/** **@aepau2** ^2070408887455420544
 
-@AgileJebrim @NOTimothyLottes
+**@AgileJebrim** **@NOTimothyLottes**
 
 You can use eBPF as a poor man's kernel bypass.
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^2070461630165532941
 
-@aepau2 @AgileJebrim
+**@aepau2** **@AgileJebrim**
 
 Not that any of my source would pass their nanny tester. When I was younger and running my own business, I used to host my business website off of a really old laptop running an in-kernel web server that I wrote. It wasn’t that hard to do long ago.
 
-**6/** @AgileJebrim
+**6/** **@AgileJebrim** ^2070473555070836962
 
-@NOTimothyLottes @aepau2
+**@NOTimothyLottes** **@aepau2**
 
 eBPF doesn’t support SIMD lol
 

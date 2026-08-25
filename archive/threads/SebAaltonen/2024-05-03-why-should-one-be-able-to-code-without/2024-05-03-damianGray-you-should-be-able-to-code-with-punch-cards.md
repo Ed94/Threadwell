@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @damianGray
+**1/** **@damianGray** ^1786470064260051263
 
-@SebAaltonen
+**@SebAaltonen**
 
 "You should be able to code with punch cards directly in binary" same energy
 

@@ -25,10 +25,10 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1868435545736782009
 
 The real "buffer zoo" problem with Vulkan is needing to make your HW instruction emulation macros with overcomplete both {offset, and index} inputs so the emulation can choose the correct one based on whatever crap path is required {SSBO, TEXEL_BUFFER, future pointer}
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1868436190447432064
 
 TEXEL_BUFFER is needed for whatever formats one cannot load from SSBOs, and both of those require 'indexes', and whenever the IHVs actually correctly optimize the pointer extension, one needs the byte offsets instead. So deadcode removal nightmare land wins today :(

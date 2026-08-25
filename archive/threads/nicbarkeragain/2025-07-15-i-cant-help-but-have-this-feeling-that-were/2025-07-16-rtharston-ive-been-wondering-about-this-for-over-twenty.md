@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @rtharston
+**1/** **@rtharston** ^1945604998022533294
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 I’ve been wondering about this for over twenty years, but never found anything I felt was truly accessible.
 If I used SIMD more I’d probably try to come up with something to help.

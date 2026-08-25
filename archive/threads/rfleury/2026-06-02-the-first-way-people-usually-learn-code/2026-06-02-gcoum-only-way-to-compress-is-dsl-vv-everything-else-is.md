@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @gcoum
+**1/** **@gcoum** ^2061640674576101837
 
-@rfleury
+**@rfleury**
 
 Only way to compress is dsl vv everything else is just the dsl with some extra boilerplate
 

@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @PurpleNinjaGrrl
+**1/** **@PurpleNinjaGrrl** ^1786457120608505969
 
-@SebAaltonen
+**@SebAaltonen**
 
 Nothing has more forever-a-junior-level-programmer energy than “You should spend more time and energy looking up API calls and typing console commands instead of using that time to iterate on your design and improve your code” takes
 

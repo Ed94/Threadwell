@@ -25,24 +25,24 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @mmalex
+**1/** **@mmalex** ^1939051429060018590
 
 i vibe coded something horrendous and I love it: a python c preprocessor  that finds blocks like /* python <arbitrary python code> */ in a .c file, runs the python, and dumps the stdout after the comment, replacing any old block if needed. im using it to precompute tables...
 
-**2/** @seflless
+**2/** **@seflless** ^1939073216628068762
 
-@mmalex
+**@mmalex**
 
 There was a python tool for this remember as far back as 2000ish when working on a large c/c++ game codebase. Ah found it, it’s called Cog: https://cog.readthedocs.io/en/latest/
 
-**3/** @mmalex
+**3/** **@mmalex** ^1939097400183763189
 
-@seflless
+**@seflless**
 
 ah yes ! I knew it existed - it wasnt an original idea after all, but like a faint memory stirring in my brain - but couldn't find it. thanks for the link!
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1939170419958816855
 
-@mmalex @seflless
+**@mmalex** **@seflless**
 
 Many of my forth-like languages worked via nested runtime code gen, so it was possible to generate+run code to build either code or data, then repeat. The system would bootstrap its own assembler/etc that way.

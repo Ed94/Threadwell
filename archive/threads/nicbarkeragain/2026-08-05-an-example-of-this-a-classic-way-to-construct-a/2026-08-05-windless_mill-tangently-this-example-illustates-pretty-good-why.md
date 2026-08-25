@@ -26,9 +26,9 @@ parent_post_id: "2084851804224004329"
 
 ## Branch
 
-**1/** @windless_mill
+**1/** **@windless_mill** ^2085033979053260826
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 tangently, this example illustates pretty good why I like syntax with `end` keyword and optional name of closee better than just `{ ... }` especially {} when they also used for structure literals -- finding unbalanced scopes becomes such a hassle sometimes
 

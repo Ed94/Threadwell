@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @games_pants
+**1/** **@games_pants** ^1786349232997142887
 
-@SebAaltonen
+**@SebAaltonen**
 
 I had that at an interview once. A programming test in Notepad.  90% of my time was spent battling the text editor! I probably should have got up and walked out.. it was a sign of worse things to come when I got the job :)
 

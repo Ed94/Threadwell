@@ -26,21 +26,21 @@ parent_post_id: "1870343645926224197"
 
 ## Branch
 
-**1/** @AgileJebrim
+**1/** **@AgileJebrim** ^1870345628531999121
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Have you tried using the Intel cache controls extension I shared earlier to see if they work on AMD?
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1870353630047686764
 
-@AgileJebrim
+**@AgileJebrim**
 
 Not enough free time. Given that AMD's compiler has some serious correctness bugs ignoring memory qualifiers, I doubt they implemented the Intel extension.
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^1870354508271763698
 
-@AgileJebrim
+**@AgileJebrim**
 
 Will say though that if they ever implement a WMMA access extension (I don't know if they did or didn't yet), and they don't have streaming memory qualifier support they are just shooting their own AI stock$$$ gold rush foot off.
 

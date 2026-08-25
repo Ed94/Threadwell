@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @jrjnorton
+**1/** **@jrjnorton** ^2061639688935317743
 
-@rfleury
+**@rfleury**
 
 Do you have an example or a before and after by chance?
 I don't find myself pulling out helper functions too often anymore so I'm having trouble thinking of what that looks like in practice

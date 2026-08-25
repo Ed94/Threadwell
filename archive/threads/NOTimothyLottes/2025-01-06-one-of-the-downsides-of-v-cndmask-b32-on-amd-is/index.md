@@ -25,38 +25,38 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1876093937632600106
 
 One of the downsides of V_CNDMASK_B32 on AMD is that you burn the SGPRs on the VCC bool, so if you are selecting between constants, those require extra V_MOV_B32 ops. Would be much better to have fused cmp+mask so this limitation would be lifted!
 
 ![](https://pbs.twimg.com/media/Ggk5dIQWkAAoCWn?format=png&name=orig)
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1876095947752841242
 
 Another night, another round of AMD compiler bugs. Sometimes AMD fails 'uint32_t packFloat2x16(f16vec2 v)' ... I'm seeing the 16-bit MSB cleared in this constant (yeah it's the slow V_CNDMASK_B32 case in the prior tweet)
 
 ![](https://pbs.twimg.com/media/Ggk7SBBXQAAJNbo?format=png&name=orig)
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^1876096561941475619
 
 Workaround is to use 'pack32(halfBitsToUint16(a))' instead (ie first convert the packed 16-bit float to packed 16-bit integer, then convert to 32-bit integer) ...
 
 ![](https://pbs.twimg.com/media/Ggk72RLXEAA0EH5?format=png&name=orig)
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1876112593510949253
 
 One of my favorite AMD instructions V_BFI_B32 is unfortunately one that no intrinsic exists for on PC, and one that the AMD compiler often messes up the pattern matching for, sometimes it reduces to {AND,ADD} instead
 
 ![](https://pbs.twimg.com/media/GglKA6nW4AEtOIC?format=png&name=orig)
 ![](https://pbs.twimg.com/media/GglKXy4XcAAA_Og?format=png&name=orig)
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^1876120138283729159
 
 Just looking at the next 5 lines of disassembly shows another 2 perf bugs: the compiler transforms 3 operations into 5 operations because it cannot handle mixed packed and unpacked stuff. The 2 V_ANDs can be merged, and the LSHL and CVT should just be one op
 
 ![](https://pbs.twimg.com/media/GglQsALXYAAEfWI?format=png&name=orig)
 
-**6/** @NOTimothyLottes
+**6/** **@NOTimothyLottes** ^1876126316816380333
 
 No way to work around those problems. Looks like bitfieldExtract 'v4' back-propagates something where the compiler ignores the .y in the packed logic, and then makes a mess of things scalarizing it. BFE only uses the 5-bit LSB of 'v4', so it's safe to leave junk in the other bits
 

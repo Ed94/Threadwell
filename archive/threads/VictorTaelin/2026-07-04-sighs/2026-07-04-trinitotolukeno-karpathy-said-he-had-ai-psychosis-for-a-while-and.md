@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @trinitotolukeno
+**1/** **@trinitotolukeno** ^2073427303116202352
 
-@VictorTaelin
+**@VictorTaelin**
 
 karpathy said he had AI psychosis for a while and everyone knows he's very competent
 

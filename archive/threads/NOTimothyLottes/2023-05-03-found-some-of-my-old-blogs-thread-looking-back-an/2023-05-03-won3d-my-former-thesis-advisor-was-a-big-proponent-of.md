@@ -26,21 +26,21 @@ parent_post_id: "1653559205360553985"
 
 ## Branch
 
-**1/** @won3d
+**1/** **@won3d** ^1653573851643625480
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 My former thesis advisor was a big proponent of forth. Apparently SunOS used forth in preboot and you could do all sorts of wacky things. He interfaced with custom compute accelerators this way. I agree that concatenantive programming languages are underexplored
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1653577630229098497
 
-@won3d
+**@won3d**
 
 I think it is less the exact form of the language but more 'the way to make things simple' that truely important now.
 
-**3/** @won3d
+**3/** **@won3d** ^1653585212628951047
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 There's something about Forth-style composition that is has a very nice appeal. It really seems to marry syntax and semantics very directly (but I can appreciate it at a distance, having not done any real work in it as you have)
 

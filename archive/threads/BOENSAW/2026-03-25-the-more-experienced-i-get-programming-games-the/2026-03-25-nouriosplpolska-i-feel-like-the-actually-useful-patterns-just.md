@@ -26,15 +26,15 @@ parent_post_id: "2036653149948424230"
 
 ## Branch
 
-**1/** @nouriosplpolska
+**1/** **@nouriosplpolska** ^2036762408027316597
 
-@BOENSAW
+**@BOENSAW**
 
 I feel like the actually useful patterns just emerge by themselves if you try doing something that needs them.
 
-**2/** @BOENSAW
+**2/** **@BOENSAW** ^2036778414791909453
 
-@nouriosplpolska
+**@nouriosplpolska**
 
 That's very much been my experience. it's not that they aren't useful under certain scenarios, but they're just as often not and rather than following a rigid structure it's better just to use the right tool for the situation
 

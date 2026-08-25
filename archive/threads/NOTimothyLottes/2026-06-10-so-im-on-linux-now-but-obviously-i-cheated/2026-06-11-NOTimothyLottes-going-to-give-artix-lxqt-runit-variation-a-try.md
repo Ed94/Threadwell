@@ -26,15 +26,15 @@ parent_post_id: "2064858927829745887"
 
 ## Branch
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2064877857252291055
 
 Going to give artix-lxqt-runit variation a try. Mostly just a stop gap to see if I can actually get a bloated Linux system installed before a more serious effort with BuildRoot. First de-windows victim computer will be an AMD powered APU.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2064902414243631277
 
 Looks like the workaround for my locked UEFI secure boot Enabled on the second machine was to "Set Supervisor Password", afterwords I could disable secure boot and APM, but still no way to enable legacy BIOS "Boot Mode".
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^2064922357186077053
 
 Somewhat surprised, Artix using the graphical install just worked out of the box (AMD APU). Got confused post install when 'top' shows 'Xorg' instead of 'XLibre' but the package manager says XLibre is installed.
 

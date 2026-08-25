@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @kechogarcia
+**1/** **@kechogarcia** ^1786556130254094548
 
-@SebAaltonen
+**@SebAaltonen**
 
 ctags and cscope. If you know, you know. Unfortunately not many know how to use them.
 

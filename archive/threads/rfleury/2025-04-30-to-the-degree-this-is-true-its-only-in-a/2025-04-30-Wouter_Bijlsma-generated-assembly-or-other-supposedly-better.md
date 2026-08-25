@@ -26,9 +26,9 @@ parent_post_id: "1917431895786414425"
 
 ## Branch
 
-**1/** @Wouter_Bijlsma
+**1/** **@Wouter_Bijlsma** ^1917520025348436222
 
-@rfleury
+**@rfleury**
 
 Generated assembly or other supposedly better ‘hand-written’ options for memory management are IMO just distractions when talking about unique_ptr. The point of it is to signal and enforce ownership in an API, which can only be a good thing, no? Don’t understand the hate 🤨
 

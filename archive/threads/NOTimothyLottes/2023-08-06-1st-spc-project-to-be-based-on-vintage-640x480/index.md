@@ -25,22 +25,22 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1688018382543597568
 
 1st SPC project: to be based on vintage 640x480 render (VGA style), +fallback to 640x240 for 15 KHz arcade CRTs (PGM-esk), and CRT shader scaling on Deck and OLED/LCD. Use mix of render pixel aspect changes, running less than 480 lines, and letter-box to keep integer Y scaling.
 
 ![](https://pbs.twimg.com/media/F20LgFtWQAAMtcv?format=png&name=orig)
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1688019698904969216
 
 My 15 KHz CRT output path when docked is HD Fury Nano (won't do <480p) doing HDMI to VGA, with a sync combiner (to workaround GBS-C bug), into GBS-C which line drops 480p ~60Hz to 240p ~60Hz and outputs component. The 640 width gets maintained even if some CRTs cannot resolve it.
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^1688021533904510976
 
 Presents issues for UI, namely that my bitmap fonts need to look good in both 480p and 240p modes, so for editor (assembler) I'm going with a font that uses right angles and designed around 2x2 stroke width, in a 8x16 (pow2) bitmap, so 640x240p still gets a readable 8x8 (below)
 
 ![](https://pbs.twimg.com/media/F20Ogh8XoAAq7hR?format=png&name=orig)
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1688022114962374656
 
 The next challenge is overscan safety, since real non-VGA CRTs will be used in development. The Y axis has an easy fix, simply keep cursor pinned in the 'safe' zone, but still print lines in the overscan area (so they can be seen when attached to non-overscan CRTs/etc too).

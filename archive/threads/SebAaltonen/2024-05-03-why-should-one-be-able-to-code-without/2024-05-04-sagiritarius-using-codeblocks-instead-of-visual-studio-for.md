@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @sagiritarius
+**1/** **@sagiritarius** ^1786675436941959201
 
-@SebAaltonen
+**@SebAaltonen**
 
 Using CodeBlocks instead of Visual Studio for some time taught me that we created IntelliSense for a reason.
 

@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @dlbydq
+**1/** **@dlbydq** ^2073518518910484940
 
-@VictorTaelin
+**@VictorTaelin**
 
 these guys have no idea what they're talking about. I've enjoyed following your work
 

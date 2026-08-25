@@ -26,9 +26,9 @@ parent_post_id: "2085786822387609939"
 
 ## Branch
 
-**1/** @jsuarez
+**1/** **@jsuarez** ^2085822235907162194
 
-@rfleury
+**@rfleury**
 
 This is the first thing I do in every big refactor
 

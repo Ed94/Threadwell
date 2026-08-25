@@ -26,15 +26,15 @@ parent_post_id: "2061123768429211767"
 
 ## Branch
 
-**1/** @retrotink2
+**1/** **@retrotink2** ^2061206435942511008
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Here I am still debugging by looking at if a single LED turns on.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2061252886453944549
 
-@retrotink2
+**@retrotink2**
 
 That plus an oscilloscope … this is the way
 

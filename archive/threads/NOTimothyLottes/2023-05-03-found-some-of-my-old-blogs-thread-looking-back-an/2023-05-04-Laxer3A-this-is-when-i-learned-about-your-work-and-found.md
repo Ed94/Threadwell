@@ -26,9 +26,9 @@ parent_post_id: "1653570742762479620"
 
 ## Branch
 
-**1/** @Laxer3A
+**1/** **@Laxer3A** ^1654169796328423450
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 This is when I learned about your work and found it incredible. Nowadays with 4K / 8K, people are really craving for a very good shader/model to emulate as close as possible the CRT feel for arcade / old console etc. (I am serious)
 

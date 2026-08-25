@@ -26,45 +26,45 @@ parent_post_id: "1917431895786414425"
 
 ## Branch
 
-**1/** @Pps831
+**1/** **@Pps831** ^1917545684372447392
 
-@rfleury
+**@rfleury**
 
 Too much words, but unique_ptr is*really* zero cost. There is no way to go negative in cost there, no matter how much you wish for it 🤣
 
-**2/** @rfleury
+**2/** **@rfleury** ^1917562140229304416
 
-@Pps831
+**@Pps831**
 
 I recommend you learn to read
 
-**3/** @Pps831
+**3/** **@Pps831** ^1917585539068276751
 
-@rfleury
+**@rfleury**
 
 I’m ok. But you should at least try to validate if unique_par is zero cost or not. Also, in case you were really complaining about shared_ptr - try to cook something equivalent in c (not just “smart” ptr with ref count, but equivalent)
 
-**4/** @rfleury
+**4/** **@rfleury** ^1917585742181851605
 
-@Pps831
+**@Pps831**
 
 It isn’t zero cost.
 
-**5/** @Pps831
+**5/** **@Pps831** ^1917586343690899661
 
-@rfleury
+**@rfleury**
 
 Shared_ptr? Off course, it’s really heavy, but it has incredibly useful functionality.
 
-**6/** @rfleury
+**6/** **@rfleury** ^1917586838140903459
 
-@Pps831
+**@Pps831**
 
 No, both of them. Neither are useful compared to the alternatives.
 
-**7/** @Pps831
+**7/** **@Pps831** ^1917588371930767654
 
-@rfleury
+**@rfleury**
 
 If you “really” need the functionality - then it’s great. Most uses don’t really need shared_ptr. If you don’t use it along with “weak_ptr” then you don’t really need it. If you complain about all the allocations, it has solution for the problem: enable_shared_from_this
 

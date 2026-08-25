@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @Bordonius
+**1/** **@Bordonius** ^1691444543147704320
 
-@cmuratori
+**@cmuratori**
 
 VSCode will end up going the way of all editors that aren't Vim or Emacs. Its legacy will be LSP.
 

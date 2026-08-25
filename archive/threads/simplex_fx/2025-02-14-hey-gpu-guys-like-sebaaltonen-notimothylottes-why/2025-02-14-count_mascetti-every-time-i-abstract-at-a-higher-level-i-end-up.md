@@ -26,9 +26,9 @@ parent_post_id: "1890348863287943363"
 
 ## Branch
 
-**1/** @count_mascetti
+**1/** **@count_mascetti** ^1890351256641712490
 
-@simplex_fx @SebAaltonen @NOTimothyLottes
+**@simplex_fx** **@SebAaltonen** **@NOTimothyLottes**
 
 Every time I abstract at a higher-level I end up precluding some use-case that I didn't anticipate, perhaps because I'm still learning and lack the whole picture. I find it very hard to write high-level graphics abstractions that are performant and flexible enough.
 

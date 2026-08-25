@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @SdoGtnepreS
+**1/** **@SdoGtnepreS** ^2073456422826729966
 
-@VictorTaelin
+**@VictorTaelin**
 
 Don't let them get you down. They can barely see the now, much less the future.
 

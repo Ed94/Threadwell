@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @AdmiralMemo
+**1/** **@AdmiralMemo** ^1786553588770099354
 
-@SebAaltonen
+**@SebAaltonen**
 
 I think people should be able to code without tools, but I'm not going to try to take the tools away. If you can't code without it, you should git gud, but until then, keep coding at least. Something's better than nothing.
 

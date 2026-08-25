@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @SumErgoMonstro
+**1/** **@SumErgoMonstro** ^1945143539224002588
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Have you ever studied APL?
 

@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @thejoephase
+**1/** **@thejoephase** ^1945065810763899008
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Have you met the average programmer?
 

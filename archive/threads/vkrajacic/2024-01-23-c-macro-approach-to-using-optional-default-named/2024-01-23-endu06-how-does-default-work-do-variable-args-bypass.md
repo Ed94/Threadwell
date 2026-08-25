@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @endu06
+**1/** **@endu06** ^1749930915566961088
 
-@vkrajacic
+**@vkrajacic**
 
 How does default work? Do variable args bypass duplicate designator in initializer?
 

@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @donalfellows
+**1/** **@donalfellows** ^2073475168328896550
 
-@VictorTaelin
+**@VictorTaelin**
 
 If you have a system that provably must terminate, what "interesting" statements are you unable to express? And what can only be stated in restricted form?
 

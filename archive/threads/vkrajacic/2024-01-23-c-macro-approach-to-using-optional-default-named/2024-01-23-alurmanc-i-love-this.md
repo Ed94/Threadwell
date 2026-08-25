@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @alurmanc
+**1/** **@alurmanc** ^1749842429367185567
 
-@vkrajacic
+**@vkrajacic**
 
 I love this!
 

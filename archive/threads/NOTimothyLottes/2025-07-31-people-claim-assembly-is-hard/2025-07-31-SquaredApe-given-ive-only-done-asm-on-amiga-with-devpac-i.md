@@ -26,15 +26,15 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/** @SquaredApe
+**1/** **@SquaredApe** ^1950915633811534012
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Given I've only done ASM on Amiga with Devpac, I guess it's probably a limited take, but I enjoyed it and didn't find it harder than say something like C, mostly because the problems I solved back then were 2D domain and the hardware was pretty simple... but not too hard?
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1950926927985770680
 
-@SquaredApe
+**@SquaredApe**
 
 ASM could be a pain when mixing with high level languages due to the constant manual register and stack shuffling, but with what I have in mind will factor that out.
 

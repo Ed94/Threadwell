@@ -26,9 +26,9 @@ parent_post_id: "1890348863287943363"
 
 ## Branch
 
-**1/** @RyDawgE256
+**1/** **@RyDawgE256** ^1890554187336872420
 
-@simplex_fx @SebAaltonen @NOTimothyLottes
+**@simplex_fx** **@SebAaltonen** **@NOTimothyLottes**
 
 I don't disagree...  but the reason is that 99% of programmers don't gaf about the specifics of their renderer... which is a shame... but an unambiguous fact nonetheless
 

@@ -26,9 +26,9 @@ parent_post_id: "2010303501851877740"
 
 ## Branch
 
-**1/** @thedarkhog
+**1/** **@thedarkhog** ^2010669573427884393
 
-@Dispatch_Graph
+**@Dispatch_Graph**
 
 Get Xlibre instead. If you're using arch, btw., it's in the AUR.
 

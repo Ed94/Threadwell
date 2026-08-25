@@ -26,9 +26,9 @@ parent_post_id: "2084072929780998198"
 
 ## Branch
 
-**1/** @joseph_h_garvin
+**1/** **@joseph_h_garvin** ^2084138515286081732
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 When I've seen this they usually require unique names and then you end up recapitulating the entire creation path in the string to make it unique but still readable, which I kinda hate. Do you not enforce uniqueness? Also a bunch of code to assemble those strings.
 

@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @SamvStachelski
+**1/** **@SamvStachelski** ^1691695743986524326
 
-@cmuratori
+**@cmuratori**
 
 Strange, never had that problem with that waaaay older editor, called  vim ;)
 (admittedly, LSPs can fail/lag/crash, but I can still code away, even with syntax highlighting :)

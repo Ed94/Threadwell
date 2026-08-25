@@ -26,9 +26,9 @@ parent_post_id: "2036653149948424230"
 
 ## Branch
 
-**1/** @Ryunocore
+**1/** **@Ryunocore** ^2036858460520755594
 
-@BOENSAW
+**@BOENSAW**
 
 Patterns are guidelines, but coding is a holistic and spiritual activity. Unironically follow your heart.
 

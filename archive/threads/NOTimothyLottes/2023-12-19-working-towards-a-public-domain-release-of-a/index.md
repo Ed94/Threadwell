@@ -25,17 +25,17 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1737198887914377512
 
 Working towards a public-domain release of a cleaned version of my Win32 Vulkan NV+AMD compute graphics platform. What I used last for rapid prototyping (which is also IMO fine for releasable software). Won't call it an 'Engine' because it only provides tools to hang yourself ...
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1737200333338595330
 
 Simplified the error logger today. Memory mapped file is definitely the way to go, one atomic per message, log multiple sessions, fixed size file acts like a message ring buffer. Background thread keeps the last message updating the same line on the console (for easy debug).
 
 ![](https://pbs.twimg.com/media/GBvFvOXXMAAFLXS?format=png&name=orig)
 ![](https://pbs.twimg.com/media/GBvFvOWX0AAxSuU?format=png&name=orig)
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^1737201090058219980
 
 Multi-session is nice, since the binary auto reloads in some cases (crash, etc), want to see why the reload happened, so don't want to clear the log. Yes, I still don't use debuggers, this logger + runtime shader recompile is all I use personally for dev work.

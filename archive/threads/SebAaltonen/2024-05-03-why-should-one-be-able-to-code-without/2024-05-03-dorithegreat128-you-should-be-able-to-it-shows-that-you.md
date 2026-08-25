@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @dorithegreat128
+**1/** **@dorithegreat128** ^1786485165029564483
 
-@SebAaltonen
+**@SebAaltonen**
 
 You should be *able* to, it shows that you understand what you're writing, but you shouldn't *actually* do it because it's ridiculously inefficient
 

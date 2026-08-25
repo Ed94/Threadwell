@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @TheeKruger
+**1/** **@TheeKruger** ^2073542081390485648
 
-@VictorTaelin
+**@VictorTaelin**
 
 I think this is a super legible, digestible, accessible, and coherent take. Well said, exceptionally based.
 

@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @KasperArnklit
+**1/** **@KasperArnklit** ^1786393718829768718
 
-@SebAaltonen
+**@SebAaltonen**
 
 Gate keeping programming and thinking it makes you special is incredibly sad.
 

@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @quantized_state
+**1/** **@quantized_state** ^1955925511575888092
 
-@vkrajacic
+**@vkrajacic**
 
 instantly rewriting everything
 

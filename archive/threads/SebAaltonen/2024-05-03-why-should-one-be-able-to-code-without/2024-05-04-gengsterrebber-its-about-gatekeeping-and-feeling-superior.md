@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @gengsterrebber
+**1/** **@gengsterrebber** ^1786759021136876020
 
-@SebAaltonen
+**@SebAaltonen**
 
 It's about gatekeeping and feeling superior, Sebastian. Duh.
 

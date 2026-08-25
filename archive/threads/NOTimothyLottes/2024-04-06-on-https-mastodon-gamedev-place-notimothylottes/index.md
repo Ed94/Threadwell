@@ -27,9 +27,9 @@ in_reply_to: "1776518700230721688"
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1776597200073568623
 
-@MartinJIFuller @SebAaltonen
+**@MartinJIFuller** **@SebAaltonen**
 
 On https://mastodon.gamedev.place/@NOTimothyLottes I'm collecting posts with AMD GPU disassembly dumps for a book on everything the shader compiler 'isn't doing'. Constant AMD GPU compiler perf bug SPAM is a key part of my online strategy to keep a low follower count.
 

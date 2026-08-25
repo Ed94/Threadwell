@@ -26,9 +26,9 @@ parent_post_id: "1951347512088088657"
 
 ## Branch
 
-**1/** @joeyazf
+**1/** **@joeyazf** ^1951378813985890736
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Sounds super interesting!
 

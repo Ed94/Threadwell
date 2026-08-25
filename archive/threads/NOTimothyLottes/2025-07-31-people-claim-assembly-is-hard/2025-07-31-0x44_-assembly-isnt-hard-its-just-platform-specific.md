@@ -26,9 +26,9 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/** @0x44_
+**1/** **@0x44_** ^1951048949667619280
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Assembly isn't hard, it's just platform specific, which makes it tedious.
 

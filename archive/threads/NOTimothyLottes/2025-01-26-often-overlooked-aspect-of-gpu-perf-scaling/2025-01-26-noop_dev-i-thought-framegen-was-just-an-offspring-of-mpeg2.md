@@ -26,9 +26,9 @@ parent_post_id: "1883591956598845661"
 
 ## Branch
 
-**1/** @noop_dev
+**1/** **@noop_dev** ^1883594247653462329
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I thought framegen was just an offspring of mpeg2 motion prediction, at least how it was in TVs for 15 years.
 

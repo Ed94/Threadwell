@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @Natnew7
+**1/** **@Natnew7** ^1786410474407436585
 
-@SebAaltonen
+**@SebAaltonen**
 
 You shouldn’t have to code this way for serious projects. But you should be capable of it.
 

@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @zyansheep
+**1/** **@zyansheep** ^2073451643010703546
 
-@VictorTaelin
+**@VictorTaelin**
 
 In my language I'm trying to do termination by proxy, I.e. if type checking terminates for a certain validated set of type predicates than the typed program should be guaranteed to not terminate. Thoughts on this strategy?
 

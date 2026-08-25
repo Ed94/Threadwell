@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @pakatanatakata
+**1/** **@pakatanatakata** ^2073442800704663830
 
-@VictorTaelin
+**@VictorTaelin**
 
 Lemme aske gpt for translating 
 Your hieroglyph

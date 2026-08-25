@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @streetsofboston
+**1/** **@streetsofboston** ^1786460687641813039
 
-@SebAaltonen
+**@SebAaltonen**
 
 Folks advocating for "notepad" coding is much like a grandfather boasting how he walked to school during a blizzard.
 

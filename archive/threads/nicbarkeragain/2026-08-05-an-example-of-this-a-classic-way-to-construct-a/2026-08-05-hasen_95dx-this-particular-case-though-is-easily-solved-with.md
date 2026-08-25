@@ -26,9 +26,9 @@ parent_post_id: "2084851804224004329"
 
 ## Branch
 
-**1/** @hasen_95dx
+**1/** **@hasen_95dx** ^2084868526515634252
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 this particular case though is easily solved with `defer` or even `closures`
 
@@ -36,23 +36,23 @@ this particular case though is easily solved with `defer` or even `closures`
         // container is closed when this func exits
     })
 
-**2/** @nicbarkeragain
+**2/** **@nicbarkeragain** ^2084876136631419246
 
-@hasen_95dx
+**@hasen_95dx**
 
 Yes, I tend to use the "single iteration for loop" macro trick in C to do this exact thing with scope, but there are still a bunch of cases where you might want to have a direct API that you can use to call open / close:
 
 ![](https://pbs.twimg.com/media/HO73smTacAAYau2?format=jpg&name=orig)
 
-**3/** @nicbarkeragain
+**3/** **@nicbarkeragain** ^2084876247570813090
 
-@hasen_95dx
+**@hasen_95dx**
 
 I've also found explicit open / close to be very useful in rendering tree views / arbitrary recursive hierarchy etc.
 
-**4/** @hasen_95dx
+**4/** **@hasen_95dx** ^2084883855505604792
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Right. With the closure approach it would have to change.
 

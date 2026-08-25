@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @MadisonP94618
+**1/** **@MadisonP94618** ^2073702157933518998
 
-@VictorTaelin
+**@VictorTaelin**
 
 It was easy to read and I think I understood most of it. 
 

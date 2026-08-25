@@ -26,21 +26,21 @@ parent_post_id: "1857803914604618029"
 
 ## Branch
 
-**1/** @static_assert_0
+**1/** **@static_assert_0** ^1857867668289663108
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 This is super cool, but why map a file and not just stdout?
 
-**2/** @vodangkhoa873
+**2/** **@vodangkhoa873** ^1857882178463608868
 
-@static_assert_0 @NOTimothyLottes
+**@static_assert_0** **@NOTimothyLottes**
 
 The writes can be done concurrently from many threads?
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^1857884114403340408
 
-@vodangkhoa873 @static_assert_0
+**@vodangkhoa873** **@static_assert_0**
 
 Yes, one 'atomicAdd(atomAdr,1)&65535' to get the line number (window of 65536 max lines) then write the line individually. Only contention is on that atomicAdd CPU instruction which is as minimal as possible.
 
@@ -48,15 +48,15 @@ I do the atomic add instruction using simple inline ASM (below)
 
 ![](https://pbs.twimg.com/media/GciHgZzXIAAD9by?format=png&name=orig)
 
-**4/** @static_assert_0
+**4/** **@static_assert_0** ^1857885819274453195
 
-@NOTimothyLottes @vodangkhoa873
+**@NOTimothyLottes** **@vodangkhoa873**
 
 I love this, but are you not able to get that codegen with intrinsics or just normal C?
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^1857887943261827446
 
-@static_assert_0 @vodangkhoa873
+**@static_assert_0** **@vodangkhoa873**
 
 I've been hand rolling intrinsics CPU-side in GCC with inline asm since the dawn of support for that. So haven't kept up with the high-level-lang mess fire since.
 

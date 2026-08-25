@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @sean_of_w
+**1/** **@sean_of_w** ^1786752619983028462
 
-@SebAaltonen
+**@SebAaltonen**
 
 I know a lot of “professionals” who can’t code at all without an IDE, even on small projects. If you can’t work without it even at a low level of productivity, your ability to earn a living exists only at the whims of the IDE vendor. That’s one hell of a career risk.
 

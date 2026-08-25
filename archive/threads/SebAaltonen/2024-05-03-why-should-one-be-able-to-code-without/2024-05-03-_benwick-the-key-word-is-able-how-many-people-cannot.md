@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @_benwick
+**1/** **@_benwick** ^1786368655640453619
 
-@SebAaltonen
+**@SebAaltonen**
 
 The key word is ABLE. How many people cannot compile a program without the visual studio ide? You're only cheating yourself if you don't understand how your toolchain does its work.
 

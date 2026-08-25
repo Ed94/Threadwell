@@ -26,9 +26,9 @@ parent_post_id: "2010303501851877740"
 
 ## Branch
 
-**1/** @PervWizz
+**1/** **@PervWizz** ^2010750206237651067
 
-@Dispatch_Graph
+**@Dispatch_Graph**
 
 Well. Win32 began as a bad API and then organically got reshaped into a worse one. Same goes for X11
 

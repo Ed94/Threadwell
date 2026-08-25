@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @Kinch_ahoy
+**1/** **@Kinch_ahoy** ^2073472046907158611
 
-@VictorTaelin
+**@VictorTaelin**
 
 I got interested in Bend for its prosaic capabilities. What’s the logic behind trying to make it a theorem prover? Language design should be a flight of fancy, so I approve, but I don’t think I’ve seen you write up why you are colliding these worlds.
 

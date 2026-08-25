@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @agmethod75
+**1/** **@agmethod75** ^1944929654340772147
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Its called array programming.  Fortran has been doing it since fortran90.  Odin and D have it.
 

@@ -26,9 +26,9 @@ parent_post_id: "1674757854471806977"
 
 ## Branch
 
-**1/** @PierreTerdiman
+**1/** **@PierreTerdiman** ^1675088736621559808
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I was calling it "disoriented programming" just the other day.
 

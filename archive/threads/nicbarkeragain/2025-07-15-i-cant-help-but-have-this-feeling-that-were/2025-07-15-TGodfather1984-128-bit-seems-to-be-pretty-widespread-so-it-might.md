@@ -26,9 +26,9 @@ parent_post_id: "1944937375001666018"
 
 ## Branch
 
-**1/** @TGodfather1984
+**1/** **@TGodfather1984** ^1944994288305098754
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 128-bit seems to be pretty widespread, so it might be a good baseline? even in armv7 cores, not sure about risc-v and powerpc though. and then the compiler could just divide the number of iterations by 2 or 4, or am i missing something?
 

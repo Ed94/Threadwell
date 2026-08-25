@@ -26,7 +26,7 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @mikejt4
+**1/** **@mikejt4** ^2073509336488501736
 
 You’re not allowed to praise Fable, you MUST bag everything on the internet 🤣 And god forbid you do anything genuinely impressive!
 I’ve found Fable excellent so far, it’s night and day compared to Opus… Opus stumbles along pretending to be competent, frequently getting canceled when I realise it’s doing something dumb again… Fable picked up the project, found a bunch of strategic issues, replanned, and got everything working rapidly!!

@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @luis_reyes_x
+**1/** **@luis_reyes_x** ^1749940314951893348
 
-@vkrajacic
+**@vkrajacic**
 
 Very cool! Designated initializers is one thing I wish c++ had. C also lets you do a similar thing with arrays to initialize certain elements
 

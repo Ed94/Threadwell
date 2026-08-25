@@ -26,19 +26,19 @@ parent_post_id: "2065804972378243476"
 
 ## Branch
 
-**1/** @quiveron_x
+**1/** **@quiveron_x** ^2065848389875458358
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Why are you using CRT
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2065850045975474547
 
-@quiveron_x
+**@quiveron_x**
 
 Still the best display technology IMO. Low persistence, analog, variable resolution, smooth continuous blended signal, deep blacks, great contrast, etc.
 
-**3/** @quiveron_x
+**3/** **@quiveron_x** ^2065851423489937868
 
 I completely agree, I asked because I was wondering if you were planning on doing something specific.
 I think we gave up on them too early, they felt good to use, pleasant to look at, only negative side is they were too heavy. People obsessing over resolution don't realize if image is shit it doesn't matter if it's 4k or 8k

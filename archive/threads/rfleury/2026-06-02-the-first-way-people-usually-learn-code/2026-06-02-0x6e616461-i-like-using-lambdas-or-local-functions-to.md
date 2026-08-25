@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @0x6e616461
+**1/** **@0x6e616461** ^2061659934119354768
 
-@rfleury
+**@rfleury**
 
 I like using lambdas or local functions to extract some common logic and put it behind a good name without cluttering things up outside
 

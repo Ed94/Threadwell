@@ -26,17 +26,17 @@ parent_post_id: "1674757854471806977"
 
 ## Branch
 
-**1/** @SebAaltonen
+**1/** **@SebAaltonen** ^1674768757867020289
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Would be nice to talk a full presentation about this topic, but people want me to show cool tech and pretty pixels instead. Maybe one day.
 
 I will save your image for that day (if I get approval to use it), since Twitter search is super bad.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1674776150671781888
 
-@SebAaltonen
+**@SebAaltonen**
 
 "Approval", haha, sure it's covered under my favorite license
 

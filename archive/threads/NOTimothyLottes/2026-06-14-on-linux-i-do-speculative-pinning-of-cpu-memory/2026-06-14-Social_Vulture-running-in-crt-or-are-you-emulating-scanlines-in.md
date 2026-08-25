@@ -26,9 +26,9 @@ parent_post_id: "2066184005632786736"
 
 ## Branch
 
-**1/** @Social_Vulture
+**1/** **@Social_Vulture** ^2066190873235206299
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Running in CRT or are you emulating scanlines in your editor?
 

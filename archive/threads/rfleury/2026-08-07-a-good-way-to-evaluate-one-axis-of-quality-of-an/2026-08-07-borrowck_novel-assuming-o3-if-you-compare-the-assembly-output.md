@@ -26,21 +26,21 @@ parent_post_id: "2085786822387609939"
 
 ## Branch
 
-**1/** @borrowck_novel
+**1/** **@borrowck_novel** ^2085804992540143894
 
-@rfleury
+**@rfleury**
 
 Assuming -O3, if you compare the assembly output before and after the exercise, do you see any meaningful difference?
 
-**2/** @rfleury
+**2/** **@rfleury** ^2085809430130803034
 
-@ZH1YGD
+**@ZH1YGD**
 
 Yes, absolutely
 
-**3/** @borrowck_novel
+**3/** **@borrowck_novel** ^2085812641507807328
 
-@rfleury
+**@rfleury**
 
 Thanks a ton. Then it is worth the time to do my own test. Cheers
 

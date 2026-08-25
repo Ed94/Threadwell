@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @farre_x
+**1/** **@farre_x** ^1945597104895778866
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 But is it really that hard to use though? Or what scenario do you mean? If we are to make use of SIMD we will be doing operations on collections of numbers. That is fairly trivial with intrinsics
 

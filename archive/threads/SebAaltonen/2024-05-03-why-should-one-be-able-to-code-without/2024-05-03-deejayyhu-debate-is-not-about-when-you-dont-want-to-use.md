@@ -26,9 +26,9 @@ parent_post_id: "1786349827669790823"
 
 ## Branch
 
-**1/** @deejayyhu
+**1/** **@deejayyhu** ^1786422302373974029
 
-@SebAaltonen
+**@SebAaltonen**
 
 Debate is not about when you don't want to use notepad, but when you are not able to use it.
 

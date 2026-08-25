@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @dodobyte
+**1/** **@dodobyte** ^1945103550113054841
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 openmp does good enough job with compiler flags like march=avx2, i think the focus should be making compilers smarter, for the cases where parallelism is the primary concern one should use cuda
 

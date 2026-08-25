@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @mprado
+**1/** **@mprado** ^2073424030481174585
 
-@VictorTaelin
+**@VictorTaelin**
 
 Loved this long post version of yours. You should do this more often, where you break down a problem for people not familiar with your domain. Very fun read! Thanks
 

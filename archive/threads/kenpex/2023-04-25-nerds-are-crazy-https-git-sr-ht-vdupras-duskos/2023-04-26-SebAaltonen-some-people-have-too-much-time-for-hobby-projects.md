@@ -26,15 +26,15 @@ parent_post_id: "1650678968255913985"
 
 ## Branch
 
-**1/** @SebAaltonen
+**1/** **@SebAaltonen** ^1651168030557077504
 
-@kenpex
+**@kenpex**
 
 Some people have too much time for hobby projects.
 
-**2/** @HostOfMeta
+**2/** **@HostOfMeta** ^1651211621145141248
 
-@SebAaltonen @kenpex
+**@SebAaltonen** **@kenpex**
 
 Where else can someone learn Forth nowadays?
 
@@ -42,23 +42,23 @@ Would place Forth knowledge above C++ in an interview, shows an understanding of
 
 These are the people you want to help break tradition. They see the schlep, if you will.
 
-**3/** @kenpex
+**3/** **@kenpex** ^1651255723752579072
 
-@Lambda_Coder @SebAaltonen
+**@Lambda_Coder** **@SebAaltonen**
 
 I wouldn't. Forth today is hyper-niche, and even the programming model it teaches you about is. Lastly, the best way to learn forth is probably to make your own forth.
 
-**4/** @HostOfMeta
+**4/** **@HostOfMeta** ^1651257798708154368
 
-@kenpex @SebAaltonen
+**@kenpex** **@SebAaltonen**
 
 What of the distinction between Forth the syntactic language and the semantic programming model?
 
 The way I see modern software, an insane amount of tooling and scaffolding is maintained to achieve what Forth and Lisp had emerging from their architecture. And usually not reusable
 
-**5/** @HostOfMeta
+**5/** **@HostOfMeta** ^1651258575749103620
 
-@kenpex @SebAaltonen
+**@kenpex** **@SebAaltonen**
 
 The fact that the model is obscure should turn it into a superpower.
 
@@ -66,23 +66,23 @@ I'd agree for an existing company it would be a risk, but for a startup its how 
 
 Not forth/lisp themselves, but adapting their models with modern hindsights.
 
-**6/** @kenpex
+**6/** **@kenpex** ^1651260967639212032
 
-@Lambda_Coder @SebAaltonen
+**@Lambda_Coder** **@SebAaltonen**
 
 I doubt it. I doubt that languages or paradigms make any difference in practice (never saw any study showing significant advantages). And the lisp paradigm is in my opinion, niche for reasonable reasons. In general, the lack of strong semantics is a liability, not a strength.
 
-**7/** @HostOfMeta
+**7/** **@HostOfMeta** ^1651263034470400001
 
-@kenpex @SebAaltonen
+**@kenpex** **@SebAaltonen**
 
 What if there existed a way to get the live coding, programmable programming of Lisp/Forth, scale it to support AAA game engines, and keep most modern PLT developments in the process?
 
 I agree languages and paradigms are compile-time concerns and as such make the runtime complex.
 
-**8/** @HostOfMeta
+**8/** **@HostOfMeta** ^1651264420872437772
 
-@kenpex @SebAaltonen
+**@kenpex** **@SebAaltonen**
 
 Its no different than a game engine moving from one scene to the next; a few layers of abstraction deeper.
 
@@ -90,36 +90,36 @@ Level designers would go insane having to reboot the editor between each change,
 
 I want this to change.
 
-**9/** @HostOfMeta
+**9/** **@HostOfMeta** ^1651264955033829377
 
-@kenpex @SebAaltonen
+**@kenpex** **@SebAaltonen**
 
 I also appreciate how weird and niche this position is.
 
 It's one of these situations where the thing is already executing in my mind, but translating this to software and everyday terms is another story.
 
-**10/** @kenpex
+**10/** **@kenpex** ^1651453444274941952
 
-@Lambda_Coder @SebAaltonen
+**@Lambda_Coder** **@SebAaltonen**
 
 Live-coding is indeed (and provably so, there is science) a superpower, but does not have much to do with language semantics. It's tooling and "tradition". Lisps are usually VM-based, REPLs etc, but you can do that with C or whatever, and similarly, you can "offline" compile lisp
 
-**11/** @HostOfMeta
+**11/** **@HostOfMeta** ^1651572653302448128
 
-@kenpex @SebAaltonen
+**@kenpex** **@SebAaltonen**
 
 I would say it's deeply connected to language design, in that doing it elsewhere is more complex and yields less power.
 Lisp has the most powerful REPL for this reason, but then it needs more semantic info to use it safely in a stateful simulation. Needs Erlang's supervision too.
 
-**12/** @HostOfMeta
+**12/** **@HostOfMeta** ^1651574497680535552
 
-@kenpex @SebAaltonen
+**@kenpex** **@SebAaltonen**
 
 The runtime architecture I'm interested in keeps track of its systems, generates the wires between them, handles snapshots and replay logging from non-deterministic inputs, supervises and restores crashed systems and is aware of frame boundaries to know when live coding is safe.
 
-**13/** @HostOfMeta
+**13/** **@HostOfMeta** ^1651575451591090176
 
-@kenpex @SebAaltonen
+**@kenpex** **@SebAaltonen**
 
 Too often in Lisp I crash something at the REPL, or lose track of a connected socket, or whatever else happening which causes me to reboot the entire runtime tower, and I see every second waiting to get back to the previous state as wasted time where the mental context fades away
 

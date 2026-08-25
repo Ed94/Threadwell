@@ -26,21 +26,21 @@ parent_post_id: "1653556990302470151"
 
 ## Branch
 
-**1/** @Karyuutensei
+**1/** **@Karyuutensei** ^1653661020026466307
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Is the blog still up somewhere?
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1653743479032250373
 
-@Karyuutensei
+**@Karyuutensei**
 
 No but I have archives in pieces on old hard drives. So there is a chance I might restore it some day.
 
-**3/** @Karyuutensei
+**3/** **@Karyuutensei** ^1653746161050693634
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Speaking of archives, http://archive.org  has some from the blogspot here https://web.archive.org/web/20160427173127/http://timothylottes.blogspot.com/ but basically nothing from the github page :S
 

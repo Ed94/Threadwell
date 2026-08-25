@@ -26,13 +26,13 @@ parent_post_id: "1736157335058300999"
 
 ## Branch
 
-**1/** @AgileJebrim
+**1/** **@AgileJebrim** ^1736232422528709002
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Yep put the whole game logic in a game.glsl compute shader.
 
-**2/** @AgileJebrim
+**2/** **@AgileJebrim** ^1736233142002860372
 
 If doing a large open world game, set up a paging system to stream data to the GPU in tiles, particularly static data. All dynamic data should be handled on the GPU. If leveraging  server, you can pass along the network packets as they are. CPU shouldn’t really be doing much for a game client. It certainly shouldn’t be varying due to scene complexity.
 

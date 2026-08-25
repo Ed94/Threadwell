@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @YohanOttie
+**1/** **@YohanOttie** ^1786718354339721619
 
-@SebAaltonen
+**@SebAaltonen**
 
 People will justify programming C/C++ on Linux. On leafpad.
 

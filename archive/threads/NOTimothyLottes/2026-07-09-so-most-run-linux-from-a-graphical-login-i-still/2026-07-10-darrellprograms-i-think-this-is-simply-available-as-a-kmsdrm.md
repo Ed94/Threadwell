@@ -26,27 +26,27 @@ parent_post_id: "2075107519588933655"
 
 ## Branch
 
-**1/** @darrellprograms
+**1/** **@darrellprograms** ^2075380301933736444
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I think this is simply available as a KMSDRM option in SDL for essentially zero development effort (if your game is built with SDL).
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2075388553446445179
 
-@darrellprograms
+**@darrellprograms**
 
 Never really understood the desire for zero development effort. As a developer I'm here to practice the art, ideally by pushing the state of the art. But will take looking at SDL source as a good reference if I get lost in the process.
 
-**3/** @darrellprograms
+**3/** **@darrellprograms** ^2075398576101093766
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I respect that, as long as you know what wheels you're reinventing. Note that you can keep Wayland or X11 running (or both, for that matter) for your dev environment, and just do control-alt-fN switching to test Wayland/X11-independent KMSDRM stuff.
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^2075403544111263795
 
-@darrellprograms
+**@darrellprograms**
 
 Oh I probably have a lot to learn here, building from scratch = understanding deeply. For example I wonder if VT switching fully pages out to clean VRAM, exclusive GPU ownership state.
 

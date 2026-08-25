@@ -26,26 +26,26 @@ parent_post_id: "1917431895786414425"
 
 ## Branch
 
-**1/** @mikejt4
+**1/** **@mikejt4** ^1917515273680347506
 
 My experience has been different. Every piece of C code I used had weird memory leaks and page faults. 
 Good C++ with no naked pointers… huge codebase, dozens of developers - never one memory leaks. And performance was fantastic. Maybe not identical to hand-optimized C… but *far* easier to understand and maintain… especially for non god-like developers. We converted everything to C++, including our realtime embedded code. (Medical dev, so regulated, process driven…).
 
-**2/** @rfleury
+**2/** **@rfleury** ^1917566795256586508
 
-@mikejt4
+**@mikejt4**
 
 Many people have written C in very poor ways, but with the correct approach, it’s (a) simpler, (b) faster, (c) easier to maintain, (d) easier to read
 
-**3/** @dervish_candela
+**3/** **@dervish_candela** ^1917699967960953328
 
-@rfleury @mikejt4
+**@rfleury** **@mikejt4**
 
 if there is so little code written 'with the correct approach', perhaps 'the correct approach' is in fact anything but easier and simpler
 
-**4/** @rfleury
+**4/** **@rfleury** ^1917711908884697362
 
-@dervish_candela @mikejt4
+**@dervish_candela** **@mikejt4**
 
 I genuinely have no idea how you think that’s a coherent point—do you think fields simply do not advance?
 

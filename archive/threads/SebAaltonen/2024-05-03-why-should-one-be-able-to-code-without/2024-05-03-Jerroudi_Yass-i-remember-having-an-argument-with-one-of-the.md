@@ -26,9 +26,9 @@ parent_post_id: "1786349827669790823"
 
 ## Branch
 
-**1/** @Jerroudi_Yass
+**1/** **@Jerroudi_Yass** ^1786365002519089480
 
-@SebAaltonen
+**@SebAaltonen**
 
 I remember having an argument with one of the staffs of 42 about allowing the usage of debuggers in exams as he was totally against the idea leaving us with printf debugging in a 2h exam session. I never understood why there is so much hate/reluctance about the usage of debuggers
 

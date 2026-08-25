@@ -26,9 +26,9 @@ parent_post_id: "2060190230838223346"
 
 ## Branch
 
-**1/** @mrsteyk1
+**1/** **@mrsteyk1** ^2070892786065482185
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 It's seemingly incorrect due to it's use for NtWaitForAlertByThreadId. Internal implementation is a hash table [128] indexed by (a1>>5)&0x7f inside PEB. Default spin value (v4) for my build is 10240 shared for similar type of functions (SRWLocks etc).
 

@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1990260050485797063
 
 I wish everyone would just adopt "reversed with infinite far" projection matrixes so I could only optimize for the fastest and highest precision option, but I'm guessing people haven't all migrated over :(
 
@@ -33,17 +33,17 @@ I wish everyone would just adopt "reversed with infinite far" projection matrixe
 
 Branches: [[archive/threads/NOTimothyLottes/2025-11-17-i-wish-everyone-would-just-adopt-reversed-with/2025-11-17-terekhov_de-ive-never-had-real-depth-precision-issues-in-our]], [[archive/threads/NOTimothyLottes/2025-11-17-i-wish-everyone-would-just-adopt-reversed-with/2025-11-17-bgolus-many-are-still-on-opengles-and-webgl-which-dont]], [[archive/threads/NOTimothyLottes/2025-11-17-i-wish-everyone-would-just-adopt-reversed-with/2025-11-18-Alecazam123-infinite-far-doesnt-apply-to-ortho-and-many-of]], [[archive/threads/NOTimothyLottes/2025-11-17-i-wish-everyone-would-just-adopt-reversed-with/2025-11-19-stainless_code-i-havent-really-done-graphics-in-a-while-but-ive]]
 
-**2/** @AgileJebrim
+**2/** **@AgileJebrim** ^1990260754688172298
 
 Reversed is a significant improvement but it still has its limitations when doing planetary-scale rendering that needs good precision up both close and far away. Your options there are either a logarithmic depth buffer to linearize things (albeit losing early z), your own integer-based depth test system in compute shaders, or a stack of multiple frustums layered on top of one another.
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^1990261535491723691
 
-@AgileJebrim
+**@AgileJebrim**
 
 Yes for my non-tri stuff I'm log depth already. This is just for games, not simulation.
 
-**4/** @AgileJebrim
+**4/** **@AgileJebrim** ^1990263993236136239
 
 Simulation can usually localize enough that reverse Z is good enough. Google Earth style geospatial visualization is where things get trickier.
 

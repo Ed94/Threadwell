@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @gretzky00
+**1/** **@gretzky00** ^1955713762163409316
 
-@vkrajacic
+**@vkrajacic**
 
 Haven't gotten to this place, I gotta keep pushing forward till I get gigachad levels like you
 

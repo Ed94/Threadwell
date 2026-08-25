@@ -26,9 +26,9 @@ parent_post_id: "1674757854471806977"
 
 ## Branch
 
-**1/** @wyattscarpenter
+**1/** **@wyattscarpenter** ^1678087686404595712
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 https://github.com/wyattscarpenter/wu
 

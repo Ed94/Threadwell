@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @XBigand
+**1/** **@XBigand** ^1786376101192778096
 
-@SebAaltonen
+**@SebAaltonen**
 
 I start to consider to go back to a simple text editor, like when I was using emacs at school, juste because VS is getting worse.
 

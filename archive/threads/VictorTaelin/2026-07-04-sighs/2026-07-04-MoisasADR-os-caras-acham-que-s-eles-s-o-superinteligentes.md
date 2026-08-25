@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @MoisasADR
+**1/** **@MoisasADR** ^2073415831619355067
 
-@VictorTaelin
+**@VictorTaelin**
 
 os caras acham que só eles são superinteligentes mas não conseguem enxergar alem da bolha que ele mesmo se coloca entre os '' inteligentes '', que tipo de inteligência é essa ? é a vida de um engenheiro médio que trabalha em um lab de IA em SF kkkkk
 

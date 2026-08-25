@@ -26,15 +26,15 @@ parent_post_id: "1735631826427732305"
 
 ## Branch
 
-**1/** @SebAaltonen
+**1/** **@SebAaltonen** ^1735671969947803827
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 They design one API for each separate use case instead of making general purpose flexible SIMD hardware and API for the developers to implement what ever algorithm they need. CPU side got this right. PS2 had correct design, but Nvidia choose hardware T&L for desktop :(
 
-**2/** @SebAaltonen
+**2/** **@SebAaltonen** ^1735672402992943607
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I kind of understand hardware T&L back then because it was a new field and programmable hardware didn't exist. But now we have massive amount of wide SIMDs and bandwidth and big caches too. We can do better!
 

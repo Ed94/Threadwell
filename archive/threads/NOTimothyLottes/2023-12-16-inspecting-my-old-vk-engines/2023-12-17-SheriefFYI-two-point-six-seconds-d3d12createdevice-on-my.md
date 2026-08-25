@@ -26,35 +26,35 @@ parent_post_id: "1736147815829565624"
 
 ## Branch
 
-**1/** @SheriefFYI
+**1/** **@SheriefFYI** ^1736217482682138685
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 two point six seconds?!! D3D12CreateDevice() on my machine is ~300ms..
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1736220920635670883
 
-@SheriefFYI
+**@SheriefFYI**
 
 Yeah and that's a warm second run too. I dev on crippled laptops so when the handicaps are removed the stuff really flies.
 
-**3/** @SheriefFYI
+**3/** **@SheriefFYI** ^1736222787184795787
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 still that sounds like a lot, what specs / driver? Any weird vk layers loading?
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1736228132489736602
 
-@SheriefFYI
+**@SheriefFYI**
 
 Ok, yeah just reprofiled, and it's down to 269 ms. Best part of the Win10 experience, never know what is actually happening in the background.
 
 ![](https://pbs.twimg.com/media/GBhSG-XXMAAT0FS?format=png&name=orig)
 
-**5/** @SheriefFYI
+**5/** **@SheriefFYI** ^1736229279246004251
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 *whew* that sounds more normal
 

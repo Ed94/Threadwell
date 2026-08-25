@@ -25,23 +25,23 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2077224595858280506
 
 One advantage of SAR (aka signed '>>') is that the shift-by operand HW uses only the 5|6 LSBs automatically. So if you have a mixed used control word, you don't have to mask out the MSBs. Can save an instruction.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2077225347049767246
 
 Working through an idea of a single uber-instruction interpreted language for code generation. Meaning something that never misses the instruction cache and executes fully out of the micro-op cache. Fully data driven with a direct map 64k entry symbol table.
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^2077227411112870280
 
 Borrows some ideas from SIMD GPU programming. Like instead of branching/predicating to avoid stores, just store to a discarded area (like a negative offset on the GPU, or a designated trash address on the CPU).
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^2077234537302556898
 
 Don't want exit condition logic in the infinite loop, so exit will have to be having the program store an exit value into a set address, and an external watchdog polling for exit at some sleep frequency.
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^2077241596869751029
 
 SAR on a control word can in theory grab 3 values.
 SF (sign flag) is set to MSB bit

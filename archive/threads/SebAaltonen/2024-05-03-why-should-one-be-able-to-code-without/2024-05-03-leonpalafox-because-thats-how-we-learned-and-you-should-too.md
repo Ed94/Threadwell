@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @leonpalafox
+**1/** **@leonpalafox** ^1786402943597437170
 
-@SebAaltonen
+**@SebAaltonen**
 
 Because that’s how we learned and you should too 😂
 

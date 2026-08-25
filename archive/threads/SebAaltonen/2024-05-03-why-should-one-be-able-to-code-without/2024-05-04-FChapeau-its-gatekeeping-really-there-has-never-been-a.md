@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @FChapeau
+**1/** **@FChapeau** ^1786635431813034178
 
-@SebAaltonen
+**@SebAaltonen**
 
 It’s gatekeeping really. There has never been a better time to learn programming, with fantastic free tools, but you apparently need to be able to work a specific way if you want to be a “real” programmer.
 

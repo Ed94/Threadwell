@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @KDmitriy99
+**1/** **@KDmitriy99** ^1691218906000629760
 
-@cmuratori
+**@cmuratori**
 
 It can't even Ctrl+A after some update a few monhts before, just the 2022 (VS2019 also got updates but didnot break like this).
 I swear they do this on purpose. There is no way that in the whole multi-gb product they just happened to disable Ctrl+A. There is no way.

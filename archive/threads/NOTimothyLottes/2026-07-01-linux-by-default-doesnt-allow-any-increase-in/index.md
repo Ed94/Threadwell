@@ -25,16 +25,16 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2072135292115427728
 
 Linux by default doesn't allow any increase in scheduling priority. Users need to manually setup special user|group with elevated rights. Also system calls that try elevated scheduling don't clamp, instead they fail -EPREM if out of bounds. So all around a pain in the ass.
 
 ![](https://pbs.twimg.com/media/HMGz-64W4AABeaH?format=png&name=orig)
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2072136089070961073
 
 I'm a little lazy right now and don't feel like trying SteamOS big picture mode to see what the default ulimits are. Curious what they allow.
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^2072147378480566273
 
 Linux priority workarounds
 (a.) Use getrlimit() to get {soft,hard} limits
@@ -44,11 +44,11 @@ Linux priority workarounds
 ![](https://pbs.twimg.com/media/HMG-UCRXIAEKbdj?format=png&name=orig)
 
 ![](https://pbs.twimg.com/media/HMG-zRxWwAAWtI4?format=png&name=orig)
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^2072147765157638479
 
 I don't do one-time global priority maximums, just in case someone sudo's higher priority hard limit dynamically it should pickup the new limit.
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^2072149707107787035
 
 Also while on setrlimit, I also bump up the RLIMIT_MEMLOCK to it's maximum just in case before the mlockall().
 

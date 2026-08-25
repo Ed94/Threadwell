@@ -26,15 +26,15 @@ parent_post_id: "1869414867113009626"
 
 ## Branch
 
-**1/** @count_mascetti
+**1/** **@count_mascetti** ^1869425640103129200
 
-@rfleury
+**@rfleury**
 
 Maybe you already wrote this somewhere, but I'd be interested in seeing a practical example of your approach, even a basic one. It all sounds very appealing, but I'm struggling to come up with specific use cases.
 
-**2/** @rfleury
+**2/** **@rfleury** ^1869426286562816504
 
-@count_mascetti
+**@count_mascetti**
 
 https://www.rfleury.com/p/ui-part-3-the-widget-building-language
 https://www.rfleury.com/p/emergence-and-composition

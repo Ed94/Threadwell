@@ -43,7 +43,9 @@ class PostBlockAttributionTests(unittest.TestCase):
             post("1898440015182729598", "SebAaltonen", "WG_RR_EN", "1"),
             None,
         )
-        self.assertTrue(block.startswith("**19/** @SebAaltonen\n"))
+        self.assertTrue(
+            block.startswith("**19/** **@SebAaltonen** ^1898440015182729598\n")
+        )
         self.assertIn("WG_RR_EN", block)
 
     def test_empty_handle_raises(self) -> None:
@@ -61,12 +63,19 @@ class PostBlockAttributionTests(unittest.TestCase):
             ),
             None,
         )
-        self.assertIn("**19/** @SebAaltonen\n\n@NOTimothyLottes\n\nI said WG_RR_EN", block)
+        self.assertIn(
+            "**19/** **@SebAaltonen** ^1898440015182729598\n\n"
+            "**@NOTimothyLottes**\n\nI said WG_RR_EN",
+            block,
+        )
 
     def test_format_post_text_is_idempotent(self) -> None:
         original = "@AgileJebrim @SebAaltonen The higher the occupancy"
         once = format_post_text(original)
-        self.assertEqual(once, "@AgileJebrim @SebAaltonen\n\nThe higher the occupancy")
+        self.assertEqual(
+            once,
+            "**@AgileJebrim** **@SebAaltonen**\n\nThe higher the occupancy",
+        )
         self.assertEqual(format_post_text(once), once)
         self.assertEqual(split_leading_mentions("holy truthnuke")[0], "")
 
@@ -83,9 +92,9 @@ class RenderAttributionTests(unittest.TestCase):
             source_url="https://x.com/rianflo/status/1",
         )
         text = render_spine(thread, ["1", "2", "3"], [], {}, "2026-08-25")
-        self.assertIn("**1/** @rianflo", text)
-        self.assertIn("**2/** @NOTimothyLottes", text)
-        self.assertIn("**3/** @rianflo", text)
+        self.assertIn("**1/** **@rianflo** ^1", text)
+        self.assertIn("**2/** **@NOTimothyLottes** ^2", text)
+        self.assertIn("**3/** **@rianflo** ^3", text)
 
     def test_mixed_branch_labels_seb_and_jebrim(self) -> None:
         thread = ThreadData(
@@ -120,12 +129,15 @@ class RenderAttributionTests(unittest.TestCase):
             "SebAaltonen",
             "2026-08-25",
         )
-        self.assertIn("**1/** @NOTimothyLottes", text)
-        self.assertIn("**2/** @SebAaltonen", text)
-        self.assertIn("**3/** @AgileJebrim", text)
+        self.assertIn("**1/** **@NOTimothyLottes** ^1898352640825651644", text)
+        self.assertIn("**2/** **@SebAaltonen** ^1898440015182729598", text)
+        self.assertIn("**3/** **@AgileJebrim** ^1898385745892495810", text)
         for line in text.splitlines():
-            if line.startswith("**") and "/**" in line:
-                self.assertRegex(line, r"^\*\*\d+/\*\* @[A-Za-z0-9_]+$")
+            if "/**" in line and line.startswith("**"):
+                self.assertRegex(
+                    line,
+                    r"^\*\*\d+/\*\* \*\*@[A-Za-z0-9_]+\*\* \^[A-Za-z0-9_]+$",
+                )
 
 
 class RelabelPatchTests(unittest.TestCase):
@@ -229,11 +241,11 @@ class RelabelPatchTests(unittest.TestCase):
                 b'{"schema_version": 2, "root_post_id": "root", "items": []}\n'
             ))
             branch = (notes / "branch.md").read_text(encoding="utf-8")
-            self.assertIn("**19/** @SebAaltonen", branch)
-            self.assertIn("**33/** @AgileJebrim", branch)
+            self.assertIn("**19/** **@SebAaltonen** ^1898440015182729598", branch)
+            self.assertIn("**33/** **@AgileJebrim** ^1898385745892495810", branch)
             self.assertIn("1. **Onat Turkcuoglu** (@onatt0) - Apr 30", branch)
             index = (notes / "index.md").read_text(encoding="utf-8")
-            self.assertIn("**1/** @SebAaltonen", index)
+            self.assertIn("**1/** **@SebAaltonen** ^root", index)
             self.assertIn("  - vulkan", index)
             self.assertIn("draft: false", index)
 
@@ -241,17 +253,18 @@ class RelabelPatchTests(unittest.TestCase):
         with TemporaryDirectory() as raw:
             vault, _asset, notes = self._vault(raw)
             (notes / "index.md").write_text(
-                "---\ndraft: false\n---\n\n**1/** @SebAaltonen\n\n"
+                "---\ndraft: false\n---\n\n"
+                "**1/** **@SebAaltonen** ^root\n\n"
                 "Stupid hardware question\n",
                 encoding="utf-8",
                 newline="\n",
             )
             (notes / "branch.md").write_text(
                 "---\ndraft: false\n---\n\n"
-                "**19/** @SebAaltonen\n\n"
-                "@NOTimothyLottes\n\n"
+                "**19/** **@SebAaltonen** ^1898440015182729598\n\n"
+                "**@NOTimothyLottes**\n\n"
                 "I said WG_RR_EN\n\n"
-                "**33/** @AgileJebrim\n\n"
+                "**33/** **@AgileJebrim** ^1898385745892495810\n\n"
                 "On the flip side, it appears that using 128\n",
                 encoding="utf-8",
                 newline="\n",
@@ -280,7 +293,8 @@ class RelabelPatchTests(unittest.TestCase):
         new, state, reason = patch_note_text(text, posts)
         self.assertEqual(state, "rewrite")
         self.assertEqual(reason, "")
-        self.assertIn("@NOTimothyLottes\n\nI said WG_RR_EN", new)
+        self.assertIn("**@NOTimothyLottes**\n\nI said WG_RR_EN", new)
+        self.assertIn("**19/** **@SebAaltonen** ^1898440015182729598", new)
         again, state2, _reason = patch_note_text(new, posts)
         self.assertEqual(state2, "noop")
         self.assertEqual(again, new)
@@ -296,8 +310,8 @@ class RelabelPatchTests(unittest.TestCase):
         new, state, reason = patch_note_text(text, posts)
         self.assertEqual(state, "rewrite")
         self.assertEqual(reason, "")
-        self.assertIn("**30/** @simplex_fx", new)
-        self.assertIn("**31/** @simplex_fx", new)
+        self.assertIn("**30/** **@simplex_fx** ^1", new)
+        self.assertIn("**31/** **@simplex_fx** ^2", new)
 
     def test_empty_handle_is_conflict(self) -> None:
         with TemporaryDirectory() as raw:

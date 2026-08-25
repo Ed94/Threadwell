@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @adelbucetta
+**1/** **@adelbucetta** ^2073471127054364991
 
-@VictorTaelin
+**@VictorTaelin**
 
 sometimes the problem isn't explaining something that's hard for people to grasp, but rather getting people to admit when they don't get it
 

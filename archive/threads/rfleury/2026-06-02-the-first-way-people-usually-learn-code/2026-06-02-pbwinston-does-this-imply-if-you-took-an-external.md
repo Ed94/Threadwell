@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @pbwinston
+**1/** **@pbwinston** ^2061774820073734389
 
-@rfleury
+**@rfleury**
 
 Does this imply if you took an external dependency, like Linux or matrix library, and started folding that code into your own, instead of calling into it, your code would  improve?
 

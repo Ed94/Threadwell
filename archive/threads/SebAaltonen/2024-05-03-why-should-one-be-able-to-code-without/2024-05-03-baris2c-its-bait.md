@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @baris2c
+**1/** **@baris2c** ^1786442578306707791
 
-@SebAaltonen
+**@SebAaltonen**
 
 it's bait.
 

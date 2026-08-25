@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @guywald
+**1/** **@guywald** ^2061801368533315756
 
-@rfleury
+**@rfleury**
 
 100% agree, DRY can be extremely overdone. LLMs love doing this especially…
 There is also a huge price for cognitive complexity, for anyone, human or otherwise, that works on a codebase.

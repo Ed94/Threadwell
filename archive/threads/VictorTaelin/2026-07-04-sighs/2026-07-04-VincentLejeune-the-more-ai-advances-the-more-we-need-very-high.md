@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @VincentLejeune
+**1/** **@VincentLejeune** ^2073447766437585020
 
-@VictorTaelin
+**@VictorTaelin**
 
 The more AI advances, the more we need very high level experts in very very specialzed narrow fields, to check results ! ❤️
 

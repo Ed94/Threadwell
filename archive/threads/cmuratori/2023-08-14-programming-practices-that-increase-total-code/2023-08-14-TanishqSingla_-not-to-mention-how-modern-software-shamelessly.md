@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @TanishqSingla_
+**1/** **@TanishqSingla_** ^1691205716722561027
 
-@cmuratori
+**@cmuratori**
 
 Not to mention how modern software shamelessly assumes the available resources, Many people still use low end laptops and the performance of most modern IDE/code editors are so sluggish and ultimately hurts the life of these machines more.
 

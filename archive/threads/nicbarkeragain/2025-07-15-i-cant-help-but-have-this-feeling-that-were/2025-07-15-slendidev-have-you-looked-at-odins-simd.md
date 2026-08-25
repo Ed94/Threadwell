@@ -26,15 +26,15 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @slendidev
+**1/** **@slendidev** ^1944952001516716329
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 have you looked at Odin’s SIMD?
 
-**2/** @nicbarkeragain
+**2/** **@nicbarkeragain** ^1944953755537117588
 
-@xslendix
+**@xslendix**
 
 Yeah I really like the simplicity of the array programming in Odin, and there are a number of other languages that provide similar things. It could just be because my mindset is narrow, but that type of approach feels a bit specific and niche, I use it mostly for 3d math.
 

@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @willyrgf
+**1/** **@willyrgf** ^2073411779737047420
 
-@VictorTaelin
+**@VictorTaelin**
 
 Wow, that's impressive! Best argument on the quality of Fable I have read by far.
 

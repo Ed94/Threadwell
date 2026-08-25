@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @Desxon1
+**1/** **@Desxon1** ^1786508657745592433
 
-@SebAaltonen
+**@SebAaltonen**
 
 Still remember how my technical school assigned a literal psychopath to teach us do databases. The SQL was done ON FUCKING PAPER and he graded each and every point of it. A lack of "," could cost ya points.
 

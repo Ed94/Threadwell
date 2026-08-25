@@ -26,35 +26,35 @@ parent_post_id: "1917431895786414425"
 
 ## Branch
 
-**1/** @AnthonyPatch15
+**1/** **@AnthonyPatch15** ^1917436903994818849
 
-@rfleury
+**@rfleury**
 
 Saw a Casey Muratori video about people who think in single unit lifetimes vs group allocations etc yesterday.
 And while I actually agree with both of you, I am believe most of these modern C++ semantics / Rust tries to solve larger team problems.
 
-**2/** @rfleury
+**2/** **@rfleury** ^1917437304819572888
 
-@AnthonyPatch15
+**@AnthonyPatch15**
 
 There is no evidence to support the idea that these constructs are inherently necessary in larger teams.
 
-**3/** @AnthonyPatch15
+**3/** **@AnthonyPatch15** ^1917437823877075415
 
-@rfleury
+**@rfleury**
 
 No I don’t intend to try and prove it, they are by nature not. 
 But what tends to happen in most teams I’ve been part of is that they have some people who are super good and rigorous but also a lot of people who don’t really know what they’re doing - these help the second group.
 
-**4/** @survotreson
+**4/** **@survotreson** ^1917510046218346975
 
-@AnthonyPatch15 @rfleury
+**@AnthonyPatch15** **@rfleury**
 
 Then the people who don't know what they're doing maybe shouldn't participate and go train ? Kinda sounds like optimizing for the wrong thing here
 
-**5/** @AnthonyPatch15
+**5/** **@AnthonyPatch15** ^1917538690223767642
 
-@survotreson @rfleury
+**@survotreson** **@rfleury**
 
 In an ideal world yes, never been at a workplace that works like this.
 

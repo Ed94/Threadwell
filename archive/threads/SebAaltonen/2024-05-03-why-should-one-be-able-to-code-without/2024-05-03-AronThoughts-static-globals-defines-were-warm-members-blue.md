@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @AronThoughts
+**1/** **@AronThoughts** ^1786372350612578469
 
-@SebAaltonen
+**@SebAaltonen**
 
 Static/globals/#defines were warm
 Members blue hues
@@ -39,15 +39,15 @@ Namespaces dotted underlined
 Static methods purple/red 
 etc
 
-**2/** @SebAaltonen
+**2/** **@SebAaltonen** ^1786372865098437032
 
-@AronThoughts
+**@AronThoughts**
 
 Indeed. Good color coding is important for readability too. IDEs do this very well.
 
-**3/** @AronThoughts
+**3/** **@AronThoughts** ^1786373910155386962
 
-@SebAaltonen
+**@SebAaltonen**
 
 Most IDEs I've used since dont have this level of specificity though but I've not used many different ones
 

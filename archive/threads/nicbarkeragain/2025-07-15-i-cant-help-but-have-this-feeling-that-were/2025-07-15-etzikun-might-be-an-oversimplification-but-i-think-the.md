@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @etzikun
+**1/** **@etzikun** ^1944931271077249360
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Might be an oversimplification but I think the focus might need to be aimed more at grouping data efficiently. Thinking more with association rather than just individual variables. There’s only so much optimisation a compiler can force. It’s (partially) a memory management issue.
 

@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @JLakness
+**1/** **@JLakness** ^1955779942689726670
 
-@vkrajacic
+**@vkrajacic**
 
 C++ functor method
 

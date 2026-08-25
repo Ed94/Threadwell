@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1877208278632955949
 
 Just for Fun: Started to look into "Cardinal Cubic O-MOMS" for resampling, some refs:
 https://hhoppe.com/proj/filtering/supp/
@@ -33,7 +33,7 @@ https://hhoppe.com/proj/filtering/supp/sample_code.cpp
 The source paper is math salad:
 https://www.ee.cuhk.edu.hk/~tblu/monsite/pdfs/blu0101.pdf
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1877209306476564906
 
 Results are quite nice in repeated reprojection: 
 https://w3.impa.br/~diego/publications/NehHop14.pdf
@@ -42,59 +42,59 @@ Lanczos is of course not stable (if you reproject enough with a fast lanczos app
 
 ![](https://pbs.twimg.com/media/Gg0va37XEAAQz9S?format=jpg&name=orig)
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^1877210969203425432
 
 However O-MOMS appears to need a pre-pass on the data before running the simple cubic filter. That simple cubic would otherwise blur bad (no negative lobes). So this is about where I stopped dissecting the math salad, and started looking at the code salad
 
 ![](https://pbs.twimg.com/media/Gg0w_aGWoAAaUif?format=png&name=orig)
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1877211650412982754
 
 That prepass seems to work with 9 coefs in 1 dimension. So this starts to look mighty expensive??? for GPU-side implementation (compared to the existing option of limiting lanczos to make it stable).
 
 ![](https://pbs.twimg.com/media/Gg0xjpcXAAEg3cl?format=png&name=orig)
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^1877211943640965484
 
 Anyway if anyone knows of a less salad-like example of cubic O-MOMS, please post
 
-**6/** @NOTimothyLottes
+**6/** **@NOTimothyLottes** ^1877214488220287067
 
 So if you reproject rotate in linear using a bilinear filter, after 16 reprojections you get this slop (very blurry), which is why the old simple TAA's started to look bad very fast
 
 ![](https://pbs.twimg.com/media/Gg00ZBZXMAAX4bY?format=png&name=orig)
 
-**7/** @NOTimothyLottes
+**7/** **@NOTimothyLottes** ^1877215054984036702
 
 Compared to say this with a clamped approximate lanczos (same 16 reprojections, and linear filtering). The min/max for the clamp is of the inner 2x2 quad of the 4x4 filter window
 
 ![](https://pbs.twimg.com/media/Gg008NMXwAA1uiZ?format=png&name=orig)
 
-**8/** @NOTimothyLottes
+**8/** **@NOTimothyLottes** ^1877215831995646460
 
 So even after 16 frames, clamped lanczos approximation is already significantly less sharp than source (below). Thing most of the shader TAAs screw up is that even with great reprojection filtering, still need error-correction sharpening on the reprojection to keep it dialed in
 
 ![](https://pbs.twimg.com/media/Gg01iQFW8AAuwBC?format=png&name=orig)
 
-**9/** @NOTimothyLottes
+**9/** **@NOTimothyLottes** ^1877216852734005250
 
 Some don't limit the kernel approximation that has negative lobes, because it's not differentiable, leading to the classic trailing edge halo (dark outline typically seen in DLSS2 at least). After close to 64 frames of reprojection (rotation), easy to see that effect
 
 ![](https://pbs.twimg.com/media/Gg02p6SXsAEStmt?format=png&name=orig)
 
-**10/** @NOTimothyLottes
+**10/** **@NOTimothyLottes** ^1877217269031317583
 
 Letting that go too long and well it converges to a high contrast black and white mess
 
 ![](https://pbs.twimg.com/media/Gg03IwkXIAAIb97?format=png&name=orig)
 
-**11/** @NOTimothyLottes
+**11/** **@NOTimothyLottes** ^1877217718430048745
 
 The non-linear limiter (simple clamping) keeps it mostly stable in color, even if the detail still converged to noodles
 
 ![](https://pbs.twimg.com/media/Gg03eLtWgAA3X7L?format=png&name=orig)
 
-**12/** @NOTimothyLottes
+**12/** **@NOTimothyLottes** ^1877224142950289815
 
 Also if you overcook your negative lobes in the approximation (using the RED curve below), it speeds up the noodling process (that is the same 16 reprojections as prior)
 

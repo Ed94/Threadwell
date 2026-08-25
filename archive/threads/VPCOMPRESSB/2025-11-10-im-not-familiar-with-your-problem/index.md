@@ -27,8 +27,8 @@ in_reply_to: "1987733345628013014"
 
 ## Thread
 
-**1/** @VPCOMPRESSB
+**1/** **@VPCOMPRESSB** ^1987744335333622188
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 i'm not familiar with your problem.

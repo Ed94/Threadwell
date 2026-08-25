@@ -25,19 +25,19 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2078347557474849137
 
 All {0-6} argument syscall options in 32-bytes. The plan is to embed the interpreter inside the words with a 3-byte overhead {AD (lodsd), FF E0 (jmp rax)} so levering lots of x86-64 stuff for minimal size
 
 ![](https://pbs.twimg.com/media/HNfFmXoXkAAMHM9?format=png&name=orig)
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2078348323287716101
 
 Everything forced in lower 32-bit, but still building around 64-bit support. Since I'm not using x86-64 CALL/RET I can free up the stack ops strictly for the data stack.
 
 ![](https://pbs.twimg.com/media/HNfGRZvXEAEtaKH?format=png&name=orig)
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^2078349730204078527
 
 I realized at some point I can have most interpreted forth-style words in an aligned 8-bytes. So can make a very small interpreter.
 

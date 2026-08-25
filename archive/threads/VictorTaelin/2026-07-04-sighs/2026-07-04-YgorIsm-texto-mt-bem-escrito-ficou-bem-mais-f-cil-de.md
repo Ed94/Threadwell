@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @YgorIsm
+**1/** **@YgorIsm** ^2073436243208114535
 
-@VictorTaelin
+**@VictorTaelin**
 
 Texto mt bem escrito, ficou bem mais fácil de entender os seus objetivos
 

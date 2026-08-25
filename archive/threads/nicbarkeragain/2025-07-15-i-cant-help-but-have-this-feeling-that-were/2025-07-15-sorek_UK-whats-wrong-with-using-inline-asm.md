@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @sorek_UK
+**1/** **@sorek_UK** ^1944943796006838648
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Whats wrong with using inline ASM?
 

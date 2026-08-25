@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @quentinoeoeoe
+**1/** **@quentinoeoeoe** ^1944919638719987940
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 I agree, there is something weird with SIMD accessibility today, looks like there is room for innovation
 

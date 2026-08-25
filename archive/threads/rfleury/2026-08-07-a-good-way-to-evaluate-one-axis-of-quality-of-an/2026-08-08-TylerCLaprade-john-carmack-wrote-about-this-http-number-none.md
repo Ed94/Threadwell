@@ -26,9 +26,9 @@ parent_post_id: "2085786822387609939"
 
 ## Branch
 
-**1/** @TylerCLaprade
+**1/** **@TylerCLaprade** ^2085913835706159301
 
-@rfleury
+**@rfleury**
 
 John Carmack wrote about this: http://number-none.com/blow/john_carmack_on_inlined_code.html
 

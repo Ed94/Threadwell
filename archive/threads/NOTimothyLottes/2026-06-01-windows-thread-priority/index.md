@@ -25,12 +25,12 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2061416116694442141
 
 Windows thread priority. SeIncreaseBasePriorityPrivilege required to play in the (fake)"Realtime" class -BUT- apparently there is AvSetMmThreadCharacteristics() for "Pro Audio" and AvSetMmThreadPriority() which can bring up priority into realtime. Curious if games using today?
 
 Branches: [[archive/threads/NOTimothyLottes/2026-06-01-windows-thread-priority/2026-06-02-iamwhosiam-i-dont-think-your-even-suppose-to-change-your]]
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2061416572627886473
 
 Either way NtSetInformationThread() seems to be the way to just set {1-15} (non-realtime class) priority directly without the silly clamp(priorityClassBase+threadPriority,1,15) business

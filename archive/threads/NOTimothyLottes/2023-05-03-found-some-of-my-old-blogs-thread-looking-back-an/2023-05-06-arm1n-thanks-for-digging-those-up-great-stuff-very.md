@@ -26,9 +26,9 @@ parent_post_id: "1653556990302470151"
 
 ## Branch
 
-**1/** @arm1n
+**1/** **@arm1n** ^1654835157789016064
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Thanks for digging those up! Great stuff, very inspiring.
 

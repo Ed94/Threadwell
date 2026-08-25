@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @00jknight
+**1/** **@00jknight** ^1691261726421901312
 
-@cmuratori
+**@cmuratori**
 
 I largely consider 'clean code' to mean that the system enables new content and new designs to be created with low code - ideally all at the same level of abstraction. I design systems, tools and APIs for myself and for my team to be more efficient.
 

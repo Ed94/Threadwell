@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @heyitsvaishnav
+**1/** **@heyitsvaishnav** ^1955715131293491311
 
-@vkrajacic
+**@vkrajacic**
 
 This is soo good, I did it in Typescript as well and my life is easier now........
 

@@ -25,12 +25,12 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2070734717825986566
 
 Deterrent to ALSA is just parsing through snd_pcm_open() source. It's death by boiler plate and complexity. Tinyalsa isn't much better. Likely easier to think about this from perspective of devices that can be open()ed from /dev/snd. On my machine doesn't seem to hot plug
 
 ![](https://pbs.twimg.com/media/HLy5-C9XMAAfs_w?format=png&name=orig)
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2070735722043023873
 
 Assuming 'p'&'c' are PLAYBACK & CAPTURE, so opening different devices (instead of both in one device). Then just have user provide a device, or have the API war-dial open() constructing possible devices to probe what is available 'pcmC{c}D{d}{p|c}'. Easier than listing files.
 

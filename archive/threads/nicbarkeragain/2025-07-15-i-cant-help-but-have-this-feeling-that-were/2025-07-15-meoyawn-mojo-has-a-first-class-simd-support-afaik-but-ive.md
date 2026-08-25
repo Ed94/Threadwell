@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @meoyawn
+**1/** **@meoyawn** ^1945231466549363169
 
-@nicbarkeragain @Modular
+**@nicbarkeragain** **@Modular**
 
 Mojo has a first class SIMD support AFAIK but I've never used it https://docs.modular.com/mojo/stdlib/builtin/simd/SIMD#implemented-traits
 

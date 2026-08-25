@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @JasonKn99664124
+**1/** **@JasonKn99664124** ^1786546828088844682
 
-@SebAaltonen
+**@SebAaltonen**
 
 Honestly a lot of the "framework" and "transpiler" idiocy  is what makes you reliant on tooling you don't need. 
 

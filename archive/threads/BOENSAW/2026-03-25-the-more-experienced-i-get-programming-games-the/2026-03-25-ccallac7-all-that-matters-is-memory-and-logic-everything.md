@@ -26,9 +26,9 @@ parent_post_id: "2036653149948424230"
 
 ## Branch
 
-**1/** @ccallac7
+**1/** **@ccallac7** ^2036802494194729189
 
-@BOENSAW
+**@BOENSAW**
 
 All that matters is memory and logic, everything else is a made up abstraction
 

@@ -26,15 +26,15 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/** @Karyuutensei
+**1/** **@Karyuutensei** ^1950905493053923408
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Unrelated, but I would also love a look at your CRTs and how you use them in everyday stuff.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1950926350174351566
 
-@Karyuutensei
+**@Karyuutensei**
 
 Showing that setup would be fun. Most of my active CRTs are hooked up to vintage consoles though.
 

@@ -26,33 +26,33 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/** @simplex_fx
+**1/** **@simplex_fx** ^1951011391827010009
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Is it already april’s fools again?
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1951099694156792065
 
-@simplex_fx
+**@simplex_fx**
 
 Would it be interesting any other way
 
-**3/** @simplex_fx
+**3/** **@simplex_fx** ^1951165438311756272
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Worst part of this is not even the asm, but the choice of Vulkan 🤣
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1951295183611670741
 
-@simplex_fx
+**@simplex_fx**
 
 Vulkan for compute is a lot better than say DX12. Because VK has a working pipelinable API construct: VkEvents, where in contrast DX12's pipeline barriers are serializing in the drivers. Also GL has no pipelining. So VK wins by virtue of no other option.
 
-**5/** @simplex_fx
+**5/** **@simplex_fx** ^1951309944441151891
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Highly depends on one’s goals.
 

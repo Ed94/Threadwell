@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @VPCOMPRESSB
+**1/** **@VPCOMPRESSB** ^1944933853707063570
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Intel's ISPC
 

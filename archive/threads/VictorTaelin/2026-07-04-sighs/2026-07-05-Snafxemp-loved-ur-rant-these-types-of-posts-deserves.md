@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @Snafxemp
+**1/** **@Snafxemp** ^2073707455914328128
 
-@VictorTaelin
+**@VictorTaelin**
 
 loved ur rant. these types of posts deserves attention
 

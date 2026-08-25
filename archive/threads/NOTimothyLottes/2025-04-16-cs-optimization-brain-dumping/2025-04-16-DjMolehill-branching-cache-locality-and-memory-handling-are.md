@@ -26,9 +26,9 @@ parent_post_id: "1912484261321392231"
 
 ## Branch
 
-**1/** @DjMolehill
+**1/** **@DjMolehill** ^1912507659494035701
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 branching, cache locality, and memory handling are key 🔥
 

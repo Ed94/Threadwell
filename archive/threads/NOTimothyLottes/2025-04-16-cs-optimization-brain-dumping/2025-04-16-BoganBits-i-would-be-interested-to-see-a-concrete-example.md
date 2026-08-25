@@ -26,16 +26,16 @@ parent_post_id: "1912477061467304351"
 
 ## Branch
 
-**1/** @BoganBits
+**1/** **@BoganBits** ^1912555483317313711
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I would be interested to see a concrete example of this
 ideally with a benchmark to show the improvement
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1912564424990163114
 
-@BoganBits
+**@BoganBits**
 
 Early STP had a mode to pipeline the dependent passes, that was back when it was being developed out of Unity. That mode was way faster. But later it was removed because Unity wouldn't allow resources bound for read+write at the same time = fail.
 

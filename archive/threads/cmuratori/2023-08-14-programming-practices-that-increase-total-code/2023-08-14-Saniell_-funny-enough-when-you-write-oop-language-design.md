@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @Saniell_
+**1/** **@Saniell_** ^1691193028046733312
 
-@cmuratori
+**@cmuratori**
 
 Funny enough when you write OOP, language design makes you think that you write less code by using virtual methods.
 Since those are in different files, individual files are small and nice to human brain. Especially compared to "dirty" switches

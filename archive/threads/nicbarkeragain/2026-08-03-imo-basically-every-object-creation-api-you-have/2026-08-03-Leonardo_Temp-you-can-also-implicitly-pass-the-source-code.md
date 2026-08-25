@@ -26,9 +26,9 @@ parent_post_id: "2084072929780998198"
 
 ## Branch
 
-**1/** @Leonardo_Temp
+**1/** **@Leonardo_Temp** ^2084214550358876592
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 You can also implicitly pass the source code location from creation so there's no need for explicit labeling a lot of the time. Odin makes this easy with "loc := #caller_location"
 

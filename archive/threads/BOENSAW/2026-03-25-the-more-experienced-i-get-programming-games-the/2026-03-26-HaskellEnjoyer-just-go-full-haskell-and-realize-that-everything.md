@@ -26,9 +26,9 @@ parent_post_id: "2036653149948424230"
 
 ## Branch
 
-**1/** @HaskellEnjoyer
+**1/** **@HaskellEnjoyer** ^2036997821379822035
 
-@BOENSAW
+**@BOENSAW**
 
 Just go full haskell and realize that everything is a function
 

@@ -26,9 +26,9 @@ parent_post_id: "1868492851170205803"
 
 ## Branch
 
-**1/** @axelgneiting
+**1/** **@axelgneiting** ^1868503435299205194
 
-@NOTimothyLottes @kechogarcia
+**@NOTimothyLottes** **@kechogarcia**
 
 I'm well aware. It's really curious they still stick to this design after so many years.
 

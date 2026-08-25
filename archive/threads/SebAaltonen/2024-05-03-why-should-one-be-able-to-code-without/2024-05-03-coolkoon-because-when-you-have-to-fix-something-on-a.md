@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @coolkoon
+**1/** **@coolkoon** ^1786523621361344970
 
-@SebAaltonen
+**@SebAaltonen**
 
 Because when you have to fix something on a customer system then usually notepad/vim/nano is literally the only option you have, that's why.
 

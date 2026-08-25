@@ -26,9 +26,9 @@ parent_post_id: "2084851804224004329"
 
 ## Branch
 
-**1/** @rep_movsd
+**1/** **@rep_movsd** ^2084983215874592848
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Or you could use C++ with RAII and not have to tie yourself in knots
 

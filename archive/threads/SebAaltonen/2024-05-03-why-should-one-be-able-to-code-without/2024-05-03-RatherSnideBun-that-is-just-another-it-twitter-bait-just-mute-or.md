@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @RatherSnideBun
+**1/** **@RatherSnideBun** ^1786405179580964870
 
-@SebAaltonen
+**@SebAaltonen**
 
 That is just another IT-twitter bait, just mute or block him, he is fuckwad.
 

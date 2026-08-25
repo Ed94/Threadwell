@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @__morse
+**1/** **@__morse** ^1945235507954295160
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 languages that have comptime also have wonderful support for SIMD: mojo and zig
 

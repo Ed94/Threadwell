@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @DavidBBlack
+**1/** **@DavidBBlack** ^1691859487638909212
 
-@cmuratori
+**@cmuratori**
 
 Agree completely.  Another aspect is the importance of eliminating redundancy.  Zero redundancy = minimal code = fast debugging and feature change. See https://www.blackliszt.com/occams-razor-occamality/
 

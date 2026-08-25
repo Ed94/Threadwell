@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @DeepknowledgeU
+**1/** **@DeepknowledgeU** ^1944996456974217322
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Mojo lang  has SIMD aware data types and makes it a first class citizen. Pretty interesting model
 

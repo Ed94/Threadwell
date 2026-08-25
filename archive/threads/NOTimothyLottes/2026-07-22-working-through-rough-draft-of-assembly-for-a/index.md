@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2079742177370841105
 
 Working through rough draft of assembly for a different idea for a micro macro-forth.
 1. 8-bit/word (color to relay meaning)
@@ -36,7 +36,7 @@ Working through rough draft of assembly for a different idea for a micro macro-f
 
 ![](https://pbs.twimg.com/media/HNy5A_uW0AAj1cU?format=png&name=orig)
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2079743328585658532
 
 5. Compile step is branch-free
 6. Compiles to branch-free x86-64 source
@@ -44,14 +44,14 @@ Working through rough draft of assembly for a different idea for a micro macro-f
 
 Noticed that I can pre-compile all the dictionary words into a lookup table. So actual compile just writes unaligned 8-bytes but only advances the write pointer by the actual size
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^2079744218122096681
 
 The interesting bits about this micro project was factoring out all branches, using branch-free interpreter loop to inline all calls so later execution is linear. Got messy doing a branch free software return stack. But costs are relatively low (40 ops/character)
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^2079744804078977381
 
 Intended usage would be for tiny-gramming programs in self contained chunks that include their own code generation (effectively a macro-forth used to generate machine code).
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^2079746130309415185
 
 A language that you author in a compressed space directly. So Whitney-esk in using lots of single character variables (or double character with page characters) -BUT- very non-Whitney in that it has no higher order array constructs

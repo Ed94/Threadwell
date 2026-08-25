@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @Juanpinha11
+**1/** **@Juanpinha11** ^2073471371234213962
 
-@VictorTaelin
+**@VictorTaelin**
 
 I never thought you had AI psychosis, but the fact that others thought so led to this wonderful explanation. It makes me want to learn more about Bend2.
 

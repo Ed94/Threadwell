@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2076888631508107561
 
 Another round of getting optimized error checking. Disassembly [after syscall] shows that it works. 
 (1.) Volatile store __LINE__
@@ -36,29 +36,29 @@ AS_MINIMAL_AS_ONE_CAN_GET
 
 ![](https://pbs.twimg.com/media/HNKWJZqXwAADMnN?format=png&name=orig)
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2076890340057878586
 
 A macro cheat sheet to try to explain how it works ...
 
 ![](https://pbs.twimg.com/media/HNKX5DhXIAE1BG6?format=png&name=orig)
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^2076891161898143906
 
 I have a collection of force inline wrappers that test returns from syscalls/functions for error and return the return. These all leverage builtin_expect so the compiler knows to make them fall through in the common case.
 
 ![](https://pbs.twimg.com/media/HNKY8qFXQAAF9Db?format=png&name=orig)
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^2076892038314741815
 
 Those force inlines call Err() on terminal error. The Err() function ensures the {__LINE__, error} stores are visible, then triggers the console drawing code to kill the app with printed error. Then it sleeps until the termination.
 
 ![](https://pbs.twimg.com/media/HNKZyFTXYAAETnU?format=png&name=orig)
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^2076892591216341089
 
 Compiler eventually screws up, but at least it gets the fast path correct, and the slow error path gets an extra call. Effectively it conditionally forward branches to a distant call to Err() instead of just branching to the Err().
 
-**6/** @NOTimothyLottes
+**6/** **@NOTimothyLottes** ^2076893128515112995
 
 So I can liter error checks around stuff with little actual cost,
 (1.) Two stores

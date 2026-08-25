@@ -26,15 +26,15 @@ parent_post_id: "1869409243251827152"
 
 ## Branch
 
-**1/** @s0ulware
+**1/** **@s0ulware** ^1882596282017186049
 
-@rfleury
+**@rfleury**
 
 thank you for this thread- read it a while ago, but now working on a game and something *clicked* when thinking about modeling data in this way (understanding the power of the 2^n benefit)
 
-**2/** @rfleury
+**2/** **@rfleury** ^1882596771396026486
 
-@s0ulware
+**@s0ulware**
 
 It’s seriously insane how useful it is, once you see it!
 

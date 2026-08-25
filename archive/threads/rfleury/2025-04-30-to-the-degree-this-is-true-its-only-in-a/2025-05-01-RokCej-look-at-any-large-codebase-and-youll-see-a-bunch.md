@@ -26,17 +26,17 @@ parent_post_id: "1917431895786414425"
 
 ## Branch
 
-**1/** @RokCej
+**1/** **@RokCej** ^1918077301998129432
 
-@rfleury
+**@rfleury**
 
 Look at any large codebase and you'll see a bunch of new/delete calls. Replacing them with std::unique_ptr would make the code safer without adding any overhead, which was OP's point.
 
 Your argument pertains to a completely different topic and reeks of pretentiousness.
 
-**2/** @rfleury
+**2/** **@rfleury** ^1918078091433484469
 
-@RokCej
+**@RokCej**
 
 I simply cannot take you seriously
 

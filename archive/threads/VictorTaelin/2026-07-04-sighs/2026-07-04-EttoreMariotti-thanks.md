@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @EttoreMariotti
+**1/** **@EttoreMariotti** ^2073495200983302242
 
-@VictorTaelin
+**@VictorTaelin**
 
 Thanks
 

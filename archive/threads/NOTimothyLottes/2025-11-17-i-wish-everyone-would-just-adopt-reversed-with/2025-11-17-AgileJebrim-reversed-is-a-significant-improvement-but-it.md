@@ -26,17 +26,17 @@ parent_post_id: "1990260050485797063"
 
 ## Branch
 
-**1/** @AgileJebrim
+**1/** **@AgileJebrim** ^1990260754688172298
 
 Reversed is a significant improvement but it still has its limitations when doing planetary-scale rendering that needs good precision up both close and far away. Your options there are either a logarithmic depth buffer to linearize things (albeit losing early z), your own integer-based depth test system in compute shaders, or a stack of multiple frustums layered on top of one another.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1990261535491723691
 
-@AgileJebrim
+**@AgileJebrim**
 
 Yes for my non-tri stuff I'm log depth already. This is just for games, not simulation.
 
-**3/** @AgileJebrim
+**3/** **@AgileJebrim** ^1990263993236136239
 
 Simulation can usually localize enough that reverse Z is good enough. Google Earth style geospatial visualization is where things get trickier.
 

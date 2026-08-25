@@ -26,9 +26,9 @@ parent_post_id: "1653556990302470151"
 
 ## Branch
 
-**1/** @won3d
+**1/** **@won3d** ^1653557420805767170
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I remember all those fondly. I also remembered the trick you did to batch logical draw calls with branching in the shader
 

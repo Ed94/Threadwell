@@ -25,7 +25,7 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @VPCOMPRESSB
+**1/** **@VPCOMPRESSB** ^1991383117571957052
 
 no Tokens and no ASTs. (easier because its Forth-like).
 

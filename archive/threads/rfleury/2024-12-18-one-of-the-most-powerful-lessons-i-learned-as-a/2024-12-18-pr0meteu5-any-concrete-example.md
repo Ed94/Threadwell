@@ -26,27 +26,27 @@ parent_post_id: "1869409243251827152"
 
 ## Branch
 
-**1/** @pr0meteu5
+**1/** **@pr0meteu5** ^1869438149832946012
 
-@rfleury
+**@rfleury**
 
 any concrete example?
 
-**2/** @rfleury
+**2/** **@rfleury** ^1869438674062164143
 
-@saddev24
+**@saddev24**
 
 - https://www.rfleury.com/p/ui-part-3-the-widget-building-language
 - https://www.rfleury.com/p/emergence-and-composition
 - https://www.rfleury.com/p/the-codepath-combinatoric-explosion
 
-**3/** @LazarTo42297588
+**3/** **@LazarTo42297588** ^1869778968221761675
 
-@rfleury @saddev24
+**@rfleury** **@saddev24**
 
 Let's say you're creating a generic table component, with different types of table columns. How will you design the cell render function so it handles all the different types of data that can be displayed: image, url, list, object, button.
 
-**4/** @rfleury
+**4/** **@rfleury** ^1869783150899204234
 
 The first thing I’d say is that this is not an architecture I even agree with. Any helpers for constructing a table should build *just the table*, with all UI & rendering capabilities being written by the user.
 

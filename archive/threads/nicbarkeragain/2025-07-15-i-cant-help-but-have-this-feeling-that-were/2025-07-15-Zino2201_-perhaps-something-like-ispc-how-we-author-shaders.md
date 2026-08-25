@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @Zino2201_
+**1/** **@Zino2201_** ^1945169506805952589
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Perhaps something like ISPC / how we author shaders in GPU could help ?
 

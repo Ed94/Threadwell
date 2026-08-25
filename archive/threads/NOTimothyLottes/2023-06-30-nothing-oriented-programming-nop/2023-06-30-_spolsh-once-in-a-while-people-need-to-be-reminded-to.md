@@ -26,16 +26,16 @@ parent_post_id: "1674757854471806977"
 
 ## Branch
 
-**1/** @_spolsh
+**1/** **@_spolsh** ^1674839597853835285
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Once in a while people need to be reminded to stop the bloat, understand the machine guts and be self aware about productive process
 https://tonsky.me/blog/disenchantment/
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1674886711707418624
 
-@_spolsh
+**@_spolsh**
 
 That was a fantastic read, thanks
 

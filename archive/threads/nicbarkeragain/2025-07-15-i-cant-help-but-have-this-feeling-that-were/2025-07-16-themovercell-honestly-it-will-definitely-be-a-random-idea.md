@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @themovercell
+**1/** **@themovercell** ^1945386815537459355
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Honestly it will definitely be a random idea someone has at 3 am and everyone will just go "how did we not think about that earlier?" and then a revolution begins
 

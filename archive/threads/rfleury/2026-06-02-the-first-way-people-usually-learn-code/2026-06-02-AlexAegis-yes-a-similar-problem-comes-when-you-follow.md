@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @AlexAegis
+**1/** **@AlexAegis** ^2061831568537071703
 
-@rfleury
+**@rfleury**
 
 yes! A similar problem comes when you follow retarded bob martin-esque rules like not exceeding 6 lines per function. You can end up having a bunch of small functions mutating one common state that are now dependent on their call order. That’s not any better than a comment.
 

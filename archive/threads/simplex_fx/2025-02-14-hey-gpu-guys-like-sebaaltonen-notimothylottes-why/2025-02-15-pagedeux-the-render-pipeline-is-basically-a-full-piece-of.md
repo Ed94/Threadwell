@@ -26,9 +26,9 @@ parent_post_id: "1890348863287943363"
 
 ## Branch
 
-**1/** @pagedeux
+**1/** **@pagedeux** ^1890719137904709668
 
-@simplex_fx @SebAaltonen @NOTimothyLottes
+**@simplex_fx** **@SebAaltonen** **@NOTimothyLottes**
 
 the render pipeline is basically a full piece of software trapped in inside of another software
 

@@ -26,9 +26,9 @@ parent_post_id: "1917431895786414425"
 
 ## Branch
 
-**1/** @eclectocrat
+**1/** **@eclectocrat** ^1917612579972669856
 
-@rfleury
+**@rfleury**
 
 I'd use C more if attribute(__cleanup__) was standard and a little less cumbersome. C++ stack unwinding is and always has been it's killer feature.
 

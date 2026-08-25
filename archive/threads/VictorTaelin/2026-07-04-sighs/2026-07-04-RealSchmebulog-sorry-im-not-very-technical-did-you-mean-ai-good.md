@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @RealSchmebulog
+**1/** **@RealSchmebulog** ^2073446880684503444
 
-@VictorTaelin
+**@VictorTaelin**
 
 Sorry, im not very technical. Did you mean AI good or AI bad this time?
 

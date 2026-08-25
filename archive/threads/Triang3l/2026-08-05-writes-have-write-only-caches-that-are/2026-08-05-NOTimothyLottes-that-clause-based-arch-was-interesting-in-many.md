@@ -26,39 +26,39 @@ parent_post_id: "2084985800836477433"
 
 ## Branch
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^2084996454175612983
 
-@Triang3l
+**@Triang3l**
 
 That clause based arch was interesting in many ways, mem clause articulates the boundary for write combining. Was also easy to engineer slow perf by fine granularity predication too.
 
-**2/** @Triang3l
+**2/** **@Triang3l** ^2084997747174764975
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 But what is even a memory clause when MEM_RAT is a control flow instruction, or did the GPU group consecutive MEM_RATs into an implicit "clause"? I also wonder when you can mix RAT and RAT_CACHELESS (the OpenCL compiler apparently just stops using DB at all if CB is ever needed).
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^2085006802580652188
 
-@Triang3l
+**@Triang3l**
 
 My understanding is that youd need UNCACHED for both write and read. So wouldn’t be all that useful perf wise. My guess is the transition from MEM_EXPORT to MEM_RD (where youd do UNCACHED) implicitly waits for uncached write visibility.
 
-**4/** @Triang3l
+**4/** **@Triang3l** ^2085010581438845269
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Yeah, I really hope so… But I guess I should just look at D3D11/GL/CL shader dumps. So many scary things involved, like WAIT_ACK, and that mention of SCOption_R800_UAV_NONUAV_SYNC_WORKAROUND_BUG216513_1 in disassembly. Unless they just fall back to RAT NOP_RTN for all loads 🤷‍♂️
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^2085012846862021052
 
-@Triang3l
+**@Triang3l**
 
 Haha oops, very foggy, sounds like it is explicit via WAIT_ACK, rather than implicit. Fees like the predecessor to s_waitcnt in many respects.
 
-**6/** @NOTimothyLottes
+**6/** **@NOTimothyLottes** ^2085015005095755954
 
-@Triang3l
+**@Triang3l**
 
 There are a lot of good cases to have the same memory bound as read and write simultaneously, but under an implicit contract of no r/w overlap for a given cache line . Then dont need uncached reads, but probly would need WAIT_ACK still if write order visibility matters.
 

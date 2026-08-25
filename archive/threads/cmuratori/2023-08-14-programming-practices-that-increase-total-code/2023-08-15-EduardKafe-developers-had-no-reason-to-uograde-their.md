@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @EduardKafe
+**1/** **@EduardKafe** ^1691370830972772352
 
-@cmuratori
+**@cmuratori**
 
 Developers had no reason to uograde their machines every 6months so Microsoft gave them one
 

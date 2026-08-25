@@ -26,9 +26,9 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/** @_naf_90
+**1/** **@_naf_90** ^1950948334002159684
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I’m learning assembly in my spare time
 

@@ -25,34 +25,34 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @SebAaltonen
+**1/** **@SebAaltonen** ^1775820153793515892
 
 This is how slow code feels like:
 
 ![](https://pbs.twimg.com/media/GKT6_a3WAAAdh4v?format=jpg&name=orig)
 
-**2/** @SebAaltonen
+**2/** **@SebAaltonen** ^1775820774848258212
 
 And this is how clever you feel after finding the optimization:
 
 ![](https://pbs.twimg.com/media/GKT7h0iXEAAxYAY?format=jpg&name=orig)
 
-**3/** @MartinJIFuller
+**3/** **@MartinJIFuller** ^1776518700230721688
 
-@SebAaltonen
+**@SebAaltonen**
 
 Sad that the compiler isn’t doing this for us in 2024
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1776597200073568623
 
-@MartinJIFuller @SebAaltonen
+**@MartinJIFuller** **@SebAaltonen**
 
 On https://mastodon.gamedev.place/@NOTimothyLottes I'm collecting posts with AMD GPU disassembly dumps for a book on everything the shader compiler 'isn't doing'. Constant AMD GPU compiler perf bug SPAM is a key part of my online strategy to keep a low follower count.
 
 ![](https://pbs.twimg.com/media/GKe8HDtXYAAOrfj?format=jpg&name=orig)
 
-**5/** @MartinJIFuller
+**5/** **@MartinJIFuller** ^1776703621435933035
 
-@NOTimothyLottes @SebAaltonen
+**@NOTimothyLottes** **@SebAaltonen**
 
 A worthwhile project, knowledge well worth sharing, but is a book the right format? Perhaps yes, just thinking out loud.

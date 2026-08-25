@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @p_mbanugo
+**1/** **@p_mbanugo** ^2062293339030843846
 
-@rfleury
+**@rfleury**
 
 Interesting! I was just reviewing code and thinking of solution when I read this tweet and realised "table + removing enum" solved it better than expecting the helper function to be used correctly.
 

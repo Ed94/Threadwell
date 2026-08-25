@@ -26,21 +26,21 @@ parent_post_id: "1883580512171942335"
 
 ## Branch
 
-**1/** @bmcnett
+**1/** **@bmcnett** ^1883581286838919440
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 My take is similar, but I also feel that a lot of processing is best done predictively in parallel across multiple future frames, one SIMD lane per future frame
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1883584542851977240
 
-@bmcnett
+**@bmcnett**
 
 Don't necessarily want to store all predictions raw though. One of the advantages of say simple things like baked directional lightmaps is that one keeps the data for multiple "frames" (or views) in a compressed form until just right before usage, and it's mis-predict safe
 
-**3/** @bmcnett
+**3/** **@bmcnett** ^1883585257292825064
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Yeah, you need to store many prediction outputs in compressed form, with the time dimension being one over which you compress, in addition to whatever spatial dimensions are relevant
 

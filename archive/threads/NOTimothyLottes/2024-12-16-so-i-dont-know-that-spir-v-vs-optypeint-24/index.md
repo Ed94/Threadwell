@@ -25,27 +25,27 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1868712285675671711
 
-@GustavSterbrant
+**@GustavSterbrant**
 
 So I don't know that SPIR-V vs OpTypeInt 24 question, but if someone didn't write tests for that it's likely never been setup to be pattern matched. Most of the problems I see cannot be fixed just by bypassing GLSL and doing SPIR-V directly. So not yet tempted to write a new SL
 
-**2/** @AgileJebrim
+**2/** **@AgileJebrim** ^1868714338418315659
 
-@NOTimothyLottes @GustavSterbrant
+**@NOTimothyLottes** **@GustavSterbrant**
 
 If you’re targeting a console with AMD hardware, why don’t you just rewrite the backend compiler? I assume you have the source for it too, so it’s more tweaking an existing compiler than anything else?
 
-**3/** @NOTimothyLottes
+**3/** **@NOTimothyLottes** ^1868716505325879612
 
-@AgileJebrim @GustavSterbrant
+**@AgileJebrim** **@GustavSterbrant**
 
 At-home stuff (aka non-employer) targets Vulkan Windows mostly (unfortunately). No interface in AMD's Windows driver to load binary shaders into Vulkan. If SteamOS ever fully took over PC gaming, then certainly I'd just go direct to the AMD kernel driver and bypass user-mode VK
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1868716773937414589
 
-@AgileJebrim @GustavSterbrant
+**@AgileJebrim** **@GustavSterbrant**
 
 Also I wouldn't just modify an existing compiler, I'd just write an assembler specific for GCN/RDNA/whateversNext family.
 

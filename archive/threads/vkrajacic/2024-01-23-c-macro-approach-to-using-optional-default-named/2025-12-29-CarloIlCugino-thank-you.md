@@ -26,9 +26,9 @@ parent_post_id: "1749816169736073295"
 
 ## Branch
 
-**1/** @CarloIlCugino
+**1/** **@CarloIlCugino** ^2005479710604894610
 
-@vkrajacic
+**@vkrajacic**
 
 thank you!
 

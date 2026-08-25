@@ -26,15 +26,15 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @Rafa_Schwinger
+**1/** **@Rafa_Schwinger** ^2073407479824724353
 
-@VictorTaelin
+**@VictorTaelin**
 
 No, I prefer the previous angry rhetoric pls revert the edit
 
-**2/** @VictorTaelin
+**2/** **@VictorTaelin** ^2073408137512538550
 
-@Rafa_Schwinger
+**@Rafa_Schwinger**
 
 these are only for close followers, enjoy
 

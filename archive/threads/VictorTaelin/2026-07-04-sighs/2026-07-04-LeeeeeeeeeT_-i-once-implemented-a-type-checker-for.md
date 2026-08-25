@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @LeeeeeeeeeT_
+**1/** **@LeeeeeeeeeT_** ^2073449105867620454
 
-@VictorTaelin
+**@VictorTaelin**
 
 i once implemented a type checker for impredicative MLTT. i then tried to reproduce hurkens' paradox (simplified girard's paradox) - my type checker got stuck in an infinite loop. so.. you couldn't prove false in it, it just never terminated
 

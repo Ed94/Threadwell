@@ -26,9 +26,9 @@ parent_post_id: "2061619837877780961"
 
 ## Branch
 
-**1/** @Ravicale
+**1/** **@Ravicale** ^2061912906921304345
 
-@rfleury
+**@rfleury**
 
 I'll often inline every 'helper function' I find while coding. This frequently lets me find more general patterns that can be more compactly expressed, and it also often results in me finding removable state that existed because of coupling between 'helpers'.
 

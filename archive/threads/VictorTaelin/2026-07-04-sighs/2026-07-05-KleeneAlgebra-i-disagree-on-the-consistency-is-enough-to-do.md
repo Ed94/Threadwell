@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @KleeneAlgebra
+**1/** **@KleeneAlgebra** ^2073769031467766029
 
-@VictorTaelin
+**@VictorTaelin**
 
 I disagree on the consistency is enough to do mathematics, you can very weird stuff to MLTT like Nat iso Nat -> Nat and still be consistent. I would like to see you convincing a mathematician to do math in that system.
 

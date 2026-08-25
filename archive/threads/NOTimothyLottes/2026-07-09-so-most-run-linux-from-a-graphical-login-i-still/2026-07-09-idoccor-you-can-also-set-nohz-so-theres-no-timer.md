@@ -26,9 +26,9 @@ parent_post_id: "2075107966018105449"
 
 ## Branch
 
-**1/** @idoccor
+**1/** **@idoccor** ^2075201490549920023
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 You can also set nohz so there's no timer interrupts on the isolated cores + set up transparent huge pages (or manually use them)
 

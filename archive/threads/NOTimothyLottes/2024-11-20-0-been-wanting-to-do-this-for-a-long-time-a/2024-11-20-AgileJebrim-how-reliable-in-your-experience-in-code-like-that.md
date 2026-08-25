@@ -26,51 +26,51 @@ parent_post_id: "1859369992355021246"
 
 ## Branch
 
-**1/** @AgileJebrim
+**1/** **@AgileJebrim** ^1859375048550662580
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 How reliable in your experience in code like that is the compilation to avoid branches?
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1859396349579407750
 
-@AgileJebrim
+**@AgileJebrim**
 
 Lots of stuff can get mapped by the compiler to V_CNDMASK_B32 instead of branching by using mix(a,b,bool) syntax. I rarely use branching because of how horrible the code generation is. No way to express that the common path stay code linear either, etc.
 
-**3/** @AgileJebrim
+**3/** **@AgileJebrim** ^1859397365310030289
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I know in CUDA-land that it likes to create branches for ternaries if it contains more than 4 total instructions in a statement.
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1859398417656451574
 
-@AgileJebrim
+**@AgileJebrim**
 
 But the real problem is lacking of explicit controls, and lacking implicit branch hints (wave-uniform/non-uniform, expected branch hit rate, etc). Better if we could just do explicit ASM style branch instructions and labels.
 
-**5/** @AgileJebrim
+**5/** **@AgileJebrim** ^1859398626025345193
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Well I seek to ban branches entirely, so that’s the exact opposite of what I want.
 
-**6/** @NOTimothyLottes
+**6/** **@NOTimothyLottes** ^1859399330488070285
 
-@AgileJebrim
+**@AgileJebrim**
 
 If your shader I$ is say 32 KiB and your instructions average say 8-bytes. You have 4 K instructions before you are streaming the program not just the data. Code size is actually important. And while micro level unroll is needed, macro level duplication is a problem with tiny I$
 
-**7/** @AgileJebrim
+**7/** **@AgileJebrim** ^1859399629978087742
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I avoid the duplication of instruction patterns too. I feel it’s a failure to properly parallelize if you’re repeating the same instructions instead of data parallelizing further.
 
-**8/** @AgileJebrim
+**8/** **@AgileJebrim** ^1859399705584717853
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 One more reason why I avoid functions.
 

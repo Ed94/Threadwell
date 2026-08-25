@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @NohBody3
+**1/** **@NohBody3** ^1786647295032951196
 
-@SebAaltonen
+**@SebAaltonen**
 
 Why do they teach arithmetic, we all have calculators
 

@@ -36,6 +36,8 @@ jobs:
         run: |
           cp publish/quartz.config.yaml site/quartz.config.yaml
           cp publish/quartz.custom.scss site/quartz/styles/custom.scss
+          mkdir -p site/quartz/static
+          cp publish/threadwell-reader.js site/quartz/static/threadwell-reader.js
       - uses: actions/setup-node@v6
         with:
           node-version: 24

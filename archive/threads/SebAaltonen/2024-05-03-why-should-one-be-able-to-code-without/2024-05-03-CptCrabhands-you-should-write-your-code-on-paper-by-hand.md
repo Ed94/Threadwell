@@ -26,9 +26,9 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @CptCrabhands
+**1/** **@CptCrabhands** ^1786362572754575769
 
-@SebAaltonen
+**@SebAaltonen**
 
 You should write your code on paper by hand 😤 totally
 

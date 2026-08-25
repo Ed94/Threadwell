@@ -26,9 +26,9 @@ parent_post_id: "1951591243328135279"
 
 ## Branch
 
-**1/** @NOTimothyLottes
+**1/** **@NOTimothyLottes** ^1951638140600381942
 
-@onatt0 @EskilSteenberg @olson_dan
+**@onatt0** **@EskilSteenberg** **@olson_dan**
 
 So far the plan is to have the data read/write from the GPU, but still use the CPU to do the SPIR-V generation from said data.
 

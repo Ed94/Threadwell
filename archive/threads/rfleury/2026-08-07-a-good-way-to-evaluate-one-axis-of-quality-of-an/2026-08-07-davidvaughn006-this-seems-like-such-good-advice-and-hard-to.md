@@ -26,13 +26,13 @@ parent_post_id: "2085786822387609939"
 
 ## Branch
 
-**1/** @davidvaughn006
+**1/** **@davidvaughn006** ^2085797125221179877
 
-@rfleury
+**@rfleury**
 
 This seems like such good advice and hard to visualize without having practiced a couple of times. Are there any good programming problems that would lend themselves to this kind of organizational refactoring?
 
-**2/** @rfleury
+**2/** **@rfleury** ^2085798544817135767
 
 It is pretty much any time you are dealing with code without regards for this. When someone isn't thinking about this, they will generate lots of redundant layers of helper functions or abstractions, and if you do a clean-up pass over it, you'll find that like 90% of it is nonsense.
 

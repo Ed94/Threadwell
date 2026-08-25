@@ -25,12 +25,12 @@ in_reply_to: ""
 
 ## Thread
 
-**1/** @FFmpeg
+**1/** **@FFmpeg** ^1884730404587909544
 
 PTX is a form of assembly language
 
 Branches: [[archive/threads/FFmpeg/2025-01-29-ptx-is-a-form-of-assembly-language/2025-01-29-mu_chrinovic-i-know-a-person-with-a-phd-that-might-disagree]]
 
-**2/** @FFmpeg
+**2/** **@FFmpeg** ^1884750918396051612
 
 https://docs.nvidia.com/cuda/inline-ptx-assembly/index.html

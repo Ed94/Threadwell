@@ -26,9 +26,9 @@ parent_post_id: "2010303501851877740"
 
 ## Branch
 
-**1/** @BowTiedTails
+**1/** **@BowTiedTails** ^2010494359062327682
 
-@Dispatch_Graph
+**@Dispatch_Graph**
 
 Yep. Win32 is heaven when you see what else is out there.
 

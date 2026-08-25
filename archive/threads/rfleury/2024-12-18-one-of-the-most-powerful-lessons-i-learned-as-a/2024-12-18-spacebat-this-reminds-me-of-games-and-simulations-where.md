@@ -26,9 +26,9 @@ parent_post_id: "1869409243251827152"
 
 ## Branch
 
-**1/** @spacebat
+**1/** **@spacebat** ^1869488275423207781
 
-@rfleury
+**@rfleury**
 
 This reminds me of games and simulations, where entities have a set of attributes. That supports the use of entity component systems which gives each entity a key into various tables of related attributes, with subsystems for position/velocity, hit-points, buffs etc.
 

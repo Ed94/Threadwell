@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @kekmaomaster
+**1/** **@kekmaomaster** ^2073503384791912785
 
-@VictorTaelin
+**@VictorTaelin**
 
 Taelin I've been following you since the beginning: I think the problem is you need to aggressively position yourself and your program as a painkiller. People need to feel their pain ease as a result of formal + function discovery. You need the palantir-type deployed engineers.
 

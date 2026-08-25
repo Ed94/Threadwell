@@ -26,9 +26,9 @@ parent_post_id: "1674757854471806977"
 
 ## Branch
 
-**1/** @TimSweeneyEpic
+**1/** **@TimSweeneyEpic** ^1675248176498987009
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Can teach it in abstinence-only programming classes!
 

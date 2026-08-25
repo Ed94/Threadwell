@@ -26,17 +26,17 @@ parent_post_id: "2065840191340707905"
 
 ## Branch
 
-**1/** @raggi
+**1/** **@raggi** ^2065865513608307103
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 nanosleep(0) will sleep for the timer slack
 
 _mm_pause() if you want to avoid a context switch and keep your scheduler quantum
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2065876017277772143
 
-@raggi
+**@raggi**
 
 I do that via inline asm to save power. This was more a comment on the cost of actually using the futex system call, need to be careful about the call frequency
 

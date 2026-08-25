@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @unclebobmartin
+**1/** **@unclebobmartin** ^1691407659923042304
 
-@cmuratori
+**@cmuratori**
 
 Generally speaking that’s a good principle. But it’s not an absolute. At some point reducing code volume starts to increase coupling. 
 

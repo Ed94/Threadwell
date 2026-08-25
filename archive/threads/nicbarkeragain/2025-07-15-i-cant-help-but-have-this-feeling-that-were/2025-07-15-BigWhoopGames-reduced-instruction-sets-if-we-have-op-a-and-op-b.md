@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @BigWhoopGames
+**1/** **@BigWhoopGames** ^1945048842342219995
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Reduced instruction sets. If we have op A and op B but B can be expressed as a series of As, just get rid of it. If all the parallel cores need to be running the same op at the same time, just optimize for the least instructions possible but more of them in a row.
 

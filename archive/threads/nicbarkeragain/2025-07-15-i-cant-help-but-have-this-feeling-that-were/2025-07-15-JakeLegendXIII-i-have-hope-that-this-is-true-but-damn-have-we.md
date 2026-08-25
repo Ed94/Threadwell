@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @JakeLegendXIII
+**1/** **@JakeLegendXIII** ^1944967041368129746
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 I have hope that this is true. But damn have we tried and nobody has had a good answer so far. Hoping some of the AI distraction doesn’t take too much away from people still doing other computer science to make progress on actual programming.
 

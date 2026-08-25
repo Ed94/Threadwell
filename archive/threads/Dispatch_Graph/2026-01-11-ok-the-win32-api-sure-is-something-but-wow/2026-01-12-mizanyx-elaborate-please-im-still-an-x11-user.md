@@ -26,9 +26,9 @@ parent_post_id: "2010303501851877740"
 
 ## Branch
 
-**1/** @mizanyx
+**1/** **@mizanyx** ^2010686383954800643
 
-@Dispatch_Graph
+**@Dispatch_Graph**
 
 Elaborate please, I'm still an X11 user
 

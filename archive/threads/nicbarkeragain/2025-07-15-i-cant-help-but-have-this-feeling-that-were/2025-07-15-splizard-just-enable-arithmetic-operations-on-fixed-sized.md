@@ -26,9 +26,9 @@ parent_post_id: "1944913662499516737"
 
 ## Branch
 
-**1/** @splizard
+**1/** **@splizard** ^1945085884254105812
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Just enable arithmetic operations on fixed sized arrays and optimise this to use SIMD where possible
 

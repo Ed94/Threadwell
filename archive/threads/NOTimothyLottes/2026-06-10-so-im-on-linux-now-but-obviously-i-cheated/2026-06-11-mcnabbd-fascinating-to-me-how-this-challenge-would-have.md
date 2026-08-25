@@ -26,15 +26,15 @@ parent_post_id: "2064858927829745887"
 
 ## Branch
 
-**1/** @mcnabbd
+**1/** **@mcnabbd** ^2064875327617396915
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 fascinating to me how this challenge would have captivated me a couple decades ago but now i just wanna run away
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2064876889177457052
 
-@mcnabbd
+**@mcnabbd**
 
 Similar feelings. Used to build linux from scratch in the BIOS era, also ran FreeBSD/etc, just for fun. But things had been easier then. Now years of technical debt later, all my tolerance for complexity has been fully exhausted.
 

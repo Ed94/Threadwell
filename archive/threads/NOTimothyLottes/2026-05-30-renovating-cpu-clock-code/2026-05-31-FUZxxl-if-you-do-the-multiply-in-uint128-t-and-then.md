@@ -26,21 +26,21 @@ parent_post_id: "2060730425929080874"
 
 ## Branch
 
-**1/** @FUZxxl
+**1/** **@FUZxxl** ^2060885487858880689
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 If you do the multiply in uint128_t and then right-shift by 64 places, the compiler should do the right thing.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^2060898306851516562
 
-@FUZxxl
+**@FUZxxl**
 
 “Should” is exactly why I prefer the actual instruction instrinsics or just inline asm (which is what I use on C CPU land)
 
-**3/** @FUZxxl
+**3/** **@FUZxxl** ^2061000558698197386
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 Have fun with a solution that the compiler optimises worse and that is not portable.
 

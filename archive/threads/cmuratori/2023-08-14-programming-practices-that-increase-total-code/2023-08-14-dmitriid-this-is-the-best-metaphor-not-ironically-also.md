@@ -26,9 +26,9 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @dmitriid
+**1/** **@dmitriid** ^1691192339186782208
 
-@cmuratori
+**@cmuratori**
 
 This is the best metaphor (not ironically also about Microsoft) https://x.com/ocornut/status/1691052987605467137?s=20
 

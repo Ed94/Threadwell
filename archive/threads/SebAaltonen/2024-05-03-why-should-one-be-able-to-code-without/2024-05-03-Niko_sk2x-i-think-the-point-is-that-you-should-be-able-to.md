@@ -26,51 +26,51 @@ parent_post_id: "1786346729547153794"
 
 ## Branch
 
-**1/** @Niko_sk2x
+**1/** **@Niko_sk2x** ^1786374000802746449
 
-@SebAaltonen
+**@SebAaltonen**
 
 I think the point is that you should be able to code well enough that IDE is a tool to help you and make you more efficient, not a tool that allows you to do it at all - you can still do it without an IDE, it's just slow and annoying. If you can't at all, that's not a good sign
 
-**2/** @SebAaltonen
+**2/** **@SebAaltonen** ^1786374953358487940
 
-@Barteks2x
+**@Barteks2x**
 
 There's no real difference in practice. Of course I could write code on notepad and press space 4 times manually. The main problem with notepad is not writing code. It's reading code. And coding is 90% reading, 10% writing. Color coding, jumping to symbols, etc.
 
-**3/** @SebAaltonen
+**3/** **@SebAaltonen** ^1786375194686210338
 
-@Barteks2x
+**@Barteks2x**
 
 Reading a big code base with notepad is super painful, as you have to open the cmake file to see where the includes actually are and then find the .cpp files if you need to investigate further. That's over 10x slower reading experience in big code base.
 
-**4/** @SebAaltonen
+**4/** **@SebAaltonen** ^1786375792085106853
 
-@Barteks2x
+**@Barteks2x**
 
 For a new junior programmer it is super important that their code reading experience is as good as possible so that they learn the big code base as quickly as possible. Thus they should use an IDE. Seniors should not ask them to use notepad instead to learn it. That's just stupid
 
-**5/** @SebAaltonen
+**5/** **@SebAaltonen** ^1786376107018567696
 
-@Barteks2x
+**@Barteks2x**
 
 It doesn't really matter if a programmer can't write code on notepad, as they should never be doing that in any reasonably sized project. Their productivity when reading code is so much worse, and reading is 90% of the job.
 
-**6/** @Niko_sk2x
+**6/** **@Niko_sk2x** ^1786377689521143866
 
-@SebAaltonen
+**@SebAaltonen**
 
 Yes you shouldn't ever need to do that for anything nontrivial. But I've seen people who could just about get by with an IDE and seemingly able to do some things but not able to write a "hello world" without an IDE. The IDE was hiding real issues here.
 
-**7/** @SebAaltonen
+**7/** **@SebAaltonen** ^1786379429066768658
 
-@Barteks2x
+**@Barteks2x**
 
 When I am hiring a junior, I wouldn't want to make them code in notepad without Google, because nobody actually does that. If it was a code assignment, we can sit down and they can explain what their code does and why. I can also check their hobby projects in github.
 
-**8/** @Niko_sk2x
+**8/** **@Niko_sk2x** ^1786382425829872015
 
-@SebAaltonen
+**@SebAaltonen**
 
 Sure there definitely are easier and more reliable ways to judge someone's skill. It's not particularly good test of anything but still something you should be bake to do to some extent, at least a "hello world" and some other trivial programs.
 

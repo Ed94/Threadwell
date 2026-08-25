@@ -26,9 +26,9 @@ parent_post_id: "1917431895786414425"
 
 ## Branch
 
-**1/** @wmcoyne
+**1/** **@wmcoyne** ^1917753799021646262
 
-@rfleury
+**@rfleury**
 
 Well said. Zero-overhead in the abstract isn't the same as zero-complexity in practice. Hand-coding forces you to confront design directly, not just inherit layers of generic indirection. Sometimes simpler really is better—especially when it matches your problem more precisely.
 

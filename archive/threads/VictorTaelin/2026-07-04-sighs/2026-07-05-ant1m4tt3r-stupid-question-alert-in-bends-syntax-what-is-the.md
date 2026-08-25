@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @ant1m4tt3r
+**1/** **@ant1m4tt3r** ^2073770708182720952
 
-@VictorTaelin
+**@VictorTaelin**
 
 stupid question alert. in bends syntax, what is the difference between -> , ~> and +> ?
 

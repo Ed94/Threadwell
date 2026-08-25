@@ -26,9 +26,9 @@ parent_post_id: "2084072929780998198"
 
 ## Branch
 
-**1/** @RealOtisCrune
+**1/** **@RealOtisCrune** ^2084110760872128905
 
-@nicbarkeragain
+**@nicbarkeragain**
 
 Isn't this just a Python-style docstring with extra steps?
 

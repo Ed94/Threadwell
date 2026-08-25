@@ -26,15 +26,15 @@ parent_post_id: "1691186899212472321"
 
 ## Branch
 
-**1/** @enjoyingthewind
+**1/** **@enjoyingthewind** ^1691423123931873281
 
-@cmuratori
+**@cmuratori**
 
 Is there a good reason to use VS instead of VSCode?
 
-**2/** @cmuratori
+**2/** **@cmuratori** ^1691500513794338816
 
-@enjoyingthewind
+**@enjoyingthewind**
 
 I don't use either. Last time I looked at VSCode, it couldn't do assembly-level debugging, so that's one reason - but they may have fixed that.
 

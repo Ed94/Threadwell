@@ -26,15 +26,15 @@ parent_post_id: "1950860870818439202"
 
 ## Branch
 
-**1/** @Stererence
+**1/** **@Stererence** ^1950970860694913461
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 I've been doing assembly a bit in D with the inline assembler and it's very fun to the point where it's too distracting for me, I don't really get why people are so averse to it generally.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1951102123686457463
 
-@Stererence
+**@Stererence**
 
 Inline assembly in GCC has been a cornerstone of my C code for a long time.
 

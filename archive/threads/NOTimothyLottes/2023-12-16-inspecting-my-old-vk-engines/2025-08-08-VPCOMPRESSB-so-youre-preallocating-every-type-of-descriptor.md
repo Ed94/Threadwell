@@ -26,21 +26,21 @@ parent_post_id: "1736154923408953499"
 
 ## Branch
 
-**1/** @VPCOMPRESSB
+**1/** **@VPCOMPRESSB** ^1953820468697317627
 
-@NOTimothyLottes
+**@NOTimothyLottes**
 
 so you're preallocating every type of descriptor to a max count and aliasing them with various qualifiers/attributes? all that in a single memory layout?
 
 if this is the case, the program identifier makes sense. you can just swap out the code, leaving the data untouched.
 
-**2/** @NOTimothyLottes
+**2/** **@NOTimothyLottes** ^1953842045136621727
 
-@VPCOMPRESSB
+**@VPCOMPRESSB**
 
 I use the layout aliasing to choose things like {read-only K$ reads, vs read-write texture cache access} for buffers, for making sure GLC=1 (write through to coherent cache domain) is enabled for stores (image and buffer), as well as selecting the texel format for image access :)
 
-**3/** @VPCOMPRESSB
+**3/** **@VPCOMPRESSB** ^1956125618161995890
 
 i revisited last night.
 
@@ -52,39 +52,39 @@ i assume your code is laid in stages. each stage corresponds to a specific image
 
 aliasing supports this even further, with explicit intentions for resources.
 
-**4/** @NOTimothyLottes
+**4/** **@NOTimothyLottes** ^1956135942265430037
 
-@VPCOMPRESSB
+**@VPCOMPRESSB**
 
 On modern desktop GPUs it is very efficient to have everything bound all the time (bind everything once/frame). On AMD on use the descriptor is loaded into SGPRs. You only pay for what is used. And ideally group descriptors used together near so they share same cache lines.
 
-**5/** @NOTimothyLottes
+**5/** **@NOTimothyLottes** ^1956136412211708145
 
-@VPCOMPRESSB
+**@VPCOMPRESSB**
 
 Merging independent shaders is then easy. Merging dependent shaders is more complex. You can both do it an unsafe way or a safe way (too long for one tweet)...
 
-**6/** @NOTimothyLottes
+**6/** **@NOTimothyLottes** ^1956138948347994517
 
-@VPCOMPRESSB
+**@VPCOMPRESSB**
 
 The unsafe way: launch a N+M sized 1D dispatch. Bank on having enough work in N such that when the dependent M starts that enough of N is finished in practice. This can work when early M depends on only early N workgroups.
 
-**7/** @NOTimothyLottes
+**7/** **@NOTimothyLottes** ^1956141082032660650
 
-@VPCOMPRESSB
+**@VPCOMPRESSB**
 
 There are various safe ways. For instance  if the dependent work isn't done, one can conditionally duplicate the work. Or conditionally use a fallback. Or only use the pre task if it had finished to accelerate the second, for example hierarchical empty space skipping ...
 
-**8/** @NOTimothyLottes
+**8/** **@NOTimothyLottes** ^1956141576662511764
 
-@VPCOMPRESSB
+**@VPCOMPRESSB**
 
 The challenge of course is that the  obvious stuff like spin waiting isn't safe because of bad API and driver design : no forward progress guarantee (on preemption, etc)
 
-**9/** @NOTimothyLottes
+**9/** **@NOTimothyLottes** ^1956142377451610437
 
-@VPCOMPRESSB
+**@VPCOMPRESSB**
 
 Quite literally they just need to put in a guarantee that workgroups with lower coords in scan order are launched first and restored first in a partial preemption restore. Then you could safely spin on work in a prior numbered workgroup
 

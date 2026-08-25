@@ -26,9 +26,9 @@ parent_post_id: "2073406569459368226"
 
 ## Branch
 
-**1/** @Siggis_Man
+**1/** **@Siggis_Man** ^2073573831370039610
 
-@VictorTaelin
+**@VictorTaelin**
 
 > this is the antidote I found to AI psychosis. I call it "competency"
 
