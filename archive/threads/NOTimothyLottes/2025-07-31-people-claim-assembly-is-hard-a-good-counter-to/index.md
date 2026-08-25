@@ -43,6 +43,8 @@ ASM provides a good opportunity to show how to convert typical function argument
 
 Linux has been all down hill over the years. OSS was fantastic, easy portable Linux system call interface. Also it's easy to do direct X11 with just syscalls. Now with Wayland you are stuck with linking to a garbage library. So might as well do WIN32 for Linux and depend on Wine.
 
+Branches: [[archive/threads/NOTimothyLottes/2025-07-31-people-claim-assembly-is-hard-a-good-counter-to/2025-07-31-philthistweet-i-just-wish-the-win32-api-was-better-designed-it]]
+
 **5/**
 
 So Valve standardizing on Proton saves a lot of trouble with porting across ABIs/etc, just do WIN32 as it's way easier to interface with than Wayland and whatever horrible userland audio interface Linux monkeys switch to this era.
