@@ -7,7 +7,7 @@ author: "Boris Chuprin"
 handle: noop_dev
 post_id: "2078763409403683061"
 date: 2026-07-19
-archived: 2026-08-23
+archived: 2026-08-25
 draft: true
 tags:
   - archive
@@ -60,4 +60,4 @@ parent_post_id: "2078729662021111958"
 
 ## Related
 
-- Spine: [[archive/threads/NOTimothyLottes/2026-07-19-the-aim-of-course-keep-the-stuff-that-doesnt-need]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-07-19-probably-shouldnt-consider-this-but-apparently]]
