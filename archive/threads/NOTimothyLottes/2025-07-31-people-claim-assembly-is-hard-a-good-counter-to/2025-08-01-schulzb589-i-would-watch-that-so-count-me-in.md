@@ -7,8 +7,8 @@ author: "Ben Schulz"
 handle: schulzb589
 post_id: "1951093394786361833"
 date: 2025-08-01
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter

@@ -7,8 +7,8 @@ author: "Chrinovic Mukanya"
 handle: mu_chrinovic
 post_id: "1950864277624979480"
 date: 2025-07-31
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter

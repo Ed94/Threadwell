@@ -17,11 +17,13 @@ from twitter.tw import (
     _copy_selected_media,
     _gallery_base_args,
     _merge_branch_posts,
+    _merge_existing_capture,
     _merge_gallery_files,
     _select_branch_capture,
     _validate_capture_ids,
     build_parser,
     cmd_add_branch,
+    cmd_emit,
 )
 
 
@@ -332,6 +334,107 @@ class TwMediaCommandTests(unittest.TestCase):
             ):
                 with self.assertRaisesRegex(SystemExit, "stored spine tip"):
                     cmd_add_branch(Namespace(id="200", from_ids=["300"]))
+
+    def test_merge_existing_capture_keeps_fresh_and_retains_missing(self) -> None:
+        old_100 = make_post("100", None)
+        old_200 = make_post("200", "100")
+        old_300 = make_post("300", "100")
+        existing = ThreadData(
+            root_post_id="100",
+            posts=(old_100, old_200, old_300),
+            source_url="https://x.com/i/status/100",
+        )
+        fresh_100 = replace(old_100, text="fresh root")
+        fresh_200 = replace(old_200, text="fresh tip")
+        fresh_400 = make_post("400", "200")
+        fresh = ThreadData(
+            root_post_id="200",
+            posts=(fresh_100, fresh_200, fresh_400),
+            source_url="https://x.com/i/status/200",
+        )
+        merged, retained = _merge_existing_capture(fresh, existing, "200")
+        self.assertEqual(
+            merged.posts,
+            (fresh_100, fresh_200, fresh_400, old_300),
+        )
+        self.assertEqual(merged.root_post_id, "200")
+        self.assertEqual(merged.source_url, fresh.source_url)
+        self.assertEqual(retained, ("300",))
+
+    def test_merge_existing_capture_rejects_different_conversation(self) -> None:
+        existing = ThreadData(
+            root_post_id="100",
+            posts=(make_post("100", None),),
+            source_url="https://x.com/i/status/100",
+        )
+        fresh = ThreadData(
+            root_post_id="200",
+            posts=(make_post("200", None),),
+            source_url="https://x.com/i/status/200",
+        )
+        with self.assertRaisesRegex(SystemExit, "different conversation"):
+            _merge_existing_capture(fresh, existing, "200")
+
+    def test_emit_and_refresh_accept_preserve_existing(self) -> None:
+        emit_args = build_parser().parse_args([
+            "emit", "--id", "200", "--tip", "--preserve-existing",
+        ])
+        refresh_args = build_parser().parse_args([
+            "refresh", "--id", "200", "--tip", "--preserve-existing",
+        ])
+        self.assertTrue(emit_args.preserve_existing)
+        self.assertTrue(refresh_args.preserve_existing)
+
+    def test_emit_preserve_existing_merges_before_running_emitter(self) -> None:
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            scratch = root / "refetch_200"
+            assets = root / "assets"
+            notes = root / "notes"
+            notes.mkdir()
+            existing = ThreadData(
+                root_post_id="100",
+                posts=(
+                    make_post("100", None),
+                    make_post("200", "100"),
+                    make_post("300", "100"),
+                ),
+                source_url="https://x.com/i/status/100",
+            )
+            fresh = ThreadData(
+                root_post_id="200",
+                posts=(
+                    replace(make_post("100", None), text="fresh"),
+                    replace(make_post("200", "100"), text="fresh"),
+                    make_post("400", "200"),
+                ),
+                source_url="https://x.com/i/status/200",
+            )
+            write_test_thread(assets / "thread_data.json", existing)
+            write_test_thread(scratch / "thread_data.json", fresh)
+            with (
+                patch.object(tw_module, "scratch_dir", return_value=scratch),
+                patch.object(tw_module, "dump_dir", return_value=root / "dump"),
+                patch.object(tw_module, "locate", return_value=(assets, notes)),
+                patch.object(tw_module, "locate_all", return_value=[]),
+                patch.object(tw_module, "check_frozen"),
+                patch.object(tw_module, "run") as run,
+                redirect_stdout(StringIO()),
+            ):
+                result = cmd_emit(Namespace(
+                    id="200",
+                    tip=True,
+                    slug=None,
+                    preserve_existing=True,
+                ))
+            self.assertEqual(result, 0)
+            self.assertTrue(run.called)
+            merged = load_thread(scratch / "thread_data.json")
+            self.assertEqual(
+                tuple(post.post_id for post in merged.posts),
+                ("100", "200", "400", "300"),
+            )
+            self.assertEqual(merged.root_post_id, "200")
 
     def test_migrate_defaults_to_dry_run(self) -> None:
         args = build_parser().parse_args(["migrate-media", "--id", "100"])

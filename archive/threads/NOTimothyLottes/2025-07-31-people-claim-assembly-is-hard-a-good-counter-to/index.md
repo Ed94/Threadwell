@@ -7,8 +7,8 @@ author: "NOTimothyLottes"
 handle: NOTimothyLottes
 post_id: "1950860870818439202"
 date: 2025-07-31
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter
@@ -50,3 +50,5 @@ So Valve standardizing on Proton saves a lot of trouble with porting across ABIs
 **6/**
 
 Few probably remember the old Unix before pthreads and ELF. It was better then. Much easier to use fork and shm to do platform audio than today. And that holds for all the vintage workstations (which I did implement back in the day)
+
+Branches: [[archive/threads/NOTimothyLottes/2025-07-31-people-claim-assembly-is-hard-a-good-counter-to/2025-08-01-AnshumanKhanna5-im-gonna-start-pretending-i-understood-everything]]

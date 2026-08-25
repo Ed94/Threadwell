@@ -7,8 +7,8 @@ author: "Arnaud Carré"
 handle: leonard_coder
 post_id: "1950889332375470135"
 date: 2025-07-31
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter

@@ -7,8 +7,8 @@ author: "Vlad Erium 🇯🇵"
 handle: ssh4net
 post_id: "1950870099809681578"
 date: 2025-07-31
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter

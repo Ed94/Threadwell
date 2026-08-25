@@ -7,8 +7,8 @@ author: "Karthik Kumar Viswanathan"
 handle: _vkaku
 post_id: "1951170620542296537"
 date: 2025-08-01
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter

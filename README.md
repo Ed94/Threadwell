@@ -131,3 +131,7 @@ Quartz remotes live in `site/` (`cd site; git pull`). After a Quartz pull, re-co
 Current major is **Quartz 5**. Edit `publish/quartz.config.yaml`, not the clone. Canvas uses `@quartz-community/canvas-page`. Drafts use `@quartz-community/remove-draft`.
 
 Engine license: MIT (Quartz). Vault content: Unlicense (`LICENSE`).
+
+## Notice
+
+I'm not a web dev. Look away at the scripts this is just done because it doesn't exist, so it was done badly.

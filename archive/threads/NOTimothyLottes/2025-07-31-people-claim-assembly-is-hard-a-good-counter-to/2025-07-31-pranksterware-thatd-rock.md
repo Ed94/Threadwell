@@ -7,8 +7,8 @@ author: "unevenprankster"
 handle: pranksterware
 post_id: "1950872517700206902"
 date: 2025-07-31
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter

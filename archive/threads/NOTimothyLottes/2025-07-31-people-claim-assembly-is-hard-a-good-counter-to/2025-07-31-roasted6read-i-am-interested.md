@@ -7,8 +7,8 @@ author: "᠌᠌ ᠌ ᠌"
 handle: roasted6read
 post_id: "1950914379412566114"
 date: 2025-07-31
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter

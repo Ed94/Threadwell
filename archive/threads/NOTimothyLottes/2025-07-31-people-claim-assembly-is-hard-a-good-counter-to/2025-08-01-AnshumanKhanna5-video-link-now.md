@@ -7,8 +7,8 @@ author: "Anshuman Khanna"
 handle: AnshumanKhanna5
 post_id: "1951095292377571395"
 date: 2025-08-01
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter

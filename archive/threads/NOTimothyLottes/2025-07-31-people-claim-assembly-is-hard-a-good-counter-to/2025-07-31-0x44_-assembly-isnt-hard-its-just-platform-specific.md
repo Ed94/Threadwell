@@ -7,8 +7,8 @@ author: "0x44"
 handle: 0x44_
 post_id: "1951048949667619280"
 date: 2025-07-31
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter

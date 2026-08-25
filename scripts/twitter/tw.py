@@ -320,6 +320,25 @@ def _merge_branch_posts(
     )
 
 
+def _merge_existing_capture(
+    fresh: ThreadData,
+    existing: ThreadData,
+    tip_id: str,
+) -> tuple[ThreadData, tuple[str, ...]]:
+    """Keep fresh post data while retaining archived posts it omitted."""
+    if tip_id not in {post.post_id for post in fresh.posts}:
+        raise SystemExit(f"spine tip {tip_id} missing from fresh capture")
+    fresh_roots = {
+        post.post_id for post in fresh.posts if post.reply_to_id is None
+    }
+    existing_roots = {
+        post.post_id for post in existing.posts if post.reply_to_id is None
+    }
+    if not fresh_roots or fresh_roots.isdisjoint(existing_roots):
+        raise SystemExit("fresh and existing captures are a different conversation")
+    return _merge_branch_posts(fresh, [existing.posts])
+
+
 def _copy_selected_media(
     source: Path,
     destination: Path,
@@ -447,7 +466,12 @@ def cmd_add_branch(args: argparse.Namespace) -> int:
         }
         _copy_selected_media(capture_dir, output_dir, selected_added)
     _write_thread(output_dir / "thread_data.json", merged)
-    cmd_emit(argparse.Namespace(id=post_id, tip=True, slug=None))
+    cmd_emit(argparse.Namespace(
+        id=post_id,
+        tip=True,
+        slug=None,
+        preserve_existing=False,
+    ))
 
     added_text = ",".join(added_ids) if added_ids else "-"
     leaf_text = ";".join(
@@ -469,6 +493,23 @@ def cmd_emit(args: argparse.Namespace) -> int:
         src = dump_dir(post_id)
     if not (src / "thread_data.json").is_file():
         raise SystemExit(f"no thread_data.json for {post_id}")
+    if args.preserve_existing:
+        assets, _notes = locate(post_id)
+        if assets is None:
+            raise SystemExit(f"no existing emitted thread for {post_id}")
+        existing_path = assets / "thread_data.json"
+        if not existing_path.is_file():
+            raise SystemExit(f"missing {existing_path}")
+        fresh = load_thread(src / "thread_data.json")
+        existing = load_thread(existing_path)
+        merged, retained_ids = _merge_existing_capture(
+            fresh,
+            existing,
+            post_id,
+        )
+        _write_thread(src / "thread_data.json", merged)
+        retained = ",".join(retained_ids) if retained_ids else "-"
+        print(f"preserve-existing retained={retained}")
     cmd = [
         sys.executable,
         str(HERE / "emit_archive.py"),
@@ -795,6 +836,11 @@ def build_parser() -> argparse.ArgumentParser:
         if name in ("emit", "refresh"):
             p.add_argument("--tip", action="store_true", help="use --id as tip")
             p.add_argument("--slug", default=None)
+            p.add_argument(
+                "--preserve-existing",
+                action="store_true",
+                help="retain archived posts omitted by the fresh capture",
+            )
         if name == "lift":
             p.add_argument("--orig", action="store_true")
         if name == "ocr":

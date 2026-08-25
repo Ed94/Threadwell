@@ -7,8 +7,8 @@ author: "opdroid1234"
 handle: opdroid1234
 post_id: "1950902422362046528"
 date: 2025-07-31
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter

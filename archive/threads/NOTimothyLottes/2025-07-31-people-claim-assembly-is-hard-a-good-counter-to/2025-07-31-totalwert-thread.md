@@ -7,8 +7,8 @@ author: "Alonne"
 handle: totalwert
 post_id: "1950900720770625916"
 date: 2025-07-31
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter
@@ -31,6 +31,7 @@ parent_post_id: "1950860870818439202"
 @NOTimothyLottes
 
 <video controls src="https://video.twimg.com/tweet_video/GxL93LLW8AA-5hM.mp4"></video>
+
 ## Related
 
 - Spine: [[archive/threads/NOTimothyLottes/2025-07-31-people-claim-assembly-is-hard-a-good-counter-to]]

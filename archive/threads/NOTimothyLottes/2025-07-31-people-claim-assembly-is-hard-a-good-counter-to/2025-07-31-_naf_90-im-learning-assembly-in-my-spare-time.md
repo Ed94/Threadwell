@@ -7,8 +7,8 @@ author: "Naf 👨🏽‍💻"
 handle: _naf_90
 post_id: "1950948334002159684"
 date: 2025-07-31
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter
