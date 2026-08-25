@@ -47,6 +47,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2025-07-31-people-claim-assembly-is-hard-a-good-counter-to]]
 - [[archive/threads/NOTimothyLottes/2025-08-01-also-run-from-gpu-side-editing-tools-for-shader]]
 - [[archive/threads/NOTimothyLottes/2025-08-02-so-far-the-plan-is-to-have-the-data-read-write]]
+- [[archive/threads/NOTimothyLottes/2025-10-13-short-talk-on-how-i-do-cpu-side-debugging-without]]
 - [[archive/threads/NOTimothyLottes/2025-11-17-i-wish-everyone-would-just-adopt-reversed-with]]
 - [[archive/threads/NOTimothyLottes/2026-01-14-can-do-that-but-at-least-these-kinds-of-systems]]
 - [[archive/threads/NOTimothyLottes/2026-03-08-ill-add-one-conspiracy-theory-for-everyone]]
