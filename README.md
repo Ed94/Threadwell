@@ -1,10 +1,14 @@
-# Threadwell
+# Threadwell\
 
 Recovered threads and submerged records.
 
 An [Obsidian](https://obsidian.md) vault published with [Quartz 5](https://quartz.jzhao.xyz) to GitHub Pages. The site is a convenient host for Twitter/X threads and other material that is not reliably web-indexed.
 
 Live (after Pages is enabled): https://ed94.github.io/Threadwell
+
+## Post an issue for an inaccuracy
+
+I'll correct it.
 
 ## Layout
 
