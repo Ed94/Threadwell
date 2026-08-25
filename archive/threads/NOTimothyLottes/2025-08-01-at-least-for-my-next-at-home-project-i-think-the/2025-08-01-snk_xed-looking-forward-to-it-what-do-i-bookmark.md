@@ -7,8 +7,8 @@ author: "Sankrant Chaubey"
 handle: snk_xed
 post_id: "1951374094655516679"
 date: 2025-08-01
-archived: 2026-08-23
-draft: true
+archived: 2026-08-25
+draft: false
 tags:
   - archive
   - twitter
@@ -32,4 +32,4 @@ parent_post_id: "1951347512088088657"
 
 ## Related
 
-- Spine: [[archive/threads/NOTimothyLottes/2025-08-01-also-run-from-gpu-side-editing-tools-for-shader]]
+- Spine: [[archive/threads/NOTimothyLottes/2025-08-01-at-least-for-my-next-at-home-project-i-think-the]]
