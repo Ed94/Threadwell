@@ -7,8 +7,8 @@ author: "NOTimothyLottes"
 handle: NOTimothyLottes
 post_id: "1735622924571201674"
 date: 2023-12-15
-archived: 2026-08-23
-draft: true
+archived: 2026-08-25
+draft: false
 tags:
   - archive
   - twitter
@@ -122,6 +122,8 @@ and make sure to bring max values out of denormal before using rcp.
 **24/**
 
 [22] Love HW people, but they opt for a $ train even as it is derailing: they need to build HW, make it faster, it's what they do. But leave a trail of back-compat debris TS/ROV/GS/etc after each gfx fad. Vote with your engineering, general purpose CS, just say no to black boxes.
+
+Branches: [[archive/threads/NOTimothyLottes/2023-12-15-long-thread/2023-12-15-SebAaltonen-they-design-one-api-for-each-separate-use-case]]
 
 **25/**
 
