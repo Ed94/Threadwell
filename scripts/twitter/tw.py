@@ -27,6 +27,7 @@ if str(_HERE) not in sys.path:
     sys.path.insert(0, str(_HERE))
 
 from paths import COOKIES, DUMPS, FROZEN, HERE, SCRATCH, VAULT
+from models import load_thread
 
 try:
     from frozen import frozen_match, load_frozen_ids, require_writable
@@ -178,46 +179,79 @@ def cmd_graph(args: argparse.Namespace) -> int:
     return 0
 
 
+def _capture_ids(post_id: str, branch_ids: list[str]) -> tuple[str, ...]:
+    """Return the primary id plus distinct explicit branch tips."""
+    return tuple(dict.fromkeys((post_id, *branch_ids)))
+
+
+def _gallery_base_args() -> list[str]:
+    """Return the shared safe, paced gallery-dl arguments."""
+    return [
+        "gallery-dl",
+        "--cookies",
+        str(COOKIES),
+        "--retries",
+        "0",
+        "--sleep-extractor",
+        "5",
+        "--sleep-request",
+        "5",
+        "-o",
+        "text-tweets=true",
+        "-o",
+        "conversations=true",
+    ]
+
+
+def _merge_gallery_files(paths: list[Path], output: Path) -> None:
+    """Concatenate gallery-dl JSON arrays for local ingest."""
+    merged: list[object] = []
+    for path in paths:
+        data: object = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(data, list):
+            raise SystemExit(f"gallery-dl output is not a JSON array: {path}")
+        merged.extend(data)
+    output.write_text(
+        json.dumps(merged, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+
+def _validate_capture_ids(path: Path, capture_ids: tuple[str, ...]) -> None:
+    """Fail if gallery-dl omitted an explicitly requested tip."""
+    thread = load_thread(path)
+    present = {post.post_id for post in thread.posts}
+    missing = [post_id for post_id in capture_ids if post_id not in present]
+    if missing:
+        raise SystemExit(f"requested tips missing from capture: {', '.join(missing)}")
+
+
 def cmd_refetch(args: argparse.Namespace) -> int:
-    """gallery-dl a thread into the scratch dir, then run ``ingest_gallery.py`` to materialize thread_data.json."""
+    """Capture one spine tip plus explicit branch tips into one dump."""
     post_id = args.id
-    check_frozen(post_id)
+    capture_ids = _capture_ids(post_id, args.branch)
+    for capture_id in capture_ids:
+        check_frozen(capture_id)
     if not COOKIES.is_file():
         raise SystemExit(f"missing {COOKIES}")
+
     out = scratch_dir(post_id)
-    media = out / "media"
-    media.mkdir(parents=True, exist_ok=True)
-    url = f"https://x.com/i/status/{post_id}"
+    out.mkdir(parents=True, exist_ok=True)
+    capture_paths: list[Path] = []
+    for capture_id in capture_ids:
+        capture = out / f"gallery_{capture_id}.json"
+        url = f"https://x.com/i/status/{capture_id}"
+        with capture.open("w", encoding="utf-8") as fh:
+            subprocess.check_call(
+                [*_gallery_base_args(), "--dump-json", url],
+                stdout=fh,
+            )
+        capture_paths.append(capture)
+
     gallery = out / "gallery.json"
-    with gallery.open("w", encoding="utf-8") as fh:
-        subprocess.check_call(
-            [
-                "gallery-dl",
-                "--cookies",
-                str(COOKIES),
-                "--dump-json",
-                "-o",
-                "text-tweets=true",
-                "-o",
-                "conversations=true",
-                url,
-            ],
-            stdout=fh,
-        )
-    run(
-        [
-            "gallery-dl",
-            "--cookies",
-            str(COOKIES),
-            "-D",
-            str(media),
-            "-o",
-            "text-tweets=true",
-            "-o",
-            "conversations=true",
-            url,
-        ]
-    )
+    _merge_gallery_files(capture_paths, gallery)
+    source_url = f"https://x.com/i/status/{post_id}"
     run(
         [
             sys.executable,
@@ -227,11 +261,19 @@ def cmd_refetch(args: argparse.Namespace) -> int:
             "--out",
             str(out / "thread_data.json"),
             "--source-url",
-            url,
+            source_url,
             "--root",
             post_id,
         ]
     )
+    _validate_capture_ids(out / "thread_data.json", capture_ids)
+
+    media = out / "media"
+    media.mkdir(parents=True, exist_ok=True)
+    for capture_id in capture_ids:
+        url = f"https://x.com/i/status/{capture_id}"
+        run([*_gallery_base_args(), "-D", str(media), url])
+
     print(f"refetch -> {out}")
     return 0
 
@@ -562,6 +604,14 @@ def build_parser() -> argparse.ArgumentParser:
     ):
         p = sub.add_parser(name)
         p.add_argument("--id", required=True)
+        if name in ("refetch", "refresh"):
+            p.add_argument(
+                "--branch",
+                action="append",
+                default=[],
+                metavar="TIP_ID",
+                help="capture and merge this explicit branch tip; repeatable",
+            )
         if name in ("emit", "refresh"):
             p.add_argument("--tip", action="store_true", help="use --id as tip")
             p.add_argument("--slug", default=None)
