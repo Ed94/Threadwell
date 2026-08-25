@@ -7,7 +7,7 @@ author: "Ant Toe Knee"
 handle: iamwhosiam
 post_id: "2061658841360589225"
 date: 2026-06-02
-archived: 2026-08-23
+archived: 2026-08-25
 draft: true
 tags:
   - archive
