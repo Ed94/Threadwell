@@ -29,6 +29,8 @@ in_reply_to: ""
 
 Nerds are crazy https://git.sr.ht/~vdupras/duskos
 
+Branches: [[archive/threads/kenpex/2023-04-25-nerds-are-crazy-https-git-sr-ht-vdupras-duskos/2023-04-25-abductee_org-asimov-vibes-intensify]], [[archive/threads/kenpex/2023-04-25-nerds-are-crazy-https-git-sr-ht-vdupras-duskos/2023-04-25-streleav-indeed-any-thoughts-on-how-agi-could-help-the]], [[archive/threads/kenpex/2023-04-25-nerds-are-crazy-https-git-sr-ht-vdupras-duskos/2023-04-26-ChristerEricson-i-was-curious-about-what-it-would-take-to]], [[archive/threads/kenpex/2023-04-25-nerds-are-crazy-https-git-sr-ht-vdupras-duskos/2023-04-26-SebAaltonen-some-people-have-too-much-time-for-hobby-projects]], [[archive/threads/kenpex/2023-04-25-nerds-are-crazy-https-git-sr-ht-vdupras-duskos/2023-04-26-ErikHaliewicz-this-is-actually-a-fantastic-project-though]], [[archive/threads/kenpex/2023-04-25-nerds-are-crazy-https-git-sr-ht-vdupras-duskos/2023-04-27-JaceCear-the-what-if-were-in-an-apocalypse-part-is-very]]
+
 **2/**
 
 @kenpex I find the context hilarious, but Forth as asm-level-yet-very-usable-mini-OS has been done, as the boot firmware for OLPC (http://laptop.org) for many years. Looks like it's currently open sourced as https://github.com/openbios/openbios.
