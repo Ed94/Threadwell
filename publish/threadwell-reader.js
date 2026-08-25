@@ -5,6 +5,10 @@
     return document.querySelector("article");
   }
 
+  function isWide() {
+    return document.body.classList.contains("threadwell-wide");
+  }
+
   function setWide(on) {
     document.body.classList.toggle("threadwell-wide", on);
     try {
@@ -15,30 +19,35 @@
     const btn = document.getElementById("threadwell-wide");
     if (btn) {
       btn.setAttribute("aria-pressed", on ? "true" : "false");
-      btn.textContent = on ? "Narrow" : "Wide";
+      btn.textContent = on ? "Show sidebars" : "Wide thread";
     }
   }
 
-  function addWideButton() {
-    if (document.getElementById("threadwell-wide")) {
-      return;
+  function placeButton() {
+    let btn = document.getElementById("threadwell-wide");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.id = "threadwell-wide";
+      btn.type = "button";
+      btn.className = "threadwell-wide-btn";
+      btn.addEventListener("click", () => {
+        setWide(!isWide());
+      });
     }
-    const btn = document.createElement("button");
-    btn.id = "threadwell-wide";
-    btn.type = "button";
-    btn.className = "threadwell-wide-btn";
-    btn.textContent = "Wide";
-    btn.addEventListener("click", () => {
-      setWide(!document.body.classList.contains("threadwell-wide"));
-    });
-    document.body.appendChild(btn);
+    const host =
+      document.querySelector(".center .page-header") ||
+      document.querySelector(".center") ||
+      document.body;
+    if (btn.parentElement !== host) {
+      host.prepend(btn);
+    }
+    let stored = "0";
     try {
-      if (localStorage.getItem(WIDE_KEY) === "1") {
-        setWide(true);
-      }
+      stored = localStorage.getItem(WIDE_KEY) || "0";
     } catch (_err) {
-      /* ignore */
+      stored = "0";
     }
+    setWide(stored === "1");
   }
 
   function closeZoom() {
@@ -66,7 +75,8 @@
     if (!(target instanceof HTMLImageElement)) {
       return;
     }
-    if (!articleRoot() || !articleRoot().contains(target)) {
+    const article = articleRoot();
+    if (!article || !article.contains(target)) {
       return;
     }
     if (target.closest("#threadwell-zoom")) {
@@ -82,5 +92,6 @@
     }
   });
   document.addEventListener("click", onArticleClick);
-  addWideButton();
+  document.addEventListener("nav", placeButton);
+  placeButton();
 })();

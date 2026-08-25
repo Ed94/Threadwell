@@ -6,6 +6,10 @@ An [Obsidian](https://obsidian.md) vault published with [Quartz 5](https://quart
 
 Live: [threadwell.edsabode.dev](https://threadwell.edsabode.dev)
 
+This has only been around since Aug 22nd, 2026. If you have suggestions on how to render archive artifacts or maybe something better than the current techstack to wrangle the artifacts I'm open ears.
+
+![preview](./preview.png)
+
 ## Post an issue for an inaccuracy
 
 I'll correct it.
