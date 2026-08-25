@@ -36,6 +36,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2024-12-16-also-i-wouldnt-just-modify-an-existing-compiler]]
 - [[archive/threads/NOTimothyLottes/2024-12-16-then-there-are-rough-edges-to-texel-buffer]]
 - [[archive/threads/NOTimothyLottes/2024-12-21-not-sure-if-this-is-the-end-of-this-story-yet-but]]
+- [[archive/threads/NOTimothyLottes/2025-04-16-cs-optimization-brain-dumping]]
 - [[archive/threads/NOTimothyLottes/2025-04-30-3-i-got-side-tracked-by-building-a-language-that]]
 - [[archive/threads/NOTimothyLottes/2025-04-30-i-laugh-when-people-say-c-is-like-assembly-they]]
 - [[archive/threads/NOTimothyLottes/2025-06-29-many-of-my-forth-like-languages-worked-via-nested]]
