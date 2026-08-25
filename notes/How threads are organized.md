@@ -32,15 +32,15 @@ The spine links out under the post that grew the branch. Each branch note links 
 
 ## Cross-author conversations
 
-When a thread alternates between authors (A replies to B replies to A), the archive directory is owned by the OP — the post with no parent in the chain — and the spine walks every post in chronological order regardless of handle. Cross-author posts appear inline in the spine. Responder handles do not get their own directories; the conversation lives in one folder under the OP's name.
+When a thread alternates between authors, the folder belongs to the opening post. The spine walks every post in time order. Replies stay in that folder. The other authors do not get a second copy.
 
 ## Tags
 
-Every imported thread starts with `archive`, `twitter`, and the author's handle. Topic tags (`vulkan`, `crt`, `alsa`, …) are added by hand when the thread is reviewed.
+Every thread starts with `archive`, `twitter`, and the author's handle. Topic tags (`vulkan`, `crt`, `alsa`, …) are added by hand when the thread is reviewed.
 
 ## Images
 
-Pictures on the site are direct HTTPS URLs from the original image host when possible. Working copies of files live outside what GitHub Pages serves. A note that is still being prepared is marked `draft: true` and does not appear on the site.
+Pictures on the site are the original host URLs. Working copies live outside what GitHub Pages serves. A note still being prepared is marked `draft: true` and stays off the site.
 
 ## Reading
 

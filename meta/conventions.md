@@ -25,7 +25,7 @@ draft: true
 | `in_reply_to` | string | Foreign parent of a spine, if any |
 | `parent_post_id` | string | Branch notes only: post this branch replies to |
 
-`draft: true` hides the page from the built site. It does **not** hide the file from a public GitHub repo. Truly private material goes in `private/` (gitignored).
+`draft: true` hides the page from the built site. A public GitHub repo still contains the file. Private material goes in `private/` (gitignored).
 
 # Folders
 
@@ -37,7 +37,7 @@ draft: true
 | `notes/` | yes | Authored writing |
 | `templates/` | no | Templater / core templates |
 | `meta/` | no | Vault rules, local attachments |
-| `assets/` | no, gitignored | Working media before upload |
+| `assets/` | no, gitignored | Working media |
 | `secrets/` | no, gitignored | Cookies and image-host credentials |
 | `scripts/` | no | Tracked tooling. Quartz-ignored |
 | `private/` | no, gitignored | Never publish, never push |
@@ -48,10 +48,10 @@ A thread folder holds `index.md` (spine) and one markdown file per off-spine rep
 
 # Images
 
-Always absolute HTTPS URLs from the original provider when possible (`pbs.twimg.com`, `video.twimg.com`). The vault also retains a local, unpublished copy under `assets/` using the same relative taxonomy as the archive. A separately requested backup may mirror those assets to configured storage; alternative-host uploads are a manual fallback used only after the origin is confirmed unavailable, and the original URL and every fallback URL remain recorded in `media.json`. Do not commit local binaries for published notes. Working files sit in `assets/` (gitignored), not in `meta/attachments/` except unrelated Obsidian drops.
+Use the original host URL (`pbs.twimg.com`, `video.twimg.com`). A local copy stays under `assets/` with the same relative path as the archive. `tw.py backup` may copy that tree to the configured store. `tw.py fallback` uploads one file after the origin is gone. `media.json` keeps every URL. Do not commit local binaries for published notes.
 
 ```md
-![](https://files.catbox.moe/example.png)
+![](https://pbs.twimg.com/media/EXAMPLE?format=png&name=orig)
 ```
 
 # Video

@@ -1,17 +1,16 @@
-"""Front door for common Twitter archive ops.
+"""Front door for Twitter archive work.
 
 From the vault root:
 
   python scripts/twitter/tw.py graph --id 1692565070583136348
   python scripts/twitter/tw.py refresh --id 1692565070583136348 --tip
   python scripts/twitter/tw.py add-branch --id 1692565070583136348 --from <reply-node>
-  python scripts/twitter/tw.py lift --id 1692565070583136348 --orig
   python scripts/twitter/tw.py ocr --id 1692565070583136348
   python scripts/twitter/tw.py locate --id 1692565070583136348
 
-refresh = refetch + emit --force (--tip uses the --id as tip).
-publish = draft: false on the thread index (the only switch).
-Does not commit. Never prints cookies or userhash.
+refresh = refetch + emit --force. --tip treats --id as the tip.
+publish flips draft: false on an old capture. New notes already publish.
+Does not commit. Never prints cookies, userhash, or the backup root.
 """
 from __future__ import annotations
 
@@ -78,7 +77,6 @@ def scratch_dir(post_id: str) -> Path:
 
 def locate(post_id: str) -> tuple[Path | None, Path | None]:
     """Return ``(asset_dir, note_dir)`` for the first media.json whose root or captured posts contain ``post_id``."""
-    assets_root = VAULT / "assets" / "threads"
     assets_root = VAULT / "assets" / "threads"
     notes_root = VAULT / "archive" / "threads"
     if not assets_root.is_dir():
@@ -558,24 +556,11 @@ def cmd_emit(args: argparse.Namespace) -> int:
 
 
 def cmd_lift(args: argparse.Namespace) -> int:
-    """Invoke ``lift_catbox.py`` to swap fallback URLs into the notes for ``args.id`` (with ``--orig`` to restore)."""
-    post_id = args.id
-    orig = args.orig
-    assets, notes = locate(post_id)
-    if assets is None or notes is None:
-        raise SystemExit(f"no vault thread for {post_id} — emit first")
-    cmd = [
-        sys.executable,
-        str(HERE / "lift_catbox.py"),
-        "--thread",
-        str(assets),
-        "--notes",
-        str(notes),
-    ]
-    if orig:
-        cmd.append("--orig")
-    run(cmd)
-    return 0
+    """Retired. Point the operator at ``fallback``."""
+    del args
+    raise SystemExit(
+        "lift is retired; use fallback --confirm-origin-unavailable"
+    )
 
 
 def cmd_ocr(args: argparse.Namespace) -> int:
@@ -731,7 +716,7 @@ def cmd_migrate_media(args: argparse.Namespace) -> int:
     if not args.apply:
         print("dry-run: explicit --apply required to write")
         return 0
-    print("corpus migrate-media --apply not yet implemented; awaiting Task 11")
+    print("corpus-wide migrate-media --apply is not implemented")
     return 0
 
 
@@ -764,7 +749,9 @@ def cmd_backup(args: argparse.Namespace) -> int:
         now=_now_iso(),
         require_destination_root=True,
     )
-    print(result)
+    print(result.state)
+    if result.error:
+        print(result.error)
     return 0 if result.state == "synced" else 2
 
 

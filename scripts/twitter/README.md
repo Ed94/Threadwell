@@ -1,36 +1,43 @@
 # twitter
 
-Front door: `tw.py`. Individual scripts still work.
-
-From the vault root:
+Front door: `tw.py`. Run from the vault root.
 
 ```
-python C:\projects\Threadwell\scripts\twitter\tw.py graph   --id <snowflake>
-python C:\projects\Threadwell\scripts\twitter\tw.py refresh --id <snowflake> --tip
-python C:\projects\Threadwell\scripts\twitter\tw.py refresh --id <spine-tip> --tip --branch <branch-tip>
-python C:\projects\Threadwell\scripts\twitter\tw.py add-branch --id <original-spine-tip> --from <reply-node>
-python C:\projects\Threadwell\scripts\twitter\tw.py emit --id <spine-tip> --tip --preserve-existing
-python C:\projects\Threadwell\scripts\twitter\tw.py audit-media --id <snowflake>
-python C:\projects\Threadwell\scripts\twitter\tw.py publish --id <snowflake>
-python C:\projects\Threadwell\scripts\twitter\tw.py sync    --handle <handle>
-python C:\projects\Threadwell\scripts\twitter\tw.py backup  --id <snowflake>
-python C:\projects\Threadwell\scripts\twitter\tw.py fallback --id <snowflake> --media-id <media-id> --role <role> --confirm-origin-unavailable
-python C:\projects\Threadwell\scripts\twitter\tw.py restore-origin --id <snowflake> --media-id <media-id>
-python C:\projects\Threadwell\scripts\twitter\tw.py migrate-media --id <snowflake>
-python C:\projects\Threadwell\scripts\twitter\tw.py migrate-media --all --apply
-python C:\projects\Threadwell\scripts\twitter\tw.py reslug --all
-python C:\projects\Threadwell\scripts\twitter\tw.py reslug --all --apply
+python scripts/twitter/tw.py graph --id <snowflake>
+python scripts/twitter/tw.py refresh --id <spine-tip> --tip
+python scripts/twitter/tw.py refresh --id <spine-tip> --tip --branch <branch-tip>
+python scripts/twitter/tw.py add-branch --id <original-spine-tip> --from <reply-node>
+python scripts/twitter/tw.py emit --id <spine-tip> --tip --preserve-existing
+python scripts/twitter/tw.py audit-media --id <snowflake>
+python scripts/twitter/tw.py publish --id <snowflake>
+python scripts/twitter/tw.py sync --handle <handle>
+python scripts/twitter/tw.py backup --id <snowflake>
+python scripts/twitter/tw.py fallback --id <snowflake> --media-id <id> --role <role> --confirm-origin-unavailable
+python scripts/twitter/tw.py restore-origin --id <snowflake> --media-id <id>
+python scripts/twitter/tw.py migrate-media --id <snowflake>
+python scripts/twitter/tw.py reslug --all
+python scripts/twitter/tw.py reslug --all --apply
 ```
 
-`paths.py` sets vault = two parents above this file, dumps = `../manual_slop/docs/twitter`, scratch = `../Threadwell-ai/scratch`.
+`paths.py` finds the vault two parents above this file. Dumps live at `../manual_slop/docs/twitter`. Scratch lives at `../Threadwell-ai/scratch`.
 
-`refresh` = refetch (cookies) + ingest + emit `--force` + media_merge. `--tip` treats `--id` as the tip and walks back to the OP regardless of handle. Repeatable `--branch <tip-id>` captures only those additional explicit tip paths and merges them into the same `thread_data.json`; it does not discover replies automatically. Captures run sequentially with gallery-dl retries disabled and five-second extractor/request pacing. Each thread emits exactly one archive directory owned by the OP (the post with `reply_to_id == None`); cross-author responders do not get a directory. New notes default to `draft: false` (publish by default). Does not commit. Frozen ids abort.
+## Capture
 
-`emit --preserve-existing` is the safe completion step after inspecting a fresh scratch capture. Fresh records win for ids the provider returned; posts present only in the existing emitted `thread_data.json` are retained after the command verifies both captures share a conversation root. This prevents an incomplete gallery-dl refresh from deleting archived replies. The merged scratch dataset keeps the requested `--id` as its stored spine tip before normal emission and media-manifest reconciliation.
+`refresh` is refetch + ingest + emit `--force` + media merge. `--tip` treats `--id` as the tip and walks back to the opening post. Repeat `--branch <tip-id>` to capture extra tips into the same `thread_data.json`. It does not invent replies. Captures run one at a time. gallery-dl retries are off. Extractor and request sleeps are five seconds.
 
-`add-branch` incrementally extends an already emitted thread. `--id` must be the original stored spine tip; repeatable `--from <reply-node>` values are each captured once. The command locally retains each node's missing attachment path and entire visible descendant subtree, merges only previously absent posts into the existing `thread_data.json`, downloads media for the new posts, and re-emits with the original spine unchanged. It preserves existing origin/local/fallback/derived/OCR media records and adds provider-origin plus local-copy records for new branch media. A visible leaf is only the deepest reply returned by that capture; the command does not query descendants individually or claim provider-wide completeness. Gallery-dl may return only the ancestor chain when replies are behind nested show-more cursors; then the command adds nothing and known reply/stream-tip ids must be supplied explicitly. Fallback upload remains a separate explicit action after origin unavailability is confirmed.
+Each thread writes one archive folder. The owner is the opening post (`reply_to_id` is empty). Other authors stay in that folder. New notes set `draft: false`. The command does not commit. Frozen ids abort.
 
-New emits publish by default. `tw.py publish --id <snowflake>` is only used to flip a thread that was captured with `draft: true` (rare after this change). The usual review path is:
+For a thread already on disk, stage with `refetch`, compare ids, then:
+
+```
+python scripts/twitter/tw.py emit --id <spine-tip> --tip --preserve-existing
+```
+
+Fresh records win for ids the provider returned. Posts only in the existing `thread_data.json` stay if both captures share a conversation root. That stops an incomplete gallery-dl run from deleting archived replies.
+
+`add-branch` extends an emitted thread. `--id` is the stored spine tip. Each `--from <reply-node>` is captured once. The command keeps that node's missing attachment path and the visible descendant subtree, merges new posts, downloads their media, and re-emits with the spine unchanged. Existing media rows stay. New media get origin and local-copy rows. A visible leaf is only the deepest reply that capture returned.
+
+Usual path:
 
 1. `tw.py graph --id …` — confirm tip vs root.
 2. `tw.py refresh --id … --tip` if the dump stored a tip as root.
@@ -38,42 +45,45 @@ New emits publish by default. `tw.py publish --id <snowflake>` is only used to f
 
 Site wikilinks must be `[[archive/threads/<handle>/<date-slug>]]`. Short `[[slug]]` 404s.
 
-## Media policy
+## Media
 
-Published Twitter/X media cites the original provider's HTTPS URL by default. The vault also retains a local, unpublished copy under `assets/threads/<handle>/<date-slug>/` using the same relative taxonomy as the archive. A separately requested backup may mirror those assets to configured storage. Alternative-host uploads are a manual fallback used only after the origin is confirmed unavailable; the original URL and every fallback URL remain recorded in `media.json`.
+Published images cite the original host URL. A local copy stays under `assets/threads/<handle>/<date-slug>/`. `backup` copies that tree to the configured store. `fallback` uploads one file after the origin is gone. `media.json` keeps the origin URL and every fallback URL.
 
-The `lift` command is retired. Use `fallback` for a single media item after explicit confirmation, or `restore-origin` to select the immutable provider URL again. The Catbox userhash and backup destination id/root are read from `secrets/credentials.toml` by the script. Never paste them into chat.
+`lift` is retired. Use `fallback` for one item, or `restore-origin` to select the original URL again.
 
-Frozen threads (ids listed in `do_not_refetch.txt`, matched against every captured post id) are read-only across refetch, refresh, emit, manifest migration, note rewrite, fallback, publication selection, and tracked backup operations. Read-only `audit-media` may still inspect them.
+Frozen threads (any captured post id listed in `do_not_refetch.txt`) are read-only for refetch, refresh, emit, migration, rewrite, fallback, and backup. `audit-media` may still inspect them.
 
-## Canonical thread directories
+## Thread directories
 
-Each thread archive directory is named from the rendered title that appears in `index.md` (`<YYYY-MM-DD>-<slugified rendered title>`). `tw.py reslug --all` reads each existing `index.md` frontmatter date and title, derives the expected directory, and reports every mapping without writing. `tw.py reslug --all --apply` preflights every pair, refuses the entire apply on any non-frozen conflict, and moves assets first with the archive directory immediately after; if the archive move fails, assets roll back. If a destination is occupied, the apply aborts without `-2`, `-3`, or any other suffix. Frozen ids in `do_not_refetch.txt` are reported as `frozen` and skipped.
+A thread folder is named from the title in `index.md`: `<YYYY-MM-DD>-<slug>`. `reslug --all` reports every mapping. `reslug --all --apply` preflights, refuses the whole apply on any non-frozen conflict, and moves assets first. If the archive move fails, assets roll back. An occupied destination aborts. Frozen ids are reported and skipped.
 
-Future emits use the same rendered title for the directory and `index.md` frontmatter, so normal emit does this automatically — no flag is needed on emit, refresh, or add-branch. Hand-move only the archive or only the asset is not supported; both must move as a pair. Each old archive prefix is replaced exactly once in mutable `*.md` and `*.canvas` outside `.git/`, `site/`, `assets/`, `secrets/`, `node_modules/`, and frozen archive dirs, so mappings do not cascade. No aliases, redirect pages, compatibility folders, suffix fallback, or network contact.
+Later emits use that same title for the folder and the frontmatter. Move both sides together. Each old archive prefix is replaced once in mutable `*.md` and `*.canvas` outside `.git/`, `site/`, `assets/`, `secrets/`, `node_modules/`, and frozen archive dirs.
+
+## Secrets
+
+`secrets/twitter_cookies.txt` and `secrets/credentials.toml` stay on the machine that runs the capture. The scripts read them. They never print them. The Catbox hash goes in an HTTPS form body, not on a process command line. The backup command prints `synced` or `error`, not the destination path.
 
 ## Pieces
 
 | Script | Job |
 |---|---|
-| `tw.py` | locate / graph / refetch / add-branch / emit / refresh / ocr / merge / sync / publish / migrate-media / backup / fallback / restore-origin |
+| `tw.py` | locate / graph / refetch / add-branch / emit / refresh / ocr / merge / sync / publish / migrate-media / backup / fallback / restore-origin / reslug |
 | `graph_dry_run.py` | tip graph, no vault writes |
 | `ingest_gallery.py` | gallery-dl JSON → `thread_data.json` |
-| `emit_archive.py` | JSON → notes + assets. Uses canonical media locations. `--force` preserves derived/fallback rows |
-| `media_migrate.py` | legacy `media.json` → canonical locations, dry-run or apply |
+| `emit_archive.py` | JSON → notes + assets. `--force` keeps derived and fallback rows |
+| `media_migrate.py` | old `media.json` → location records, dry-run or apply |
 | `media_audit.py` | local integrity, reference counts, mirror freshness, optional origin check |
 | `media_manifest.py` | schema, validation, merge, selection, atomic I/O |
 | `media_refs.py` | media-aware markup and note rewrite planning |
-| `backup_assets.py` | sparse, hash-verified copy of one thread asset dir |
-| `catbox_client.py` | one sanitized Catbox upload; no batching or retry |
-| `fallback_media.py` | confirm-origin fallback activation and restore-origin |
+| `backup_assets.py` | hash-verified copy of one thread asset dir |
+| `catbox_client.py` | one Catbox upload |
+| `fallback_media.py` | fallback activation and restore-origin |
 | `frozen.py` | resolve frozen ids against every captured post id |
-| `lift_catbox.py` | retired entry; points operators to `tw.py fallback` |
+| `lift_catbox.py` | retired. Use `tw.py fallback` |
 | `ocr_pass.py` | Umi HTTP `:1224` / tesseract / Windows OCR |
-| `media_embed.py` | `--attach-ocr` only; refuses `--show crt` |
-| `media_merge.py` | restore derived rows under canonical API |
-| `crt_pass.py` | stock slang only; ShaderGlass is the look reference |
+| `media_embed.py` | `--attach-ocr` only |
+| `media_merge.py` | restore derived rows |
+| `crt_pass.py` | stock slang only. ShaderGlass is the look reference |
 | `do_not_refetch.txt` | frozen id list |
-| `tests/` | isolated, deterministic unit tests |
-
-Secrets: `secrets/twitter_cookies.txt`, `secrets/credentials.toml` `[catbox] userhash` and `[backup] id`/`root`. The script reads them; never paste into chat, tests, or commits.
+| `tests/` | isolated unit tests |
+| `unfinished_bloat/` | leftover probe code. Not the front door |

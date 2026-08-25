@@ -1,1 +1,5 @@
-Working media for Threadwell. Mirrors archive/threads/<handle>/<date-slug>/ plus handles/<handle>/. Gitignored except this file. Not published. Notes never link here; published media cites the original provider's HTTPS URL. A separate `tw.py backup --id <id>` command mirrors these assets to configured storage; alternative-host uploads are a manual fallback used only after the origin is confirmed unavailable. Do not link notes at this folder.
+Working media. Same tree as `archive/threads/<handle>/<date-slug>/`, plus `handles/<handle>/` for avatars.
+
+Gitignored except this file. Not on the site. Notes never link here.
+
+Published images use the original host URL. `tw.py backup` copies this tree to the configured store. `tw.py fallback` uploads one file after the origin is gone.

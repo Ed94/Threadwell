@@ -83,7 +83,6 @@ def backup_thread(
 ) -> BackupResult:
     """Mirror ``asset_dir`` into ``destination_root/<relative>`` and verify every payload by sha256."""
     media_path = asset_dir / "media.json"
-    media_path = asset_dir / "media.json"
     raw = json.loads(media_path.read_text(encoding="utf-8"))
     manifest = _from_wire_dict(raw)
     relative = asset_dir.relative_to(assets_root)
@@ -107,7 +106,7 @@ def backup_thread(
     ]
     try:
         if require_destination_root and not destination_root.is_dir():
-            raise OSError(f"destination root unavailable: {destination_root}")
+            raise OSError("destination root unavailable")
         destination.mkdir(parents=True, exist_ok=True)
         for source in sorted(asset_dir.iterdir(), key=lambda path: path.name):
             if source.is_file():
@@ -122,7 +121,11 @@ def backup_thread(
         mirror["completed_at"] = now
         mirror["verified_at"] = now
     except OSError as exc:
-        mirror["error"] = str(exc)[:300]
+        text = str(exc)
+        if str(destination_root) in text or str(destination) in text:
+            mirror["error"] = "backup copy or verification failed"
+        else:
+            mirror["error"] = text[:300]
     raw["mirrors"] = others + [mirror]
     media_path.write_text(
         json.dumps(_manifest_to_wire_for_disk(manifest, raw), indent=2, ensure_ascii=False) + "\n",

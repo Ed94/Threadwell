@@ -2,9 +2,9 @@
 
 Recovered threads and submerged records.
 
-An [Obsidian](https://obsidian.md) vault published with [Quartz 5](https://quartz.jzhao.xyz) to GitHub Pages. The site is a convenient host for Twitter/X threads and other material that is not reliably web-indexed.
+An [Obsidian](https://obsidian.md) vault published with [Quartz 5](https://quartz.jzhao.xyz) to GitHub Pages. The site keeps Twitter/X threads and other material that search does not keep.
 
-Live (after Pages is enabled): [threadwell.edsabode.dev](https://threadwell.edsabode.dev)
+Live: [threadwell.edsabode.dev](https://threadwell.edsabode.dev)
 
 ## Post an issue for an inaccuracy
 
@@ -12,7 +12,7 @@ I'll correct it.
 
 ## Layout
 
-Open **this repo root** as the Obsidian vault. Quartz is only the publisher; it lives in `site/`.
+Open **this repo root** as the Obsidian vault. Quartz lives in `site/` and only publishes.
 
 ```
 archive/              # public — primary sources
@@ -20,7 +20,7 @@ archive/              # public — primary sources
                       # one thread: index.md is the author's chain
   sources/            # talks, pages, other records
 canvases/             # public — .canvas maps
-notes/                # public — authored / distilled writing
+notes/                # public — authored writing
 templates/            # not published
 meta/                 # not published — conventions
 assets/               # not published, gitignored — working media
@@ -33,7 +33,7 @@ site/                 # local Quartz clone (gitignored; own remotes)
 .github/workflows/deploy.yml
 ```
 
-`archive/`, `canvases/`, and `notes/` are public by default. `site/` is a separate git checkout of Quartz (`origin` → `jackyzha0/quartz`). Threadwell's only remote is `Ed94/Threadwell`.
+`archive/`, `canvases/`, and `notes/` publish by default. `site/` is a separate checkout of Quartz (`origin` → `jackyzha0/quartz`). This repo's remote is `Ed94/Threadwell`.
 
 ## Frontmatter
 
@@ -51,19 +51,19 @@ site/                 # local Quartz clone (gitignored; own remotes)
 | `draft` | `true` omits the page from the site |
 | `tags`, `description`, `aliases` | as usual |
 
-`draft: true` only hides a page from the **site**. A public GitHub repo still contains the file. Use `private/` for anything that must not be pushed.
+`draft: true` hides a page from the **site**. A public GitHub repo still contains the file. Use `private/` for anything that must not be pushed.
 
 Templates: `templates/archive-source.md`, `templates/authored-note.md` (Templater placeholders).
 
 ## Images and embeds
 
-Images: absolute HTTPS URLs from the original provider when possible. Notes do not embed local binaries.
+Notes cite the original host URL.
 
 ```md
 ![](https://pbs.twimg.com/media/FhAidkhUoAA3FJz?format=png&name=orig)
 ```
 
-Keep local copies in `assets/` (not committed). Do not point notes at `assets/` or `./media/`.
+Keep local copies in `assets/` (not committed). Notes do not point at `assets/` or `./media/`.
 
 YouTube and tweets (Quartz Obsidian-flavored Markdown):
 
@@ -78,7 +78,7 @@ Odysee (iframe; copy the embed URL from Odysee share):
 <iframe width="560" height="315" src="https://odysee.com/$/embed/SLUG/CLAIM" allowfullscreen></iframe>
 ```
 
-Remote URLs and iframes are left as-is in the static build.
+Remote URLs and iframes stay as written in the static build.
 
 ## Obsidian plugins
 
@@ -121,7 +121,7 @@ Open http://localhost:8080
 ## Add content and republish
 
 1. New thread: create `archive/threads/<handle>/<YYYY-MM-DD-slug>/`. Templater → `archive-source` → save as `index.md` (the author's chain). Off-spine replies get their own notes in that folder. See `notes/How threads are organized.md`.
-2. Transcribe posts in order. Upload images to the image host; paste HTTPS URLs. Optional YouTube/Odysee/tweet embeds.
+2. Transcribe posts in order. Paste the original HTTPS image URL. Optional YouTube/Odysee/tweet embeds.
 3. Distill in `notes/` with `authored-note`. Wikilink the archive record.
 4. Set `draft: false` and `status: published` when the capture has been reviewed.
 5. Preview: `cd site; npx quartz build -d .. --serve`
@@ -138,4 +138,4 @@ Engine license: MIT (Quartz). Vault content: Unlicense (`LICENSE`).
 
 ## Notice
 
-I'm not a web dev. Look away at the scripts this is just done because it doesn't exist, so it was done badly.
+I'm not a web dev. Look away at the scripts. This exists because it didn't, so it was done badly.
