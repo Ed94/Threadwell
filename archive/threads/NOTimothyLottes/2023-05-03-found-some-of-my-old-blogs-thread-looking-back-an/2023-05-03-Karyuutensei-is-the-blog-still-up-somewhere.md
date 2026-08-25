@@ -7,7 +7,7 @@ author: "Nick Tasios"
 handle: Karyuutensei
 post_id: "1653661020026466307"
 date: 2023-05-03
-archived: 2026-08-24
+archived: 2026-08-25
 draft: false
 tags:
   - archive

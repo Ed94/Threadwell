@@ -7,7 +7,7 @@ author: "Armin Jahanpanah"
 handle: arm1n
 post_id: "1654835157789016064"
 date: 2023-05-06
-archived: 2026-08-24
+archived: 2026-08-25
 draft: false
 tags:
   - archive

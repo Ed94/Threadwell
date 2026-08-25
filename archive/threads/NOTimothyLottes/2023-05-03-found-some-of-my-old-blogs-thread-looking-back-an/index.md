@@ -7,7 +7,7 @@ author: "NOTimothyLottes"
 handle: NOTimothyLottes
 post_id: "1653556990302470151"
 date: 2023-05-03
-archived: 2026-08-24
+archived: 2026-08-25
 draft: false
 tags:
   - archive
@@ -44,6 +44,8 @@ Branches: [[archive/threads/NOTimothyLottes/2023-05-03-found-some-of-my-old-blog
 2007 crazy custom language and live editor for x86-64, color forth is like a virus of the mind, no going back once the understanding is there, and the evolutions of those ideas are ground breaking
 
 ![](https://pbs.twimg.com/media/FvKe2FbWcAITJU9?format=jpg&name=orig)
+
+Branches: [[archive/threads/NOTimothyLottes/2023-05-03-found-some-of-my-old-blogs-thread-looking-back-an/2023-05-03-won3d-my-former-thesis-advisor-was-a-big-proponent-of]]
 
 **4/**
 
@@ -133,3 +135,5 @@ Branches: [[archive/threads/NOTimothyLottes/2023-05-03-found-some-of-my-old-blog
 2015 did some custom CPU-side CRT shader tools for high resolution physical paper prints for someone's book. Wasn't trying to be physically accurate, but rather provide the feeling you'd get from a CRT in paper print form
 
 ![](https://pbs.twimg.com/media/FvKplmbXgAISMMM?format=jpg&name=orig)
+
+Branches: [[archive/threads/NOTimothyLottes/2023-05-03-found-some-of-my-old-blogs-thread-looking-back-an/2023-05-04-Laxer3A-this-is-when-i-learned-about-your-work-and-found]]
