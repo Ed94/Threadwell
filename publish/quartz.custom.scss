@@ -1,0 +1,10 @@
+@use "./variables.scss" as *;
+
+.page > #quartz-body {
+  @media all and ($desktop) {
+    grid-template-columns: 420px auto 280px;
+  }
+  @media all and ($tablet) {
+    grid-template-columns: 420px auto;
+  }
+}

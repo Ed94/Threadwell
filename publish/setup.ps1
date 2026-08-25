@@ -7,6 +7,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $site ".git"))) {
 }
 
 Copy-Item -LiteralPath $config -Destination (Join-Path $site "quartz.config.yaml") -Force
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot "quartz.custom.scss") -Destination (Join-Path $site "quartz\styles\custom.scss") -Force
 Set-Location -LiteralPath $site
 npm ci
 npx quartz plugin install --from-config

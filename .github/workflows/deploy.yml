@@ -33,7 +33,9 @@ jobs:
         working-directory: site
         run: python ../publish/quartz-patches/apply.py spa
       - name: Apply publish overlay
-        run: cp publish/quartz.config.yaml site/quartz.config.yaml
+        run: |
+          cp publish/quartz.config.yaml site/quartz.config.yaml
+          cp publish/quartz.custom.scss site/quartz/styles/custom.scss
       - uses: actions/setup-node@v6
         with:
           node-version: 24
