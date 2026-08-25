@@ -86,6 +86,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-07-04-oh-no-maybe-another-wine-bug-error-photo-im-also]]
 - [[archive/threads/NOTimothyLottes/2026-07-06-vulkan-starts-with-the-ping-pong-between-getting]]
 - [[archive/threads/NOTimothyLottes/2026-07-08-next-pre-device-opening-activity-is-choosing]]
+- [[archive/threads/NOTimothyLottes/2026-07-09-so-most-run-linux-from-a-graphical-login-i-still]]
 - [[archive/threads/NOTimothyLottes/2026-07-10-oh-i-probably-have-a-lot-to-learn-here-building]]
 - [[archive/threads/NOTimothyLottes/2026-07-11-rethinking-vulkan-queue-choice]]
 - [[archive/threads/NOTimothyLottes/2026-07-13-another-quality-of-life-change-exit-with-error]]
