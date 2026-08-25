@@ -24,6 +24,16 @@ SCRIPT: Path = Path(__file__).resolve()
 VAULT: Path = SCRIPT.parents[2]
 QUARTZ_REPO: Path = VAULT / "site" / "quartz"
 SPA_FILE: Path = QUARTZ_REPO / "components" / "scripts" / "spa.inline.ts"
+SEARCH_FILE: Path = (
+    VAULT
+    / "site"
+    / "node_modules"
+    / "@quartz-community"
+    / "search"
+    / "dist"
+    / "components"
+    / "index.js"
+)
 PUBLIC: Path = VAULT / "site" / "public"
 OVERLAY: Path = VAULT / "publish" / "quartz.config.yaml"
 
@@ -128,6 +138,30 @@ def patch_spa() -> bool:
     return True
 
 
+SEARCH_CONTENT_FORWARD: str = '{field:"content",tokenize:"forward"}'
+SEARCH_CONTENT_FULL: str = '{field:"content",tokenize:"full"}'
+
+
+def patch_search() -> bool:
+    """Index note bodies with FlexSearch `full` tokenize (substring match)."""
+    if not SEARCH_FILE.exists():
+        print(f"missing {SEARCH_FILE}")
+        return False
+    text = SEARCH_FILE.read_text(encoding="utf-8")
+    if SEARCH_CONTENT_FULL in text:
+        print("search already patched")
+        return True
+    if SEARCH_CONTENT_FORWARD not in text:
+        print("search content tokenize missing")
+        return False
+    SEARCH_FILE.write_text(
+        text.replace(SEARCH_CONTENT_FORWARD, SEARCH_CONTENT_FULL, 1),
+        encoding="utf-8",
+    )
+    print("search patched")
+    return True
+
+
 # --- post-build HTML rewrites ----------------------------------------------
 
 
@@ -197,6 +231,11 @@ def main() -> int:
     if mode in ("spa", "all"):
         ok = patch_spa()
         if not ok and mode == "spa":
+            return 1
+
+    if mode in ("search", "all"):
+        ok = patch_search()
+        if not ok and mode == "search":
             return 1
 
     if mode in ("built", "all"):

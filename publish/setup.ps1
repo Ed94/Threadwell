@@ -12,3 +12,4 @@ Set-Location -LiteralPath $site
 npm ci
 npx quartz plugin install --from-config
 npm install @quartz-themes/everforest-spruce
+python (Join-Path $PSScriptRoot "quartz-patches\apply.py") search

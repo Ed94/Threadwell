@@ -60,6 +60,9 @@ jobs:
       - name: Install theme package
         working-directory: site
         run: npm install @quartz-themes/everforest-spruce
+      - name: Patch search fuzz
+        working-directory: site
+        run: python ../publish/quartz-patches/apply.py search
       - name: Build Quartz
         working-directory: site
         run: npx quartz build -d ..
