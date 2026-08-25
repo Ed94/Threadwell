@@ -7,7 +7,7 @@ author: "NOTimothyLottes"
 handle: NOTimothyLottes
 post_id: "1687062786273062912"
 date: 2023-08-03
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive
@@ -39,7 +39,7 @@ Clearing page cache to simulate a cold launch: Takes 1.5 sec to read 256 MiB fro
 
 Forgot the timing capture ... Load from SSD.
 
-`1687066126268674048_F2mpszoXMAE00Hy_orig.jpg`
+![](https://pbs.twimg.com/media/F2mpszoXMAE00Hy?format=jpg&name=orig)
 
 **4/**
 

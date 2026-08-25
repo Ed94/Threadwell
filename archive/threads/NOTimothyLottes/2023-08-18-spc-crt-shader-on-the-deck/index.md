@@ -7,7 +7,7 @@ author: "NOTimothyLottes"
 handle: NOTimothyLottes
 post_id: "1692559239116406864"
 date: 2023-08-18
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive
@@ -31,6 +31,7 @@ SPC: CRT shader on the Deck. This time not doing subpix render. Yet RGB vs BGR o
 
 ![](https://pbs.twimg.com/media/F30tppDWwAAA-8J?format=jpg&name=orig)
 ![](https://pbs.twimg.com/media/F30tqE8XYAAgrFv?format=jpg&name=orig)
+
 **2/**
 
 Comparing all methods (grille, bad convergence scan, subpix scan)
@@ -38,9 +39,12 @@ Comparing all methods (grille, bad convergence scan, subpix scan)
 ![](https://pbs.twimg.com/media/F30uJoSWcAA7ICE?format=jpg&name=orig)
 ![](https://pbs.twimg.com/media/F30uKJdXkAA4PV8?format=jpg&name=orig)
 ![](https://pbs.twimg.com/media/F30uKouWQAAvY0q?format=jpg&name=orig)
+
 **3/**
 
 The non-subpix scan has 1-pixel separation of RGB (intentional bad convergence) to help hide scaling. The subpix scan uses 1/3-pixel separation (less visible misaligned convergence). Pixel as in output pixel.
+
+Branches: [[archive/threads/NOTimothyLottes/2023-08-18-spc-crt-shader-on-the-deck/2023-08-18-tomcr2100-i-am-not-quite-sure-what-do-you-mean-by-subpixel]]
 
 **4/**
 
