@@ -7,7 +7,7 @@ author: "Dmitrii Terekhov"
 handle: terekhov_de
 post_id: "1990284522508927371"
 date: 2025-11-17
-archived: 2026-08-23
+archived: 2026-08-25
 draft: true
 tags:
   - archive

@@ -7,7 +7,7 @@ author: "Alec Miller"
 handle: Alecazam123
 post_id: "1990818990059671922"
 date: 2025-11-18
-archived: 2026-08-23
+archived: 2026-08-25
 draft: true
 tags:
   - archive

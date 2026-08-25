@@ -35,6 +35,8 @@ Branches: [[archive/threads/NOTimothyLottes/2025-08-01-at-least-for-my-next-at-h
 
 It won't require RT, but it also won't run on Intel iGPUs [to low binding limits, etc]. Memory model will be 'CART' style where you get the a RAM CART [buffer] in memory which gets state snapshot, followed by dynamic GPU memory which is not snapshotted
 
+Branches: [[archive/threads/NOTimothyLottes/2025-08-01-at-least-for-my-next-at-home-project-i-think-the/2025-08-01-VPCOMPRESSB-elaborate-on-the-cart-style-memory-model-i-assume]]
+
 **3/**
 
 Also run-from GPU-side editing tools for shader source and bind everything tables. And build-the-editors-in-it style. Which load/store to the CART. So it won't be for people who want TBs of giant team gen content, but rather sized for what a single person could pull off
