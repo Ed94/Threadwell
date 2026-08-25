@@ -14,7 +14,8 @@ tags:
   - twitter
   - NOTimothyLottes
 description: "@onatt0 @EskilSteenberg @olson_dan So far the plan is to have the data read/write from the GPU, but still use the CPU to do the SPIR-V generation from said data."
-in_reply_to: "1951591243328135279"
+in_reply_to: ""
+parent_post_id: "1951591243328135279"
 ---
 
 ## Source
@@ -23,8 +24,12 @@ in_reply_to: "1951591243328135279"
 - Author: NOTimothyLottes (@NOTimothyLottes)
 - Posted: 2025-08-02 13:36:07
 
-## Thread
+## Branch
 
 **1/**
 
 @onatt0 @EskilSteenberg @olson_dan So far the plan is to have the data read/write from the GPU, but still use the CPU to do the SPIR-V generation from said data.
+
+## Related
+
+- Spine: [[archive/threads/NOTimothyLottes/2025-07-31-been-on-the-fence-on-writing-shader-interfaces-in]]
