@@ -4,6 +4,7 @@ From the vault root:
 
   python scripts/twitter/tw.py graph --id 1692565070583136348
   python scripts/twitter/tw.py refresh --id 1692565070583136348 --tip
+  python scripts/twitter/tw.py add-branch --id 1692565070583136348 --from <reply-node>
   python scripts/twitter/tw.py lift --id 1692565070583136348 --orig
   python scripts/twitter/tw.py ocr --id 1692565070583136348
   python scripts/twitter/tw.py locate --id 1692565070583136348
@@ -16,9 +17,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import subprocess
 import sys
 from collections.abc import Callable
+from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -27,7 +30,7 @@ if str(_HERE) not in sys.path:
     sys.path.insert(0, str(_HERE))
 
 from paths import COOKIES, DUMPS, FROZEN, HERE, SCRATCH, VAULT
-from models import load_thread
+from models import PostData, ThreadData, load_thread
 
 try:
     from frozen import frozen_match, load_frozen_ids, require_writable
@@ -227,6 +230,132 @@ def _validate_capture_ids(path: Path, capture_ids: tuple[str, ...]) -> None:
         raise SystemExit(f"requested tips missing from capture: {', '.join(missing)}")
 
 
+def _select_branch_capture(
+    existing: ThreadData,
+    captured: ThreadData,
+    from_id: str,
+) -> tuple[tuple[PostData, ...], tuple[str, ...]]:
+    """Select one reply node's attachment path and visible subtree."""
+    captured_by = {post.post_id: post for post in captured.posts}
+    if from_id not in captured_by:
+        raise SystemExit(f"reply node {from_id} missing from capture")
+
+    children: dict[str, list[str]] = {
+        post.post_id: [] for post in captured.posts
+    }
+    for post in captured.posts:
+        if post.reply_to_id in captured_by:
+            children[post.reply_to_id].append(post.post_id)
+
+    subtree_ids: set[str] = set()
+    stack = [from_id]
+    while stack:
+        post_id = stack.pop()
+        if post_id in subtree_ids:
+            continue
+        subtree_ids.add(post_id)
+        stack.extend(reversed(children.get(post_id, [])))
+
+    leaves = tuple(
+        post.post_id
+        for post in captured.posts
+        if post.post_id in subtree_ids
+        and not any(
+            child_id in subtree_ids
+            for child_id in children.get(post.post_id, [])
+        )
+    )
+
+    existing_ids = {post.post_id for post in existing.posts}
+    attachment_ids: set[str] = set()
+    attachment_seen: set[str] = set()
+    current = from_id
+    while current not in existing_ids:
+        if current in attachment_seen:
+            raise SystemExit(
+                f"reply node {from_id} does not attach to existing thread"
+            )
+        attachment_seen.add(current)
+        post = captured_by.get(current)
+        if post is None:
+            raise SystemExit(
+                f"reply node {from_id} does not attach to existing thread"
+            )
+        attachment_ids.add(current)
+        if post.reply_to_id is None:
+            raise SystemExit(
+                f"reply node {from_id} does not attach to existing thread"
+            )
+        current = post.reply_to_id
+
+    selected_ids = subtree_ids | attachment_ids
+    selected = tuple(
+        post for post in captured.posts if post.post_id in selected_ids
+    )
+    return selected, leaves
+
+
+def _merge_branch_posts(
+    existing: ThreadData,
+    groups: list[tuple[PostData, ...]],
+) -> tuple[ThreadData, tuple[str, ...]]:
+    """Append previously absent selected posts without replacing old data."""
+    posts = list(existing.posts)
+    seen = {post.post_id for post in posts}
+    added: list[str] = []
+    for group in groups:
+        for post in group:
+            if post.post_id in seen:
+                continue
+            seen.add(post.post_id)
+            posts.append(post)
+            added.append(post.post_id)
+    return (
+        ThreadData(
+            root_post_id=existing.root_post_id,
+            posts=tuple(posts),
+            source_url=existing.source_url,
+        ),
+        tuple(added),
+    )
+
+
+def _copy_selected_media(
+    source: Path,
+    destination: Path,
+    post_ids: set[str],
+) -> tuple[Path, ...]:
+    """Copy media whose filename begins with a selected post id."""
+    source_media = source / "media"
+    destination_media = destination / "media"
+    if not source_media.is_dir() or not post_ids:
+        return ()
+    if source_media.resolve() == destination_media.resolve():
+        return ()
+    prefixes = tuple(f"{post_id}_" for post_id in sorted(post_ids))
+    destination_media.mkdir(parents=True, exist_ok=True)
+    copied: list[Path] = []
+    for path in sorted(source_media.iterdir()):
+        if not path.is_file() or not path.name.startswith(prefixes):
+            continue
+        output = destination_media / path.name
+        shutil.copy2(path, output)
+        copied.append(output)
+    return tuple(copied)
+
+
+def _write_thread(path: Path, thread: ThreadData) -> None:
+    """Atomically write one typed thread to scratch JSON."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    partial = path.with_suffix(path.suffix + ".part")
+    partial.write_text(
+        json.dumps(asdict(thread), indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+    partial.replace(path)
+
+
 def cmd_refetch(args: argparse.Namespace) -> int:
     """Capture one spine tip plus explicit branch tips into one dump."""
     post_id = args.id
@@ -275,6 +404,57 @@ def cmd_refetch(args: argparse.Namespace) -> int:
         run([*_gallery_base_args(), "-D", str(media), url])
 
     print(f"refetch -> {out}")
+    return 0
+
+
+def cmd_add_branch(args: argparse.Namespace) -> int:
+    """Merge visible reply subtrees into an existing emitted thread."""
+    post_id = args.id
+    check_frozen(post_id)
+    assets, notes = locate(post_id)
+    if assets is None or notes is None:
+        raise SystemExit(f"no emitted thread for {post_id} — refresh first")
+    existing_path = assets / "thread_data.json"
+    if not existing_path.is_file():
+        raise SystemExit(f"missing {existing_path}")
+    existing = load_thread(existing_path)
+    if existing.root_post_id != post_id:
+        raise SystemExit(
+            f"{post_id} is not the stored spine tip {existing.root_post_id}"
+        )
+    if post_id not in {post.post_id for post in existing.posts}:
+        raise SystemExit(f"spine tip {post_id} not present in existing thread")
+
+    from_ids = tuple(dict.fromkeys(args.from_ids))
+    selected_groups: list[tuple[PostData, ...]] = []
+    capture_sources: list[tuple[Path, tuple[PostData, ...]]] = []
+    leaf_groups: list[tuple[str, tuple[str, ...]]] = []
+    for from_id in from_ids:
+        cmd_refetch(argparse.Namespace(id=from_id, branch=[]))
+        capture_dir = scratch_dir(from_id)
+        captured = load_thread(capture_dir / "thread_data.json")
+        selected, leaves = _select_branch_capture(existing, captured, from_id)
+        selected_groups.append(selected)
+        capture_sources.append((capture_dir, selected))
+        leaf_groups.append((from_id, leaves))
+
+    merged, added_ids = _merge_branch_posts(existing, selected_groups)
+    added_set = set(added_ids)
+    output_dir = scratch_dir(post_id)
+    for capture_dir, selected in capture_sources:
+        selected_added = {
+            post.post_id for post in selected if post.post_id in added_set
+        }
+        _copy_selected_media(capture_dir, output_dir, selected_added)
+    _write_thread(output_dir / "thread_data.json", merged)
+    cmd_emit(argparse.Namespace(id=post_id, tip=True, slug=None))
+
+    added_text = ",".join(added_ids) if added_ids else "-"
+    leaf_text = ";".join(
+        f"{from_id}:{','.join(leaves) if leaves else '-'}"
+        for from_id, leaves in leaf_groups
+    )
+    print(f"add-branch added={added_text} visible_leaves={leaf_text}")
     return 0
 
 
@@ -667,6 +847,20 @@ def build_parser() -> argparse.ArgumentParser:
     restore.add_argument("--id", required=True)
     restore.add_argument("--media-id", required=True)
 
+    add_branch = sub.add_parser(
+        "add-branch",
+        help="merge visible reply subtrees into an existing emitted thread",
+    )
+    add_branch.add_argument("--id", required=True)
+    add_branch.add_argument(
+        "--from",
+        dest="from_ids",
+        action="append",
+        required=True,
+        metavar="REPLY_ID",
+        help="capture this reply node's visible subtree; repeatable",
+    )
+
     return parser
 
 
@@ -674,6 +868,7 @@ _COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "locate": cmd_locate,
     "graph": cmd_graph,
     "refetch": cmd_refetch,
+    "add-branch": cmd_add_branch,
     "emit": cmd_emit,
     "lift": cmd_lift,
     "ocr": cmd_ocr,
