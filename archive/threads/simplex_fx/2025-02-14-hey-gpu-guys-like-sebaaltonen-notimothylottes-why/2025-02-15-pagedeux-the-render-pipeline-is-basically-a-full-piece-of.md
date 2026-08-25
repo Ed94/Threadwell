@@ -8,7 +8,7 @@ handle: pagedeux
 post_id: "1890719137904709668"
 date: 2025-02-15
 archived: 2026-08-25
-draft: true
+draft: false
 tags:
   - archive
   - twitter

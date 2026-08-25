@@ -8,7 +8,7 @@ handle: RyDawgE256
 post_id: "1890554187336872420"
 date: 2025-02-15
 archived: 2026-08-25
-draft: true
+draft: false
 tags:
   - archive
   - twitter
