@@ -7,8 +7,8 @@ author: "Jebrim"
 handle: AgileJebrim
 post_id: "1868717227866046808"
 date: 2024-12-16
-archived: 2026-08-23
-draft: true
+archived: 2026-08-25
+draft: false
 tags:
   - archive
   - twitter
@@ -32,4 +32,4 @@ parent_post_id: "1868716773937414589"
 
 ## Related
 
-- Spine: [[archive/threads/NOTimothyLottes/2024-12-16-also-i-wouldnt-just-modify-an-existing-compiler]]
+- Spine: [[archive/threads/NOTimothyLottes/2024-12-16-so-i-dont-know-that-spir-v-vs-optypeint-24]]
