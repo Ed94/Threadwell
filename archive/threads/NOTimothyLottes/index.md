@@ -14,6 +14,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2022-11-08-example-of-bind-everything-once-layout-aliasing]]
 - [[archive/threads/NOTimothyLottes/2022-11-09-if-only-pc-vendors-with-open-isas-amd-intel-would]]
 - [[archive/threads/NOTimothyLottes/2022-11-13-my-prefered-method-of-managing-application-data]]
+- [[archive/threads/NOTimothyLottes/2023-04-28-https-gpuopen-com-learn-rgp-1-15-enhanced-isa]]
 - [[archive/threads/NOTimothyLottes/2023-05-03-found-some-of-my-old-blogs-thread-looking-back-an]]
 - [[archive/threads/NOTimothyLottes/2023-06-30-nothing-oriented-programming-nop-where-the-goal]]
 - [[archive/threads/NOTimothyLottes/2023-08-03-spc-using-8-deep-swap-all-aliasing-same-bo-image]]
