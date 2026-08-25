@@ -25,5 +25,6 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/kenpex]]
 - [[archive/threads/mmalex]]
 - [[archive/threads/rianflo]]
+- [[archive/threads/simplex_fx]]
 - [[archive/threads/valigo]]
 - [[archive/threads/winning_tactic]]

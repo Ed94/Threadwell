@@ -39,6 +39,8 @@ At some point the standard Octahedron mapping leaves a lot to be desired due to 
 
 ![](https://pbs.twimg.com/media/GgdpMDiXMAEEL8y?format=png&name=orig)
 
+Branches: [[archive/threads/NOTimothyLottes/2025-01-04-for-the-love-of-octahedrons-https-fileadmin-cs/2025-01-06-JBrooksBSI-some-optimization-ideas-1-for-rdna2-simd-insn]]
+
 **3/**
 
 AMD's latest driver actually does mostly a good job compiling that (32 op clocks compiled, just 1 more instruction somewhere). I'm surprised actually it's now picking up 'cos(x*2pi)' and pattern matching that to just V_COS_F32!
