@@ -126,7 +126,7 @@ plugins:
   - source: "@quartz-themes/core"
     enabled: true
     options:
-      theme: shimmering-focus
+      theme: everforest-spruce
       mode: both
   - source: "@quartz-community/remove-draft"
     enabled: true

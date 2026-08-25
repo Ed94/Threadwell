@@ -10,4 +10,4 @@ Copy-Item -LiteralPath $config -Destination (Join-Path $site "quartz.config.yaml
 Set-Location -LiteralPath $site
 npm ci
 npx quartz plugin install --from-config
-npm install @quartz-themes/shimmering-focus
+npm install @quartz-themes/everforest-spruce

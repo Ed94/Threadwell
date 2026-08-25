@@ -57,7 +57,7 @@ jobs:
         run: npx quartz plugin install --from-config
       - name: Install theme package
         working-directory: site
-        run: npm install @quartz-themes/shimmering-focus
+        run: npm install @quartz-themes/everforest-spruce
       - name: Build Quartz
         working-directory: site
         run: npx quartz build -d ..
