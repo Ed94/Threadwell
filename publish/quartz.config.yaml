@@ -124,9 +124,9 @@ plugins:
   - source: "@quartz-community/quartz-fonts"
     enabled: true
   - source: "@quartz-themes/core"
-    enabled: false
+    enabled: true
     options:
-      theme: default
+      theme: shimmering-focus
       mode: both
   - source: "@quartz-community/remove-draft"
     enabled: true
