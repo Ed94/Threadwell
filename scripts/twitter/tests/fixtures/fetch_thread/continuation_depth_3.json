@@ -1,0 +1,66 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddEntries",
+          "entries": [
+            {
+              "entryId": "depth-3-tweet",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "itemContent": {
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1700000000000000003",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "id_str": "8100000003",
+                            "core": {
+                              "name": "fixture-depth-3-author",
+                              "screen_name": "fixture-depth-3-handle"
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "id_str": "1700000000000000003",
+                        "conversation_id_str": "1650678968255913985",
+                        "created_at": "Mon Apr 26 12:03:00 +0000 2026",
+                        "full_text": "fixture-depth-3-text",
+                        "in_reply_to_status_id_str": "1700000000000000002",
+                        "quoted_status_id_str": null,
+                        "reply_count": 0,
+                        "retweet_count": 0,
+                        "favorite_count": 0
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "depth-3-cursor-echo-current",
+              "content": {
+                "entryType": "TimelineTimelineCursor",
+                "cursorType": "Bottom",
+                "value": "fixture-depth-3"
+              }
+            },
+            {
+              "entryId": "depth-3-cursor-forward",
+              "content": {
+                "entryType": "TimelineTimelineCursor",
+                "cursorType": "ShowMoreThreads",
+                "value": "fixture-depth-4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

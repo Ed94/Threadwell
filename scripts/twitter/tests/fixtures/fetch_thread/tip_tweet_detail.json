@@ -1,0 +1,277 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddEntries",
+          "entries": [
+            {
+              "entryId": "tweet-root",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "itemContent": {
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1650678968255913985",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "id_str": "111111111",
+                            "core": {
+                              "name": "fixture-author-root",
+                              "screen_name": "fixture-handle-root"
+                            },
+                            "legacy": {
+                              "name": "fixture-author-root-legacy-should-be-ignored",
+                              "screen_name": "fixture-handle-root-legacy-should-be-ignored"
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "id_str": "1650678968255913985",
+                        "conversation_id_str": "1650678968255913985",
+                        "created_at": "Mon Apr 26 12:00:00 +0000 2026",
+                        "full_text": "fixture-text-root-legacy",
+                        "in_reply_to_status_id_str": null,
+                        "in_reply_to_user_id_str": null,
+                        "quoted_status_id_str": null,
+                        "reply_count": 1,
+                        "retweet_count": 2,
+                        "favorite_count": 3
+                      },
+                      "views": {"count": 100}
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "conversationthread-1",
+              "content": {
+                "entryType": "TimelineTimelineModule",
+                "items": [
+                  {
+                    "entryId": "mod-tweet-wadetb",
+                    "itemType": "TimelineTimelineItem",
+                    "item": {
+                      "itemContent": {
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1651056827839180800",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id_str": "222222222",
+                                  "core": {
+                                    "name": "fixture-author-wadetb",
+                                    "screen_name": "fixture-handle-wadetb"
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "id_str": "1651056827839180800",
+                              "conversation_id_str": "1650678968255913985",
+                              "created_at": "Mon Apr 26 12:01:00 +0000 2026",
+                              "full_text": "fixture-text-wadetb-full",
+                              "in_reply_to_status_id_str": "1650678968255913985",
+                              "in_reply_to_user_id_str": "111111111",
+                              "quoted_status_id_str": null,
+                              "reply_count": 0,
+                              "retweet_count": 0,
+                              "favorite_count": 0,
+                              "extended_entities": {
+                                "media": [
+                                  {
+                                    "media_url_https": "https://pbs.twimg.com/media/fixture-photo-wadetb.jpg",
+                                    "type": "photo"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "mod-tweet-kenpex",
+                    "itemType": "TimelineTimelineItem",
+                    "item": {
+                      "itemContent": {
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1651253961524142081",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id_str": "333333333",
+                                  "core": {
+                                    "name": "fixture-author-kenpex",
+                                    "screen_name": "fixture-handle-kenpex"
+                                  }
+                                }
+                              }
+                            },
+                            "note_tweet": {
+                              "note_tweet_results": {
+                                "result": {
+                                  "text": "fixture-note-tweet-text-kenpex-override"
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "id_str": "1651253961524142081",
+                              "conversation_id_str": "1650678968255913985",
+                              "created_at": "Mon Apr 26 12:02:00 +0000 2026",
+                              "full_text": "fixture-text-kenpex-legacy-should-be-ignored",
+                              "in_reply_to_status_id_str": "1651056827839180800",
+                              "in_reply_to_user_id_str": "222222222",
+                              "quoted_status_id_str": null,
+                              "reply_count": 0,
+                              "retweet_count": 0,
+                              "favorite_count": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "mod-tweet-lottes",
+                    "itemType": "TimelineTimelineItem",
+                    "item": {
+                      "itemContent": {
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "TweetWithVisibilityResults",
+                            "tweet": {
+                              "__typename": "Tweet",
+                              "rest_id": "1651268028795961344",
+                              "core": {
+                                "user_results": {
+                                  "result": {
+                                    "__typename": "User",
+                                    "id_str": "444444444",
+                                    "core": {
+                                      "name": "fixture-author-lottes",
+                                      "screen_name": "fixture-handle-lottes"
+                                    }
+                                  }
+                                }
+                              },
+                              "legacy": {
+                                "id_str": "1651268028795961344",
+                                "conversation_id_str": "1650678968255913985",
+                                "created_at": "Mon Apr 26 12:03:00 +0000 2026",
+                                "full_text": "fixture-text-lottes",
+                                "in_reply_to_status_id_str": "1651253961524142081",
+                                "in_reply_to_user_id_str": "333333333",
+                                "quoted_status_id_str": null,
+                                "reply_count": 0,
+                                "retweet_count": 0,
+                                "favorite_count": 0,
+                                "extended_entities": {
+                                  "media": [
+                                    {
+                                      "media_url_https": "https://pbs.twimg.com/media/fixture-photo-lottes-poster.jpg",
+                                      "type": "video",
+                                      "video_info": {
+                                        "variants": [
+                                          {
+                                            "content_type": "video/mp4",
+                                            "url": "https://video.twimg.com/fixture-video-low.mp4",
+                                            "bitrate": 320000
+                                          },
+                                          {
+                                            "content_type": "video/mp4",
+                                            "url": "https://video.twimg.com/fixture-video-med.mp4",
+                                            "bitrate": 832000
+                                          },
+                                          {
+                                            "content_type": "video/mp4",
+                                            "url": "https://video.twimg.com/fixture-video-high.mp4",
+                                            "bitrate": 1280000
+                                          },
+                                          {
+                                            "content_type": "application/x-mpegURL",
+                                            "url": "https://video.twimg.com/fixture-video.m3u8",
+                                            "bitrate": 0
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "mod-tweet-tip",
+                    "itemType": "TimelineTweet",
+                    "item": {
+                      "itemContent": {
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1651282559287042048",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "id_str": "555555555",
+                                  "core": {
+                                    "name": "fixture-author-tip",
+                                    "screen_name": "fixture-handle-tip"
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "id_str": "1651282559287042048",
+                              "conversation_id_str": "1650678968255913985",
+                              "created_at": "Mon Apr 26 12:04:00 +0000 2026",
+                              "full_text": "fixture-text-tip",
+                              "in_reply_to_status_id_str": "1651268028795961344",
+                              "in_reply_to_user_id_str": "444444444",
+                              "quoted_status_id_str": null,
+                              "reply_count": 0,
+                              "retweet_count": 0,
+                              "favorite_count": 0
+                            },
+                            "views": {"count": "1234"}
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "mod-cursor-top",
+                    "itemType": "TimelineTimelineCursor",
+                    "item": {
+                      "itemContent": {
+                        "cursorType": "Top",
+                        "value": "fixture-top-cursor-token-should-be-ignored"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

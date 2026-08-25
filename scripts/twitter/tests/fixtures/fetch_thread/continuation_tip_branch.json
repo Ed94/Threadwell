@@ -1,0 +1,89 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddEntries",
+          "entries": [
+            {
+              "entryId": "continuation-tweet-lottes",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "itemContent": {
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1651268028795961344",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "id_str": "444444444",
+                            "core": {
+                              "name": "fixture-author-lottes-continuation",
+                              "screen_name": "fixture-handle-lottes-continuation"
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "id_str": "1651268028795961344",
+                        "conversation_id_str": "1650678968255913985",
+                        "created_at": "Mon Apr 26 12:03:00 +0000 2026",
+                        "full_text": "fixture-text-lottes-continuation",
+                        "in_reply_to_status_id_str": "1651253961524142081",
+                        "in_reply_to_user_id_str": "333333333",
+                        "quoted_status_id_str": null,
+                        "reply_count": 0,
+                        "retweet_count": 0,
+                        "favorite_count": 0
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "continuation-tweet-tip",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "itemContent": {
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1651282559287042048",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "id_str": "555555555",
+                            "core": {
+                              "name": "fixture-author-tip-continuation",
+                              "screen_name": "fixture-handle-tip-continuation"
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "id_str": "1651282559287042048",
+                        "conversation_id_str": "1650678968255913985",
+                        "created_at": "Mon Apr 26 12:04:00 +0000 2026",
+                        "full_text": "fixture-text-tip-continuation",
+                        "in_reply_to_status_id_str": "1651268028795961344",
+                        "in_reply_to_user_id_str": "444444444",
+                        "quoted_status_id_str": null,
+                        "reply_count": 0,
+                        "retweet_count": 0,
+                        "favorite_count": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

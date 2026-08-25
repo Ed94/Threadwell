@@ -1,0 +1,58 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddEntries",
+          "entries": [
+            {
+              "entryId": "depth-2-tweet",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "itemContent": {
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1700000000000000002",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "id_str": "8100000002",
+                            "core": {
+                              "name": "fixture-depth-2-author",
+                              "screen_name": "fixture-depth-2-handle"
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "id_str": "1700000000000000002",
+                        "conversation_id_str": "1650678968255913985",
+                        "created_at": "Mon Apr 26 12:02:00 +0000 2026",
+                        "full_text": "fixture-depth-2-text",
+                        "in_reply_to_status_id_str": "1700000000000000001",
+                        "quoted_status_id_str": null,
+                        "reply_count": 0,
+                        "retweet_count": 0,
+                        "favorite_count": 0
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "depth-2-cursor-forward",
+              "content": {
+                "entryType": "TimelineTimelineCursor",
+                "cursorType": "Bottom",
+                "value": "fixture-depth-3"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
