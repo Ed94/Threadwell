@@ -55,7 +55,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-01-14-can-do-that-but-at-least-these-kinds-of-systems]]
 - [[archive/threads/NOTimothyLottes/2026-03-08-ill-add-one-conspiracy-theory-for-everyone]]
 - [[archive/threads/NOTimothyLottes/2026-05-23-most-crap-o-grammers-today-in-the-user-space-c]]
-- [[archive/threads/NOTimothyLottes/2026-05-29-https-trickybitsblog-github-io-2024-02-25]]
+- [[archive/threads/NOTimothyLottes/2026-05-29-took-perhaps-a-5-month-vacation-from-at-home]]
 - [[archive/threads/NOTimothyLottes/2026-05-30-renovating-cpu-clock-code-im-assuming-x86-64-tsc]]
 - [[archive/threads/NOTimothyLottes/2026-05-31-hits-the-easy-to-debug-cpu-or-gpu-stuff-in-the]]
 - [[archive/threads/NOTimothyLottes/2026-05-31-no-debugger-debug-console-printf-style-prior]]
