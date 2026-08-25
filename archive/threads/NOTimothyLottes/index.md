@@ -93,7 +93,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-07-14-another-round-of-getting-optimized-error-checking]]
 - [[archive/threads/NOTimothyLottes/2026-07-15-one-advantage-of-sar-aka-signed-is-that-the-shift]]
 - [[archive/threads/NOTimothyLottes/2026-07-17-oh-f-it-the-urge-to-drop-the-c-baggage-was-too]]
-- [[archive/threads/NOTimothyLottes/2026-07-18-i-realized-at-some-point-i-can-have-most]]
+- [[archive/threads/NOTimothyLottes/2026-07-18-all-0-6-argument-syscall-options-in-32-bytes]]
 - [[archive/threads/NOTimothyLottes/2026-07-19-the-aim-of-course-keep-the-stuff-that-doesnt-need]]
 - [[archive/threads/NOTimothyLottes/2026-07-22-working-through-rough-draft-of-assembly-for-a]]
 - [[archive/threads/NOTimothyLottes/2026-08-02-re-fpga-land-alus-im-firmly-distracted-by-an]]

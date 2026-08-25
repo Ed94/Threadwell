@@ -7,7 +7,7 @@ author: "Boris Chuprin"
 handle: noop_dev
 post_id: "2078359568636080568"
 date: 2026-07-18
-archived: 2026-08-23
+archived: 2026-08-25
 draft: true
 tags:
   - archive
@@ -32,4 +32,4 @@ parent_post_id: "2078349730204078527"
 
 ## Related
 
-- Spine: [[archive/threads/NOTimothyLottes/2026-07-18-i-realized-at-some-point-i-can-have-most]]
+- Spine: [[archive/threads/NOTimothyLottes/2026-07-18-all-0-6-argument-syscall-options-in-32-bytes]]
