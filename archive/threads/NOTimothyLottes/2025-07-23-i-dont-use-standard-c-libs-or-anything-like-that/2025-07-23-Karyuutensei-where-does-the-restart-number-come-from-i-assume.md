@@ -8,7 +8,7 @@ handle: Karyuutensei
 post_id: "1948052805647782109"
 date: 2025-07-23
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter
