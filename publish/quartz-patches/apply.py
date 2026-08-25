@@ -1,4 +1,4 @@
-"""Single source of truth for the Threadwell site base.
+"""Keep in-site links under the /Threadwell/ path.
 
 Two stages:
 
@@ -6,13 +6,11 @@ Two stages:
    relative URLs in the SPA click handler resolve from a directory base.
 
 2. After `npx quartz build`, rewrite every built HTML file:
-   - add `<base href="<abs>">` so relative URL resolution works even when
-     the URL bar lacks a trailing slash
-   - rewrite the sidebar `<a class="page-title">` href to the absolute site
-     base, not the directory the page is in
+   - set `<base href>` to that page's directory under the site path so
+     Quartz page-relative `../` links do not resolve against the domain root
+   - rewrite the sidebar `<a class="page-title">` href to the site path
 
-The base URL is read from `publish/quartz.config.yaml`'s `baseUrl`. Change
-that line; the next deploy uses the new value everywhere.
+`baseUrl` in `publish/quartz.config.yaml` is the single source of truth.
 
 Idempotent. Safe to re-run.
 """
@@ -64,7 +62,9 @@ def read_base_url() -> tuple[str, str]:
 
 ABS_BASE, REL_BASE = read_base_url()
 HEAD_RE: re.Pattern[str] = re.compile(r"(<head[^>]*>)", re.IGNORECASE)
-BASE_TAG = f'<base href="{ABS_BASE}">\n'
+BASE_RE: re.Pattern[str] = re.compile(
+    r"<base\s+href=\"[^\"]*\"\s*/?>\s*", re.IGNORECASE
+)
 TITLE_LINK: re.Pattern[str] = re.compile(
     r'(<h2[^>]*class="page-title"><a\s+href=")[^"]*(">)'
 )
@@ -131,18 +131,38 @@ def patch_spa() -> bool:
 # --- post-build HTML rewrites ----------------------------------------------
 
 
+def page_dir_href(html_path: Path, public: Path, rel_base: str) -> str:
+    """Return the path-absolute directory of a built HTML file.
+
+    `public/archive/threads/h/slug/index.html` with rel_base `/Threadwell/`
+    becomes `/Threadwell/archive/threads/h/slug/`.
+    """
+    rel = html_path.relative_to(public).as_posix()
+    if rel.endswith("/index.html"):
+        dir_rel = rel[: -len("index.html")]
+    elif rel == "index.html":
+        dir_rel = ""
+    else:
+        cut = rel.rfind("/")
+        dir_rel = rel[: cut + 1] if cut >= 0 else ""
+    return f"{rel_base.rstrip('/')}/{dir_rel}"
+
+
 def rewrite_html(path: Path) -> str | None:
     """Return 'base' / 'title' / None for what changed."""
     text = path.read_text(encoding="utf-8", errors="ignore")
     out = text
-    actions = []
+    actions: list[str] = []
+    expected_base = f'<base href="{page_dir_href(path, PUBLIC, REL_BASE)}">'
 
-    m = HEAD_RE.search(out)
-    if m and "quartz-base" not in out:
-        out = out[: m.end()] + "\n" + BASE_TAG + out[m.end():]
-        actions.append("base")
+    if out.count("<base ") != 1 or expected_base not in out:
+        out = BASE_RE.sub("", out)
+        m = HEAD_RE.search(out)
+        if m is not None:
+            out = out[: m.end()] + "\n" + expected_base + "\n" + out[m.end() :].lstrip()
+            actions.append("base")
     if 'class="page-title"' in out:
-        out2 = TITLE_LINK.sub(rf"\g<1>{ABS_BASE}\g<2>", out)
+        out2 = TITLE_LINK.sub(rf"\g<1>{REL_BASE}\g<2>", out)
         if out2 != out:
             out = out2
             actions.append("title")
