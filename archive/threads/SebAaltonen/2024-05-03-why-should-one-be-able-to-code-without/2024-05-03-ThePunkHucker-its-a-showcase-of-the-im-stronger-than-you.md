@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @ThePunkHucker
 
-@SebAaltonen It’s a showcase of the « I’m stronger than you » syndrome so many programmers have. It’s stupid.
+@SebAaltonen
+
+It’s a showcase of the « I’m stronger than you » syndrome so many programmers have. It’s stupid.
 
 ## Related
 

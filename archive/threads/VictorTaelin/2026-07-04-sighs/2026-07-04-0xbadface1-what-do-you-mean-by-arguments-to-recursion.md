@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @0xbadface1
 
-@VictorTaelin What do you mean by arguments to recursion "decreasing"? ... that looks a bit too "specific" - is that just some layman description of something more general and rigorous?
+@VictorTaelin
+
+What do you mean by arguments to recursion "decreasing"? ... that looks a bit too "specific" - is that just some layman description of something more general and rigorous?
 
 ## Related
 

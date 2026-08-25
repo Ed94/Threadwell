@@ -33,14 +33,20 @@ Branches: [[archive/threads/valigo/2025-11-17-when-it-comes-to-pointers-just-use
 
 **2/** @onelivesleft
 
-@valigo Distinct syntax for pointer arithmetic would be good. i.e. 
+@valigo
+
+Distinct syntax for pointer arithmetic would be good. i.e. 
 ptr += 1; // ptr = ptr + 1;
 ptr ++= 1; // ptr = ptr + 1 * size_of(type_of(ptr));
 
 **3/** @valigo
 
-@onelivesleft Not sure I agree with specific sign choice but I kinda dig the concept
+@onelivesleft
+
+Not sure I agree with specific sign choice but I kinda dig the concept
 
 **4/** @onelivesleft
 
-@valigo Well, you know, only applicable for languages that don't have a ++ :P
+@valigo
+
+Well, you know, only applicable for languages that don't have a ++ :P

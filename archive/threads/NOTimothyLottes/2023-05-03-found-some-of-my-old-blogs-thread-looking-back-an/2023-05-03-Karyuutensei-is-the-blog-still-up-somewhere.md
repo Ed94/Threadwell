@@ -28,15 +28,21 @@ parent_post_id: "1653556990302470151"
 
 **1/** @Karyuutensei
 
-@NOTimothyLottes Is the blog still up somewhere?
+@NOTimothyLottes
+
+Is the blog still up somewhere?
 
 **2/** @NOTimothyLottes
 
-@Karyuutensei No but I have archives in pieces on old hard drives. So there is a chance I might restore it some day.
+@Karyuutensei
+
+No but I have archives in pieces on old hard drives. So there is a chance I might restore it some day.
 
 **3/** @Karyuutensei
 
-@NOTimothyLottes Speaking of archives, http://archive.org  has some from the blogspot here https://web.archive.org/web/20160427173127/http://timothylottes.blogspot.com/ but basically nothing from the github page :S
+@NOTimothyLottes
+
+Speaking of archives, http://archive.org  has some from the blogspot here https://web.archive.org/web/20160427173127/http://timothylottes.blogspot.com/ but basically nothing from the github page :S
 
 ## Related
 

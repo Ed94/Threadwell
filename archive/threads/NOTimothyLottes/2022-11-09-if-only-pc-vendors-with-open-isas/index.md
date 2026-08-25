@@ -27,4 +27,6 @@ in_reply_to: "1590003266129383424"
 
 **1/** @NOTimothyLottes
 
-@olson_dan If only PC vendors with open ISAs (AMD/Intel) would allow loading binary compute shaders in VK built using non-driver toolchains. If Valve enabled binary shaders on Steam Deck in Linux, that would be my new exclusive dev platform, instead of just a possible porting target
+@olson_dan
+
+If only PC vendors with open ISAs (AMD/Intel) would allow loading binary compute shaders in VK built using non-driver toolchains. If Valve enabled binary shaders on Steam Deck in Linux, that would be my new exclusive dev platform, instead of just a possible porting target

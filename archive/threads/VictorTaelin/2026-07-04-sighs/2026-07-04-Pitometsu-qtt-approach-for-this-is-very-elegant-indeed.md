@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @Pitometsu
 
-@VictorTaelin QTT approach for this is very elegant indeed!
+@VictorTaelin
+
+QTT approach for this is very elegant indeed!
 Elegantly works in relevance setting as well.
 ❤️ for sharing, it's very interesting topic.
 

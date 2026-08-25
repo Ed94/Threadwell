@@ -28,7 +28,9 @@ parent_post_id: "1875583660545732960"
 
 **1/** @JBrooksBSI
 
-@NOTimothyLottes Some optimization ideas:
+@NOTimothyLottes
+
+Some optimization ideas:
 
 1) For RDNA2 simd, insn-dependency stalls make it unlikely to achieve 100% VALU utilization. Try unrolling 2x or 4x
 
@@ -38,11 +40,15 @@ parent_post_id: "1875583660545732960"
 
 **2/** @NOTimothyLottes
 
-@JBrooksBSI Lack of ABS modifiers on V_PK ops basically kills FP16 benefit here unfortunately. I do unroll when not VGPR limited (favorite optimization). Wary though of SALU/VALU crossings due to latency + scheduling behavior (loss of operand cache, etc). VCC probably has special forwarding
+@JBrooksBSI
+
+Lack of ABS modifiers on V_PK ops basically kills FP16 benefit here unfortunately. I do unroll when not VGPR limited (favorite optimization). Wary though of SALU/VALU crossings due to latency + scheduling behavior (loss of operand cache, etc). VCC probably has special forwarding
 
 **3/** @JBrooksBSI
 
-@NOTimothyLottes I did an approx equal-area mapping to a 2D texture in 2018
+@NOTimothyLottes
+
+I did an approx equal-area mapping to a 2D texture in 2018
 
 Approach was to map sphere to Archimedean solid rhombicuboctahedron (triangles and squares) packed into a 2D texture
 

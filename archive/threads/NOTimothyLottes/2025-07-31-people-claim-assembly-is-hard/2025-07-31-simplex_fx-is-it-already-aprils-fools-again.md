@@ -28,23 +28,33 @@ parent_post_id: "1950860870818439202"
 
 **1/** @simplex_fx
 
-@NOTimothyLottes Is it already april’s fools again?
+@NOTimothyLottes
+
+Is it already april’s fools again?
 
 **2/** @NOTimothyLottes
 
-@simplex_fx Would it be interesting any other way
+@simplex_fx
+
+Would it be interesting any other way
 
 **3/** @simplex_fx
 
-@NOTimothyLottes Worst part of this is not even the asm, but the choice of Vulkan 🤣
+@NOTimothyLottes
+
+Worst part of this is not even the asm, but the choice of Vulkan 🤣
 
 **4/** @NOTimothyLottes
 
-@simplex_fx Vulkan for compute is a lot better than say DX12. Because VK has a working pipelinable API construct: VkEvents, where in contrast DX12's pipeline barriers are serializing in the drivers. Also GL has no pipelining. So VK wins by virtue of no other option.
+@simplex_fx
+
+Vulkan for compute is a lot better than say DX12. Because VK has a working pipelinable API construct: VkEvents, where in contrast DX12's pipeline barriers are serializing in the drivers. Also GL has no pipelining. So VK wins by virtue of no other option.
 
 **5/** @simplex_fx
 
-@NOTimothyLottes Highly depends on one’s goals.
+@NOTimothyLottes
+
+Highly depends on one’s goals.
 
 ## Related
 

@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @maisakal
 
-@SebAaltonen You are an intellisense yourself if you have the references at your disposal. You just need to look it up. Don’t be a lazyass, go look it up.
+@SebAaltonen
+
+You are an intellisense yourself if you have the references at your disposal. You just need to look it up. Don’t be a lazyass, go look it up.
 
 ## Related
 

@@ -28,13 +28,17 @@ parent_post_id: "1650678968255913985"
 
 **1/** @JaceCear
 
-@kenpex The "What if we're in an apocalypse?" part is very 'whatever' to me, but in general I find this and similar projects really cool!
+@kenpex
+
+The "What if we're in an apocalypse?" part is very 'whatever' to me, but in general I find this and similar projects really cool!
 
 And it looks like the main dev creates it on a 75MHz Pentium, with 16MB of RAM, which is awesome! ^^
 
 **2/** @kenpex
 
-@JaceCear Of course, the grandfather of "cool OS - minus the crazy" is TempleOS
+@JaceCear
+
+Of course, the grandfather of "cool OS - minus the crazy" is TempleOS
 
 ## Related
 

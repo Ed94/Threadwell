@@ -28,7 +28,9 @@ parent_post_id: "2060190230838223346"
 
 **1/** @mrsteyk1
 
-@NOTimothyLottes It's seemingly incorrect due to it's use for NtWaitForAlertByThreadId. Internal implementation is a hash table [128] indexed by (a1>>5)&0x7f inside PEB. Default spin value (v4) for my build is 10240 shared for similar type of functions (SRWLocks etc).
+@NOTimothyLottes
+
+It's seemingly incorrect due to it's use for NtWaitForAlertByThreadId. Internal implementation is a hash table [128] indexed by (a1>>5)&0x7f inside PEB. Default spin value (v4) for my build is 10240 shared for similar type of functions (SRWLocks etc).
 
 ![](https://pbs.twimg.com/media/HL1JKE7bIAAHEGc?format=png&name=orig)
 

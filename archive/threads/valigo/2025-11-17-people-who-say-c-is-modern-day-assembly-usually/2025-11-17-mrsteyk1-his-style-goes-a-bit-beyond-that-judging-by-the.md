@@ -28,11 +28,15 @@ parent_post_id: "1990462184170926463"
 
 **1/** @mrsteyk1
 
-@valigo His style goes a bit beyond that, judging by the defines used it’s similar to some form of literate programming but with C preprocessor. And the whole RAM thing iirc was for when he was hot reloading C, he said he later switched to GPU and it’s not exactly required anymore?
+@valigo
+
+His style goes a bit beyond that, judging by the defines used it’s similar to some form of literate programming but with C preprocessor. And the whole RAM thing iirc was for when he was hot reloading C, he said he later switched to GPU and it’s not exactly required anymore?
 
 **2/** @NOTimothyLottes
 
-@mrsteyk1 @valigo Oh I still use the RAM global struct and pointer even without using CPU side hot reload.
+@mrsteyk1 @valigo
+
+Oh I still use the RAM global struct and pointer even without using CPU side hot reload.
 
 ## Related
 

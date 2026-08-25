@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @marunarh
 
-@VictorTaelin > most of you can’t understand my posts 
+@VictorTaelin
+
+> most of you can’t understand my posts 
 
 of course! talk is cheap, show us the code! you’re selling meta stories instead of showing what you’re building. 
 

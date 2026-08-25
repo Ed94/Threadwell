@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @RatherSnideBun
 
-@SebAaltonen That is just another IT-twitter bait, just mute or block him, he is fuckwad.
+@SebAaltonen
+
+That is just another IT-twitter bait, just mute or block him, he is fuckwad.
 
 ## Related
 

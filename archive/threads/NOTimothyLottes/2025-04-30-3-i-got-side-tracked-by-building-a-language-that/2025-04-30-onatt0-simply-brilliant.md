@@ -28,7 +28,9 @@ parent_post_id: "1917653265329594372"
 
 **1/** @onatt0
 
-@NOTimothyLottes simply brilliant!
+@NOTimothyLottes
+
+simply brilliant!
 
 ## Related
 

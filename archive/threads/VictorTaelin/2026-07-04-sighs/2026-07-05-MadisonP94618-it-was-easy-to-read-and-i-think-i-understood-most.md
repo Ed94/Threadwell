@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @MadisonP94618
 
-@VictorTaelin It was easy to read and I think I understood most of it. 
+@VictorTaelin
+
+It was easy to read and I think I understood most of it. 
 
 I'm pretty sure you would be a good educator if you haven't been. 
 

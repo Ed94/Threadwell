@@ -28,7 +28,9 @@ parent_post_id: "2072447378242552093"
 
 **1/** @never_released
 
-@NOTimothyLottes There's a lot of old news around.
+@NOTimothyLottes
+
+There's a lot of old news around.
 
 1) Wine doesn't only run on Linux
 2) on x86_64 Linux, Wine nowadays explicitly traps syscalls: https://www.phoronix.com/news/Wine-11.5-Released
@@ -37,7 +39,9 @@ This explicitly blocks this trick. Please do not use it
 
 **2/** @NOTimothyLottes
 
-@never_released Well they could put it on a command line toggle. Or have some other back door. Today I’m blocked on wine ntdll compatibility with bugs filed. So Im still looking for workarounds, going direct to Linux syscalls would have been the best and easiest option.
+@never_released
+
+Well they could put it on a command line toggle. Or have some other back door. Today I’m blocked on wine ntdll compatibility with bugs filed. So Im still looking for workarounds, going direct to Linux syscalls would have been the best and easiest option.
 
 ## Related
 

@@ -28,7 +28,9 @@ parent_post_id: "1868492851170205803"
 
 **1/** @axelgneiting
 
-@NOTimothyLottes @kechogarcia I'm well aware. It's really curious they still stick to this design after so many years.
+@NOTimothyLottes @kechogarcia
+
+I'm well aware. It's really curious they still stick to this design after so many years.
 
 ## Related
 

@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @coolkoon
 
-@SebAaltonen Because when you have to fix something on a customer system then usually notepad/vim/nano is literally the only option you have, that's why.
+@SebAaltonen
+
+Because when you have to fix something on a customer system then usually notepad/vim/nano is literally the only option you have, that's why.
 
 ## Related
 

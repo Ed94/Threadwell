@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @bozoid
 
-@SebAaltonen it's just coder bravado to show off toy algorithms
+@SebAaltonen
+
+it's just coder bravado to show off toy algorithms
 
 real production code is a shitshow Jenga tower that is 90% stupid boilerplate and copy-paste and calls to frameworks to do the thinking they don't want to do 
 

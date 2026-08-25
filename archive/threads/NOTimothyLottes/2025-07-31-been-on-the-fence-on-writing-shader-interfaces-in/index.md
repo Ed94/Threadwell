@@ -37,15 +37,21 @@ Meaning I write using macros that are mostly a 1:1 mapping to AMDs GCN/RDNA ISA.
 
 **3/** @JBrooksBSI
 
-@NOTimothyLottes Sounds like an RDNA->SPIRV asm converter tool would be the way to go
+@NOTimothyLottes
+
+Sounds like an RDNA->SPIRV asm converter tool would be the way to go
 
 **4/** @NOTimothyLottes
 
-@JBrooksBSI I part tried to GLSL once. Using a global uint4 array as registers. But the wrapping of bit aliasing typecasts around operations is loaded with compiler perf bugs. Esp with packed 16-bit. So making it usable in practice is quite hard.
+@JBrooksBSI
+
+I part tried to GLSL once. Using a global uint4 array as registers. But the wrapping of bit aliasing typecasts around operations is loaded with compiler perf bugs. Esp with packed 16-bit. So making it usable in practice is quite hard.
 
 **5/** @JBrooksBSI
 
-@NOTimothyLottes What I do for console dev is write RDNA2 asm on PS5 (via wrapped shader intrinsics). 
+@NOTimothyLottes
+
+What I do for console dev is write RDNA2 asm on PS5 (via wrapped shader intrinsics). 
 
 On Xbox I have the wrappers implement C versions of the intrinsics (or HLSL intrinsics where available).
 
@@ -55,4 +61,6 @@ This is a technique I have been using since 2006, for PS3 SPU coding:
 
 **6/** @NOTimothyLottes
 
-@JBrooksBSI Eventually I ended up the same way (writing via instruction defines). Originally when I did FXAA it was a 1:1 line mapping to NV ISA. But without factoring through a define. But it's really the custom register allocation that I wish was universally expressible today.
+@JBrooksBSI
+
+Eventually I ended up the same way (writing via instruction defines). Originally when I did FXAA it was a 1:1 line mapping to NV ISA. But without factoring through a define. But it's really the custom register allocation that I wish was universally expressible today.

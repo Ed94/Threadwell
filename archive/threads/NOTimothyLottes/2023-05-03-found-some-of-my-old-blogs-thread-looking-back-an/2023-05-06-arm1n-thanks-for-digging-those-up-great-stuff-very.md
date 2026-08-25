@@ -28,7 +28,9 @@ parent_post_id: "1653556990302470151"
 
 **1/** @arm1n
 
-@NOTimothyLottes Thanks for digging those up! Great stuff, very inspiring.
+@NOTimothyLottes
+
+Thanks for digging those up! Great stuff, very inspiring.
 
 ## Related
 

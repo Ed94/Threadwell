@@ -28,33 +28,45 @@ parent_post_id: "1688491417109196800"
 
 **1/** @BlurBusters
 
-@NOTimothyLottes Very interesting "crosstalk from voltage inversion" artifact. Some repeating patterns or flicker patterns can trigger crosstalk artifacts too. Behavior varies a lot between TN, IPS, and VA, but all of them have to alternate voltage polarity spatially and temporally.
+@NOTimothyLottes
+
+Very interesting "crosstalk from voltage inversion" artifact. Some repeating patterns or flicker patterns can trigger crosstalk artifacts too. Behavior varies a lot between TN, IPS, and VA, but all of them have to alternate voltage polarity spatially and temporally.
 
 ![](https://pbs.twimg.com/media/F3I8AZmW0AEy6jn?format=png&name=orig)
 ![](https://pbs.twimg.com/media/F3I8BVlXoAAnuJB?format=png&name=orig)
 
 **2/** @BlurBusters
 
-@NOTimothyLottes Related reads:
+@NOTimothyLottes
+
+Related reads:
 https://www.lagom.nl/lcd-test/inversion.php
 https://forums.blurbusters.com/viewtopic.php?t=7539
 http://www.techmind.org/lcd/#:~:text=Inversion
 
 **3/** @NOTimothyLottes
 
-@BlurBusters I appreciate the links. Came to the same conclusion, for LCDs when doing low scaling like 1:2x2 'CRT' emulation, I'll have to do a stylized blue noise phosphor pattern instead.
+@BlurBusters
+
+I appreciate the links. Came to the same conclusion, for LCDs when doing low scaling like 1:2x2 'CRT' emulation, I'll have to do a stylized blue noise phosphor pattern instead.
 
 **4/** @Ak4115x
 
-@NOTimothyLottes @BlurBusters "VCOM inversion" -if wasn't line2line but frame2frame that'd "flicker" instead at half the refresh rate so that's why it's preferred& there's also another peculiarity of this scheme. Worth looking into, spent a few hours afternoon,it's late evening now maybe share another time.
+@NOTimothyLottes @BlurBusters
+
+"VCOM inversion" -if wasn't line2line but frame2frame that'd "flicker" instead at half the refresh rate so that's why it's preferred& there's also another peculiarity of this scheme. Worth looking into, spent a few hours afternoon,it's late evening now maybe share another time.
 
 **5/** @BlurBusters
 
-@Ak4115x @NOTimothyLottes Inversion algorithm is both spatial and temporal on all of them, regardless of spatial pattern of voltage inversion. Line to line is also frame to frame. (lines swaps voltage polarity in next frame)
+@Ak4115x @NOTimothyLottes
+
+Inversion algorithm is both spatial and temporal on all of them, regardless of spatial pattern of voltage inversion. Line to line is also frame to frame. (lines swaps voltage polarity in next frame)
 
 **6/** @Ak4115x
 
-@BlurBusters @NOTimothyLottes LCOS has singular VCOM there's no pattern to it and no such artifact.
+@BlurBusters @NOTimothyLottes
+
+LCOS has singular VCOM there's no pattern to it and no such artifact.
 
 ## Related
 

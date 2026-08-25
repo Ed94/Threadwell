@@ -28,11 +28,15 @@ parent_post_id: "1786346729547153794"
 
 **1/** @lethal_guitar
 
-@SebAaltonen It's like telling a carpenter "You should be able to do all your work without power tools". Yeah it's possible, but it's extremely slow and exhausting so there's no good reason to do it when better alternatives exist.
+@SebAaltonen
+
+It's like telling a carpenter "You should be able to do all your work without power tools". Yeah it's possible, but it's extremely slow and exhausting so there's no good reason to do it when better alternatives exist.
 
 **2/** @SebAaltonen
 
-@lethal_guitar Yeah. You have done it manually a few times first and then you learn how to use tools. Technically you would still be able to do the thing manually, but you haven't done that in a few years. I could code with notepad, but it would just be much slower and more painful.
+@lethal_guitar
+
+Yeah. You have done it manually a few times first and then you learn how to use tools. Technically you would still be able to do the thing manually, but you haven't done that in a few years. I could code with notepad, but it would just be much slower and more painful.
 
 ## Related
 

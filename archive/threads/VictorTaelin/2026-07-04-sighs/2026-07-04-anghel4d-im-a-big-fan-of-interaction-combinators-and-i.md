@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @anghel4d
 
-@VictorTaelin I'm a big fan of Interaction Combinators and I hope you keep going. Git push your changes to bend sometime :p
+@VictorTaelin
+
+I'm a big fan of Interaction Combinators and I hope you keep going. Git push your changes to bend sometime :p
 
 ## Related
 

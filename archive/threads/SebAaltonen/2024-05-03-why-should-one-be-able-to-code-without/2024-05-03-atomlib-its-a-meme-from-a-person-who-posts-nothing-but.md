@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @atomlib
 
-@SebAaltonen It's a meme from a person who posts nothing but memes on Twitter. There's no meaningful debate here. Frankly, there's simply nothing worth paying attention to as this person is only interested in your engagement.
+@SebAaltonen
+
+It's a meme from a person who posts nothing but memes on Twitter. There's no meaningful debate here. Frankly, there's simply nothing worth paying attention to as this person is only interested in your engagement.
 
 ## Related
 

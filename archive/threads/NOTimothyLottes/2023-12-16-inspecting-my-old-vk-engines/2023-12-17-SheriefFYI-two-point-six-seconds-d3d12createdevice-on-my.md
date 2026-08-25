@@ -28,25 +28,35 @@ parent_post_id: "1736147815829565624"
 
 **1/** @SheriefFYI
 
-@NOTimothyLottes two point six seconds?!! D3D12CreateDevice() on my machine is ~300ms..
+@NOTimothyLottes
+
+two point six seconds?!! D3D12CreateDevice() on my machine is ~300ms..
 
 **2/** @NOTimothyLottes
 
-@SheriefFYI Yeah and that's a warm second run too. I dev on crippled laptops so when the handicaps are removed the stuff really flies.
+@SheriefFYI
+
+Yeah and that's a warm second run too. I dev on crippled laptops so when the handicaps are removed the stuff really flies.
 
 **3/** @SheriefFYI
 
-@NOTimothyLottes still that sounds like a lot, what specs / driver? Any weird vk layers loading?
+@NOTimothyLottes
+
+still that sounds like a lot, what specs / driver? Any weird vk layers loading?
 
 **4/** @NOTimothyLottes
 
-@SheriefFYI Ok, yeah just reprofiled, and it's down to 269 ms. Best part of the Win10 experience, never know what is actually happening in the background.
+@SheriefFYI
+
+Ok, yeah just reprofiled, and it's down to 269 ms. Best part of the Win10 experience, never know what is actually happening in the background.
 
 ![](https://pbs.twimg.com/media/GBhSG-XXMAAT0FS?format=png&name=orig)
 
 **5/** @SheriefFYI
 
-@NOTimothyLottes *whew* that sounds more normal
+@NOTimothyLottes
+
+*whew* that sounds more normal
 
 ## Related
 

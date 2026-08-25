@@ -28,15 +28,21 @@ parent_post_id: "1857803914604618029"
 
 **1/** @static_assert_0
 
-@NOTimothyLottes This is super cool, but why map a file and not just stdout?
+@NOTimothyLottes
+
+This is super cool, but why map a file and not just stdout?
 
 **2/** @vodangkhoa873
 
-@static_assert_0 @NOTimothyLottes The writes can be done concurrently from many threads?
+@static_assert_0 @NOTimothyLottes
+
+The writes can be done concurrently from many threads?
 
 **3/** @NOTimothyLottes
 
-@vodangkhoa873 @static_assert_0 Yes, one 'atomicAdd(atomAdr,1)&65535' to get the line number (window of 65536 max lines) then write the line individually. Only contention is on that atomicAdd CPU instruction which is as minimal as possible.
+@vodangkhoa873 @static_assert_0
+
+Yes, one 'atomicAdd(atomAdr,1)&65535' to get the line number (window of 65536 max lines) then write the line individually. Only contention is on that atomicAdd CPU instruction which is as minimal as possible.
 
 I do the atomic add instruction using simple inline ASM (below)
 
@@ -44,11 +50,15 @@ I do the atomic add instruction using simple inline ASM (below)
 
 **4/** @static_assert_0
 
-@NOTimothyLottes @vodangkhoa873 I love this, but are you not able to get that codegen with intrinsics or just normal C?
+@NOTimothyLottes @vodangkhoa873
+
+I love this, but are you not able to get that codegen with intrinsics or just normal C?
 
 **5/** @NOTimothyLottes
 
-@static_assert_0 @vodangkhoa873 I've been hand rolling intrinsics CPU-side in GCC with inline asm since the dawn of support for that. So haven't kept up with the high-level-lang mess fire since.
+@static_assert_0 @vodangkhoa873
+
+I've been hand rolling intrinsics CPU-side in GCC with inline asm since the dawn of support for that. So haven't kept up with the high-level-lang mess fire since.
 
 ## Related
 

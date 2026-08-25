@@ -28,7 +28,9 @@ parent_post_id: "1950860870818439202"
 
 **1/** @mmalex
 
-@NOTimothyLottes i agree, if one is ok with 'bottom up' thinking. 99% of my self taught early programming was asm, from demos to music editors (trackers) & it was a joy to work so directly with the machine. im convinced it still underlies my preference/prejudice for straightforward style of code
+@NOTimothyLottes
+
+i agree, if one is ok with 'bottom up' thinking. 99% of my self taught early programming was asm, from demos to music editors (trackers) & it was a joy to work so directly with the machine. im convinced it still underlies my preference/prejudice for straightforward style of code
 
 ## Related
 

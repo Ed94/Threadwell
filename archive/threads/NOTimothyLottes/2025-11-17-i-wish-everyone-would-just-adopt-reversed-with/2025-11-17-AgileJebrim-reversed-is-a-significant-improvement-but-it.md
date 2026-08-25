@@ -32,7 +32,9 @@ Reversed is a significant improvement but it still has its limitations when doin
 
 **2/** @NOTimothyLottes
 
-@AgileJebrim Yes for my non-tri stuff I'm log depth already. This is just for games, not simulation.
+@AgileJebrim
+
+Yes for my non-tri stuff I'm log depth already. This is just for games, not simulation.
 
 **3/** @AgileJebrim
 

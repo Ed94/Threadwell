@@ -40,7 +40,9 @@ Found my first of perhaps many Wine “fix me”s looks like they didn’t emula
 
 **3/** @never_released
 
-@NOTimothyLottes Intriguingly Microsoft documentation has this bit
+@NOTimothyLottes
+
+Intriguingly Microsoft documentation has this bit
 
 The bit that worries me specifically is the non-guarantee "across live migration of virtual machines", although I don't expect games to care all that much about _that_?
 
@@ -50,4 +52,6 @@ https://learn.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolutio
 
 **4/** @NOTimothyLottes
 
-@never_released It will be a sad day when we have to be concerned about VM migration while playing a game on a local machine
+@never_released
+
+It will be a sad day when we have to be concerned about VM migration while playing a game on a local machine

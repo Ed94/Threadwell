@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @JasonKn99664124
 
-@SebAaltonen Honestly a lot of the "framework" and "transpiler" idiocy  is what makes you reliant on tooling you don't need. 
+@SebAaltonen
+
+Honestly a lot of the "framework" and "transpiler" idiocy  is what makes you reliant on tooling you don't need. 
 
 Y'all claim it makes things "easier" when all you're doing is adding extra steps. Things you'd recognize as a waste of time if you didn't have the IDE and tooling.
 

@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @Naam_Hai_Bulla
 
-@SebAaltonen MAJOR DISAGREE
+@SebAaltonen
+
+MAJOR DISAGREE
 Especially if you're learning a new tech stack modern IDEs are too user friendly
 
 Had to switch off pretty much every setting in vscode when I was learning angular

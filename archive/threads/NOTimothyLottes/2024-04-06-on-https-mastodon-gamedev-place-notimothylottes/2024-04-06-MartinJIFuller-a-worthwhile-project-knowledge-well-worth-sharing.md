@@ -28,7 +28,9 @@ parent_post_id: "1776597200073568623"
 
 **1/** @MartinJIFuller
 
-@NOTimothyLottes @SebAaltonen A worthwhile project, knowledge well worth sharing, but is a book the right format? Perhaps yes, just thinking out loud.
+@NOTimothyLottes @SebAaltonen
+
+A worthwhile project, knowledge well worth sharing, but is a book the right format? Perhaps yes, just thinking out loud.
 
 ## Related
 

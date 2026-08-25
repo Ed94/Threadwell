@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @ASupersay
 
-@SebAaltonen Who cares? Do what makes you happiest and wealthiest.
+@SebAaltonen
+
+Who cares? Do what makes you happiest and wealthiest.
 
 Just because everyone doesn’t understand how modern tires are made doesn’t mean they should have to use wooden wagon wheels
 

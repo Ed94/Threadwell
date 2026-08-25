@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @SdoGtnepreS
 
-@VictorTaelin Don't let them get you down. They can barely see the now, much less the future.
+@VictorTaelin
+
+Don't let them get you down. They can barely see the now, much less the future.
 
 ## Related
 

@@ -28,7 +28,9 @@ parent_post_id: "2010303501851877740"
 
 **1/** @linux_version
 
-@Dispatch_Graph Oddly enough, with how old the wine project is, Win32 might be the most stable API on Linux.
+@Dispatch_Graph
+
+Oddly enough, with how old the wine project is, Win32 might be the most stable API on Linux.
 
 ## Related
 

@@ -28,11 +28,15 @@ parent_post_id: "1950860870818439202"
 
 **1/** @Karyuutensei
 
-@NOTimothyLottes Unrelated, but I would also love a look at your CRTs and how you use them in everyday stuff.
+@NOTimothyLottes
+
+Unrelated, but I would also love a look at your CRTs and how you use them in everyday stuff.
 
 **2/** @NOTimothyLottes
 
-@Karyuutensei Showing that setup would be fun. Most of my active CRTs are hooked up to vintage consoles though.
+@Karyuutensei
+
+Showing that setup would be fun. Most of my active CRTs are hooked up to vintage consoles though.
 
 ## Related
 

@@ -28,7 +28,9 @@ parent_post_id: "1742743018929557805"
 
 **1/** @kenpex
 
-@NOTimothyLottes It's what debuggers should be. Debuggers made zero progress in the last decade, but fundamentally they patch running code... just they are limited to patch an interrupt instead of allowing us to do... anything. Even tracepoints, while nice, are a castrated version of livecode.
+@NOTimothyLottes
+
+It's what debuggers should be. Debuggers made zero progress in the last decade, but fundamentally they patch running code... just they are limited to patch an interrupt instead of allowing us to do... anything. Even tracepoints, while nice, are a castrated version of livecode.
 
 ## Related
 

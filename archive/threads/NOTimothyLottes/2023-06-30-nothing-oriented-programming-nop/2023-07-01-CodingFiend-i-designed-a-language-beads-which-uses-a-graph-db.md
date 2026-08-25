@@ -28,7 +28,9 @@ parent_post_id: "1674757854471806977"
 
 **1/** @CodingFiend
 
-@NOTimothyLottes @Jonathan_Blow i designed a language Beads, which uses a graph DB, has no memory allocation, super modular, approaches this minimalism as close as humanly possible, but billable hour / job security seeking programmers refuse to try it
+@NOTimothyLottes @Jonathan_Blow
+
+i designed a language Beads, which uses a graph DB, has no memory allocation, super modular, approaches this minimalism as close as humanly possible, but billable hour / job security seeking programmers refuse to try it
 
 ## Related
 

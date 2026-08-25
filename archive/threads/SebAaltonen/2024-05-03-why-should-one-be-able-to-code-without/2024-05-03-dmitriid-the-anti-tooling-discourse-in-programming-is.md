@@ -28,7 +28,9 @@ parent_post_id: "1786349827669790823"
 
 **1/** @dmitriid
 
-@SebAaltonen The anti-tooling discourse in programming is quite tiring
+@SebAaltonen
+
+The anti-tooling discourse in programming is quite tiring
 
 ## Related
 

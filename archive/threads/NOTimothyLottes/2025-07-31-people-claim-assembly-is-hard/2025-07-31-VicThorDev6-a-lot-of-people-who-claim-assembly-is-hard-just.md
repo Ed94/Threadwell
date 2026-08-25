@@ -28,7 +28,9 @@ parent_post_id: "1950860870818439202"
 
 **1/** @VicThorDev6
 
-@NOTimothyLottes A lot of people who claim assembly is hard just never did any themselves. In my opinion reading or even programming things in assembly isn't very hard but actually doing some of the optimizations compilers might do seems a lot harder
+@NOTimothyLottes
+
+A lot of people who claim assembly is hard just never did any themselves. In my opinion reading or even programming things in assembly isn't very hard but actually doing some of the optimizations compilers might do seems a lot harder
 
 ## Related
 

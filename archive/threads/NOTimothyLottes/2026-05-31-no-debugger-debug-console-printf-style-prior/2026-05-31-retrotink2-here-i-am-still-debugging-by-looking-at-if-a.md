@@ -28,11 +28,15 @@ parent_post_id: "2061123768429211767"
 
 **1/** @retrotink2
 
-@NOTimothyLottes Here I am still debugging by looking at if a single LED turns on.
+@NOTimothyLottes
+
+Here I am still debugging by looking at if a single LED turns on.
 
 **2/** @NOTimothyLottes
 
-@retrotink2 That plus an oscilloscope … this is the way
+@retrotink2
+
+That plus an oscilloscope … this is the way
 
 ## Related
 

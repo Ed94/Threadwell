@@ -20,7 +20,7 @@ archive/threads/<handle>/<YYYY-MM-DD-slug>/
 
 ## Spine
 
-`index.md` is the opening author's chain. Posts are numbered **1/** **2/**. Each number line names who spoke: `**1/** @SebAaltonen`. A mention inside the tweet is not the author.
+`index.md` is the opening author's chain. Posts are numbered **1/** **2/**. Each number line names who spoke: `**1/** @SebAaltonen`. Reply `@handles` sit on the next line. The tweet text starts after that. A mention inside the tweet is not the author.
 
 Cross-author spines list every post in time order. The handle on the number line is who spoke.
 

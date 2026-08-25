@@ -28,7 +28,9 @@ parent_post_id: "2010303501851877740"
 
 **1/** @thedarkhog
 
-@Dispatch_Graph Get Xlibre instead. If you're using arch, btw., it's in the AUR.
+@Dispatch_Graph
+
+Get Xlibre instead. If you're using arch, btw., it's in the AUR.
 
 Also KDE Plasma is poorly written and has the performance of Windoze. You'll be better off with something like XFCE.
 

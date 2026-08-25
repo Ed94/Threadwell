@@ -31,4 +31,6 @@ in_reply_to: "2011353617102741593"
 
 **1/** @NOTimothyLottes
 
-@VPCOMPRESSB Can do that. But at least these kinds of systems are already faster than human response time (excluding when they have external dependencies on say on some other kernel like Linux). I'll be able to recompile all binary code (including GPU-side) in a tiny fraction of frame time.
+@VPCOMPRESSB
+
+Can do that. But at least these kinds of systems are already faster than human response time (excluding when they have external dependencies on say on some other kernel like Linux). I'll be able to recompile all binary code (including GPU-side) in a tiny fraction of frame time.

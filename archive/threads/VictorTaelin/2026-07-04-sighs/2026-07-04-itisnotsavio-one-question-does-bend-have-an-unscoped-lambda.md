@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @itisnotsavio
 
-@VictorTaelin One question: does bend have an unscoped lambda?
+@VictorTaelin
+
+One question: does bend have an unscoped lambda?
 
 ## Related
 

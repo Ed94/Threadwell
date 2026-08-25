@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @cpps93
 
-@SebAaltonen I learn to code in C++ back in 2011 and my teacher advised us to work for the moment in Notepad++ just to LEARN,for example,I remember when a function receives a pointer to try to call it placing a lot of '*' or '&' and wait for intellisense not to complain about what i'd written
+@SebAaltonen
+
+I learn to code in C++ back in 2011 and my teacher advised us to work for the moment in Notepad++ just to LEARN,for example,I remember when a function receives a pointer to try to call it placing a lot of '*' or '&' and wait for intellisense not to complain about what i'd written
 
 ![](https://pbs.twimg.com/media/GMt1kNiWUAAC-Vp?format=png&name=orig)
 

@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @LeeeeeeeeeT_
 
-@VictorTaelin i once implemented a type checker for impredicative MLTT. i then tried to reproduce hurkens' paradox (simplified girard's paradox) - my type checker got stuck in an infinite loop. so.. you couldn't prove false in it, it just never terminated
+@VictorTaelin
+
+i once implemented a type checker for impredicative MLTT. i then tried to reproduce hurkens' paradox (simplified girard's paradox) - my type checker got stuck in an infinite loop. so.. you couldn't prove false in it, it just never terminated
 
 ## Related
 

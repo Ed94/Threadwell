@@ -33,7 +33,13 @@ try:
     from twitter.media_refs import remote_markup
     from twitter.models import MediaItem, ThreadData, load_thread
     from twitter.paths import FROZEN, SCRATCH
-    from twitter.render import render_branch, render_spine, title_text
+    from twitter.render import (
+        format_post_text,
+        render_branch,
+        render_spine,
+        split_leading_mentions,
+        title_text,
+    )
     from twitter.slug import branch_file_name, date_prefix, thread_dir_name
     from twitter.tree import (
         by_id,
@@ -58,7 +64,13 @@ except ImportError:  # pragma: no cover - script-mode import
     from media_refs import remote_markup
     from models import MediaItem, ThreadData, load_thread
     from paths import FROZEN, SCRATCH
-    from render import render_branch, render_spine, title_text
+    from render import (
+        format_post_text,
+        render_branch,
+        render_spine,
+        split_leading_mentions,
+        title_text,
+    )
     from slug import branch_file_name, date_prefix, thread_dir_name
     from tree import (
         by_id,
@@ -846,24 +858,55 @@ def _frontmatter_handle(text: str) -> str:
     return ""
 
 
+def _body_match_keys(body: str) -> set[str]:
+    """Keys used to pair a note body with ``post.text`` before or after mention split."""
+    mentions, rest = split_leading_mentions(body)
+    keys: set[str] = set()
+    if rest:
+        rest_first = _first_nonempty_line(rest)
+        if rest_first:
+            keys.add(rest_first)
+            if mentions:
+                keys.add(f"{mentions} {rest_first}")
+    else:
+        first = _first_nonempty_line(body)
+        if first:
+            keys.add(first)
+    return keys
+
+
+def _post_match_keys(text: str) -> set[str]:
+    mentions, rest = split_leading_mentions(text)
+    keys: set[str] = set()
+    first = _first_nonempty_line(text)
+    if first:
+        keys.add(first)
+    if rest:
+        rest_first = _first_nonempty_line(rest)
+        if rest_first:
+            keys.add(rest_first)
+            if mentions:
+                keys.add(f"{mentions} {rest_first}")
+    return keys
+
+
 def match_post_for_body(
     body: str,
     posts: tuple,
     used: set[str],
 ) -> object | None:
-    """Return one unused post whose first line matches ``body``.
+    """Return one unused post whose text matches ``body``.
 
     Duplicate first lines are fine when every hit has the same handle.
     Mixed-handle collisions return ``None``.
     """
-    first = _first_nonempty_line(body)
-    if not first:
+    keys = _body_match_keys(body)
+    if not keys:
         return None
     hits = [
         post
         for post in posts
-        if post.post_id not in used
-        and _first_nonempty_line(post.text) == first
+        if post.post_id not in used and keys & _post_match_keys(post.text)
     ]
     if not hits:
         return None
@@ -898,16 +941,23 @@ def patch_note_text(text: str, posts: tuple) -> tuple[str, str, str]:
                 used.add(post.post_id)
         if not handle and index == 0 and root_handle:
             handle = root_handle
+        region = text[match.end():end]
         if not handle:
             unmatched.append(f"**{number}/**")
             pieces.append(match.group(0).rstrip())
-            last = match.end()
+            pieces.append(region)
+            last = end
             continue
         new_line = f"**{number}/** @{handle}"
         if new_line != match.group(0).rstrip():
             changed = True
+        formatted = format_post_text(body)
+        if body and formatted != body:
+            region = region.replace(body, formatted, 1)
+            changed = True
         pieces.append(new_line)
-        last = match.end()
+        pieces.append(region)
+        last = end
     pieces.append(text[last:])
     new_text = "".join(pieces)
     reason = ",".join(unmatched)

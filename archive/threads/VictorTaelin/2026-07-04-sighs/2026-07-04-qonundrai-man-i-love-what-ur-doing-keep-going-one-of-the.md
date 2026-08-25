@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @qonundrai
 
-@VictorTaelin man I love what ur doing, keep going! one of the few good uses of AI!
+@VictorTaelin
+
+man I love what ur doing, keep going! one of the few good uses of AI!
 
 ## Related
 

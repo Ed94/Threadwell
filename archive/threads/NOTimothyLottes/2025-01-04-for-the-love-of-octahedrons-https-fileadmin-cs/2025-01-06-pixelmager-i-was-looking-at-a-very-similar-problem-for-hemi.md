@@ -28,7 +28,9 @@ parent_post_id: "1875589737282679108"
 
 **1/** @pixelmager
 
-@NOTimothyLottes I was looking at a very similar problem for hemi-octahedrons recently. I definitely need to revisit in the context of this EAM paper, I ended up with a pretty slow polar-coordinate-remapping instead to move precision to the horizon https://www.shadertoy.com/view/wsBXzD
+@NOTimothyLottes
+
+I was looking at a very similar problem for hemi-octahedrons recently. I definitely need to revisit in the context of this EAM paper, I ended up with a pretty slow polar-coordinate-remapping instead to move precision to the horizon https://www.shadertoy.com/view/wsBXzD
 
 ## Related
 

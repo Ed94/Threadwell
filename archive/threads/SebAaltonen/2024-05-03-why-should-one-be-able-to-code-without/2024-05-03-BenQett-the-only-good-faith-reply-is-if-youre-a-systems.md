@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @BenQett
 
-@SebAaltonen The only good faith reply is if you’re a systems engineer and you have to work on remote servers with no ability to run an IDE/Desktop so you’re stuck with VIM (can’t reverse tunnel/mount)
+@SebAaltonen
+
+The only good faith reply is if you’re a systems engineer and you have to work on remote servers with no ability to run an IDE/Desktop so you’re stuck with VIM (can’t reverse tunnel/mount)
 
 ## Related
 

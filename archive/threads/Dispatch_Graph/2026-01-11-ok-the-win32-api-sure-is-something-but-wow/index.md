@@ -33,8 +33,12 @@ Branches: [[archive/threads/Dispatch_Graph/2026-01-11-ok-the-win32-api-sure-is-s
 
 **2/** @ocarina588
 
-@Dispatch_Graph 😂😂😂, what are you using? Hyprland ?
+@Dispatch_Graph
+
+😂😂😂, what are you using? Hyprland ?
 
 **3/** @Dispatch_Graph
 
-@ocarina588 KDE Plasma
+@ocarina588
+
+KDE Plasma

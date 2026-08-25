@@ -28,7 +28,9 @@ parent_post_id: "1650678968255913985"
 
 **1/** @streleav
 
-@kenpex Indeed. Any thoughts on how AGI could help the situation?
+@kenpex
+
+Indeed. Any thoughts on how AGI could help the situation?
 
 ## Related
 

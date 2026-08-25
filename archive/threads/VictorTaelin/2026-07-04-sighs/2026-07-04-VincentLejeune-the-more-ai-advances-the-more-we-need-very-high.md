@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @VincentLejeune
 
-@VictorTaelin The more AI advances, the more we need very high level experts in very very specialzed narrow fields, to check results ! ❤️
+@VictorTaelin
+
+The more AI advances, the more we need very high level experts in very very specialzed narrow fields, to check results ! ❤️
 
 ## Related
 

@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @Desxon1
 
-@SebAaltonen Still remember how my technical school assigned a literal psychopath to teach us do databases. The SQL was done ON FUCKING PAPER and he graded each and every point of it. A lack of "," could cost ya points.
+@SebAaltonen
+
+Still remember how my technical school assigned a literal psychopath to teach us do databases. The SQL was done ON FUCKING PAPER and he graded each and every point of it. A lack of "," could cost ya points.
 
 Then he left, went to work for Intel and got fired for using drugs
 

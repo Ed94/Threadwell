@@ -7,7 +7,13 @@ from unittest.mock import patch
 
 from twitter.emit_archive import apply_relabel, format_relabel_plan, plan_relabel
 from twitter.models import PostData, PostMetrics, ThreadData
-from twitter.render import _post_block, render_branch, render_spine
+from twitter.render import (
+    _post_block,
+    format_post_text,
+    render_branch,
+    render_spine,
+    split_leading_mentions,
+)
 from twitter.tw import build_parser, cmd_relabel
 
 
@@ -43,6 +49,26 @@ class PostBlockAttributionTests(unittest.TestCase):
     def test_empty_handle_raises(self) -> None:
         with self.assertRaises(ValueError):
             _post_block(1, post("1", "", "text", None), None)
+
+    def test_leading_mentions_are_their_own_line(self) -> None:
+        block = _post_block(
+            19,
+            post(
+                "1898440015182729598",
+                "SebAaltonen",
+                "@NOTimothyLottes I said WG_RR_EN",
+                "1",
+            ),
+            None,
+        )
+        self.assertIn("**19/** @SebAaltonen\n\n@NOTimothyLottes\n\nI said WG_RR_EN", block)
+
+    def test_format_post_text_is_idempotent(self) -> None:
+        original = "@AgileJebrim @SebAaltonen The higher the occupancy"
+        once = format_post_text(original)
+        self.assertEqual(once, "@AgileJebrim @SebAaltonen\n\nThe higher the occupancy")
+        self.assertEqual(format_post_text(once), once)
+        self.assertEqual(split_leading_mentions("holy truthnuke")[0], "")
 
 
 class RenderAttributionTests(unittest.TestCase):
@@ -223,7 +249,8 @@ class RelabelPatchTests(unittest.TestCase):
             (notes / "branch.md").write_text(
                 "---\ndraft: false\n---\n\n"
                 "**19/** @SebAaltonen\n\n"
-                "@NOTimothyLottes I said WG_RR_EN\n\n"
+                "@NOTimothyLottes\n\n"
+                "I said WG_RR_EN\n\n"
                 "**33/** @AgileJebrim\n\n"
                 "On the flip side, it appears that using 128\n",
                 encoding="utf-8",
@@ -234,6 +261,29 @@ class RelabelPatchTests(unittest.TestCase):
             before = (notes / "index.md").read_bytes()
             apply_relabel(plan)
             self.assertEqual((notes / "index.md").read_bytes(), before)
+
+    def test_patch_splits_leading_mentions(self) -> None:
+        from twitter.emit_archive import patch_note_text
+
+        posts = (
+            post(
+                "1898440015182729598",
+                "SebAaltonen",
+                "@NOTimothyLottes I said WG_RR_EN",
+                None,
+            ),
+        )
+        text = (
+            "**19/** @SebAaltonen\n\n"
+            "@NOTimothyLottes I said WG_RR_EN\n"
+        )
+        new, state, reason = patch_note_text(text, posts)
+        self.assertEqual(state, "rewrite")
+        self.assertEqual(reason, "")
+        self.assertIn("@NOTimothyLottes\n\nI said WG_RR_EN", new)
+        again, state2, _reason = patch_note_text(new, posts)
+        self.assertEqual(state2, "noop")
+        self.assertEqual(again, new)
 
     def test_duplicate_first_line_same_handle_rewrites(self) -> None:
         from twitter.emit_archive import patch_note_text

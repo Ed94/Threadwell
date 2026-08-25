@@ -217,15 +217,21 @@ Despite header docs which imply flag only works on DOMAIN_VRAM, using DOMAIN_GTT
 
 **37/** @DaveAirlie
 
-@NOTimothyLottes the problem there is usually tiling, GPUs expect graphicy things in VRAM to be tiled in very specific ways, it's hard to have a storage device do that. Using a transfer engine that can tile/detile makes a lot more sense.
+@NOTimothyLottes
+
+the problem there is usually tiling, GPUs expect graphicy things in VRAM to be tiled in very specific ways, it's hard to have a storage device do that. Using a transfer engine that can tile/detile makes a lot more sense.
 
 **38/** @NOTimothyLottes
 
-@DaveAirlie The obvious elephant is an engine using only buffers for resource streaming and doing its own GPU-side decompression. This is practical NOW and portable too. But the lack of a bus master no-CPU direct storage transfer is a serious problem for throughput.
+@DaveAirlie
+
+The obvious elephant is an engine using only buffers for resource streaming and doing its own GPU-side decompression. This is practical NOW and portable too. But the lack of a bus master no-CPU direct storage transfer is a serious problem for throughput.
 
 **39/** @NOTimothyLottes
 
-@DaveAirlie See raw texture streaming (even with lossless compression) is way less interesting now given modern massive data tech direction, u want substantially better lossy compression simply to fit in launch constraints. So really, buffers are the way to go anyway :)
+@DaveAirlie
+
+See raw texture streaming (even with lossless compression) is way less interesting now given modern massive data tech direction, u want substantially better lossy compression simply to fit in launch constraints. So really, buffers are the way to go anyway :)
 
 ## Related
 

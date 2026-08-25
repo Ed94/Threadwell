@@ -36,29 +36,41 @@ saving the game would then just be copying a region to disk contiguously—zero 
 
 **2/** @NOTimothyLottes
 
-@VPCOMPRESSB There is a Vulkan extension on PC that enables one to take a mapped file (aka the page cache) and access it from the GPU directly.
+@VPCOMPRESSB
+
+There is a Vulkan extension on PC that enables one to take a mapped file (aka the page cache) and access it from the GPU directly.
 
 **3/** @AgileJebrim
 
-@NOTimothyLottes @VPCOMPRESSB @VPCOMPRESSB I believe the benefit here is that it avoids an extra copy.
+@NOTimothyLottes @VPCOMPRESSB @VPCOMPRESSB
+
+I believe the benefit here is that it avoids an extra copy.
 
 https://registry.khronos.org/vulkan/specs/latest/man/html/VK_EXT_external_memory_host.html
 
 **4/** @VPCOMPRESSB
 
-@AgileJebrim @NOTimothyLottes that API seems very opaque. how can a person tell/preset the size and behavior of the page cache? would i just need to manage it similar to managing the CPU's cache?
+@AgileJebrim @NOTimothyLottes
+
+that API seems very opaque. how can a person tell/preset the size and behavior of the page cache? would i just need to manage it similar to managing the CPU's cache?
 
 **5/** @AgileJebrim
 
-@VPCOMPRESSB @NOTimothyLottes There’s a win32 version too but yeah I would just generally assume that pages are 4096 bytes unless I have reason to believe otherwise. Apparently the intent that Timothy had is to use CreateFileMappingA() as well.
+@VPCOMPRESSB @NOTimothyLottes
+
+There’s a win32 version too but yeah I would just generally assume that pages are 4096 bytes unless I have reason to believe otherwise. Apparently the intent that Timothy had is to use CreateFileMappingA() as well.
 
 **6/** @NOTimothyLottes
 
-@AgileJebrim @VPCOMPRESSB In an ideal world the OS would allow pinning the file's pages. Since there is no guarantee, I can walk (read) the first cache line of the 4 kb pages periodically to try to force pinned behavior.
+@AgileJebrim @VPCOMPRESSB
+
+In an ideal world the OS would allow pinning the file's pages. Since there is no guarantee, I can walk (read) the first cache line of the 4 kb pages periodically to try to force pinned behavior.
 
 **7/** @AgileJebrim
 
-@NOTimothyLottes @VPCOMPRESSB VirtualLock()?
+@NOTimothyLottes @VPCOMPRESSB
+
+VirtualLock()?
 
 ## Related
 

@@ -28,12 +28,16 @@ parent_post_id: "1674757854471806977"
 
 **1/** @_spolsh
 
-@NOTimothyLottes Once in a while people need to be reminded to stop the bloat, understand the machine guts and be self aware about productive process
+@NOTimothyLottes
+
+Once in a while people need to be reminded to stop the bloat, understand the machine guts and be self aware about productive process
 https://tonsky.me/blog/disenchantment/
 
 **2/** @NOTimothyLottes
 
-@_spolsh That was a fantastic read, thanks
+@_spolsh
+
+That was a fantastic read, thanks
 
 ## Related
 

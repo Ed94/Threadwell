@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @_benwick
 
-@SebAaltonen The key word is ABLE. How many people cannot compile a program without the visual studio ide? You're only cheating yourself if you don't understand how your toolchain does its work.
+@SebAaltonen
+
+The key word is ABLE. How many people cannot compile a program without the visual studio ide? You're only cheating yourself if you don't understand how your toolchain does its work.
 
 ## Related
 

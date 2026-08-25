@@ -28,11 +28,15 @@ parent_post_id: "2064858927829745887"
 
 **1/** @mcnabbd
 
-@NOTimothyLottes fascinating to me how this challenge would have captivated me a couple decades ago but now i just wanna run away
+@NOTimothyLottes
+
+fascinating to me how this challenge would have captivated me a couple decades ago but now i just wanna run away
 
 **2/** @NOTimothyLottes
 
-@mcnabbd Similar feelings. Used to build linux from scratch in the BIOS era, also ran FreeBSD/etc, just for fun. But things had been easier then. Now years of technical debt later, all my tolerance for complexity has been fully exhausted.
+@mcnabbd
+
+Similar feelings. Used to build linux from scratch in the BIOS era, also ran FreeBSD/etc, just for fun. But things had been easier then. Now years of technical debt later, all my tolerance for complexity has been fully exhausted.
 
 ## Related
 

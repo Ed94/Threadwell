@@ -28,11 +28,15 @@ parent_post_id: "2065840191340707905"
 
 **1/** @BonbliStar
 
-@NOTimothyLottes most futex impls i've seen check for that and early return before the syscall, but you likely already knew that
+@NOTimothyLottes
+
+most futex impls i've seen check for that and early return before the syscall, but you likely already knew that
 
 **2/** @NOTimothyLottes
 
-@BonbliStar Yes, the comment was more the point of designing for the worst case, the limit of possibly blocking calls that interact with the scheduling.
+@BonbliStar
+
+Yes, the comment was more the point of designing for the worst case, the limit of possibly blocking calls that interact with the scheduling.
 
 ## Related
 

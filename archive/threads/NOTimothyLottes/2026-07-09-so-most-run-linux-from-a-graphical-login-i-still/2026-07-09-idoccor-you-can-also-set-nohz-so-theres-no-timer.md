@@ -28,7 +28,9 @@ parent_post_id: "2075107966018105449"
 
 **1/** @idoccor
 
-@NOTimothyLottes You can also set nohz so there's no timer interrupts on the isolated cores + set up transparent huge pages (or manually use them)
+@NOTimothyLottes
+
+You can also set nohz so there's no timer interrupts on the isolated cores + set up transparent huge pages (or manually use them)
 
 ## Related
 

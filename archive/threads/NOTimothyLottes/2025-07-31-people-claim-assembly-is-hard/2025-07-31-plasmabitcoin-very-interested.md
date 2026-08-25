@@ -28,7 +28,9 @@ parent_post_id: "1950860870818439202"
 
 **1/** @plasmabitcoin
 
-@NOTimothyLottes Very interested!
+@NOTimothyLottes
+
+Very interested!
 
 ## Related
 

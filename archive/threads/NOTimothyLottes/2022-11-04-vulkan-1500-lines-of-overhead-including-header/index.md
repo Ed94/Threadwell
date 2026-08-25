@@ -30,6 +30,8 @@ in_reply_to: "1588331007622930432"
 
 **1/** @NOTimothyLottes
 
-@rianflo Vulkan: ~1500 lines of overhead (including header src, as I don't include) for complete hotrod bind-everything-only-once compute-only gfx engine. Not a fan of VK bloatware API complexity, but frankly it can be minimized, and exposes enough to do wonderfull things to the hardware.
+@rianflo
+
+Vulkan: ~1500 lines of overhead (including header src, as I don't include) for complete hotrod bind-everything-only-once compute-only gfx engine. Not a fan of VK bloatware API complexity, but frankly it can be minimized, and exposes enough to do wonderfull things to the hardware.
 
 Branches: [[archive/threads/NOTimothyLottes/2022-11-04-vulkan-1500-lines-of-overhead-including-header/2022-11-04-rianflo-welcome-not-back]]

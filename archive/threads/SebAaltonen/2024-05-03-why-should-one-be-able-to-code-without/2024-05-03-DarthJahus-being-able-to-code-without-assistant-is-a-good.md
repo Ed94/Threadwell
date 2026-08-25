@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @DarthJahus
 
-@SebAaltonen Being able to code without assistant is a good thing, maybe?
+@SebAaltonen
+
+Being able to code without assistant is a good thing, maybe?
 
 ## Related
 

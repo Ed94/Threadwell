@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @habibislop
 
-@VictorTaelin This is a very naive and ignorant question, but now that you've split Type into two sorts, is there anything that could be represented with both variants? and if so, what would happen if someone selected the wrong one for their use csse
+@VictorTaelin
+
+This is a very naive and ignorant question, but now that you've split Type into two sorts, is there anything that could be represented with both variants? and if so, what would happen if someone selected the wrong one for their use csse
 
 ## Related
 

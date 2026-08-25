@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @Junts
 
-@SebAaltonen As a kid I thought coding seemed cool and wrote a 30 second program in basic in a text file I renamed to an .exe.  it was so aggravating that I decided programming was a pain
+@SebAaltonen
+
+As a kid I thought coding seemed cool and wrote a 30 second program in basic in a text file I renamed to an .exe.  it was so aggravating that I decided programming was a pain
 
 As an adult I now code for a living with modern tools.
 

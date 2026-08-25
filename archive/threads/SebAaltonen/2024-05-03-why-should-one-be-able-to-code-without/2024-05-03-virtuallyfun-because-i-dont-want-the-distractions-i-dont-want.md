@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @virtuallyfun
 
-@SebAaltonen Because I don’t want the distractions, I don’t want my hand held, I just want to type, typos and all.
+@SebAaltonen
+
+Because I don’t want the distractions, I don’t want my hand held, I just want to type, typos and all.
 
 ## Related
 

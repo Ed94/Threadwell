@@ -33,8 +33,12 @@ Branches: [[archive/threads/NOTimothyLottes/2025-10-13-short-talk-on-how-i-do-cp
 
 **2/** @AgileJebrim
 
-@NOTimothyLottes No retries - you should call it wait-free too.
+@NOTimothyLottes
+
+No retries - you should call it wait-free too.
 
 **3/** @NOTimothyLottes
 
-@AgileJebrim Good point, I'm going to adopt that 'wait-free' term moving forward :)
+@AgileJebrim
+
+Good point, I'm going to adopt that 'wait-free' term moving forward :)

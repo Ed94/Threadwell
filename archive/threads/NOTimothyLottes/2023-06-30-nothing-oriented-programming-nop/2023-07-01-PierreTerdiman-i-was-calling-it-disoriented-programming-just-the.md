@@ -28,7 +28,9 @@ parent_post_id: "1674757854471806977"
 
 **1/** @PierreTerdiman
 
-@NOTimothyLottes I was calling it "disoriented programming" just the other day.
+@NOTimothyLottes
+
+I was calling it "disoriented programming" just the other day.
 
 https://x.com/PierreTerdiman/status/1673389650172321813?s=20
 

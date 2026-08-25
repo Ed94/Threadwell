@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @PurpleNinjaGrrl
 
-@SebAaltonen Nothing has more forever-a-junior-level-programmer energy than “You should spend more time and energy looking up API calls and typing console commands instead of using that time to iterate on your design and improve your code” takes
+@SebAaltonen
+
+Nothing has more forever-a-junior-level-programmer energy than “You should spend more time and energy looking up API calls and typing console commands instead of using that time to iterate on your design and improve your code” takes
 
 ## Related
 

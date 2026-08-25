@@ -59,17 +59,23 @@ Note one can inline something like CAS/RCAS (what I did at AMD) into the custom 
 
 **6/** @dankbaker
 
-@NOTimothyLottes Is there an example shader that does that custom resolve?
+@NOTimothyLottes
+
+Is there an example shader that does that custom resolve?
 
 **7/** @NOTimothyLottes
 
-@dankbaker Probably not in the config you are interested in (I'm assuming spatial with no scaling?) Feel free to DM me. Most of these things need adaption specific to the config. Last one I did was huge spatial scaling for a CRT-styled scalar using this kernel,
+@dankbaker
+
+Probably not in the config you are interested in (I'm assuming spatial with no scaling?) Feel free to DM me. Most of these things need adaption specific to the config. Last one I did was huge spatial scaling for a CRT-styled scalar using this kernel,
 
 ![](https://pbs.twimg.com/media/GiZv5SFWYAAyv2W?format=jpg&name=orig)
 
 **8/** @NOTimothyLottes
 
-@dankbaker My project is monochome so the kernel blending logic is single channel, and the content is designed to handle a huge amount of negative lobe well so I don't constrain ringing (BLUE, replace with 'm.y*RINGING'), and everything in linear of course ... but it should provide an idea
+@dankbaker
+
+My project is monochome so the kernel blending logic is single channel, and the content is designed to handle a huge amount of negative lobe well so I don't constrain ringing (BLUE, replace with 'm.y*RINGING'), and everything in linear of course ... but it should provide an idea
 
 ![](https://pbs.twimg.com/media/GiZxt_6X0AARcFR?format=png&name=orig)
 

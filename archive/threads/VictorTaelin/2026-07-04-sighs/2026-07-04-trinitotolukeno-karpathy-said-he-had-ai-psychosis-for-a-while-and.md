@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @trinitotolukeno
 
-@VictorTaelin karpathy said he had AI psychosis for a while and everyone knows he's very competent
+@VictorTaelin
+
+karpathy said he had AI psychosis for a while and everyone knows he's very competent
 
 AI psychosis is about getting super excited about SOTA models, overestimate their usefulness and feel empowered to undertake massive loads of work, which for some, is beyond their capacities
 

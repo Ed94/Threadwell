@@ -28,7 +28,9 @@ parent_post_id: "2010303501851877740"
 
 **1/** @JoaoBapt
 
-@Dispatch_Graph I suggest you to stick with GLFW if you’re only doing Vulkan.
+@Dispatch_Graph
+
+I suggest you to stick with GLFW if you’re only doing Vulkan.
 
 …and possibly use it in your D3D projects as well.
 

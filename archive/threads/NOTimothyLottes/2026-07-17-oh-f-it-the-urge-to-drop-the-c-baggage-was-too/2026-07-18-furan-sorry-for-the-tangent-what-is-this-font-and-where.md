@@ -28,15 +28,21 @@ parent_post_id: "2078257788732461389"
 
 **1/** @furan
 
-@NOTimothyLottes sorry for the tangent - what is this font and where can I get it?
+@NOTimothyLottes
+
+sorry for the tangent - what is this font and where can I get it?
 
 **2/** @NOTimothyLottes
 
-@furan It’s one of mine (bitmap front for 640x480 resolution CRT) if I ever figure out some good web hosting again I could put up
+@furan
+
+It’s one of mine (bitmap front for 640x480 resolution CRT) if I ever figure out some good web hosting again I could put up
 
 **3/** @furan
 
-@NOTimothyLottes or github, I host a bunch of bitmap fonts here: https://github.com/ianhan/bitmapfonts
+@NOTimothyLottes
+
+or github, I host a bunch of bitmap fonts here: https://github.com/ianhan/bitmapfonts
 
 ## Related
 

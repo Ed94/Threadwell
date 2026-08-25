@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @KasperArnklit
 
-@SebAaltonen Gate keeping programming and thinking it makes you special is incredibly sad.
+@SebAaltonen
+
+Gate keeping programming and thinking it makes you special is incredibly sad.
 
 ## Related
 

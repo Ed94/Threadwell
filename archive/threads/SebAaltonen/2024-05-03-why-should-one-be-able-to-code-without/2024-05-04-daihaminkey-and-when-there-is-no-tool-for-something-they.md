@@ -28,7 +28,9 @@ parent_post_id: "1786349827669790823"
 
 **1/** @daihaminkey
 
-@SebAaltonen And when there is no tool for something, they develop it.
+@SebAaltonen
+
+And when there is no tool for something, they develop it.
 
 Especially in gamedev
 

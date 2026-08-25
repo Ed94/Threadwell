@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @NohBody3
 
-@SebAaltonen Why do they teach arithmetic, we all have calculators
+@SebAaltonen
+
+Why do they teach arithmetic, we all have calculators
 
 ## Related
 

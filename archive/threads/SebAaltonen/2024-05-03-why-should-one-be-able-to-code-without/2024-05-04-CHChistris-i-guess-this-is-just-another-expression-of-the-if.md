@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @CHChistris
 
-@SebAaltonen I guess this is just another expression of the "if I had to suffer, you should too. To give sense to why I had to suffer" school of thought. 
+@SebAaltonen
+
+I guess this is just another expression of the "if I had to suffer, you should too. To give sense to why I had to suffer" school of thought. 
 I prefer the "this sucks, and I hope I can make it better for everyone" school of thought
 
 ## Related

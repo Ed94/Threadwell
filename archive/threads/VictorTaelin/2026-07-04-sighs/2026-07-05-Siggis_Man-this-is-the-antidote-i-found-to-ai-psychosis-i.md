@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @Siggis_Man
 
-@VictorTaelin > this is the antidote I found to AI psychosis. I call it "competency"
+@VictorTaelin
+
+> this is the antidote I found to AI psychosis. I call it "competency"
 
 Thanks for calling this out. Fable will not suddenly make you a 10x engineer. And using it in a mindless way where you don't truly understand the output will yield no gains long term.
 

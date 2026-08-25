@@ -28,7 +28,9 @@ parent_post_id: "1781724279798686001"
 
 **1/** @matiasgoldberg
 
-@KostasAAA What's the value of shaderSampledImageArrayDynamicIndexing?
+@KostasAAA
+
+What's the value of shaderSampledImageArrayDynamicIndexing?
 
 I'm seeing an alarming number of reports (93%!!!) saying this is true, when that'd be a blatant lie.
 

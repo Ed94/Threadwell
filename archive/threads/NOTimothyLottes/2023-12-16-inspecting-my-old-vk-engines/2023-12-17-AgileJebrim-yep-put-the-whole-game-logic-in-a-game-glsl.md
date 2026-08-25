@@ -28,7 +28,9 @@ parent_post_id: "1736157335058300999"
 
 **1/** @AgileJebrim
 
-@NOTimothyLottes Yep put the whole game logic in a game.glsl compute shader.
+@NOTimothyLottes
+
+Yep put the whole game logic in a game.glsl compute shader.
 
 **2/** @AgileJebrim
 

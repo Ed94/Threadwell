@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @ren_metal_n_dev
 
-@SebAaltonen It’s about leveraging the tools to be as productive as possible. Who cares if you use an IDE. If someone on my team is dragging behind because of their tool choice on the other hand, that would be annoying.
+@SebAaltonen
+
+It’s about leveraging the tools to be as productive as possible. Who cares if you use an IDE. If someone on my team is dragging behind because of their tool choice on the other hand, that would be annoying.
 
 ## Related
 

@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @thr0wsException
 
-@SebAaltonen It's obvious engagement farming / rage bait. Just ignore it tbh
+@SebAaltonen
+
+It's obvious engagement farming / rage bait. Just ignore it tbh
 
 ## Related
 

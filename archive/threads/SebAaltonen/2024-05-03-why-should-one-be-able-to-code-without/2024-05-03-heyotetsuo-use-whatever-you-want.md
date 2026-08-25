@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @heyotetsuo
 
-@SebAaltonen @SebAaltonen use whatever you want
+@SebAaltonen @SebAaltonen
+
+use whatever you want
 
 ## Related
 

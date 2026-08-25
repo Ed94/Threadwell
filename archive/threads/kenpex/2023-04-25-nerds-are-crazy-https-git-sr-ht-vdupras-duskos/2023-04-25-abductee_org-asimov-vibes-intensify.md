@@ -28,7 +28,9 @@ parent_post_id: "1650678968255913985"
 
 **1/** @abductee_org
 
-@kenpex [Asimov vibes intensify]
+@kenpex
+
+[Asimov vibes intensify]
 
 ## Related
 

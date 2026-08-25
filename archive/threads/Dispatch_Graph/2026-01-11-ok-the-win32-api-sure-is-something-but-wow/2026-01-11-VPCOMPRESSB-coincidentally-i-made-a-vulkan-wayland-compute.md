@@ -28,7 +28,9 @@ parent_post_id: "2010303501851877740"
 
 **1/** @VPCOMPRESSB
 
-@Dispatch_Graph coincidentally, i made a Vulkan Wayland compute engine yesterday in ~600 LoC.
+@Dispatch_Graph
+
+coincidentally, i made a Vulkan Wayland compute engine yesterday in ~600 LoC.
 
 <video controls src="https://video.twimg.com/amplify_video/2010378825461309440/vid/avc1/1920x1080/Rbp-jYZAio7gk9-U.mp4?tag=21"></video>
 ![](https://pbs.twimg.com/media/G-ZM4-pWEAAN7YI?format=jpg&name=orig)

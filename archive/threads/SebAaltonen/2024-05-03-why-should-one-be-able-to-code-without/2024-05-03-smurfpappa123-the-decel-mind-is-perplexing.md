@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @smurfpappa123
 
-@SebAaltonen The decel mind is perplexing 🤔
+@SebAaltonen
+
+The decel mind is perplexing 🤔
 
 ## Related
 

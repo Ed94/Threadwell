@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @altansukhbatbay
 
-@VictorTaelin high quality post!
+@VictorTaelin
+
+high quality post!
 
 ## Related
 

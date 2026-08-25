@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @charlesthefool
 
-@VictorTaelin Do people not study lambda calculus in college or at any other point when looking into programming languages?
+@VictorTaelin
+
+Do people not study lambda calculus in college or at any other point when looking into programming languages?
 
 ## Related
 

@@ -28,7 +28,9 @@ parent_post_id: "2065851939917906296"
 
 **1/** @NOTimothyLottes
 
-@axelgneiting The glibc implementation would do that. I bypass libc and just do it manually with perf_event_open syscall and mmap.
+@axelgneiting
+
+The glibc implementation would do that. I bypass libc and just do it manually with perf_event_open syscall and mmap.
 
 ![](https://pbs.twimg.com/media/HKtzz5RXcAA6CIX?format=jpg&name=orig)
 

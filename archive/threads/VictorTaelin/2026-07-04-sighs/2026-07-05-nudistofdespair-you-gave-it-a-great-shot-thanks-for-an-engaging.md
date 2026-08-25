@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @nudistofdespair
 
-@VictorTaelin You gave it a great shot, thanks for an engaging read.
+@VictorTaelin
+
+You gave it a great shot, thanks for an engaging read.
 
 ## Related
 

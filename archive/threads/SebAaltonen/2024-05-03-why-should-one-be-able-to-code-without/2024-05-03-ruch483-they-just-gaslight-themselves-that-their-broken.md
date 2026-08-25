@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @ruch483
 
-@SebAaltonen they just gaslight themselves that their broken vim config is equivalent to a proper IDE
+@SebAaltonen
+
+they just gaslight themselves that their broken vim config is equivalent to a proper IDE
 
 ## Related
 

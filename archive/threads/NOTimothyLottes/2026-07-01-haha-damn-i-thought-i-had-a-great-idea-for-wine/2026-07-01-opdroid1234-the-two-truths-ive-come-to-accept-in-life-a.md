@@ -28,7 +28,9 @@ parent_post_id: "2072445315370590266"
 
 **1/** @opdroid1234
 
-@NOTimothyLottes the two truths ive come to accept in life
+@NOTimothyLottes
+
+the two truths ive come to accept in life
 
 a. theres to trick that unravels chess's complexity
 b. theres no trick that unavaels the existing software stacks complexity into something elegant

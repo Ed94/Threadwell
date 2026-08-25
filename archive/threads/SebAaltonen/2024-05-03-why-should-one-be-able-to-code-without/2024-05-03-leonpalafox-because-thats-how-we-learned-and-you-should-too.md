@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @leonpalafox
 
-@SebAaltonen Because that’s how we learned and you should too 😂
+@SebAaltonen
+
+Because that’s how we learned and you should too 😂
 
 ## Related
 

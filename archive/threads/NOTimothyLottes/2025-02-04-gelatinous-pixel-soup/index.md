@@ -130,8 +130,12 @@ I think ultimately those in the industry who don't like the current status quo, 
 
 **17/** @0xpatrickhan
 
-@NOTimothyLottes What are some problem areas you think need to be tackled? I’ve read some of what you’ve written in response to some of the gripes of modern day temporal supersampling/AA. What else? Anything that IHVs would be uniquely positioned to do?
+@NOTimothyLottes
+
+What are some problem areas you think need to be tackled? I’ve read some of what you’ve written in response to some of the gripes of modern day temporal supersampling/AA. What else? Anything that IHVs would be uniquely positioned to do?
 
 **18/** @NOTimothyLottes
 
-@0xpatrickhan There is a laundry list of things IHVs dont expose or expose very poorly for basic compute shaders, making it quite difficult or impossible to get a compiler to do the right thing. Fix those and devs like myself could easily build better than AI tech options
+@0xpatrickhan
+
+There is a laundry list of things IHVs dont expose or expose very poorly for basic compute shaders, making it quite difficult or impossible to get a compiler to do the right thing. Fix those and devs like myself could easily build better than AI tech options

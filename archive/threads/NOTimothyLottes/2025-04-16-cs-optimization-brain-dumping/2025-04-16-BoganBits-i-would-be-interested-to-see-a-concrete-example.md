@@ -28,12 +28,16 @@ parent_post_id: "1912477061467304351"
 
 **1/** @BoganBits
 
-@NOTimothyLottes I would be interested to see a concrete example of this
+@NOTimothyLottes
+
+I would be interested to see a concrete example of this
 ideally with a benchmark to show the improvement
 
 **2/** @NOTimothyLottes
 
-@BoganBits Early STP had a mode to pipeline the dependent passes, that was back when it was being developed out of Unity. That mode was way faster. But later it was removed because Unity wouldn't allow resources bound for read+write at the same time = fail.
+@BoganBits
+
+Early STP had a mode to pipeline the dependent passes, that was back when it was being developed out of Unity. That mode was way faster. But later it was removed because Unity wouldn't allow resources bound for read+write at the same time = fail.
 
 ## Related
 

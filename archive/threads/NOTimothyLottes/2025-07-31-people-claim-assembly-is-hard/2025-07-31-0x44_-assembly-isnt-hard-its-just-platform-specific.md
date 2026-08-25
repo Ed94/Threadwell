@@ -28,7 +28,9 @@ parent_post_id: "1950860870818439202"
 
 **1/** @0x44_
 
-@NOTimothyLottes Assembly isn't hard, it's just platform specific, which makes it tedious.
+@NOTimothyLottes
+
+Assembly isn't hard, it's just platform specific, which makes it tedious.
 
 ## Related
 

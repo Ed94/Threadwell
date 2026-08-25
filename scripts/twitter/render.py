@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -100,6 +101,35 @@ def _source_block(post: PostData) -> str:
     )
 
 
+_LEADING_MENTIONS: re.Pattern[str] = re.compile(
+    r"^((?:@[A-Za-z0-9_]+(?:[ \t]+@[A-Za-z0-9_]+)*)[ \t]*)(.*)$",
+    re.DOTALL,
+)
+
+
+def split_leading_mentions(text: str) -> tuple[str, str]:
+    """Split reply ``@handles`` at the start of a tweet from the rest."""
+    raw = text or ""
+    match = _LEADING_MENTIONS.match(raw)
+    if match is None:
+        return "", raw
+    mentions = " ".join(match.group(1).split())
+    rest = match.group(2).lstrip(" \t")
+    if rest.startswith("\n"):
+        rest = rest.lstrip("\n")
+    return mentions, rest
+
+
+def format_post_text(text: str) -> str:
+    """Put leading reply mentions on their own line, then the tweet body."""
+    mentions, rest = split_leading_mentions(text)
+    if not mentions:
+        return text
+    if not rest:
+        return mentions
+    return f"{mentions}\n\n{rest}"
+
+
 def _post_block(
     n: int,
     post: PostData,
@@ -109,7 +139,7 @@ def _post_block(
     """Render one post body (``**N/** @handle`` + text + media + branch links)."""
     if not post.handle:
         raise ValueError(f"empty handle on post {post.post_id}")
-    parts = [f"**{n}/** @{post.handle}", "", post.text]
+    parts = [f"**{n}/** @{post.handle}", "", format_post_text(post.text)]
     media = (media_by_post or {}).get(post.post_id) or ()
     if media:
         parts.append("")

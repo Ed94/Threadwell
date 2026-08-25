@@ -28,7 +28,9 @@ parent_post_id: "1674757854471806977"
 
 **1/** @claudiogonzalo
 
-@NOTimothyLottes c++ to √c
+@NOTimothyLottes
+
+c++ to √c
 
 ## Related
 

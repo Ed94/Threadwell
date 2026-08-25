@@ -28,7 +28,9 @@ parent_post_id: "1950860870818439202"
 
 **1/** @furan
 
-@NOTimothyLottes There are a lot of "watch me write this app in assembly" yt videos
+@NOTimothyLottes
+
+There are a lot of "watch me write this app in assembly" yt videos
 
 ## Related
 

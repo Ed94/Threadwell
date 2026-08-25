@@ -28,7 +28,9 @@ parent_post_id: "1950860870818439202"
 
 **1/** @John31625320803
 
-@NOTimothyLottes It doesn't really matter what language you call Vulkan from, the pain is all in the API...
+@NOTimothyLottes
+
+It doesn't really matter what language you call Vulkan from, the pain is all in the API...
 
 ## Related
 

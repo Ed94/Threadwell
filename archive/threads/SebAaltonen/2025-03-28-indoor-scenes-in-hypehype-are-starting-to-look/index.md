@@ -54,7 +54,9 @@ Game by @DanielPalmiArt
 
 **5/** @SebAaltonen
 
-@DanielPalmiArt Old HypeHype indoor pictures before we landed screen space AO (GTAO) and oct-map indirect lighting. Old version had gradient based indirect lighting. Gradient is bad for indoors, since all wall normals face to horizon direction == same gradient color. And shadow masks sun out.
+@DanielPalmiArt
+
+Old HypeHype indoor pictures before we landed screen space AO (GTAO) and oct-map indirect lighting. Old version had gradient based indirect lighting. Gradient is bad for indoors, since all wall normals face to horizon direction == same gradient color. And shadow masks sun out.
 
 ![](https://pbs.twimg.com/media/GnHLNt9WkAAabNR?format=jpg&name=orig)
 ![](https://pbs.twimg.com/media/GnHLO2zXEAAhygZ?format=jpg&name=orig)
@@ -62,7 +64,9 @@ Game by @DanielPalmiArt
 
 **6/** @SebAaltonen
 
-@DanielPalmiArt Exactly one-year-old build versus the latest build. Quite a massive improvement in one year in visuals.
+@DanielPalmiArt
+
+Exactly one-year-old build versus the latest build. Quite a massive improvement in one year in visuals.
 
 Still runs smoothly on the same devices.
 

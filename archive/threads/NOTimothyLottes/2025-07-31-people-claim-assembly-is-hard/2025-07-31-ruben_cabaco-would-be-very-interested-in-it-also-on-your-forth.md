@@ -28,7 +28,9 @@ parent_post_id: "1950860870818439202"
 
 **1/** @ruben_cabaco
 
-@NOTimothyLottes Would be very interested in it! Also on your Forth inspired languages and the whole mental approach to simplify problem solving with efficiency in mind. Hard to find materials on this, and from what I gather your old projects/thoughts are no longer online.
+@NOTimothyLottes
+
+Would be very interested in it! Also on your Forth inspired languages and the whole mental approach to simplify problem solving with efficiency in mind. Hard to find materials on this, and from what I gather your old projects/thoughts are no longer online.
 
 ## Related
 

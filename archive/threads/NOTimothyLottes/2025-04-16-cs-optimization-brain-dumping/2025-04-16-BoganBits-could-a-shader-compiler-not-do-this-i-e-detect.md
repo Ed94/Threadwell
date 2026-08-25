@@ -28,11 +28,15 @@ parent_post_id: "1912477061467304351"
 
 **1/** @BoganBits
 
-@NOTimothyLottes Could a shader compiler not do this?  i.e. detect such inefficient code, and "re-vectorise" it, so to speak i.e. have each shader instance do 2 at once, interleaved
+@NOTimothyLottes
+
+Could a shader compiler not do this?  i.e. detect such inefficient code, and "re-vectorise" it, so to speak i.e. have each shader instance do 2 at once, interleaved
 
 **2/** @NOTimothyLottes
 
-@BoganBits This is something to be done at the dispatch level, not something a compiler knows about
+@BoganBits
+
+This is something to be done at the dispatch level, not something a compiler knows about
 
 ## Related
 

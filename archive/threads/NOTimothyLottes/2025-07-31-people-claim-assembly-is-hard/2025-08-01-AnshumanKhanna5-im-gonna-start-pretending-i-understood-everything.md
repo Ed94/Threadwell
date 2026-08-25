@@ -28,7 +28,9 @@ parent_post_id: "1950868863836410096"
 
 **1/** @AnshumanKhanna5
 
-@NOTimothyLottes I'm gonna start pretending I understood everything you said
+@NOTimothyLottes
+
+I'm gonna start pretending I understood everything you said
 
 ## Related
 

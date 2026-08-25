@@ -28,12 +28,16 @@ parent_post_id: "1674757854471806977"
 
 **1/** @leonard_coder
 
-@NOTimothyLottes $4e71
+@NOTimothyLottes
+
+$4e71
 if you know, you know
 
 **2/** @NOTimothyLottes
 
-@leonard_coder ${EA, 1A, 3A, 5A, 7A, DA, or FA}
+@leonard_coder
+
+${EA, 1A, 3A, 5A, 7A, DA, or FA}
 
 ## Related
 

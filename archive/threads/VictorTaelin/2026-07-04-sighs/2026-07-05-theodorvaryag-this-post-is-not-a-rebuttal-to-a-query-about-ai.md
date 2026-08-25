@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @theodorvaryag
 
-@VictorTaelin this post is not a rebuttal to a query about ai psychosis regardless of the merits and robust technical details behind it
+@VictorTaelin
+
+this post is not a rebuttal to a query about ai psychosis regardless of the merits and robust technical details behind it
 
 ## Related
 

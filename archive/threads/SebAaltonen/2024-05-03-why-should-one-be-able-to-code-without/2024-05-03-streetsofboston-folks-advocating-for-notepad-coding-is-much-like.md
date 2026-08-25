@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @streetsofboston
 
-@SebAaltonen Folks advocating for "notepad" coding is much like a grandfather boasting how he walked to school during a blizzard.
+@SebAaltonen
+
+Folks advocating for "notepad" coding is much like a grandfather boasting how he walked to school during a blizzard.
 
 ## Related
 

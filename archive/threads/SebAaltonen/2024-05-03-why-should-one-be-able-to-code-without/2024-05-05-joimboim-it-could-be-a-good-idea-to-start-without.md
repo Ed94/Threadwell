@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @joimboim
 
-@SebAaltonen It could be a good idea to start without intellisense. Just to learn and not get overwhelmed. It is also pretty distracting when it gets something wrong. 
+@SebAaltonen
+
+It could be a good idea to start without intellisense. Just to learn and not get overwhelmed. It is also pretty distracting when it gets something wrong. 
 I mean there is no valid reason why someone shouldn't use it. But you should be able to make something without it, i guess.
 
 ## Related

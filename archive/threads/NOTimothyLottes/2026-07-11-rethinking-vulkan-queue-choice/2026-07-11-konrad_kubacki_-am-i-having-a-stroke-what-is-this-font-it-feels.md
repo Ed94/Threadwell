@@ -28,7 +28,9 @@ parent_post_id: "2075769880092037309"
 
 **1/** @konrad_kubacki_
 
-@NOTimothyLottes Am I having a stroke? What is this font? It feels like reading a captcha. Is it only me?
+@NOTimothyLottes
+
+Am I having a stroke? What is this font? It feels like reading a captcha. Is it only me?
 
 ## Related
 

@@ -33,25 +33,35 @@ in_reply_to: ""
 
 **2/** @kechogarcia
 
-@NOTimothyLottes Dxc hlsl sm 6.5 lets you index into ResourceDescriptorHeap directly and cast to whatever resource type. That and mutable vulkan descriptors, you wouldn't need to go the buffer Zoo route.... But then dxc spirv ...
+@NOTimothyLottes
+
+Dxc hlsl sm 6.5 lets you index into ResourceDescriptorHeap directly and cast to whatever resource type. That and mutable vulkan descriptors, you wouldn't need to go the buffer Zoo route.... But then dxc spirv ...
 
 **3/** @NOTimothyLottes
 
-@kechogarcia Read<32,64,128>(uint64_t base, uint32_t offset, uint32_t immediate, uint32_t cacheControl, uint32_t format);
+@kechogarcia
+
+Read<32,64,128>(uint64_t base, uint32_t offset, uint32_t immediate, uint32_t cacheControl, uint32_t format);
 
 And be done with this stupid mess
 
 **4/** @axelgneiting
 
-@NOTimothyLottes @kechogarcia NVidia can't just do random format conversions without it being a texture descriptor I thought?
+@NOTimothyLottes @kechogarcia
+
+NVidia can't just do random format conversions without it being a texture descriptor I thought?
 
 **5/** @NOTimothyLottes
 
-@axelgneiting @kechogarcia Can get the non-conversion {signed/unsigned short/int/long and half/float/double, of {1-4} components}. Which is good enough to start the interface. Then yes for NV you'd need to alias via a storage_texel_buffer to get {10:11:11,10:10:10:2,<u/s>norm*}
+@axelgneiting @kechogarcia
+
+Can get the non-conversion {signed/unsigned short/int/long and half/float/double, of {1-4} components}. Which is good enough to start the interface. Then yes for NV you'd need to alias via a storage_texel_buffer to get {10:11:11,10:10:10:2,<u/s>norm*}
 
 **6/** @NOTimothyLottes
 
-@axelgneiting @kechogarcia Then there are rough edges to TEXEL_BUFFER
+@axelgneiting @kechogarcia
+
+Then there are rough edges to TEXEL_BUFFER
 
 9-bit shared 5-bit E -> read only NV, no AMD
 sRGB -> yes NV, no AMD

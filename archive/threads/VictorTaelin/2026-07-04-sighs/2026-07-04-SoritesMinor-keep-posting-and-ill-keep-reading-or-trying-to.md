@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @SoritesMinor
 
-@VictorTaelin Keep posting and I'll keep reading. Or trying to.
+@VictorTaelin
+
+Keep posting and I'll keep reading. Or trying to.
 
 ## Related
 

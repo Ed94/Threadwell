@@ -33,26 +33,38 @@ Branches: [[archive/threads/SebAaltonen/2024-05-03-why-should-one-be-able-to-cod
 
 **2/** @NOTimothyLottes
 
-@SebAaltonen i code in notepad2, i don't use debuggers, i don't create bugs, i don't use multiple files, the C code compiles faster than i can notice after saving the single file (via a shell script) ... why anyone wants the alternative insane code complexity, i'll never know
+@SebAaltonen
+
+i code in notepad2, i don't use debuggers, i don't create bugs, i don't use multiple files, the C code compiles faster than i can notice after saving the single file (via a shell script) ... why anyone wants the alternative insane code complexity, i'll never know
 
 **3/** @SebAaltonen
 
-@NOTimothyLottes Works for hobby projects. But not for big work projects with 50+ people teams.
+@NOTimothyLottes
+
+Works for hobby projects. But not for big work projects with 50+ people teams.
 
 **4/** @Nerfoxingaround
 
-@SebAaltonen @NOTimothyLottes No. It works for low level projects regardless of the team size. This whole discussion is yet another case of programmers taking their work as religion or their personality. 
+@SebAaltonen @NOTimothyLottes
+
+No. It works for low level projects regardless of the team size. This whole discussion is yet another case of programmers taking their work as religion or their personality. 
 
 I wouldn't handle stepper motors in C# and I wouldn't code games in assembler.
 
 **5/** @NOTimothyLottes
 
-@Nerfoxingaround @SebAaltonen Back in the day we would write everything, from the DOS extender (to 32bit mode) the sound blaster drivers, the VGA interface, etc, and the UI and audio synth and sequencer/editor ... all in assembly and it was dead easy, a lot easter than say bringing up a triangle in Vulkan.
+@Nerfoxingaround @SebAaltonen
+
+Back in the day we would write everything, from the DOS extender (to 32bit mode) the sound blaster drivers, the VGA interface, etc, and the UI and audio synth and sequencer/editor ... all in assembly and it was dead easy, a lot easter than say bringing up a triangle in Vulkan.
 
 **6/** @NOTimothyLottes
 
-@Nerfoxingaround @SebAaltonen There is nothing complex or hard about assembly with a good macro preprocessor. It's easier IMO than high level languages because you know exactly what you get out of it. Interrupts and syscalls are easy.
+@Nerfoxingaround @SebAaltonen
+
+There is nothing complex or hard about assembly with a good macro preprocessor. It's easier IMO than high level languages because you know exactly what you get out of it. Interrupts and syscalls are easy.
 
 **7/** @NOTimothyLottes
 
-@Nerfoxingaround @SebAaltonen It was only later when systems forced C ABI library interfaces with it's stacks and junk that things got messy and only because of the C. Then C++ happened and things got much worse. Pure ASM is easy, its interfacing with the bloat world that got hard.
+@Nerfoxingaround @SebAaltonen
+
+It was only later when systems forced C ABI library interfaces with it's stacks and junk that things got messy and only because of the C. Then C++ happened and things got much worse. Pure ASM is easy, its interfacing with the bloat world that got hard.

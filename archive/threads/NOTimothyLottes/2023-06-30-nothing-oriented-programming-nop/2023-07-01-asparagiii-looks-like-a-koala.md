@@ -28,7 +28,9 @@ parent_post_id: "1674757854471806977"
 
 **1/** @asparagiii
 
-@NOTimothyLottes Looks like a koala
+@NOTimothyLottes
+
+Looks like a koala
 
 ![](https://pbs.twimg.com/media/Fz88Bk0WAAApDzL?format=jpg&name=orig)
 ## Related

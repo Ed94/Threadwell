@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @Ancients
 
-@SebAaltonen There is an argument where people build systems as complex and resource intensive as their tooling will allow. 
+@SebAaltonen
+
+There is an argument where people build systems as complex and resource intensive as their tooling will allow. 
 
 I don't think people should be forced to code in notepad, but I don't think people should be ok with tons of indirection because *their* IDE covers it up for them.
 

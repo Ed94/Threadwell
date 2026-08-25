@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @saarw
 
-@SebAaltonen Simple editors tend to lead to other bad choices to compensate. Such as preference for languages that have so little syntax and type information that they create maintenance nightmares
+@SebAaltonen
+
+Simple editors tend to lead to other bad choices to compensate. Such as preference for languages that have so little syntax and type information that they create maintenance nightmares
 https://x.com/saarw/status/1755529704180720114?t=zfjfI-8BhZ915QDCMRRjAQ&s=19
 
 ## Related

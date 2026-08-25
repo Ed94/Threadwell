@@ -28,7 +28,9 @@ parent_post_id: "1776597200073568623"
 
 **1/** @RickyAH
 
-@NOTimothyLottes @SebAaltonen @MartinJIFuller Ha! That won’t save you from my follow
+@NOTimothyLottes @SebAaltonen @MartinJIFuller
+
+Ha! That won’t save you from my follow
 
 <video controls src="https://video.twimg.com/tweet_video/GKoMKCHWwAAWLvG.mp4"></video>
 ## Related

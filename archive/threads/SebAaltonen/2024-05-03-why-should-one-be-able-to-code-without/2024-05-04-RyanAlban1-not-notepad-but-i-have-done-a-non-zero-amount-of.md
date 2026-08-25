@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @RyanAlban1
 
-@SebAaltonen Not Notepad, but I have done a non-zero amount of programming in source control diff tools that have none of those features. It was the quickest way to solve the problem at the time.😅
+@SebAaltonen
+
+Not Notepad, but I have done a non-zero amount of programming in source control diff tools that have none of those features. It was the quickest way to solve the problem at the time.😅
 
 I also have yet to use a code review tool that had IntelliSense. Wish I had one, though...
 

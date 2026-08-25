@@ -28,7 +28,9 @@ parent_post_id: "1786349827669790823"
 
 **1/** @deejayyhu
 
-@SebAaltonen Debate is not about when you don't want to use notepad, but when you are not able to use it.
+@SebAaltonen
+
+Debate is not about when you don't want to use notepad, but when you are not able to use it.
 
 New version of "copy con program.exe", there is truth hidden between the lines.
 

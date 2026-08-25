@@ -28,11 +28,15 @@ parent_post_id: "2065804972378243476"
 
 **1/** @quiveron_x
 
-@NOTimothyLottes Why are you using CRT
+@NOTimothyLottes
+
+Why are you using CRT
 
 **2/** @NOTimothyLottes
 
-@quiveron_x Still the best display technology IMO. Low persistence, analog, variable resolution, smooth continuous blended signal, deep blacks, great contrast, etc.
+@quiveron_x
+
+Still the best display technology IMO. Low persistence, analog, variable resolution, smooth continuous blended signal, deep blacks, great contrast, etc.
 
 **3/** @quiveron_x
 

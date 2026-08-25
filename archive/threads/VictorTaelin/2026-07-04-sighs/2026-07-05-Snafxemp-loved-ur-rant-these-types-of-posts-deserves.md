@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @Snafxemp
 
-@VictorTaelin loved ur rant. these types of posts deserves attention
+@VictorTaelin
+
+loved ur rant. these types of posts deserves attention
 
 ## Related
 

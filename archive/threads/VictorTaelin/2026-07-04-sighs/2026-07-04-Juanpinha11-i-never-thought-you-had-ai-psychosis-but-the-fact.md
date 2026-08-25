@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @Juanpinha11
 
-@VictorTaelin I never thought you had AI psychosis, but the fact that others thought so led to this wonderful explanation. It makes me want to learn more about Bend2.
+@VictorTaelin
+
+I never thought you had AI psychosis, but the fact that others thought so led to this wonderful explanation. It makes me want to learn more about Bend2.
 
 ## Related
 

@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @bmarci7
 
-@SebAaltonen I would say, you should code in a way that is readable even in notepad.
+@SebAaltonen
+
+I would say, you should code in a way that is readable even in notepad.
 Using auto keyword and other modern stuff makes your code look like a cryptography without a good ide :/
 
 ## Related

@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @kechogarcia
 
-@SebAaltonen ctags and cscope. If you know, you know. Unfortunately not many know how to use them.
+@SebAaltonen
+
+ctags and cscope. If you know, you know. Unfortunately not many know how to use them.
 
 ## Related
 

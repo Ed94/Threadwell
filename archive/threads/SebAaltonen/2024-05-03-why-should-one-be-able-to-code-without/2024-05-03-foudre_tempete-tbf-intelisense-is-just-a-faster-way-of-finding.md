@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @foudre_tempete
 
-@SebAaltonen Tbf intelisense is just a faster way of finding the right code/method to do something instead of finding it online or in a book...
+@SebAaltonen
+
+Tbf intelisense is just a faster way of finding the right code/method to do something instead of finding it online or in a book...
 
 ## Related
 

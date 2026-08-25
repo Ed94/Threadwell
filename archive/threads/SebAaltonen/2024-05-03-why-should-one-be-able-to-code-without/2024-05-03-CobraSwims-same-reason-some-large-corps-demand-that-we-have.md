@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @CobraSwims
 
-@SebAaltonen Same reason some large corps demand that we have specific paths for random shit we all use autocomplete for. 
+@SebAaltonen
+
+Same reason some large corps demand that we have specific paths for random shit we all use autocomplete for. 
 
 It has nothing to do with skill, it's entirely about the optics and about what "kind" of dev you are
 

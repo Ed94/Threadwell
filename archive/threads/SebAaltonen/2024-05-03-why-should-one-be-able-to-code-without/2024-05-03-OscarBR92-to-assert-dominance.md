@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @OscarBR92
 
-@SebAaltonen To assert dominance
+@SebAaltonen
+
+To assert dominance
 
 ## Related
 

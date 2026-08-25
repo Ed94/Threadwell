@@ -28,11 +28,15 @@ parent_post_id: "2065804972378243476"
 
 **1/** @eternalclassic_
 
-@NOTimothyLottes you can use camac (free) to take raw photos on iphone without post-processing shit
+@NOTimothyLottes
+
+you can use camac (free) to take raw photos on iphone without post-processing shit
 
 **2/** @NOTimothyLottes
 
-@eternalclassic_ Will have to try that thanks
+@eternalclassic_
+
+Will have to try that thanks
 
 ## Related
 

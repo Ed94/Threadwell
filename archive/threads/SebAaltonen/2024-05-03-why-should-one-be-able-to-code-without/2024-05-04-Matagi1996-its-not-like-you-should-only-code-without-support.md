@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @Matagi1996
 
-@SebAaltonen Its not like you should only code without Support, but its nice to be able to. Sometimes you only are connected to a machine over a console via ssh and have to use Vim.
+@SebAaltonen
+
+Its not like you should only code without Support, but its nice to be able to. Sometimes you only are connected to a machine over a console via ssh and have to use Vim.
 
 ## Related
 

@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @Lascif
 
-@SebAaltonen People have a superiority complex for working in the hardest way possible because “that’s how I had to do it”.
+@SebAaltonen
+
+People have a superiority complex for working in the hardest way possible because “that’s how I had to do it”.
 They forget that they should work smarter not harder.
 
 ## Related

@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @AutorRecomienda
 
-@VictorTaelin Fable simplemente hizo de placa base pitando para avisar del error, pero la solución elegante y real requería a alguien al volante.
+@VictorTaelin
+
+Fable simplemente hizo de placa base pitando para avisar del error, pero la solución elegante y real requería a alguien al volante.
 
 ¿puede esto tener solución con mejor hardware?
 

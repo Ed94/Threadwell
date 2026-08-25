@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @KleeneAlgebra
 
-@VictorTaelin I disagree on the consistency is enough to do mathematics, you can very weird stuff to MLTT like Nat iso Nat -> Nat and still be consistent. I would like to see you convincing a mathematician to do math in that system.
+@VictorTaelin
+
+I disagree on the consistency is enough to do mathematics, you can very weird stuff to MLTT like Nat iso Nat -> Nat and still be consistent. I would like to see you convincing a mathematician to do math in that system.
 
 ## Related
 

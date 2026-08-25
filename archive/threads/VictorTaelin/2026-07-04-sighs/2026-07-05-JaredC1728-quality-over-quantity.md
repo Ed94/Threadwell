@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @JaredC1728
 
-@VictorTaelin Quality over quantity.
+@VictorTaelin
+
+Quality over quantity.
 
 ## Related
 

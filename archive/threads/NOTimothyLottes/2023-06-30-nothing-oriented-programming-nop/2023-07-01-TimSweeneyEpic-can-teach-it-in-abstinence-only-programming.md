@@ -28,7 +28,9 @@ parent_post_id: "1674757854471806977"
 
 **1/** @TimSweeneyEpic
 
-@NOTimothyLottes Can teach it in abstinence-only programming classes!
+@NOTimothyLottes
+
+Can teach it in abstinence-only programming classes!
 
 ## Related
 

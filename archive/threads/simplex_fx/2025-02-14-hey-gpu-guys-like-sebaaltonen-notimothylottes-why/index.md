@@ -37,4 +37,6 @@ Branches: [[archive/threads/simplex_fx/2025-02-14-hey-gpu-guys-like-sebaaltonen-
 
 **2/** @songohab
 
-@simplex_fx @SebAaltonen @NOTimothyLottes Exactly the question I was asking myself lol. Always felt like 3D apis SHOULD be specific. But I’m just a noob
+@simplex_fx @SebAaltonen @NOTimothyLottes
+
+Exactly the question I was asking myself lol. Always felt like 3D apis SHOULD be specific. But I’m just a noob

@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @KlavsPeder
 
-@SebAaltonen Sometimes we are limited by our environment, which may limit us to the tools available on the device we are working on. This may be 'cat > file.c', ed, ex, notepad or whatever.
+@SebAaltonen
+
+Sometimes we are limited by our environment, which may limit us to the tools available on the device we are working on. This may be 'cat > file.c', ed, ex, notepad or whatever.
 
 ## Related
 

@@ -28,11 +28,15 @@ parent_post_id: "2060186437820010850"
 
 **1/** @nicbarkeragain
 
-@NOTimothyLottes Very keen to see how the GPU side audio turns out!
+@NOTimothyLottes
+
+Very keen to see how the GPU side audio turns out!
 
 **2/** @NOTimothyLottes
 
-@nicbarkeragain To get the low latency Im looking for will require chunking up all work on the GPU and interleaving slots for audio processing. Lower bound on processing granularity is 32 stereo samples in a 64 wave, so less than a millisecond of representative time
+@nicbarkeragain
+
+To get the low latency Im looking for will require chunking up all work on the GPU and interleaving slots for audio processing. Lower bound on processing granularity is 32 stereo samples in a 64 wave, so less than a millisecond of representative time
 
 ## Related
 

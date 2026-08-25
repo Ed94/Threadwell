@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @gregrthenson
 
-@SebAaltonen I once was in an interview where they handed me a pen and paper and said "write this program"
+@SebAaltonen
+
+I once was in an interview where they handed me a pen and paper and said "write this program"
 I started writing pseudo code and they stopped me and said "no, actually write it"
 I put the pen down, pushed the paper forward, and told them I would not do that.
 

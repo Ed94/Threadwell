@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @n3ovice
 
-@VictorTaelin Don't try to market yourself. You're not running for public office.
+@VictorTaelin
+
+Don't try to market yourself. You're not running for public office.
 
 "When I write honestly, people don't react to it" is not a problem.  Just have the 2 reactions and a pleasant exchange in the comments.
 

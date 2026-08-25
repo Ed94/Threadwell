@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @thewillsykes
 
-@SebAaltonen i sort of agree, but i'm so often forced to code with no functional IDE when teaching students (cos they haven't set up correctly) that i can say it's a helpful skill to keep. When i started coding C, I used "Edit" in Dos... I hugely prefer auto complete but it has made me weaker
+@SebAaltonen
+
+i sort of agree, but i'm so often forced to code with no functional IDE when teaching students (cos they haven't set up correctly) that i can say it's a helpful skill to keep. When i started coding C, I used "Edit" in Dos... I hugely prefer auto complete but it has made me weaker
 
 ## Related
 

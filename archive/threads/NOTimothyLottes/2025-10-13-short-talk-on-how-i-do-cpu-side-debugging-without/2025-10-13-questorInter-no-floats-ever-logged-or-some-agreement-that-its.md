@@ -28,11 +28,15 @@ parent_post_id: "1977570893309321268"
 
 **1/** @questorInter
 
-@NOTimothyLottes no floats ever logged? or some "agreement" that it's always multiplied by 100000 or something like that? besides, interesting (low-level) ideas I really like :)
+@NOTimothyLottes
+
+no floats ever logged? or some "agreement" that it's always multiplied by 100000 or something like that? besides, interesting (low-level) ideas I really like :)
 
 **2/** @NOTimothyLottes
 
-@questorInter If I need to see a float, I scale it, then convert to an interger and print that. If it is the exact value, I just bit alias as 32-bit int and print that. Problem solved :) Similar if I need to see a 64-bit pointer, I write the hi and lo as two lines, etc.
+@questorInter
+
+If I need to see a float, I scale it, then convert to an interger and print that. If it is the exact value, I just bit alias as 32-bit int and print that. Problem solved :) Similar if I need to see a 64-bit pointer, I write the hi and lo as two lines, etc.
 
 ## Related
 

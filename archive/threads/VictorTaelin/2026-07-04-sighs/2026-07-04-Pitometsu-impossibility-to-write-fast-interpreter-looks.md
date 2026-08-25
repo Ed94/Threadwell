@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @Pitometsu
 
-@VictorTaelin Impossibility to write *fast* interpreter looks like a hardware architecture or compiler issue, not the language expressive power problem.
+@VictorTaelin
+
+Impossibility to write *fast* interpreter looks like a hardware architecture or compiler issue, not the language expressive power problem.
 
 ## Related
 

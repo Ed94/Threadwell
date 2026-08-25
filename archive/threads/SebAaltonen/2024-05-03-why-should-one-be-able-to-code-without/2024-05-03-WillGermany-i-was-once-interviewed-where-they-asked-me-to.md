@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @WillGermany
 
-@SebAaltonen I was once interviewed where they asked me to write code and diagram databases in Notepad 🤦‍♂️
+@SebAaltonen
+
+I was once interviewed where they asked me to write code and diagram databases in Notepad 🤦‍♂️
 
 ## Related
 

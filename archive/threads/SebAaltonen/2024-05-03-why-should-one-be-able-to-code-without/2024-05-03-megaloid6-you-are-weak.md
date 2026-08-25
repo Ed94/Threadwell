@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @megaloid6
 
-@SebAaltonen You are weak
+@SebAaltonen
+
+You are weak
 
 ## Related
 

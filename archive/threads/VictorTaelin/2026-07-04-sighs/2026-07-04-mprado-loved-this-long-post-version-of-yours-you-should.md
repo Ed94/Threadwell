@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @mprado
 
-@VictorTaelin Loved this long post version of yours. You should do this more often, where you break down a problem for people not familiar with your domain. Very fun read! Thanks
+@VictorTaelin
+
+Loved this long post version of yours. You should do this more often, where you break down a problem for people not familiar with your domain. Very fun read! Thanks
 
 ## Related
 

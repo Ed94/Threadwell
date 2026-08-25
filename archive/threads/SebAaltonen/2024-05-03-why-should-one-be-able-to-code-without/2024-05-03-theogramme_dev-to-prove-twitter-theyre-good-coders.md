@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @theogramme_dev
 
-@SebAaltonen To prove twitter they're good coders
+@SebAaltonen
+
+To prove twitter they're good coders
 
 ## Related
 

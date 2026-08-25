@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @SteveMoraco
 
-@VictorTaelin Legend
+@VictorTaelin
+
+Legend
 
 ![](https://pbs.twimg.com/media/HMb6HlXacAAgdAN?format=jpg&name=orig)
 ## Related

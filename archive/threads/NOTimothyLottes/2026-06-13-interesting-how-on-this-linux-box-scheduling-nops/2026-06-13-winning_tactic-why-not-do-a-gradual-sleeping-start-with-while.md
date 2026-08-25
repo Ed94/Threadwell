@@ -41,7 +41,9 @@ But I've never considered a write to a dummy file as a legitimate yield/wait tri
 
 **2/** @NOTimothyLottes
 
-@winning_tactic I don’t design around waiting for a specific point in time, I do other things, but talk about them when I can easily show the results
+@winning_tactic
+
+I don’t design around waiting for a specific point in time, I do other things, but talk about them when I can easily show the results
 
 **3/** @winning_tactic
 
@@ -51,11 +53,15 @@ But I've got to work on the power stuff and steal your idea of course.
 
 **4/** @NOTimothyLottes
 
-@winning_tactic Ahh the illusion of nonblocking execution on consumer devices. The moment the os decides to preempt your thread, there no longer exists a non blocking interface. A single thread never gets a guarantee of execution, so waiting for some exact point in time is failed design
+@winning_tactic
+
+Ahh the illusion of nonblocking execution on consumer devices. The moment the os decides to preempt your thread, there no longer exists a non blocking interface. A single thread never gets a guarantee of execution, so waiting for some exact point in time is failed design
 
 **5/** @winning_tactic
 
-@NOTimothyLottes It's green threads multiplexed on pinned threads both cooperatively and preemptively. I beg your pardon!~
+@NOTimothyLottes
+
+It's green threads multiplexed on pinned threads both cooperatively and preemptively. I beg your pardon!~
 https://gitlab.com/qsrc.net/Lampyr/-/blob/dev/rt/task.c?ref_type=heads
 But, that particular version is a WIP, multiple impl and messy.
 

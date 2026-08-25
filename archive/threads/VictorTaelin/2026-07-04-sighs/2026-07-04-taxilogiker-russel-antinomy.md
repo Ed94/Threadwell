@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @taxilogiker
 
-@VictorTaelin russel antinomy •_•
+@VictorTaelin
+
+russel antinomy •_•
 
 ## Related
 

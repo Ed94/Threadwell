@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @YgorIsm
 
-@VictorTaelin Texto mt bem escrito, ficou bem mais fácil de entender os seus objetivos
+@VictorTaelin
+
+Texto mt bem escrito, ficou bem mais fácil de entender os seus objetivos
 
 ## Related
 

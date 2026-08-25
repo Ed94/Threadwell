@@ -28,7 +28,9 @@ parent_post_id: "1674757854471806977"
 
 **1/** @DefenceForceOrg
 
-@NOTimothyLottes Many games used to be like that, at least the ones without dynamic content, mods, etc...
+@NOTimothyLottes
+
+Many games used to be like that, at least the ones without dynamic content, mods, etc...
 
 Most of the stuff I worked on on PSX and Dreamcast basically just loads big files with everything pre-allocated and aligned properly at the final location, ready to use.
 

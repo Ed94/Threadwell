@@ -28,7 +28,9 @@ parent_post_id: "2010303501851877740"
 
 **1/** @hadal101dev
 
-@Dispatch_Graph Yea windows makes some interesting choices lol. Calling CreateFile when you want to OPEN a file? very weird lol.
+@Dispatch_Graph
+
+Yea windows makes some interesting choices lol. Calling CreateFile when you want to OPEN a file? very weird lol.
 
 Never worked with wayland. What are some of the big pain points?
 

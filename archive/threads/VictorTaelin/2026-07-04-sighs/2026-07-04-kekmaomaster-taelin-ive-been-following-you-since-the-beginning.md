@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @kekmaomaster
 
-@VictorTaelin Taelin I've been following you since the beginning: I think the problem is you need to aggressively position yourself and your program as a painkiller. People need to feel their pain ease as a result of formal + function discovery. You need the palantir-type deployed engineers.
+@VictorTaelin
+
+Taelin I've been following you since the beginning: I think the problem is you need to aggressively position yourself and your program as a painkiller. People need to feel their pain ease as a result of formal + function discovery. You need the palantir-type deployed engineers.
 
 ## Related
 

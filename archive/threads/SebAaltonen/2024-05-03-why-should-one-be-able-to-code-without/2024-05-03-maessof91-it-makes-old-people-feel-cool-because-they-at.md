@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @maessof91
 
-@SebAaltonen It makes old people feel cool, because they at some point were forced to code like that
+@SebAaltonen
+
+It makes old people feel cool, because they at some point were forced to code like that
 
 ## Related
 

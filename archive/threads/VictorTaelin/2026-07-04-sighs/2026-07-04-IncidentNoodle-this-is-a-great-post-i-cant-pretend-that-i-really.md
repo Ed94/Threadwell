@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @IncidentNoodle
 
-@VictorTaelin This is a great post! I can’t pretend that I really get the math, but it’s obvious that you understand what you’re talking about.
+@VictorTaelin
+
+This is a great post! I can’t pretend that I really get the math, but it’s obvious that you understand what you’re talking about.
 
 I especially appreciate the specific callouts for what Fable is good and bad at, in your context.
 

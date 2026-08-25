@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @dlbydq
 
-@VictorTaelin these guys have no idea what they're talking about. I've enjoyed following your work
+@VictorTaelin
+
+these guys have no idea what they're talking about. I've enjoyed following your work
 
 ## Related
 

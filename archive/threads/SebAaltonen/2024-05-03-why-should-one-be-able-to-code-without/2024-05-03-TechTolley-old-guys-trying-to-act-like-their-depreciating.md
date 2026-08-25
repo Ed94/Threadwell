@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @TechTolley
 
-@SebAaltonen Old guys trying to act like their depreciating skillset makes them more valuable... somehow...
+@SebAaltonen
+
+Old guys trying to act like their depreciating skillset makes them more valuable... somehow...
 
 ## Related
 

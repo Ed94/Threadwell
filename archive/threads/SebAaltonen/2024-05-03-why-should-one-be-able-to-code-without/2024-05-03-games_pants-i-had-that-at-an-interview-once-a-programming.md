@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @games_pants
 
-@SebAaltonen I had that at an interview once. A programming test in Notepad.  90% of my time was spent battling the text editor! I probably should have got up and walked out.. it was a sign of worse things to come when I got the job :)
+@SebAaltonen
+
+I had that at an interview once. A programming test in Notepad.  90% of my time was spent battling the text editor! I probably should have got up and walked out.. it was a sign of worse things to come when I got the job :)
 
 ## Related
 

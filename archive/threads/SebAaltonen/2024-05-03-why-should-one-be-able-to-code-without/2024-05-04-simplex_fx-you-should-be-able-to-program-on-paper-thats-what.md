@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @simplex_fx
 
-@SebAaltonen You should be able to program on paper! 
+@SebAaltonen
+
+You should be able to program on paper! 
 
 That’s what I learned from very smart people teaching CS at uni for minimum wage told me, so it must be true!
 

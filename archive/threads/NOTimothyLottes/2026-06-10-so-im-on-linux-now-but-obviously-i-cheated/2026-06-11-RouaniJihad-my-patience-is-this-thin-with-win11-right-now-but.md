@@ -28,7 +28,9 @@ parent_post_id: "2064858927829745887"
 
 **1/** @RouaniJihad
 
-@NOTimothyLottes My patience is this 🤏 thin with win11 right now, but Linux sounds like too much work, Mac is probably easier with more native software
+@NOTimothyLottes
+
+My patience is this 🤏 thin with win11 right now, but Linux sounds like too much work, Mac is probably easier with more native software
 
 ## Related
 

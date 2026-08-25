@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @Orbiter777
 
-@VictorTaelin Fable is educated c
+@VictorTaelin
+
+Fable is educated c
 
 ## Related
 

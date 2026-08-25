@@ -28,7 +28,9 @@ parent_post_id: "1912484261321392231"
 
 **1/** @DjMolehill
 
-@NOTimothyLottes branching, cache locality, and memory handling are key 🔥
+@NOTimothyLottes
+
+branching, cache locality, and memory handling are key 🔥
 
 ## Related
 

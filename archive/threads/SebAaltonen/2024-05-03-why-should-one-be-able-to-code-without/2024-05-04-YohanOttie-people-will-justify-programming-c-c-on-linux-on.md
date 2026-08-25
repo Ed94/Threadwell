@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @YohanOttie
 
-@SebAaltonen People will justify programming C/C++ on Linux. On leafpad.
+@SebAaltonen
+
+People will justify programming C/C++ on Linux. On leafpad.
 
 ## Related
 

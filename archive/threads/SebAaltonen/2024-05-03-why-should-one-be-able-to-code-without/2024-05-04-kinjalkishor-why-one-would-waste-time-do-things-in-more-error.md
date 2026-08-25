@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @kinjalkishor
 
-@SebAaltonen Why one would waste time & do things in more error prone ways, when good tools are available.
+@SebAaltonen
+
+Why one would waste time & do things in more error prone ways, when good tools are available.
 Even best language will see very less adoption without good tools.
 
 ## Related

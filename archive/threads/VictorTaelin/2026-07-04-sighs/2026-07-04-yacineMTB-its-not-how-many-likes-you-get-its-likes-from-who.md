@@ -28,11 +28,15 @@ parent_post_id: "2073406569459368226"
 
 **1/** @yacineMTB
 
-@VictorTaelin It's not how many likes you get, it's likes from who that matter. Less likes from better people is my preference
+@VictorTaelin
+
+It's not how many likes you get, it's likes from who that matter. Less likes from better people is my preference
 
 **2/** @VictorTaelin
 
-@yacineMTB true
+@yacineMTB
+
+true
 
 ## Related
 

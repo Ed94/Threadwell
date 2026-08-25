@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @Tuuveee
 
-@SebAaltonen For the first few months of my first web development job I was using notepad++. Which works fine for small projects, sure. But you'd have to threaten me with physical harm to make me go back. Using an IDE just makes the workflow so much better when working with more than one file
+@SebAaltonen
+
+For the first few months of my first web development job I was using notepad++. Which works fine for small projects, sure. But you'd have to threaten me with physical harm to make me go back. Using an IDE just makes the workflow so much better when working with more than one file
 
 ## Related
 

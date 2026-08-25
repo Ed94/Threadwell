@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @willyrgf
 
-@VictorTaelin Wow, that's impressive! Best argument on the quality of Fable I have read by far.
+@VictorTaelin
+
+Wow, that's impressive! Best argument on the quality of Fable I have read by far.
 
 So, would be enough to find the non-linear statements? Or is it still too restrictive?
 

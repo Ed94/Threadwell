@@ -28,7 +28,9 @@ parent_post_id: "1890348863287943363"
 
 **1/** @matiasgoldberg
 
-@simplex_fx @SebAaltonen @NOTimothyLottes You can do whatever you want the API. Just because you can read from a GPU buffer you just wrote doesn't mean you should.
+@simplex_fx @SebAaltonen @NOTimothyLottes
+
+You can do whatever you want the API. Just because you can read from a GPU buffer you just wrote doesn't mean you should.
 
 A thin wrapper allows enforcing certain guarantees and good practices to avoid race conditions or common corruption pitfalls
 

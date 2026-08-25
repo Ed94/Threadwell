@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @AronThoughts
 
-@SebAaltonen Static/globals/#defines were warm
+@SebAaltonen
+
+Static/globals/#defines were warm
 Members blue hues
 Locals green
 Constants green/yellow
@@ -39,11 +41,15 @@ etc
 
 **2/** @SebAaltonen
 
-@AronThoughts Indeed. Good color coding is important for readability too. IDEs do this very well.
+@AronThoughts
+
+Indeed. Good color coding is important for readability too. IDEs do this very well.
 
 **3/** @AronThoughts
 
-@SebAaltonen Most IDEs I've used since dont have this level of specificity though but I've not used many different ones
+@SebAaltonen
+
+Most IDEs I've used since dont have this level of specificity though but I've not used many different ones
 
 ## Related
 

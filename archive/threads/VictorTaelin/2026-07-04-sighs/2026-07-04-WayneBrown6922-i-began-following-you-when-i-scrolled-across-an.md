@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @WayneBrown6922
 
-@VictorTaelin I began following you when I scrolled across an image similar to that above, it is the highly technical stuff you post that I enjoy most. Just about everyone else in my timeline I have to "see fewer" but I'll search for yours. Keep up the amazing work, here for the long haul!
+@VictorTaelin
+
+I began following you when I scrolled across an image similar to that above, it is the highly technical stuff you post that I enjoy most. Just about everyone else in my timeline I have to "see fewer" but I'll search for yours. Keep up the amazing work, here for the long haul!
 
 ## Related
 

@@ -28,7 +28,9 @@ parent_post_id: "1890348863287943363"
 
 **1/** @pagedeux
 
-@simplex_fx @SebAaltonen @NOTimothyLottes the render pipeline is basically a full piece of software trapped in inside of another software
+@simplex_fx @SebAaltonen @NOTimothyLottes
+
+the render pipeline is basically a full piece of software trapped in inside of another software
 
 i guess that's why they call the compiled shader a "program"
 

@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @burlapDD
 
-@SebAaltonen They are signaling 
+@SebAaltonen
+
+They are signaling 
 
 But its like being proud of gluing frames in a film while the rest use capcut on their phone
 

@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @wrd83
 
-@SebAaltonen I would agree with the original poster. You should be able to code in notepad.
+@SebAaltonen
+
+I would agree with the original poster. You should be able to code in notepad.
 
 It does not imply you coding day to day in notepad.
 

@@ -28,7 +28,9 @@ parent_post_id: "1674757854471806977"
 
 **1/** @wyattscarpenter
 
-@NOTimothyLottes https://github.com/wyattscarpenter/wu
+@NOTimothyLottes
+
+https://github.com/wyattscarpenter/wu
 
 ## Related
 

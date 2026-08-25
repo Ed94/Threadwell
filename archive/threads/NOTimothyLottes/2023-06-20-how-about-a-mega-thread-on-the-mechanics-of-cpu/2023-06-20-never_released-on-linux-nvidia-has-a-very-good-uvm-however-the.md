@@ -28,7 +28,9 @@ parent_post_id: "1671276990987370501"
 
 **1/** @never_released
 
-@NOTimothyLottes On Linux, NVIDIA has a very good UVM.
+@NOTimothyLottes
+
+On Linux, NVIDIA has a very good UVM.
 
 However, the infrastructure for doing that on Windows is quite lacking to say the least...
 

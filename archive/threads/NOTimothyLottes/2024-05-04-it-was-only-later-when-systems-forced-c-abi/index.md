@@ -27,4 +27,6 @@ in_reply_to: ""
 
 **1/** @NOTimothyLottes
 
-@Nerfoxingaround @SebAaltonen It was only later when systems forced C ABI library interfaces with it's stacks and junk that things got messy and only because of the C. Then C++ happened and things got much worse. Pure ASM is easy, its interfacing with the bloat world that got hard.
+@Nerfoxingaround @SebAaltonen
+
+It was only later when systems forced C ABI library interfaces with it's stacks and junk that things got messy and only because of the C. Then C++ happened and things got much worse. Pure ASM is easy, its interfacing with the bloat world that got hard.

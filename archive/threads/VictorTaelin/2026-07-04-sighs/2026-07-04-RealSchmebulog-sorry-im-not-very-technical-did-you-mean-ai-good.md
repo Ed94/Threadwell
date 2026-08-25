@@ -28,7 +28,9 @@ parent_post_id: "2073406569459368226"
 
 **1/** @RealSchmebulog
 
-@VictorTaelin Sorry, im not very technical. Did you mean AI good or AI bad this time?
+@VictorTaelin
+
+Sorry, im not very technical. Did you mean AI good or AI bad this time?
 
 ## Related
 

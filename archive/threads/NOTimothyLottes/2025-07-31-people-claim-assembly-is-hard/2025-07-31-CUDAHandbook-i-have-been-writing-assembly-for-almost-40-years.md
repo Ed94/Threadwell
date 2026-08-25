@@ -28,15 +28,21 @@ parent_post_id: "1950860870818439202"
 
 **1/** @CUDAHandbook
 
-@NOTimothyLottes I have been writing assembly for almost 40 years. The reason we say it is hard, is because it takes more effort to write than higher-level languages like C. Of course it’s doable, but portability between CPU architecture alone makes assembly only worth doing when warranted.
+@NOTimothyLottes
+
+I have been writing assembly for almost 40 years. The reason we say it is hard, is because it takes more effort to write than higher-level languages like C. Of course it’s doable, but portability between CPU architecture alone makes assembly only worth doing when warranted.
 
 **2/** @NOTimothyLottes
 
-@CUDAHandbook I'm hoping to show how to make it less tedious than C
+@CUDAHandbook
+
+I'm hoping to show how to make it less tedious than C
 
 **3/** @Alleycatsphinx
 
-@NOTimothyLottes @CUDAHandbook My major problem with programming is the tedium.
+@NOTimothyLottes @CUDAHandbook
+
+My major problem with programming is the tedium.
 
 GLSL Sandbox is still the best IDE I've ever used... 
 
@@ -44,7 +50,9 @@ Live code with instant update, simple automatic version control, cross platform 
 
 **4/** @NOTimothyLottes
 
-@Alleycatsphinx @CUDAHandbook I love live systems as "the IDE". This time probably with function keys as a pallet of 'save/restore' points (snapshot the entire project, as one file).
+@Alleycatsphinx @CUDAHandbook
+
+I love live systems as "the IDE". This time probably with function keys as a pallet of 'save/restore' points (snapshot the entire project, as one file).
 
 ## Related
 

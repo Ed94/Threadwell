@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @NeutralRational
 
-@SebAaltonen He's a boomer.
+@SebAaltonen
+
+He's a boomer.
 
 ## Related
 

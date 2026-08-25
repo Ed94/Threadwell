@@ -28,7 +28,9 @@ parent_post_id: "1786346729547153794"
 
 **1/** @pepite2choc
 
-@SebAaltonen It's not about wanting, it's about being able to.
+@SebAaltonen
+
+It's not about wanting, it's about being able to.
 Just a car driver should be able to drive without driving assistance.
 If you NEED autocompletion and debugging to code... Something is off
 (ofc you may be 10x faster with all ide features, but that is not the point)
