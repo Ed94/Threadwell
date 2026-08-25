@@ -4,7 +4,7 @@ Recovered threads and submerged records.
 
 An [Obsidian](https://obsidian.md) vault published with [Quartz 5](https://quartz.jzhao.xyz) to GitHub Pages. The site is a convenient host for Twitter/X threads and other material that is not reliably web-indexed.
 
-Live (after Pages is enabled): https://ed94.github.io/Threadwell
+Live (after Pages is enabled): [threadwell.edsabode.dev](https://threadwell.edsabode.dev)
 
 ## Post an issue for an inaccuracy
 
@@ -114,7 +114,7 @@ Open http://localhost:8080
 1. Repo Settings → Pages → Source: **GitHub Actions**
 2. If an old `github-pages` environment blocks the first deploy, delete it under Settings → Environments. The workflow recreates it.
 3. Push `main`. CI clones Quartz into `site/`, applies `publish/quartz.config.yaml`, builds with `-d ..`.
-4. Site: `https://ed94.github.io/Threadwell`
+4. Site: `https://threadwell.edsabode.dev`
 
 `baseUrl` lives in `publish/quartz.config.yaml`. Change it if you attach a custom domain.
 

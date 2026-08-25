@@ -1,4 +1,4 @@
-"""Keep in-site links under the /Threadwell/ path.
+"""Keep in-site links under the path from `baseUrl`.
 
 Two stages:
 
@@ -42,7 +42,7 @@ def read_base_url() -> tuple[str, str]:
         if stripped.startswith("baseUrl:"):
             host = stripped.split(":", 1)[1].strip()
             break
-    if not host or "/" not in host:
+    if not host:
         raise SystemExit(f"missing baseUrl in {OVERLAY}")
     if host.startswith("http://"):
         scheme = "http://"
@@ -134,8 +134,8 @@ def patch_spa() -> bool:
 def page_dir_href(html_path: Path, public: Path, rel_base: str) -> str:
     """Return the path-absolute directory of a built HTML file.
 
-    `public/archive/threads/h/slug/index.html` with rel_base `/Threadwell/`
-    becomes `/Threadwell/archive/threads/h/slug/`.
+    `public/archive/threads/h/slug/index.html` with rel_base `/`
+    becomes `/archive/threads/h/slug/`.
     """
     rel = html_path.relative_to(public).as_posix()
     if rel.endswith("/index.html"):

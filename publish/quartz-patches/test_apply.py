@@ -14,7 +14,8 @@ DEEP_SLUG: str = (
     "archive/threads/notimothylottes/2025-02-04-gelatinous-pixel-soup/index.html"
 )
 PAGE_BASE: str = (
-    "/Threadwell/archive/threads/notimothylottes/2025-02-04-gelatinous-pixel-soup/"
+    f"{apply.REL_BASE.rstrip('/')}/archive/threads/"
+    "notimothylottes/2025-02-04-gelatinous-pixel-soup/"
 )
 SAMPLE: str = (
     "<html><head></head><body>"
@@ -57,24 +58,24 @@ class ApplyBaseTests(unittest.TestCase):
         match = re.search(r'<base href="([^"]+)">', text)
         self.assertIsNotNone(match)
         assert match is not None
-        resolved = urljoin("https://edsabode.dev" + match.group(1), DEEP_REL)
+        resolved = urljoin(urljoin(apply.ABS_BASE, match.group(1)), DEEP_REL)
         self.assertEqual(
             resolved,
-            "https://edsabode.dev/Threadwell/archive/threads/notimothylottes/",
+            urljoin(apply.ABS_BASE, "archive/threads/notimothylottes/"),
         )
 
     def test_homepage_base_is_site_path(self) -> None:
         path = _write_public(self.public, "index.html", SAMPLE)
         apply.rewrite_html(path)
         text = path.read_text(encoding="utf-8")
-        self.assertIn('<base href="/Threadwell/">', text)
+        self.assertIn(f'<base href="{apply.REL_BASE}">', text)
 
     def test_title_link_is_site_path_not_domain_root(self) -> None:
         path = _write_public(self.public, DEEP_SLUG, SAMPLE)
         apply.rewrite_html(path)
         text = path.read_text(encoding="utf-8")
         self.assertIn(
-            '<h2 class="page-title"><a href="/Threadwell/">',
+            f'<h2 class="page-title"><a href="{apply.REL_BASE}">',
             text,
         )
         self.assertNotIn('href="https://edsabode.dev/Threadwell/"', text)

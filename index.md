@@ -6,8 +6,6 @@ description: Recovered threads and submerged records.
 tags: []
 ---
 
-<script>if(location.pathname==="/Threadwell")location.replace("/Threadwell/")</script>
-
 An archive of material that is not reliably web-indexed: Twitter/X threads, talks, and other primary sources, plus the notes distilled from them.
 
 - [[archive/index|Archive]] — objective records of threads and other sources
