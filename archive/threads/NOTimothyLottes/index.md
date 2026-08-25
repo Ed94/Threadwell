@@ -97,3 +97,5 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-07-19-probably-shouldnt-consider-this-but-apparently]]
 - [[archive/threads/NOTimothyLottes/2026-07-22-working-through-rough-draft-of-assembly-for-a]]
 - [[archive/threads/NOTimothyLottes/2026-08-02-re-fpga-land-alus-im-firmly-distracted-by-an]]
+- [[archive/threads/NOTimothyLottes/2026-08-23-operands-time-perf]]
+- [[archive/threads/NOTimothyLottes/2026-08-25-one-downsides-to-being-a-left-justified-machine]]
