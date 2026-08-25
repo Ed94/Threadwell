@@ -63,7 +63,6 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-05-29-took-perhaps-a-5-month-vacation-from-at-home]]
 - [[archive/threads/NOTimothyLottes/2026-05-30-renovating-cpu-clock-code]]
 - [[archive/threads/NOTimothyLottes/2026-05-31-no-debugger-debug-console-printf-style-prior]]
-- [[archive/threads/NOTimothyLottes/2026-06-01-that-plus-an-oscilloscope-this-is-the-way]]
 - [[archive/threads/NOTimothyLottes/2026-06-01-windows-thread-priority]]
 - [[archive/threads/NOTimothyLottes/2026-06-02-for-windows-trying-to-standardize-on-highest]]
 - [[archive/threads/NOTimothyLottes/2026-06-02-its-unfortunate-there-isnt-an-easy-way-to-map-the]]

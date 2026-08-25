@@ -7,7 +7,7 @@ author: "NOTimothyLottes"
 handle: NOTimothyLottes
 post_id: "2060730425929080874"
 date: 2026-05-30
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive
@@ -30,6 +30,7 @@ in_reply_to: ""
 Renovating CPU clock code. I'm assuming x86-64 TSC is always >= 1 GHz so that conversion of clock counter diff to nanoseconds is simply a MUL instruction fetching the RDX high 64-bit result (of the 128-bit computed). But figuring out how to do the inline asm was a pain.
 
 ![](https://pbs.twimg.com/media/HJku0L4WkAAZk5a?format=png&name=orig)
+
 Branches: [[archive/threads/NOTimothyLottes/2026-05-30-renovating-cpu-clock-code/2026-05-31-FUZxxl-if-you-do-the-multiply-in-uint128-t-and-then]]
 
 **2/**
