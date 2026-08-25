@@ -7,8 +7,8 @@ author: "NOTimothyLottes"
 handle: NOTimothyLottes
 post_id: "1951638140600381942"
 date: 2025-08-02
-archived: 2026-08-23
-draft: true
+archived: 2026-08-25
+draft: false
 tags:
   - archive
   - twitter

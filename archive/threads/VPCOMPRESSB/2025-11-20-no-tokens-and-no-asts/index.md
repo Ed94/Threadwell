@@ -8,7 +8,7 @@ handle: VPCOMPRESSB
 post_id: "1991383117571957052"
 date: 2025-11-20
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter

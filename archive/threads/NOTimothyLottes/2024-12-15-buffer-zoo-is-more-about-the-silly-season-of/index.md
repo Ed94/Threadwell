@@ -19,7 +19,7 @@ in_reply_to: ""
 
 ## Source
 
-- URL: https://x.com/NOTimothyLottes/status/1868444111390249140
+- URL: https://x.com/NOTimothyLottes/status/868444111390249140
 - Author: NOTimothyLottes (@NOTimothyLottes)
 - Posted: 2024-12-15 23:52:44
 

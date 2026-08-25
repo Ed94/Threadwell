@@ -8,7 +8,7 @@ handle: winning_tactic
 post_id: "2063733456144597200"
 date: 2026-06-07
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter
