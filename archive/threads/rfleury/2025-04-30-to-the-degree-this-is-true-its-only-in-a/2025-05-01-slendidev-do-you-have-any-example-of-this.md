@@ -74,6 +74,24 @@ You can just make the free method of the allocator be empty. If the arena is blo
 
 There’s no point.
 
+**9/** @slendidev
+
+@rfleury
+
+Sure, but then you can still make that free method empty
+
+**10/** @rfleury
+
+@xslendix
+
+Or you can just not do any of this ridiculous RAII nonsense at all.
+
+**11/** @slendidev
+
+@rfleury
+
+At that point it’s just personal preference on wether you want your frees explicit or not in the code. Don’t think having an empty free method adds any overhead either since the compiler can just exclude the destructor entirely because of inlining
+
 ## Related
 
 - Spine: [[archive/threads/rfleury/2025-04-30-to-the-degree-this-is-true-its-only-in-a]]
