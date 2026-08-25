@@ -54,6 +54,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2025-07-31-been-on-the-fence-on-writing-shader-interfaces-in]]
 - [[archive/threads/NOTimothyLottes/2025-07-31-people-claim-assembly-is-hard]]
 - [[archive/threads/NOTimothyLottes/2025-08-01-at-least-for-my-next-at-home-project-i-think-the]]
+- [[archive/threads/NOTimothyLottes/2025-08-10-we-are-in-era-of-scaling-by-now]]
 - [[archive/threads/NOTimothyLottes/2025-09-03-re-john-dark1x-and-https-youtu-be-uxqumm5aka8-si]]
 - [[archive/threads/NOTimothyLottes/2025-10-10-thread-about-this-from-rfleury-https-www-rfleury]]
 - [[archive/threads/NOTimothyLottes/2025-10-13-short-talk-on-how-i-do-cpu-side-debugging-without]]
