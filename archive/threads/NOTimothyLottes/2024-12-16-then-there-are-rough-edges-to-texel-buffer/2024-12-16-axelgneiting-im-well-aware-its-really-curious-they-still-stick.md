@@ -7,8 +7,8 @@ author: "Axel Gneiting"
 handle: axelgneiting
 post_id: "1868503435299205194"
 date: 2024-12-16
-archived: 2026-08-23
-draft: true
+archived: 2026-08-24
+draft: false
 tags:
   - archive
   - twitter
