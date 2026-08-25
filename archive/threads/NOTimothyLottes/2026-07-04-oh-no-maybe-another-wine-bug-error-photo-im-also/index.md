@@ -41,8 +41,8 @@ Nothing smells more like the 4th of july, than rain and grepping wine source to 
 
 ![](https://pbs.twimg.com/media/HMavfcGXUAAC7xf?format=png&name=orig)
 
-Branches: [[archive/threads/NOTimothyLottes/2026-07-04-oh-no-maybe-another-wine-bug-error-photo-im-also/2026-07-04-NOTimothyLottes-wines-iaudioclient-getdeviceperiod-returns-53333]]
+Branches: [[archive/threads/NOTimothyLottes/2026-07-04-oh-no-maybe-another-wine-bug-error-photo-im-also/2026-07-05-mrsteyk1-once-upon-a-time-wine-didnt-implement-a]]
 
 **4/**
 
-@NOTimothyLottes Once upon a time Wine didn’t implement a particular cryptography path and game broke when trying to verify file integrity, had to patch it out. It was so bad that Valve made a Proton Hotfix version (I think it ignored integrity check and returned success regardless).
+Wine's IAudioClient::GetDevicePeriod() returns 53333 for minimum (which is 256 samples at 48KHz - really crappy) and 100000 for default (which is 480 samples at 48Khz - even worse), neither which work with EXCLUSIVE mode. Man Wine sucks, nothing but constant show stopping bugs.
