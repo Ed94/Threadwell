@@ -50,11 +50,15 @@ One of my favorite AMD instructions V_BFI_B32 is unfortunately one that no intri
 ![](https://pbs.twimg.com/media/GglKA6nW4AEtOIC?format=png&name=orig)
 ![](https://pbs.twimg.com/media/GglKXy4XcAAA_Og?format=png&name=orig)
 
+Branches: [[archive/threads/NOTimothyLottes/2025-01-06-one-of-the-downsides-of-v-cndmask-b32-on-amd-is/2025-01-06-axelgneiting-glsl-bitfieldinsert-does-something-else]]
+
 **5/** **@NOTimothyLottes** ^1876120138283729159
 
 Just looking at the next 5 lines of disassembly shows another 2 perf bugs: the compiler transforms 3 operations into 5 operations because it cannot handle mixed packed and unpacked stuff. The 2 V_ANDs can be merged, and the LSHL and CVT should just be one op
 
 ![](https://pbs.twimg.com/media/GglQsALXYAAEfWI?format=png&name=orig)
+
+Branches: [[archive/threads/NOTimothyLottes/2025-01-06-one-of-the-downsides-of-v-cndmask-b32-on-amd-is/2025-01-06-NOTimothyLottes-after-a-few-hours-of-trying-workaround-and-seeing]]
 
 **6/** **@NOTimothyLottes** ^1876126316816380333
 
