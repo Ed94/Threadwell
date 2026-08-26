@@ -9,4 +9,4 @@ tags:
   - Jonathan_Blow
 ---
 
-
+- [[archive/threads/Jonathan_Blow/2024-12-24-i-have-a-moral-dilemma-in-the-design-of-the]]
