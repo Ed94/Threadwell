@@ -7,7 +7,7 @@ author: "stamisme"
 handle: stamisme
 post_id: "1887407379395801172"
 date: 2025-02-06
-archived: 2026-08-25
+archived: 2026-08-26
 draft: false
 tags:
   - archive

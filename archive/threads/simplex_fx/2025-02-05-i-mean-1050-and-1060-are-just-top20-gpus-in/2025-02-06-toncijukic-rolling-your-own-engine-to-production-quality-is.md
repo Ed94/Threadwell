@@ -7,7 +7,7 @@ author: "Tonči Jukić"
 handle: toncijukic
 post_id: "1887409756274344181"
 date: 2025-02-06
-archived: 2026-08-25
+archived: 2026-08-26
 draft: false
 tags:
   - archive

@@ -7,7 +7,7 @@ author: "Dev"
 handle: Kapendev
 post_id: "1887242908551569426"
 date: 2025-02-05
-archived: 2026-08-25
+archived: 2026-08-26
 draft: false
 tags:
   - archive

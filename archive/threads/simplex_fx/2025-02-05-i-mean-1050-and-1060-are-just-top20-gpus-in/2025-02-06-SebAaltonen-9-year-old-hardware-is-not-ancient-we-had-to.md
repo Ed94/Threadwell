@@ -7,7 +7,7 @@ author: "Sebastian Aaltonen"
 handle: SebAaltonen
 post_id: "1887404173710258607"
 date: 2025-02-06
-archived: 2026-08-25
+archived: 2026-08-26
 draft: false
 tags:
   - archive
