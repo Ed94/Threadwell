@@ -82,7 +82,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-06-30-working-on-the-linux-thread-priority-code]]
 - [[archive/threads/NOTimothyLottes/2026-07-01-did-manage-to-get-alsa-to-function-without-sndrv]]
 - [[archive/threads/NOTimothyLottes/2026-07-01-haha-damn-i-thought-i-had-a-great-idea-for-wine]]
-- [[archive/threads/NOTimothyLottes/2026-07-01-linux-by-default-doesnt-allow-any-increase-in]]
+- [[archive/threads/NOTimothyLottes/2026-07-01-working-on-the-portable-thread-scheduling]]
 - [[archive/threads/NOTimothyLottes/2026-07-02-settings-im-using-for-snd-pcm-sw-params-for-alsa]]
 - [[archive/threads/NOTimothyLottes/2026-07-02-yuck-starting-on-wdm-ks-audio-interface-for-win32]]
 - [[archive/threads/NOTimothyLottes/2026-07-03-following-the-succession-thanks-of-re-trying]]
