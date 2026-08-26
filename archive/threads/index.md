@@ -37,6 +37,7 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/rfleury]]
 - [[archive/threads/rianflo]]
 - [[archive/threads/simplex_fx]]
+- [[archive/threads/tom_forsyth]]
 - [[archive/threads/valigo]]
 - [[archive/threads/vkrajacic]]
 - [[archive/threads/winning_tactic]]
