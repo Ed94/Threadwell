@@ -101,5 +101,6 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-07-22-working-through-rough-draft-of-assembly-for-a]]
 - [[archive/threads/NOTimothyLottes/2026-08-02-m64-the-physical-fpga-psram-hardware-offers-such]]
 - [[archive/threads/NOTimothyLottes/2026-08-02-re-fpga-land-alus-im-firmly-distracted-by-an]]
+- [[archive/threads/NOTimothyLottes/2026-08-10-been-saying-this-for-a-decade-now-hu-has-a-really]]
 - [[archive/threads/NOTimothyLottes/2026-08-23-operands-time-perf]]
 - [[archive/threads/NOTimothyLottes/2026-08-25-one-downsides-to-being-a-left-justified-machine]]
