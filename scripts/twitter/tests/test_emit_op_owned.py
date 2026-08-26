@@ -487,34 +487,21 @@ class OrphansNotReusedTests(unittest.TestCase):
             newline="\n",
         )
 
-        emit(
-            input_dir=self.input_dir,
-            vault=self.vault,
-            slug=None,
-            archived="2026-08-24",
-            force=True,
-            tip="1651282559287042048",
-        )
+        with self.assertRaisesRegex(SystemExit, "leftover dir"):
+            emit(
+                input_dir=self.input_dir,
+                vault=self.vault,
+                slug=None,
+                archived="2026-08-24",
+                force=True,
+                tip="1651282559287042048",
+            )
 
         archive_root = self.vault / "archive" / "threads"
-        # The OP-owned archive lives under kenpex, not NOTimothyLottes
-        self.assertTrue(
-            (archive_root / "kenpex").is_dir(),
-            "OP-owned archive must live under the OP handle's dir",
-        )
-        kenpex_thread_dirs = sorted(
-            d.name
-            for d in (archive_root / "kenpex").iterdir()
-            if d.is_dir()
-        )
-        self.assertEqual(len(kenpex_thread_dirs), 1)
-
-        # The legacy NOTimothyLottes dir is left as orphan; this
-        # test does not auto-remove it (manual cleanup is operator
-        # responsibility).
         self.assertTrue(
             (archive_root / "NOTimothyLottes" / "2023-04-26-legacy-slug").is_dir(),
         )
+        self.assertFalse((archive_root / "kenpex").exists())
 
 
 class SpinePrefersSameAuthorTests(unittest.TestCase):

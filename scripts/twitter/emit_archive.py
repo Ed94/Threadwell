@@ -9,7 +9,7 @@ import os
 import re
 import shutil
 import sys
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass, replace
 from datetime import date
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlparse
@@ -463,6 +463,89 @@ def wiki_branch(handle: str, dir_name: str, name: str) -> str:
     return f"archive/threads/{handle}/{dir_name}/{name}"
 
 
+def parse_attach(raw: str) -> tuple[str, str]:
+    """Parse ``child:parent``. Ids have no colon."""
+    if raw.count(":") != 1:
+        raise SystemExit(f"attach must be child:parent, got {raw}")
+    child_id, parent_id = raw.split(":")
+    if not child_id or not parent_id:
+        raise SystemExit(f"attach must be child:parent, got {raw}")
+    return child_id, parent_id
+
+
+def apply_attaches(
+    thread: ThreadData,
+    attaches: tuple[tuple[str, str], ...],
+) -> ThreadData:
+    """Set each child's ``reply_to_id`` to the named parent. Both ids must exist."""
+    by_post = {post.post_id: post for post in thread.posts}
+    for child_id, parent_id in attaches:
+        if child_id not in by_post:
+            raise SystemExit(f"attach child missing: {child_id}")
+        if parent_id not in by_post:
+            raise SystemExit(f"attach parent missing: {parent_id}")
+        by_post[child_id] = replace(by_post[child_id], reply_to_id=parent_id)
+        print(f"attach {child_id} -> {parent_id}")
+    return ThreadData(
+        root_post_id=thread.root_post_id,
+        posts=tuple(by_post[post.post_id] for post in thread.posts),
+        source_url=thread.source_url,
+    )
+
+
+def write_thread_json(path: Path, thread: ThreadData) -> None:
+    """Write one thread_data.json from a typed thread."""
+    payload = {
+        "root_post_id": thread.root_post_id,
+        "source_url": thread.source_url,
+        "posts": [asdict(post) for post in thread.posts],
+    }
+    path.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+
+def foreign_owner_dirs(
+    thread: ThreadData,
+    handle: str,
+    spines: dict[str, Path],
+) -> tuple[Path, ...]:
+    """Archive dirs that hold this thread's posts under a different handle."""
+    found: list[Path] = []
+    seen: set[Path] = set()
+    for post in thread.posts:
+        candidate = spines.get(post.post_id)
+        if candidate is None or candidate.parent.name == handle:
+            continue
+        if candidate in seen:
+            continue
+        seen.add(candidate)
+        found.append(candidate)
+    return tuple(found)
+
+
+def rewrite_handle_index_from_dirs(path: Path) -> None:
+    """Rebuild handle-index wikilinks from remaining thread folders."""
+    if not path.is_file():
+        return
+    handle = path.parent.name
+    real = sorted(item.name for item in path.parent.iterdir() if item.is_dir())
+    text = path.read_text(encoding="utf-8")
+    fm, body = _split_frontmatter(text)
+    kept = [
+        line for line in body.splitlines() if not _WIKILINK_ITEM.match(line)
+    ]
+    links = [f"- [[{wiki_thread(handle, name)}]]" for name in real]
+    parts = [line for line in kept if line.strip()] + links
+    path.write_text(
+        fm.rstrip() + "\n\n" + "\n".join(parts) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+
 def ensure_handle_index(vault: Path, handle: str, dir_name: str) -> None:
     """Create the per-handle index.md if missing, otherwise upsert the new thread wikilink."""
     path = vault / "archive" / "threads" / handle / "index.md"
@@ -556,6 +639,9 @@ def emit(
     tip: str | None = None,
     reconcile_scratch: Path = SCRATCH,
     frozen_ids: set[str] | None = None,
+    attaches: tuple[tuple[str, str], ...] = (),
+    allow_broken_walk: bool = False,
+    retire_old_dir: bool = False,
 ) -> EmitResult:
     src = input_dir / "thread_data.json"
     if not src.is_file():
@@ -564,10 +650,20 @@ def emit(
     thread = load_thread(src)
     if not thread.posts:
         raise SystemExit(f"no posts in {src}")
+    if attaches:
+        thread = apply_attaches(thread, attaches)
+        write_thread_json(src, thread)
 
     if tip:
         spine = spine_from_tip(thread, tip)
         input_kind = "tip"
+        print("spine-walk " + " <- ".join(reversed(spine)))
+        missing = by_id(thread)[spine[0]].reply_to_id
+        if missing:
+            message = f"spine-walk stops missing_parent={missing}"
+            if not allow_broken_walk:
+                raise SystemExit(message)
+            print(message)
     else:
         spine = spine_ids(thread)
         input_kind = "root"
@@ -579,8 +675,24 @@ def emit(
     rendered_title = title_text(first.text)
     desired_dir_name = thread_dir_name(date_prefix(first.timestamp), rendered_title, slug)
 
-    if reuse_dir is None and force:
+    _existing_ids, spines = collect_existing_ids(vault)
+    leftovers = foreign_owner_dirs(thread, handle, spines)
+    if leftovers:
+        listed = ", ".join(str(path) for path in leftovers)
+        if not retire_old_dir:
+            raise SystemExit(f"leftover dir {listed}; pass --retire-old-dir")
+        for old in leftovers:
+            asset_old = (
+                vault / "assets" / "threads" / old.parent.name / old.name
+            )
+            shutil.rmtree(old)
+            if asset_old.is_dir():
+                shutil.rmtree(asset_old)
+            rewrite_handle_index_from_dirs(old.parent / "index.md")
+            print(f"retire-old-dir {old}")
         _existing_ids, spines = collect_existing_ids(vault)
+
+    if reuse_dir is None and force:
         # Only accept a candidate whose parent handle matches the
         # OP handle. A thread previously archived at a different
         # author's dir (e.g. an old tip-as-root archive of a cross-
@@ -1461,6 +1573,23 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=None,
         help="Climb reply_to from this post_id for the spine (same handle)",
     )
+    parser.add_argument(
+        "--attach",
+        action="append",
+        default=[],
+        metavar="CHILD:PARENT",
+        help="set child.reply_to_id to parent before the spine walk; repeatable",
+    )
+    parser.add_argument(
+        "--allow-broken-walk",
+        action="store_true",
+        help="emit even if the tip walk stops on a missing parent",
+    )
+    parser.add_argument(
+        "--retire-old-dir",
+        action="store_true",
+        help="delete archive/asset dirs for this thread under another handle",
+    )
     return parser.parse_args(argv)
 
 
@@ -1485,6 +1614,9 @@ def main(argv: list[str] | None = None) -> int:
         args.archived,
         force=args.force,
         tip=args.tip,
+        attaches=tuple(parse_attach(raw) for raw in args.attach),
+        allow_broken_walk=args.allow_broken_walk,
+        retire_old_dir=args.retire_old_dir,
     )
     return 0
 

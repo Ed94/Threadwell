@@ -387,6 +387,26 @@ class TwMediaCommandTests(unittest.TestCase):
         self.assertTrue(emit_args.preserve_existing)
         self.assertTrue(refresh_args.preserve_existing)
 
+    def test_emit_and_refresh_accept_attach_and_overrides(self) -> None:
+        emit_args = build_parser().parse_args([
+            "emit", "--id", "3", "--tip",
+            "--attach", "2:1",
+            "--allow-broken-walk",
+            "--retire-old-dir",
+        ])
+        refresh_args = build_parser().parse_args([
+            "refresh", "--id", "3", "--tip",
+            "--attach", "2:1",
+            "--allow-broken-walk",
+            "--retire-old-dir",
+        ])
+        self.assertEqual(emit_args.attach, ["2:1"])
+        self.assertTrue(emit_args.allow_broken_walk)
+        self.assertTrue(emit_args.retire_old_dir)
+        self.assertEqual(refresh_args.attach, ["2:1"])
+        self.assertTrue(refresh_args.allow_broken_walk)
+        self.assertTrue(refresh_args.retire_old_dir)
+
     def test_emit_preserve_existing_merges_before_running_emitter(self) -> None:
         with TemporaryDirectory() as tmp:
             root = Path(tmp)

@@ -537,6 +537,12 @@ def cmd_emit(args: argparse.Namespace) -> int:
         cmd.extend(["--tip", post_id])
     if slug:
         cmd.extend(["--slug", slug])
+    for raw in getattr(args, "attach", []) or []:
+        cmd.extend(["--attach", raw])
+    if getattr(args, "allow_broken_walk", False):
+        cmd.append("--allow-broken-walk")
+    if getattr(args, "retire_old_dir", False):
+        cmd.append("--retire-old-dir")
     run(cmd)
     # Cross-author threads emit one asset dir per author. The tip's
     # post_id is only in the tip's author's asset dir; the other
@@ -869,6 +875,23 @@ def build_parser() -> argparse.ArgumentParser:
                 "--preserve-existing",
                 action="store_true",
                 help="retain archived posts omitted by the fresh capture",
+            )
+            p.add_argument(
+                "--attach",
+                action="append",
+                default=[],
+                metavar="CHILD:PARENT",
+                help="set child.reply_to_id to parent before the spine walk",
+            )
+            p.add_argument(
+                "--allow-broken-walk",
+                action="store_true",
+                help="emit even if the tip walk stops on a missing parent",
+            )
+            p.add_argument(
+                "--retire-old-dir",
+                action="store_true",
+                help="delete this thread's archive under another handle",
             )
         if name == "lift":
             p.add_argument("--orig", action="store_true")
