@@ -37,10 +37,4 @@ Mike Acton approximator:
 6. Can we constrain the problem further?
 RECURSE https://x.com/niinegames/status/988718667188854784
 
-Branches: [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator/2018-04-25-bonzajplc-i-like-the-aproximate-results-line]], [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator/2018-04-25-Oberje-can-we-get-it-for-cheaper-as-addition-byproduct]], [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator/2018-04-25-PaperBirdMaster-1-2-3-4-5-6-6-6-the-number-of-the-beast]], [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator/2018-04-25-t_cheng_1-use-a-small-fifo-what-does-this-mean]], [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator/2018-04-25-JBrooksBSI-more-speed-up-q-a-is-algorithm-on-hw-fastpath-asm]]
-
-**2/** **@aras_p** ^989007374387204096
-
-**@mike_acton**
-
-Aras approximator: can we delete that code already? :)
+Branches: [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator/2018-04-25-aras_p-aras-approximator-can-we-delete-that-code-already]], [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator/2018-04-25-bonzajplc-i-like-the-aproximate-results-line]], [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator/2018-04-25-Oberje-can-we-get-it-for-cheaper-as-addition-byproduct]], [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator/2018-04-25-PaperBirdMaster-1-2-3-4-5-6-6-6-the-number-of-the-beast]], [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator/2018-04-25-t_cheng_1-use-a-small-fifo-what-does-this-mean]], [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator/2018-04-25-JBrooksBSI-more-speed-up-q-a-is-algorithm-on-hw-fastpath-asm]]
