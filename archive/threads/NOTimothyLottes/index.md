@@ -28,6 +28,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2023-12-15-long-thread]]
 - [[archive/threads/NOTimothyLottes/2023-12-16-inspecting-my-old-vk-engines]]
 - [[archive/threads/NOTimothyLottes/2023-12-19-working-towards-a-public-domain-release-of-a]]
+- [[archive/threads/NOTimothyLottes/2023-12-26-no-luck-getting-d3dkmtgetscanline-to-work-thus-far]]
 - [[archive/threads/NOTimothyLottes/2024-01-04-debug-for-majority-gpu-side-game-dev-run-time]]
 - [[archive/threads/NOTimothyLottes/2024-04-06-on-https-mastodon-gamedev-place-notimothylottes]]
 - [[archive/threads/NOTimothyLottes/2024-05-04-it-was-only-later-when-systems-forced-c-abi]]
