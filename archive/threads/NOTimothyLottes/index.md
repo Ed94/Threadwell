@@ -57,6 +57,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2025-06-01-i-personally-go-free-form-no-data-stack-no]]
 - [[archive/threads/NOTimothyLottes/2025-07-06-so-lets-root-skg-the-core-problem-is-near-zero]]
 - [[archive/threads/NOTimothyLottes/2025-07-08-0-physical-video-games-are-dying-mvgs-take-https]]
+- [[archive/threads/NOTimothyLottes/2025-07-19-peanut-gallery-vs-parallelizing-the-physics-solver]]
 - [[archive/threads/NOTimothyLottes/2025-07-23-nobody-self-includes-with-defines-to-reorder-c]]
 - [[archive/threads/NOTimothyLottes/2025-07-31-been-on-the-fence-on-writing-shader-interfaces-in]]
 - [[archive/threads/NOTimothyLottes/2025-07-31-people-claim-assembly-is-hard]]
