@@ -733,6 +733,57 @@ class TipIsOpTests(unittest.TestCase):
         spine = spine_from_tip(thread, "1000")
         self.assertEqual(spine, ["1000", "1001", "1002"])
 
+    def test_op_tip_stops_without_same_handle_child(self) -> None:
+        from twitter.tree import spine_from_tip
+
+        thread = ThreadData(
+            root_post_id="1000",
+            posts=(
+                make_post(
+                    "1000",
+                    "mike_acton",
+                    "OP post",
+                    "2023-01-01 00:00:00",
+                    None,
+                ),
+                make_post(
+                    "1001",
+                    "aras_p",
+                    "joke reply",
+                    "2023-01-01 00:05:00",
+                    "1000",
+                ),
+            ),
+            source_url="https://x.com/i/status/1000",
+        )
+        spine = spine_from_tip(thread, "1000")
+        self.assertEqual(spine, ["1000"])
+
+    def test_spine_ids_still_promotes_earliest_foreign_child(self) -> None:
+        from twitter.tree import spine_ids
+
+        thread = ThreadData(
+            root_post_id="1000",
+            posts=(
+                make_post(
+                    "1000",
+                    "mike_acton",
+                    "OP post",
+                    "2023-01-01 00:00:00",
+                    None,
+                ),
+                make_post(
+                    "1001",
+                    "aras_p",
+                    "joke reply",
+                    "2023-01-01 00:05:00",
+                    "1000",
+                ),
+            ),
+            source_url="https://x.com/i/status/1000",
+        )
+        self.assertEqual(spine_ids(thread), ["1000", "1001"])
+
     def test_tip_with_parent_walks_back(self) -> None:
         from twitter.tree import spine_from_tip
 
@@ -811,6 +862,79 @@ class TipIsOpTests(unittest.TestCase):
         # --tip=middle post (has parent). Walks back.
         spine = spine_from_tip(thread, "2002")
         self.assertEqual(spine, ["2000", "2001", "2002"])
+
+
+class StaleBranchPruneTests(unittest.TestCase):
+    """Re-emit must delete branch notes that are no longer roots."""
+
+    def setUp(self) -> None:
+        self.tmp = Path(tempfile.mkdtemp(prefix="stale_branch_"))
+        self.input_dir = self.tmp / "input"
+        self.input_dir.mkdir()
+        (self.input_dir / "thread_data.json").write_text(
+            json.dumps(
+                {
+                    "root_post_id": "1000",
+                    "source_url": "https://x.com/i/status/1000",
+                    "posts": [
+                        {
+                            "post_id": "1000",
+                            "author": "alice",
+                            "handle": "alice",
+                            "text": "Hello",
+                            "timestamp": "2026-01-01 00:00:00",
+                            "media_urls": [],
+                            "reply_to_id": None,
+                            "quote_of_id": None,
+                            "metrics": {
+                                "reply_count": 0,
+                                "repost_count": 0,
+                                "like_count": 0,
+                                "view_count": 0,
+                            },
+                        }
+                    ],
+                },
+                indent=2,
+            ),
+            encoding="utf-8",
+            newline="\n",
+        )
+        self.vault = self.tmp / "vault"
+        (self.vault / "archive" / "threads").mkdir(parents=True)
+        (self.vault / "assets" / "threads").mkdir(parents=True)
+
+    def tearDown(self) -> None:
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_emit_deletes_stale_branch_notes(self) -> None:
+        emit(
+            input_dir=self.input_dir,
+            vault=self.vault,
+            slug=None,
+            archived="2026-08-25",
+            force=True,
+            tip="1000",
+        )
+        note_dir = (
+            self.vault
+            / "archive"
+            / "threads"
+            / "alice"
+            / "2026-01-01-hello"
+        )
+        stale = note_dir / "2026-01-01-bob-noise.md"
+        stale.write_text("leftover\n", encoding="utf-8", newline="\n")
+        emit(
+            input_dir=self.input_dir,
+            vault=self.vault,
+            slug=None,
+            archived="2026-08-25",
+            force=True,
+            tip="1000",
+        )
+        self.assertFalse(stale.is_file())
+        self.assertTrue((note_dir / "index.md").is_file())
 
 
 class ReslugReuseTests(unittest.TestCase):

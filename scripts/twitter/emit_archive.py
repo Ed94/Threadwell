@@ -703,6 +703,12 @@ def emit(
             )
         branch_path.write_text(branch_text, encoding="utf-8", newline="\n")
 
+    keep = {spine_path.name}
+    keep.update(f"{name}.md" for name in branch_names.values())
+    for path in note_dir.glob("*.md"):
+        if path.name not in keep:
+            path.unlink()
+
     shutil.copy2(src, asset_dir / "thread_data.json")
     media_doc = {
         "schema_version": 2,

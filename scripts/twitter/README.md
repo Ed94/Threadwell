@@ -25,7 +25,7 @@ python scripts/twitter/tw.py relabel --all --apply
 
 ## Capture
 
-`refresh` is refetch + ingest + emit `--force` + media merge. `--tip` treats `--id` as the tip and walks back to the opening post. Repeat `--branch <tip-id>` to capture extra tips into the same `thread_data.json`. It does not invent replies. Captures run one at a time. gallery-dl retries are off. Extractor and request sleeps are five seconds.
+`refresh` is refetch + ingest + emit `--force` + media merge. `--tip` treats `--id` as the tip and walks back to the opening post. If that tip is the OP, same-handle self-replies stay on the spine and foreign replies are branches. Repeat `--branch <tip-id>` to capture extra tips into the same `thread_data.json`. It does not invent replies. Captures run one at a time. gallery-dl retries are off. Extractor and request sleeps are five seconds. Re-emit deletes branch notes that are no longer roots.
 
 Each thread writes one archive folder. The owner is the opening post (`reply_to_id` is empty). Other authors stay in that folder. New notes set `draft: false`. The command does not commit. Frozen ids abort.
 

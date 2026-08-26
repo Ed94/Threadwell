@@ -23,9 +23,10 @@ def spine_from_tip(thread: ThreadData, tip_id: str) -> list[str]:
     """Resolve the OP chain from `tip_id`.
 
     If `tip_id` is the OP (its `reply_to_id` is `None`), walk DOWN
-    from it via `children_map` — same logic as `spine_ids`. This is
-    the common case when `--root=<op>` and `--tip=<op>` are the same
-    post id; the back-walk would otherwise return a single-element
+    through same-handle children only. Stop when the OP has no
+    self-reply. Do not promote a foreign-handle child onto the
+    spine; those posts are branches. This is the `--id <OP> --tip`
+    case. The back-walk would otherwise return a single-element
     chain and drop every self-reply.
 
     If `tip_id` has a parent, walk BACK through `reply_to_id` to
@@ -36,17 +37,17 @@ def spine_from_tip(thread: ThreadData, tip_id: str) -> list[str]:
     if tip_id not in ids:
         raise ValueError(f"tip {tip_id} not in dump")
     if ids[tip_id].reply_to_id is None:
-        # Tip is the OP. Walk down its same-handle chain.
+        # Tip is the OP. Walk down its same-handle chain only.
         kids = children_map(thread)
         handle = ids[tip_id].handle
         out = [tip_id]
         cur = tip_id
         while True:
             children = kids.get(cur, [])
-            if not children:
-                break
             same = [c for c in children if ids[c].handle == handle]
-            cur = same[0] if same else children[0]
+            if not same:
+                break
+            cur = same[0]
             out.append(cur)
         return out
     chain = [tip_id]
