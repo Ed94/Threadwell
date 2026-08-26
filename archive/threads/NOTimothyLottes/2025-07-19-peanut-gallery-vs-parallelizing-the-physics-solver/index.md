@@ -13,6 +13,9 @@ tags:
   - archive
   - twitter
   - NOTimothyLottes
+  - physics
+  - graph-coloring
+  - pipelining
 description: "Peanut gallery vs Parallelizing the Physics Solver"
 in_reply_to: ""
 ---

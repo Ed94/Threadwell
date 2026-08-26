@@ -13,6 +13,8 @@ tags:
   - archive
   - twitter
   - VictorTaelin
+  - erasure
+  - llm
 description: "> Read this and your next model will be 10x smarter."
 in_reply_to: ""
 ---

@@ -13,6 +13,9 @@ tags:
   - archive
   - twitter
   - VictorTaelin
+  - pattern-matching
+  - bend
+  - llm
 description: "just saving my last conversation with Fable on this entire flattener debacle."
 in_reply_to: ""
 ---

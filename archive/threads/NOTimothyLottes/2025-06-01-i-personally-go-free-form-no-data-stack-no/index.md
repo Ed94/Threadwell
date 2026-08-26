@@ -13,6 +13,9 @@ tags:
   - archive
   - twitter
   - NOTimothyLottes
+  - registers
+  - data-oriented
+  - stack
 description: "@pankkor @onatt0 I personally go free form, no data stack, no arguments, just branch points and program specific aliased usage of registers (regions of code have their own \"structure\" of register usage)."
 in_reply_to: "1929128689293304192"
 ---

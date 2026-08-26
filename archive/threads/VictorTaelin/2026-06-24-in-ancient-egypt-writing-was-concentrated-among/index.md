@@ -13,6 +13,8 @@ tags:
   - archive
   - twitter
   - VictorTaelin
+  - literacy
+  - scribes
 description: "In ancient Egypt, writing was concentrated among scribes, giving a small educated class control over taxes, laws, land, religion, and state power while most people depended on them to understand the systems ruling their lives."
 in_reply_to: ""
 ---

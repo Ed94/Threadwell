@@ -13,6 +13,8 @@ tags:
   - archive
   - twitter
   - nicbarkeragain
+  - memory
+  - copy
 description: "I think one of the biggest level ups I had in programming was shaking off the metaphor associated with data \"moving\"."
 in_reply_to: ""
 ---

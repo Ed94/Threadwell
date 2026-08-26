@@ -13,6 +13,8 @@ tags:
   - archive
   - twitter
   - NOTimothyLottes
+  - cache-compression
+  - cpu-gpu
 description: "@emhyr7_ @onatt0 Things could get really interesting if a company like AMD supported transparent data compression on a last level cache which is shared CPU/GPU."
 in_reply_to: "1917658426072617305"
 ---

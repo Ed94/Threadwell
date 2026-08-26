@@ -13,6 +13,8 @@ tags:
   - archive
   - twitter
   - NOTimothyLottes
+  - registers
+  - data-oriented
 description: "@onatt0 The big industry mistake was factoring into thousands of functions in code, instead of just baking all that into a \"protocol\" of data structures in memory."
 in_reply_to: "1917659010024587634"
 ---
