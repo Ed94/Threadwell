@@ -29,6 +29,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2023-12-15-long-thread]]
 - [[archive/threads/NOTimothyLottes/2023-12-16-inspecting-my-old-vk-engines]]
 - [[archive/threads/NOTimothyLottes/2023-12-19-working-towards-a-public-domain-release-of-a]]
+- [[archive/threads/NOTimothyLottes/2023-12-20-another-bad-habit-i-dont-include]]
 - [[archive/threads/NOTimothyLottes/2023-12-26-no-luck-getting-d3dkmtgetscanline-to-work-thus-far]]
 - [[archive/threads/NOTimothyLottes/2023-12-29-end-of-2023-scaling-parallel-gfx-and-memory-thread]]
 - [[archive/threads/NOTimothyLottes/2024-01-04-debug-for-majority-gpu-side-game-dev-run-time]]
