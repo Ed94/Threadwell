@@ -7,7 +7,7 @@ author: "Yilmaz Kiymaz"
 handle: VoxelBoy
 post_id: "1905551799790006590"
 date: 2025-03-28
-archived: 2026-08-25
+archived: 2026-08-26
 draft: false
 tags:
   - archive

@@ -7,7 +7,7 @@ author: "Oberje"
 handle: Oberje
 post_id: "989116637939929088"
 date: 2018-04-25
-archived: 2026-08-25
+archived: 2026-08-26
 draft: false
 tags:
   - archive

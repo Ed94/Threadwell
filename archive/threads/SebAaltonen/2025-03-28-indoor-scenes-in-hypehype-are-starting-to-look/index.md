@@ -7,7 +7,7 @@ author: "Sebastian Aaltonen"
 handle: SebAaltonen
 post_id: "1905523331496828964"
 date: 2025-03-28
-archived: 2026-08-25
+archived: 2026-08-26
 draft: false
 tags:
   - archive
@@ -51,6 +51,9 @@ https://x.com/JohannesVuorine/status/1903305450969526504
 Both games are running smoothly on dirt cheap <$99 phones with all the tech running.
 
 Game by @DanielPalmiArt
+
+https://x.com/JohannesVuorine/status/1903305450969526504
+[[archive/threads/JohannesVuorine/2025-03-22-you-can-now-add-textures]]
 
 **5/** **@SebAaltonen** ^1905527913341972664
 

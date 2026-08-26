@@ -3,11 +3,11 @@ title: "@mike_acton Aras approximator: can we delete that code already? :)"
 type: archive
 source: twitter
 source_url: "https://x.com/aras_p/status/989007374387204096"
-author: "Aras Pranckevičius"
+author: "Aras Pranckevičius 🇺🇦🇱🇹"
 handle: aras_p
 post_id: "989007374387204096"
 date: 2018-04-25
-archived: 2026-08-25
+archived: 2026-08-26
 draft: false
 tags:
   - archive
@@ -21,7 +21,7 @@ parent_post_id: "989001065893801984"
 ## Source
 
 - URL: https://x.com/aras_p/status/989007374387204096
-- Author: Aras Pranckevičius (@aras_p)
+- Author: Aras Pranckevičius 🇺🇦🇱🇹 (@aras_p)
 - Posted: 2018-04-25 05:05:07
 
 ## Branch

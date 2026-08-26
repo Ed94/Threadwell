@@ -31,6 +31,9 @@ Check your compiler. Do not trust crap advice like this. Compilers do a piss poo
 
 step() isn’t necessary however. https://t.co/ianYUdKGcc
 
+https://x.com/iquilezles/status/1888409333182218691
+[[archive/threads/iquilezles/2025-02-09-hey-dont-optimize-conditional-moves-with-mix-step]]
+
 **2/** **@mcnabbd** ^1888418494666227843
 
 **@AgileJebrim**

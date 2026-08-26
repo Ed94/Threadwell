@@ -7,7 +7,7 @@ author: "bonzaj/plastic"
 handle: bonzajplc
 post_id: "989031363369144320"
 date: 2018-04-25
-archived: 2026-08-25
+archived: 2026-08-26
 draft: false
 tags:
   - archive
