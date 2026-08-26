@@ -48,6 +48,7 @@ try:
         descendants,
         spine_from_tip,
         spine_ids,
+        spine_quote_ids,
     )
 except ImportError:  # pragma: no cover - script-mode import
     from frozen import frozen_match, load_frozen_ids
@@ -79,6 +80,7 @@ except ImportError:  # pragma: no cover - script-mode import
         descendants,
         spine_from_tip,
         spine_ids,
+        spine_quote_ids,
     )
 
 
@@ -309,18 +311,23 @@ def empty_text_ids(thread: ThreadData) -> list[str]:
     return [p.post_id for p in thread.posts if not (p.text or "").strip()]
 
 
-def render_gaps(thread: ThreadData, spine: list[str], *, input_kind: str = "root") -> str:
-    """Render a human-readable gaps report (quote_of, missing_reply_to, empty_text) for the thread."""
+def render_gaps(
+    thread: ThreadData,
+    spine: list[str],
+    *,
+    input_kind: str = "root",
+    missing_quote_of: list[str] | None = None,
+) -> str:
+    """Render a gaps report. ``missing_quote_of`` is quoted ids with no archive."""
     ids = by_id(thread)
     suggested = spine[-1] if spine else ""
-    quote_ids = [p.post_id for p in thread.posts if p.quote_of_id]
+    quote_ids = list(missing_quote_of) if missing_quote_of is not None else []
     missing = [
         p.post_id
         for p in thread.posts
         if p.reply_to_id is not None and p.reply_to_id not in ids
     ]
     empty = empty_text_ids(thread)
-
     lines = [
         "# gaps",
         f"input: {input_kind}",
@@ -336,6 +343,49 @@ def render_gaps(thread: ThreadData, spine: list[str], *, input_kind: str = "root
     lines.append("empty_text:")
     lines.extend(empty)
     return "\n".join(lines) + "\n"
+
+
+def archive_for_post(vault: Path, post_id: str) -> tuple[Path | None, Path | None]:
+    """Return ``(asset_dir, note_dir)`` for the thread that contains ``post_id``."""
+    assets_root = vault / "assets" / "threads"
+    notes_root = vault / "archive" / "threads"
+    if not assets_root.is_dir():
+        return None, None
+    for td in assets_root.rglob("thread_data.json"):
+        try:
+            data = json.loads(td.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        posts = data.get("posts") or []
+        hit = str(data.get("root_post_id") or "") == post_id
+        if not hit:
+            hit = any(str(p.get("post_id") or "") == post_id for p in posts)
+        if not hit:
+            continue
+        rel = td.parent.relative_to(assets_root)
+        notes = notes_root / rel
+        return td.parent, notes if notes.is_dir() else None
+    return None, None
+
+
+def quote_ref_for(vault: Path, quote_of_id: str) -> tuple[str, str | None]:
+    """Return ``(status_url, wikilink_target_or_none)`` for a quoted id."""
+    assets, notes = archive_for_post(vault, quote_of_id)
+    if assets is None or not (assets / "thread_data.json").is_file():
+        return f"https://x.com/i/status/{quote_of_id}", None
+    quoted_thread = load_thread(assets / "thread_data.json")
+    quoted_ids = by_id(quoted_thread)
+    quoted_post = quoted_ids.get(quote_of_id)
+    handle = quoted_post.handle if quoted_post is not None else "i"
+    url = f"https://x.com/{handle}/status/{quote_of_id}"
+    if notes is None:
+        return url, None
+    wiki = f"archive/threads/{notes.parent.name}/{notes.name}"
+    ops = [p.post_id for p in quoted_thread.posts if p.reply_to_id is None]
+    op_id = ops[0] if ops else quoted_thread.root_post_id
+    if quote_of_id != op_id:
+        wiki = f"{wiki}#^{quote_of_id}"
+    return url, wiki
 
 
 def _frontmatter_block(text: str) -> str:
@@ -778,6 +828,11 @@ def emit(
         rid: wiki_branch(handle, dir_name, name)
         for rid, name in branch_names.items()
     }
+    quote_refs: dict[str, tuple[str, str | None]] = {}
+    for pid in spine:
+        quote_id = ids[pid].quote_of_id
+        if quote_id:
+            quote_refs[pid] = quote_ref_for(vault, quote_id)
 
     spine_text = render_spine(
         thread,
@@ -786,6 +841,7 @@ def emit(
         branch_links,
         archived,
         media_by_post,
+        quote_refs,
     )
     spine_path = note_dir / "index.md"
     if spine_path.is_file():
@@ -829,7 +885,17 @@ def emit(
         "mirrors": [],
     }
     atomic_write_json(asset_dir / "media.json", media_doc)
-    gaps_text = render_gaps(thread, spine, input_kind=input_kind)
+    missing_quotes = [
+        qid
+        for qid in spine_quote_ids(thread, spine)
+        if archive_for_post(vault, qid)[0] is None
+    ]
+    gaps_text = render_gaps(
+        thread,
+        spine,
+        input_kind=input_kind,
+        missing_quote_of=missing_quotes,
+    )
     if missing_keys:
         gaps_text += "\nmissing_media_local:\n" + "\n".join(missing_keys) + "\n"
     (asset_dir / "gaps.md").write_text(

@@ -20,7 +20,7 @@ import shutil
 import subprocess
 import sys
 from collections.abc import Callable
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -30,6 +30,12 @@ if str(_HERE) not in sys.path:
 
 from paths import COOKIES, DUMPS, FROZEN, HERE, SCRATCH, VAULT
 from models import PostData, ThreadData, load_thread
+
+try:
+    from twitter.tree import spine_from_tip, spine_ids, spine_quote_ids
+except ImportError:
+    sys.path.insert(0, str(_HERE.parent))
+    from twitter.tree import spine_from_tip, spine_ids, spine_quote_ids
 
 try:
     from frozen import frozen_match, load_frozen_ids, require_writable
@@ -342,13 +348,9 @@ def _merge_existing_capture(
     """Keep fresh post data while retaining archived posts it omitted."""
     if tip_id not in {post.post_id for post in fresh.posts}:
         raise SystemExit(f"spine tip {tip_id} missing from fresh capture")
-    fresh_roots = {
-        post.post_id for post in fresh.posts if post.reply_to_id is None
-    }
-    existing_roots = {
-        post.post_id for post in existing.posts if post.reply_to_id is None
-    }
-    if not fresh_roots or fresh_roots.isdisjoint(existing_roots):
+    fresh_ids = {post.post_id for post in fresh.posts}
+    existing_ids = {post.post_id for post in existing.posts}
+    if fresh_ids.isdisjoint(existing_ids):
         raise SystemExit("fresh and existing captures are a different conversation")
     return _merge_branch_posts(fresh, [existing.posts])
 
@@ -624,11 +626,85 @@ def cmd_merge(args: argparse.Namespace) -> int:
     return 0
 
 
+def overlay_quote_of_ids(current: ThreadData, previous: ThreadData) -> ThreadData:
+    """Keep previous ``quote_of_id`` when the current post has none."""
+    prev_by = {post.post_id: post for post in previous.posts}
+    posts: list[PostData] = []
+    for post in current.posts:
+        old = prev_by.get(post.post_id)
+        if (not post.quote_of_id) and old is not None and old.quote_of_id:
+            post = replace(post, quote_of_id=old.quote_of_id)
+        posts.append(post)
+    return replace(current, posts=tuple(posts))
+
+
+def chase_spine_quotes(
+    thread: ThreadData,
+    *,
+    tip: bool,
+    tip_id: str,
+) -> None:
+    """Refresh each missing spine ``quote_of_id`` as a root. One hop."""
+    spine = spine_from_tip(thread, tip_id) if tip else spine_ids(thread)
+    for qid in spine_quote_ids(thread, spine):
+        assets, _notes = locate(qid)
+        if assets is not None:
+            continue
+        try:
+            check_frozen(qid)
+        except SystemExit:
+            continue
+        inner = argparse.Namespace(
+            id=qid,
+            branch=[],
+            tip=False,
+            slug=None,
+            preserve_existing=False,
+            attach=[],
+            allow_broken_walk=False,
+            retire_old_dir=False,
+            no_quotes=True,
+        )
+        try:
+            cmd_refresh(inner)
+        except (SystemExit, subprocess.CalledProcessError) as exc:
+            print(f"quote-capture failed {qid}: {exc}")
+
+
 def cmd_refresh(args: argparse.Namespace) -> int:
-    """Convenience: ``refetch`` + ``graph`` + ``emit --force`` for ``args.id``."""
+    """Convenience: ``refetch`` + quote chase + ``graph`` + ``emit --force``."""
     check_frozen(args.id)
     cmd_refetch(args)
+    src = scratch_dir(args.id) / "thread_data.json"
+    if getattr(args, "preserve_existing", False):
+        assets, _notes = locate(args.id)
+        if assets is not None and (assets / "thread_data.json").is_file():
+            fresh = load_thread(src)
+            existing = load_thread(assets / "thread_data.json")
+            merged, retained_ids = _merge_existing_capture(
+                fresh,
+                existing,
+                args.id,
+            )
+            _write_thread(src, merged)
+            retained = ",".join(retained_ids) if retained_ids else "-"
+            print(f"preserve-existing retained={retained}")
+    assets, _notes = locate(args.id)
+    if (
+        assets is not None
+        and (assets / "thread_data.json").is_file()
+        and src.is_file()
+    ):
+        current = load_thread(src)
+        previous = load_thread(assets / "thread_data.json")
+        _write_thread(src, overlay_quote_of_ids(current, previous))
     cmd_graph(args)
+    if not getattr(args, "no_quotes", False) and src.is_file():
+        chase_spine_quotes(
+            load_thread(src),
+            tip=bool(getattr(args, "tip", False)),
+            tip_id=args.id,
+        )
     cmd_emit(args)
     return 0
 
@@ -892,6 +968,12 @@ def build_parser() -> argparse.ArgumentParser:
                 "--retire-old-dir",
                 action="store_true",
                 help="delete this thread's archive under another handle",
+            )
+        if name == "refresh":
+            p.add_argument(
+                "--no-quotes",
+                action="store_true",
+                help="do not capture quoted tweets on the spine",
             )
         if name == "lift":
             p.add_argument("--orig", action="store_true")

@@ -26,6 +26,11 @@ Cross-author spines list every post in time order. The handle on the number line
 
 If the first post is a reply to someone else, that other tweet is quoted at the top as context. It is not numbered as part of the spine.
 
+If a spine post quotes another tweet, the quoted tweet has its
+own thread folder. Under the quoting post: the x.com status URL,
+then a link to that folder. The shortened t.co link in the tweet
+stays as written.
+
 ## Branches
 
 A reply from someone else, or a second chain the author started from an earlier post, is its own note in the same folder. Follow-ups on that reply stay in that note, including if the original author answers there.

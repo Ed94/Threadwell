@@ -148,12 +148,19 @@ def _post_block(
     post: PostData,
     media_by_post: dict[str, tuple[str, ...]] | None,
     branch_links: list[str] | None = None,
+    quote_ref: tuple[str, str | None] | None = None,
 ) -> str:
-    """Render one post: number, bold speaker, block id, mentions, text, media."""
+    """Render one post: number, bold speaker, block id, mentions, text, quote, media."""
     if not post.handle:
         raise ValueError(f"empty handle on post {post.post_id}")
     head = f"**{n}/** **@{post.handle}** ^{post.post_id}"
     parts = [head, "", format_post_text(post.text)]
+    if quote_ref is not None:
+        url, wiki = quote_ref
+        parts.append("")
+        parts.append(url)
+        if wiki:
+            parts.append(f"[[{wiki}]]")
     media = (media_by_post or {}).get(post.post_id) or ()
     if media:
         parts.append("")
@@ -189,6 +196,7 @@ def render_spine(
     branch_names: dict[str, str],
     archived: str,
     media_by_post: dict[str, tuple[str, ...]] | None = None,
+    quote_refs: dict[str, tuple[str, str | None]] | None = None,
 ) -> str:
     """branch_names maps branch-root post_id -> wikilink target (filename without .md)."""
     ids = by_id(thread)
@@ -227,7 +235,15 @@ def render_spine(
 
     for n, pid in enumerate(spine, 1):
         post = ids[pid]
-        chunks.append(_post_block(n, post, media_by_post, branches_under.get(pid)))
+        chunks.append(
+            _post_block(
+                n,
+                post,
+                media_by_post,
+                branches_under.get(pid),
+                (quote_refs or {}).get(pid),
+            )
+        )
 
     return "\n".join(chunks).rstrip() + "\n"
 

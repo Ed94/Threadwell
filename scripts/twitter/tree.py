@@ -123,3 +123,17 @@ def descendants(start_id: str, kids: dict[str, list[str]]) -> list[str]:
         out.append(n)
         stack.extend(reversed(kids.get(n, [])))
     return out
+
+
+def spine_quote_ids(thread: ThreadData, spine: list[str]) -> list[str]:
+    """Return unique ``quote_of_id`` values on ``spine``, first-seen order."""
+    ids = by_id(thread)
+    out: list[str] = []
+    seen: set[str] = set()
+    for pid in spine:
+        quote_id = ids[pid].quote_of_id
+        if not quote_id or quote_id in seen:
+            continue
+        seen.add(quote_id)
+        out.append(quote_id)
+    return out
