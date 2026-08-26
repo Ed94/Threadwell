@@ -8,7 +8,7 @@ handle: sadhuIGI
 post_id: "2066453103344292290"
 date: 2026-06-15
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter

@@ -8,7 +8,7 @@ handle: Social_Vulture
 post_id: "2066190873235206299"
 date: 2026-06-14
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter
