@@ -14,3 +14,5 @@ tags:
 - [[archive/threads/SebAaltonen/2024-12-18-fixed-all-our-vulkan-bugs]]
 - [[archive/threads/SebAaltonen/2025-03-08-stupid-hardware-question-why-does-amd-use-several]]
 - [[archive/threads/SebAaltonen/2025-03-28-indoor-scenes-in-hypehype-are-starting-to-look]]
+- [[archive/threads/SebAaltonen/2025-12-16-my-no-graphics-api-blog-post-is-live-please-repost]]
+- [[archive/threads/SebAaltonen/2026-08-08-extended-2x-version-of-my-siggraph-2026-talk]]
