@@ -10,3 +10,4 @@ tags:
 ---
 
 - [[archive/threads/SheriefFYI/2023-12-19-always-always-always-use-an-async-copy-queue]]
+- [[archive/threads/SheriefFYI/2023-12-24-im-going-to-retract-my-support-for-this-i-just]]

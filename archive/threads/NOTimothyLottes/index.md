@@ -54,6 +54,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2024-12-20-raytastic-friday]]
 - [[archive/threads/NOTimothyLottes/2024-12-21-hopefully-with-this-last-atomic-workaround-im]]
 - [[archive/threads/NOTimothyLottes/2024-12-21-how-to-unbreak-atomicadd-on-amd-pc]]
+- [[archive/threads/NOTimothyLottes/2024-12-22-fixing-atomicadd-benchmarking-amd-nv]]
 - [[archive/threads/NOTimothyLottes/2024-12-24-been-playing-with-the-spatial-energy]]
 - [[archive/threads/NOTimothyLottes/2025-01-04-for-the-love-of-octahedrons-https-fileadmin-cs]]
 - [[archive/threads/NOTimothyLottes/2025-01-06-one-of-the-downsides-of-v-cndmask-b32-on-amd-is]]
