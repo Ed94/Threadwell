@@ -36,6 +36,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2023-12-20-i-share-the-same-unconventional-define-type]]
 - [[archive/threads/NOTimothyLottes/2023-12-20-ideally-a-gpu-profiling-graph-would-provide-at]]
 - [[archive/threads/NOTimothyLottes/2023-12-21-code-shy-brain-says-its-strange-to-be-reading]]
+- [[archive/threads/NOTimothyLottes/2023-12-24-the-sometimes-extra-2-5-seconds-on-vulkan]]
 - [[archive/threads/NOTimothyLottes/2023-12-25-virtualized-xmas-thread]]
 - [[archive/threads/NOTimothyLottes/2023-12-26-no-luck-getting-d3dkmtgetscanline-to-work-thus-far]]
 - [[archive/threads/NOTimothyLottes/2023-12-29-end-of-2023-scaling-parallel-gfx-and-memory-thread]]
