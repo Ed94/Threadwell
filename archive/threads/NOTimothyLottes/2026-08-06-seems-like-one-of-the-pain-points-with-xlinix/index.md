@@ -33,6 +33,8 @@ Seems like one of the pain points with Xlinix DSPs that if you want either a 32-
 
 In my case the top 4-bit MSBs of operands already use a 8:1 mux so im out of single pipeline stage CLB. Puts the design back into the slow burn on break rethink mode …
 
+Branches: [[archive/threads/NOTimothyLottes/2026-08-06-seems-like-one-of-the-pain-points-with-xlinix/2026-08-06-NOTimothyLottes-at-least-with-ultrascale-if-you-can-afford-to-run]]
+
 **3/** **@NOTimothyLottes** ^2085369523838787831
 
 The aim was to place a sub-word decode pipeline stage (CLB) between a direct mapped shift register (SLICEM) to DSP inputs for operand fetch. With shift register getting a program controlled MUX as input/clk …
