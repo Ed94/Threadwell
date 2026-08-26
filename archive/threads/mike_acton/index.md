@@ -10,6 +10,8 @@ tags:
 ---
 
 - [[archive/threads/mike_acton/2018-04-25-mike-acton-approximator]]
+- [[archive/threads/mike_acton/2023-06-26-since-2darray-is-working-on-a-pico8-to-burst-lua]]
+- [[archive/threads/mike_acton/2023-07-01-its-very-easy-to-tell-when-i-named-something]]
 - [[archive/threads/mike_acton/2023-07-31-by-encouragement-i-think-he-means-10-years-of]]
 - [[archive/threads/mike_acton/2023-08-03-mike-days-paper-got-me-thinking-about-abusing]]
 - [[archive/threads/mike_acton/2023-09-11-there-are-thousands-of-articles-introducing-the]]
