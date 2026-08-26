@@ -8,7 +8,7 @@ handle: stainless_code
 post_id: "1991219165978370275"
 date: 2025-11-19
 archived: 2026-08-25
-draft: true
+draft: false
 tags:
   - archive
   - twitter

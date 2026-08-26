@@ -8,7 +8,7 @@ handle: RickyAH
 post_id: "1777246377824731474"
 date: 2024-04-08
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter

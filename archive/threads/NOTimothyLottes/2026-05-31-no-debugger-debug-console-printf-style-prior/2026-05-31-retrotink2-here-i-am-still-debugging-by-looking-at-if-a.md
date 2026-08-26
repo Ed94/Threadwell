@@ -8,7 +8,7 @@ handle: retrotink2
 post_id: "2061206435942511008"
 date: 2026-05-31
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter

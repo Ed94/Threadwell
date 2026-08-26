@@ -7,7 +7,7 @@ author: "EA-18G Growler Enjoyer"
 handle: GrowlerEnjooyer
 post_id: "2066465370689732716"
 date: 2026-06-15
-archived: 2026-08-23
+archived: 2026-08-25
 draft: false
 tags:
   - archive

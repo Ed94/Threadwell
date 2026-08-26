@@ -8,7 +8,7 @@ handle: noop_dev
 post_id: "2078359568636080568"
 date: 2026-07-18
 archived: 2026-08-25
-draft: true
+draft: false
 tags:
   - archive
   - twitter

@@ -8,7 +8,7 @@ handle: furan
 post_id: "2078295812476404143"
 date: 2026-07-18
 archived: 2026-08-23
-draft: true
+draft: false
 tags:
   - archive
   - twitter

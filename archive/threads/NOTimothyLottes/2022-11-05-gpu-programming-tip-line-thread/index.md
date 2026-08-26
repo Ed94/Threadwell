@@ -43,7 +43,7 @@ GPU Programming Tip Line Thread /
 
 **5/** **@NOTimothyLottes** ^1588903378952007680
 
-[3] Driver ignoring your '[[dont_unroll]]', 'int eatThisBuddy=1+/*hidden-zero*/constantBuffer.zero[0];for(i=0;i<1024;i+=eatThisBuddy){...'
+[3] Driver ignoring your `[[dont_unroll]]`, 'int eatThisBuddy=1+/*hidden-zero*/constantBuffer.zero[0];for(i=0;i<1024;i+=eatThisBuddy){...'
 
 **6/** **@NOTimothyLottes** ^1588903586721042432
 

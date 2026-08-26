@@ -8,7 +8,7 @@ handle: tomcr2100
 post_id: "2065909746536747274"
 date: 2026-06-13
 archived: 2026-08-25
-draft: true
+draft: false
 tags:
   - archive
   - twitter

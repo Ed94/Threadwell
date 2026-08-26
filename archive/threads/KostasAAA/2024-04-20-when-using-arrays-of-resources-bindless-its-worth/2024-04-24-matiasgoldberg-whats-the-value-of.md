@@ -8,7 +8,7 @@ handle: matiasgoldberg
 post_id: "1783166450733113360"
 date: 2024-04-24
 archived: 2026-08-25
-draft: true
+draft: false
 tags:
   - archive
   - twitter

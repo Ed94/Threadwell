@@ -49,5 +49,5 @@ A live tweet embed is optional and is not the archive:
 
 ## Related
 
-- How folders work: [[How threads are organized]]
-- Distilled note: [[What this archive is for]]
+- How folders work: [[notes/How threads are organized]]
+- Distilled note: [[notes/What this archive is for]]

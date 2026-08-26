@@ -8,7 +8,7 @@ handle: AlexABPerson
 post_id: "2071714528635527401"
 date: 2026-06-29
 archived: 2026-08-25
-draft: true
+draft: false
 tags:
   - archive
   - twitter

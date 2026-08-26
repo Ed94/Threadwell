@@ -8,7 +8,7 @@ handle: burlapDD
 post_id: "1786439905972732411"
 date: 2024-05-03
 archived: 2026-08-25
-draft: true
+draft: false
 tags:
   - archive
   - twitter
