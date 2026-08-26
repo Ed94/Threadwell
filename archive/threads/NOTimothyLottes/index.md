@@ -34,6 +34,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2023-12-20-before-moving-all-gpu-side-i-had-source-recompile]]
 - [[archive/threads/NOTimothyLottes/2023-12-20-curious-if-you-can-mapviewoffile-and-then-use]]
 - [[archive/threads/NOTimothyLottes/2023-12-20-i-share-the-same-unconventional-define-type]]
+- [[archive/threads/NOTimothyLottes/2023-12-20-ideally-a-gpu-profiling-graph-would-provide-at]]
 - [[archive/threads/NOTimothyLottes/2023-12-21-code-shy-brain-says-its-strange-to-be-reading]]
 - [[archive/threads/NOTimothyLottes/2023-12-25-virtualized-xmas-thread]]
 - [[archive/threads/NOTimothyLottes/2023-12-26-no-luck-getting-d3dkmtgetscanline-to-work-thus-far]]
