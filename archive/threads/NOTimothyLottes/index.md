@@ -14,6 +14,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2022-11-08-example-of-bind-everything-once-layout-aliasing]]
 - [[archive/threads/NOTimothyLottes/2022-11-09-if-only-pc-vendors-with-open-isas]]
 - [[archive/threads/NOTimothyLottes/2022-11-13-my-prefered-method-of-managing-application-data]]
+- [[archive/threads/NOTimothyLottes/2022-12-15-amds-windows-drivers-are-often-unfortunately]]
 - [[archive/threads/NOTimothyLottes/2022-12-17-rdna3-isa-guide-comments]]
 - [[archive/threads/NOTimothyLottes/2023-04-28-https-gpuopen-com-learn-rgp-1-15-enhanced-isa]]
 - [[archive/threads/NOTimothyLottes/2023-05-03-found-some-of-my-old-blogs-thread-looking-back-an]]
