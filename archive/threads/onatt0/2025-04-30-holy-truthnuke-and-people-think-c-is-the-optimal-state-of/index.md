@@ -38,6 +38,7 @@ not only you have to keep the whole stack around with replicated state, it limit
 ## Related
 
 - Spine: [[archive/threads/NOTimothyLottes/2025-04-30-3-i-got-side-tracked-by-building-a-language-that]]
+- [[archive/threads/NOTimothyLottes/2025-04-30-the-big-industry-mistake-was-factoring-into]]
 
 ## Visible chain (transcribed verbatim from screenshot)
 

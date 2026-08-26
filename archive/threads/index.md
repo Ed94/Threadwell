@@ -28,6 +28,7 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/VPCOMPRESSB]]
 - [[archive/threads/VictorTaelin]]
 - [[archive/threads/cmuratori]]
+- [[archive/threads/hsn8086]]
 - [[archive/threads/kenpex]]
 - [[archive/threads/levelsio]]
 - [[archive/threads/mike_acton]]
