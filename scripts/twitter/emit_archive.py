@@ -488,7 +488,7 @@ def _upsert_wikilink(path: Path, target: str) -> None:
             kept.append(line)
     if target not in names:
         names.append(target)
-    names.sort()
+    names.sort(key=str.lower)
     while kept and kept[0] == "":
         kept.pop(0)
     while kept and kept[-1] == "":
@@ -655,6 +655,28 @@ def ensure_threads_index(vault: Path, handle: str) -> None:
         )
         return
     _upsert_wikilink(path, f"archive/threads/{handle}")
+
+
+def rewrite_threads_index(vault: Path) -> bool:
+    """Re-sort the top-level archive/threads/index.md wikilinks alphabetically (case-insensitive).
+
+    Preserves frontmatter and prose. Idempotent. No-op if the file is missing
+    or if no real handle dirs exist.
+    """
+    path = vault / "archive" / "threads" / "index.md"
+    if not path.is_file():
+        return False
+    threads_root = path.parent
+    real_handles = sorted(
+        (d.name for d in threads_root.iterdir() if d.is_dir() and not d.name.startswith(".")),
+        key=str.lower,
+    )
+    if not real_handles:
+        return False
+    # Pick the first real handle as a no-op upsert target so the existing
+    # _upsert_wikilink re-sort path runs.
+    _upsert_wikilink(path, f"archive/threads/{real_handles[0]}")
+    return True
 
 
 def discover_dumps(root: Path) -> list[Path]:

@@ -48,6 +48,7 @@ try:
         format_reslug_plan,
         plan_relabel,
         plan_reslug,
+        rewrite_threads_index,
     )
     from fallback_media import activate_fallback, find_existing_fallback, restore_origin
     from media_audit import audit_thread
@@ -63,6 +64,7 @@ except ImportError:  # pragma: no cover - script-mode import
         format_reslug_plan,
         plan_relabel,
         plan_reslug,
+        rewrite_threads_index,
     )
     from fallback_media import activate_fallback, find_existing_fallback, restore_origin
     from media_audit import audit_thread
@@ -755,6 +757,12 @@ def cmd_sync(args: argparse.Namespace) -> int:
             print(f"rewrote {handle_dir.name}: {len(dirs)} dirs")
         else:
             print(f"ok {handle_dir.name}: {len(dirs)} dirs")
+    # Re-sort the top-level handle list whenever sync runs without a target
+    # handle. Per-handle indexes (above) are sorted in-place; the top-level
+    # needs a separate call because its bullet list is not a per-handle file.
+    if not handle:
+        if rewrite_threads_index(VAULT):
+            print("rewrote top-level threads index")
     print(f"changed {changed}, skipped {skipped}")
     return 0
 
