@@ -86,6 +86,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2025-10-10-thread-about-this-from-rfleury-https-www-rfleury]]
 - [[archive/threads/NOTimothyLottes/2025-10-13-short-talk-on-how-i-do-cpu-side-debugging-without]]
 - [[archive/threads/NOTimothyLottes/2025-11-17-i-wish-everyone-would-just-adopt-reversed-with]]
+- [[archive/threads/NOTimothyLottes/2025-11-30-very-short-video-describing-an-alternative-way-to]]
 - [[archive/threads/NOTimothyLottes/2026-01-14-can-do-that]]
 - [[archive/threads/NOTimothyLottes/2026-03-08-ill-add-one-conspiracy-theory-for-everyone]]
 - [[archive/threads/NOTimothyLottes/2026-03-16-how-about-removing-call-return-branch-conditional]]
