@@ -16,6 +16,7 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/AgileJebrim]]
 - [[archive/threads/bmcnett]]
 - [[archive/threads/BOENSAW]]
+- [[archive/threads/bonzajplc]]
 - [[archive/threads/CharlieMQV]]
 - [[archive/threads/ChipsandCheese9]]
 - [[archive/threads/cmuratori]]
