@@ -13,3 +13,4 @@ tags:
 - [[archive/threads/AgileJebrim/2025-02-09-check-your-compiler]]
 - [[archive/threads/AgileJebrim/2026-05-12-we-have-code-reviews-at-isochron-and-i-require-my]]
 - [[archive/threads/AgileJebrim/2026-05-30-i-dont-think-hardware-vendors-are-going-to]]
+- [[archive/threads/AgileJebrim/2026-08-22-start-with-spir-v-or-ptx-instead]]
