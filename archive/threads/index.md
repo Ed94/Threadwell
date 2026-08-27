@@ -22,6 +22,7 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/Dispatch_Graph]]
 - [[archive/threads/EricLengyel]]
 - [[archive/threads/FFmpeg]]
+- [[archive/threads/HostOfMeta]]
 - [[archive/threads/hsn8086]]
 - [[archive/threads/ID_AA_Carmack]]
 - [[archive/threads/iquilezles]]
