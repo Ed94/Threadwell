@@ -12,6 +12,7 @@ tags:
 - [[archive/threads/SebAaltonen/2018-12-29-i-wish-i-was-as-productive-blogger-as-aras-p]]
 - [[archive/threads/SebAaltonen/2019-01-01-now-that-people-have-already-said-highly]]
 - [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two]]
+- [[archive/threads/SebAaltonen/2020-10-25-implemented-a-simple-linear-estimator-for]]
 - [[archive/threads/SebAaltonen/2022-11-22-ive-long-time-talked-about-killing-the-graphics]]
 - [[archive/threads/SebAaltonen/2024-04-04-this-is-how-slow-code-feels-like]]
 - [[archive/threads/SebAaltonen/2024-05-03-why-should-one-be-able-to-code-without]]
