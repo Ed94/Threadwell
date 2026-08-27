@@ -21,5 +21,8 @@ tags:
 - [[archive/threads/rfleury/2024-12-18-one-of-the-most-powerful-lessons-i-learned-as-a]]
 - [[archive/threads/rfleury/2025-04-30-to-the-degree-this-is-true-its-only-in-a]]
 - [[archive/threads/rfleury/2025-10-10-new-post-multi-core-by-default]]
+- [[archive/threads/rfleury/2025-12-04-on-foss-and-why-we-should-pay-for-good-software]]
+- [[archive/threads/rfleury/2025-12-15-none-of-these-advantages-are-mutually-exclusive]]
+- [[archive/threads/rfleury/2026-03-05-this-ignores-an-important-shift-in-the-gaming]]
 - [[archive/threads/rfleury/2026-06-02-the-first-way-people-usually-learn-code]]
 - [[archive/threads/rfleury/2026-08-07-a-good-way-to-evaluate-one-axis-of-quality-of-an]]
