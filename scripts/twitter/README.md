@@ -90,11 +90,8 @@ Later emits use that same title for the folder and the frontmatter. Move both si
 | `catbox_client.py` | one Catbox upload |
 | `fallback_media.py` | fallback activation and restore-origin |
 | `frozen.py` | resolve frozen ids against every captured post id |
-| `lift_catbox.py` | retired. Use `tw.py fallback` |
 | `ocr_pass.py` | Umi HTTP `:1224` / tesseract / Windows OCR |
 | `media_embed.py` | `--attach-ocr` only |
 | `media_merge.py` | restore derived rows |
-| `crt_pass.py` | stock slang only. ShaderGlass is the look reference |
 | `do_not_refetch.txt` | frozen id list |
 | `tests/` | isolated unit tests |
-| `unfinished_bloat/` | leftover probe code. Not the front door |

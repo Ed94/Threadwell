@@ -79,8 +79,7 @@ def audit_one(handle_dir: Path) -> dict:
 
 
 def audit_threads_index(threads_root: Path) -> dict:
-    """Audit the top-level archive/threads/index.md against real
-    handle dirs."""
+    """Audit the top-level archive/threads/index.md against real handle dirs."""
     idx_path = threads_root / "index.md"
     real = {
         d.name for d in threads_root.iterdir() if d.is_dir() and not d.name.startswith(".")
