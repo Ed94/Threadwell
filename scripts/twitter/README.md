@@ -1,38 +1,42 @@
 # twitter
 
-Front door: `tw.py`. Run from the vault root.
+`tw.py`. Run from the vault root.
 
 ```
-python scripts/twitter/tw.py graph --id <snowflake>
-python scripts/twitter/tw.py refresh --id <spine-tip> --tip
-python scripts/twitter/tw.py refresh --id <spine-tip> --tip --preserve-existing
-python scripts/twitter/tw.py refresh --id <spine-tip> --tip --no-quotes
-python scripts/twitter/tw.py refresh --id <spine-tip> --tip --branch <branch-tip>
-python scripts/twitter/tw.py add-branch --id <original-spine-tip> --from <reply-node>
-python scripts/twitter/tw.py emit --id <spine-tip> --tip --preserve-existing
-python scripts/twitter/tw.py audit-media --id <snowflake>
-python scripts/twitter/tw.py publish --id <snowflake>
-python scripts/twitter/tw.py sync --handle <handle>
-python scripts/twitter/tw.py backup --id <snowflake>
+python scripts/twitter/tw.py graph    --id <snowflake>
+python scripts/twitter/tw.py refresh  --id <spine-tip> --tip
+python scripts/twitter/tw.py refresh  --id <spine-tip> --tip --preserve-existing
+python scripts/twitter/tw.py refresh  --id <spine-tip> --tip --no-quotes
+python scripts/twitter/tw.py refresh  --id <spine-tip> --tip --branch <branch-tip>
+python scripts/twitter/tw.py add      -branch --id <original-spine-tip> --from <reply-node>
+python scripts/twitter/tw.py emit     --id <spine-tip> --tip --preserve-existing
+python scripts/twitter/tw.py audit    -media --id <snowflake>
+python scripts/twitter/tw.py publish  --id <snowflake>
+python scripts/twitter/tw.py sync     --handle <handle>
+python scripts/twitter/tw.py backup   --id <snowflake>
 python scripts/twitter/tw.py fallback --id <snowflake> --media-id <id> --role <role> --confirm-origin-unavailable
-python scripts/twitter/tw.py restore-origin --id <snowflake> --media-id <id>
-python scripts/twitter/tw.py migrate-media --id <snowflake>
-python scripts/twitter/tw.py reslug --all
-python scripts/twitter/tw.py reslug --all --apply
-python scripts/twitter/tw.py relabel --all
-python scripts/twitter/tw.py relabel --all --apply
+python scripts/twitter/tw.py restore  -origin --id <snowflake> --media-id <id>
+python scripts/twitter/tw.py migrate  -media --id <snowflake>
+python scripts/twitter/tw.py reslug   --all
+python scripts/twitter/tw.py reslug   --all --apply
+python scripts/twitter/tw.py relabel  --all
+python scripts/twitter/tw.py relabel  --all --apply
 ```
 
 `paths.py` finds the vault two parents above this file. Dumps live at `../manual_slop/docs/twitter`. Scratch lives at `../Threadwell-ai/scratch`.
 
 ## Capture
 
-`refresh` is refetch + ingest + emit `--force` + media merge. `--tip` treats `--id` as the tip and walks back to the opening post. If that tip is the OP, same-handle self-replies stay on the spine and foreign replies are branches. Repeat `--branch <tip-id>` to capture extra tips into the same `thread_data.json`. `--attach <child>:<parent>` sets one hop before the walk. A walk that stops on a missing parent aborts unless `--allow-broken-walk`. A leftover dir under another handle aborts unless `--retire-old-dir`. It does not invent replies. Captures run one at a time. gallery-dl retries are off. Extractor and request sleeps are five seconds. Re-emit deletes branch notes that are no longer roots.
+`refresh` is refetch + ingest + emit `--force` + media merge. `--tip` treats `--id` as the tip and walks back to the opening post.
+If that tip is the OP, same-handle self-replies stay on the spine and foreign replies are branches.
+Repeat `--branch <tip-id>` to capture extra tips into the same `thread_data.json`. `--attach <child>:<parent>` sets one hop before the walk.
+A walk that stops on a missing parent aborts unless `--allow-broken-walk`.
+A leftover dir under another handle aborts unless `--retire-old-dir`.
+It does not invent replies. Captures run one at a time. gallery-dl retries are off.
+Extractor and request sleeps are five seconds. Re-emit deletes branch notes that are no longer roots.
 
-`refresh` also captures each quote tweet on the quoter spine as
-its own root archive (`refresh --id <quoted>` without `--tip`).
-One hop. `--no-quotes` skips that pass. `emit` does not fetch.
-Established threads: `refresh --id <quoter-tip> --tip --preserve-existing`.
+`refresh` also captures each quote tweet on the quoter spine as its own root archive (`refresh --id <quoted>` without `--tip`).
+One hop. `--no-quotes` skips that pass. `emit` does not fetch. Established threads: `refresh --id <quoter-tip> --tip --preserve-existing`.
 
 Each thread writes one archive folder. The owner is the opening post (`reply_to_id` is empty). Other authors stay in that folder. New notes set `draft: false`. The command does not commit. Frozen ids abort.
 
@@ -68,11 +72,11 @@ A thread folder is named from the title in `index.md`: `<YYYY-MM-DD>-<slug>`. `r
 
 Later emits use that same title for the folder and the frontmatter. Move both sides together. Each old archive prefix is replaced once in mutable `*.md` and `*.canvas` outside `.git/`, `site/`, `assets/`, `secrets/`, `node_modules/`, and frozen archive dirs.
 
-`relabel --all` patches existing `**N/**` lines to `**N/** @handle` from on-disk `thread_data.json`. No scrape. No folder rename. `--apply` writes notes only.
+`relabel --all` patches existing `**N/**` lines to `**N/** @handle` from on-disk `thread_data.json`. `--apply` writes notes only.
 
 ## Secrets
 
-`secrets/twitter_cookies.txt` and `secrets/credentials.toml` stay on the machine that runs the capture. The scripts read them. They never print them. The Catbox hash goes in an HTTPS form body, not on a process command line. The backup command prints `synced` or `error`, not the destination path.
+`secrets/twitter_cookies.txt` and `secrets/credentials.toml` stay on the machine that runs the capture. Catbox hash goes in an HTTPS form body. Backup command prints `synced` or `error`.
 
 ## Pieces
 

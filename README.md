@@ -3,6 +3,7 @@
 Recovered threads and submerged records.
 
 An [Obsidian](https://obsidian.md) vault published with [Quartz 5](https://quartz.jzhao.xyz) to GitHub Pages. The site keeps Twitter/X threads and other material that search does not keep.
+The goal is archival purposes, for mainly old posts that are hard to scavange, track, or lack of trust in x.com to remain publishing the original content or the user deciding to not preserve said content on-site.
 
 Live: [threadwell.edsabode.dev](https://threadwell.edsabode.dev)
 
@@ -28,7 +29,7 @@ notes/                # public — authored writing
 templates/            # not published
 meta/                 # not published — conventions
 assets/               # not published, gitignored — working media
-secrets/              # not published, gitignored — cookies, host keys
+secrets/              # not published, gitignored
 scripts/              # not published — local tooling (tracked)
 private/              # not published, not pushed
 publish/              # tracked overlay: quartz.config.yaml
@@ -37,7 +38,7 @@ site/                 # local Quartz clone (gitignored; own remotes)
 .github/workflows/deploy.yml
 ```
 
-`archive/`, `canvases/`, and `notes/` publish by default. `site/` is a separate checkout of Quartz (`origin` → `jackyzha0/quartz`). This repo's remote is `Ed94/Threadwell`.
+`archive/`, `canvases/`, and `notes/` publish by default. `site/` is a separate checkout of Quartz (`origin` → `jackyzha0/quartz`).
 
 ## Frontmatter
 
@@ -69,11 +70,10 @@ Notes cite the original host URL.
 
 Keep local copies in `assets/` (not committed). Notes do not point at `assets/` or `./media/`.
 
-YouTube and tweets (Quartz Obsidian-flavored Markdown):
+YouTube (Quartz Obsidian-flavored Markdown):
 
 ```md
 ![](https://www.youtube.com/watch?v=VIDEO_ID)
-![](https://x.com/user/status/ID)
 ```
 
 Odysee (iframe; copy the embed URL from Odysee share):
@@ -139,7 +139,3 @@ Quartz remotes live in `site/` (`cd site; git pull`). After a Quartz pull, re-co
 Current major is **Quartz 5**. Edit `publish/quartz.config.yaml`, not the clone. Canvas uses `@quartz-community/canvas-page`. Drafts use `@quartz-community/remove-draft`.
 
 Engine license: MIT (Quartz). Vault content: Unlicense (`LICENSE`).
-
-## Notice
-
-I'm not a web dev. Look away at the scripts. This exists because it didn't, so it was done badly.

@@ -42,8 +42,8 @@ class BackupResult:
 
 
 def load_destination_root(vault: Path, destination_id: str) -> Path:
-    """Read the configured backup destination root from ``vault/secrets/credentials.toml``."""
-    path = vault / "secrets" / "credentials.toml"
+    """Read the configured backup destination root from ``vault/secrets/config.toml``."""
+    path = vault / "secrets" / "config.toml"
     if not path.is_file():
         raise RuntimeError(f"missing {path}")
     text = path.read_text(encoding="utf-8")
@@ -68,7 +68,7 @@ def load_destination_root(vault: Path, destination_id: str) -> Path:
     if configured_id != destination_id:
         raise RuntimeError(f"backup destination not configured: {destination_id}")
     if not root:
-        raise RuntimeError("credentials.toml [backup] root is empty")
+        raise RuntimeError("config.toml [backup] root is empty")
     return Path(root)
 
 
