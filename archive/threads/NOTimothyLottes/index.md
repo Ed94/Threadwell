@@ -131,5 +131,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-08-02-re-fpga-land-alus-im-firmly-distracted-by-an]]
 - [[archive/threads/NOTimothyLottes/2026-08-06-seems-like-one-of-the-pain-points-with-xlinix]]
 - [[archive/threads/NOTimothyLottes/2026-08-10-been-saying-this-for-a-decade-now-hu-has-a-really]]
+- [[archive/threads/NOTimothyLottes/2026-08-18-cheers]]
 - [[archive/threads/NOTimothyLottes/2026-08-23-operands-time-perf]]
 - [[archive/threads/NOTimothyLottes/2026-08-25-one-downsides-to-being-a-left-justified-machine]]
+- [[archive/threads/NOTimothyLottes/2026-08-26-for-an-integer-dsp-if-one-wants-2-negative]]
