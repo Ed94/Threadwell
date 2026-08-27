@@ -18,6 +18,7 @@ tags:
 - [[archive/threads/rfleury/2019-08-29-why-do-we-spend-so-much-effort-to-encode]]
 - [[archive/threads/rfleury/2019-12-23-the-new-4coder-update-beta-4-1-0-has-been-awesome]]
 - [[archive/threads/rfleury/2019-12-26-thread]]
+- [[archive/threads/rfleury/2020-10-31-i-dont-think-id-classify-our-goals-one-way-or]]
 - [[archive/threads/rfleury/2024-12-18-one-of-the-most-powerful-lessons-i-learned-as-a]]
 - [[archive/threads/rfleury/2025-04-30-to-the-degree-this-is-true-its-only-in-a]]
 - [[archive/threads/rfleury/2025-10-10-new-post-multi-core-by-default]]
