@@ -9,4 +9,5 @@ tags:
   - ocornut
 ---
 
+- [[archive/threads/ocornut/2017-10-25-dear-imgui-super-early-docking-experiment]]
 - [[archive/threads/ocornut/2026-05-06-i-take-no-pleasure-in-reinventing-the-wheel-but]]
