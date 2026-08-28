@@ -19,6 +19,7 @@ tags:
 - [[archive/threads/EricLengyel/2016-12-15-that-would-be-taking-the-antiwedge-product-of-two]]
 - [[archive/threads/EricLengyel/2017-04-13-the-more-i-talk-to-people-about-other-engines]]
 - [[archive/threads/EricLengyel/2017-05-26-needs-repeating-you-can-always-perform-a-signed]]
+- [[archive/threads/EricLengyel/2017-08-17-the-consensus-so-far-is-that-world-space-object]]
 - [[archive/threads/EricLengyel/2017-11-13-i-wrote-down-some-thoughts-about-how-a-transient]]
 - [[archive/threads/EricLengyel/2017-11-17-one-advantage-to-not-including-any-os-headers-or]]
 - [[archive/threads/EricLengyel/2017-12-29-i-know-a-lot-of-people-are-against-software]]
