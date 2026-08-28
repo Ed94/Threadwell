@@ -9,6 +9,7 @@ tags:
   - ID_AA_Carmack
 ---
 
+- [[archive/threads/ID_AA_Carmack/2021-07-08-webusb-sure-sounds-like-scope-creep]]
 - [[archive/threads/ID_AA_Carmack/2022-01-03-when-unity-and-unreal-package-textures-and]]
 - [[archive/threads/ID_AA_Carmack/2023-09-29-i-remain-unconvinced-that-mixed-reality]]
 - [[archive/threads/ID_AA_Carmack/2025-12-23-would-papers-get-rejected-if-they-used-legal-code]]
