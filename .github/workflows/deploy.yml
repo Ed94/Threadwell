@@ -67,7 +67,9 @@ jobs:
         run: python ../publish/quartz-patches/apply.py search
       - name: Build Quartz
         working-directory: site
-        run: npx quartz build -d ..
+        run: NODE_OPTIONS=--max-old-space-size=4096 npx quartz build -d .. --concurrency 8
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
       - name: Rewrite built HTML
         working-directory: site
         run: python ../publish/quartz-patches/apply.py built
