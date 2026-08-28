@@ -9,4 +9,5 @@ tags:
   - cmuratori
 ---
 
+- [[archive/threads/cmuratori/2021-12-21-shading-language-standardization-for-the-web-is]]
 - [[archive/threads/cmuratori/2023-08-14-programming-practices-that-increase-total-code]]
