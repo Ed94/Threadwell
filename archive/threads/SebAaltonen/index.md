@@ -9,6 +9,7 @@ tags:
   - SebAaltonen
 ---
 
+- [[archive/threads/SebAaltonen/2017-11-13-documented-ownership-is-one-of-the-main]]
 - [[archive/threads/SebAaltonen/2018-12-29-i-wish-i-was-as-productive-blogger-as-aras-p]]
 - [[archive/threads/SebAaltonen/2019-01-01-now-that-people-have-already-said-highly]]
 - [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two]]
