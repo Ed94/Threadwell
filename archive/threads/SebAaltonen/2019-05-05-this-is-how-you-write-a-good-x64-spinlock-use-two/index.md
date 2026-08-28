@@ -31,14 +31,12 @@ This is how you write a good x64 spinlock: Use two stage construct. Outer test i
 
 ![](https://pbs.twimg.com/media/D50IVH0W0AALQ0y?format=jpg&name=orig)
 
-**2/** **@SebAaltonen** ^1125065316650889217
+Branches: [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two/2019-05-05-SebAaltonen-dont-use-spinlock-for-waits-use-spinlock-only-to]], [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two/2019-05-05-romzr-got-a-link-to-the-slide-deck]], [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two/2019-05-05-pATjako-i-would-love-to-see-a-comparison-to-arm64-from]], [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two/2019-05-05-ArvidGerstmann-interesting-ive-been-using-xchg-over-cmpxchg-for]], [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two/2019-05-06-morfar-its-a-shame-there-is-no-mm-pause-in-the-bad-case]], [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two/2019-05-06-matiasgoldberg-i-have-one-suggestion-1st-stage-you-measure-how]], [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two/2019-05-06-0xF390-you-can-find-many-implementations-here-including]], [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two/2019-05-06-0xF390-tatas-read-only-inner-loop-is-a-much-better]]
 
-Don’t use spinlock for waits. Use spinlock only to guard something that is guaranteed to return quickly. If you have an operation that is often fast but sometimes slow, use two stage spinlock with internal OS mutex.
+**2/** **@SebAaltonen** ^1125622264819605504
 
-**3/** **@SebAaltonen** ^1125067183476944896
+Important clarification: Using basic load works only on x86/64. Better use atomic load. It will result in the exactly same compiled code on x64 and work also on ARM64. Also gives compiler more info to avoid unwanted optimizations.
 
-Naive (bad) vs optimized (good) performance. See above post for code.
+**3/** **@SebAaltonen** ^1125622526250508289
 
-![](https://pbs.twimg.com/media/D50Ko4mXoAAR97L?format=jpg&name=orig)
-
-Branches: [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two/2019-05-05-lectem-its-missing-exponential-backoff-for-mm-pause]], [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two/2019-05-05-AndrewJacksonZA-nice-code-up-above-also-https-x-com-sebaaltonen]]
+For more info watch this: https://x.com/sebaaltonen/status/1125084734365872129?s=21
