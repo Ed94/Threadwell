@@ -21,4 +21,5 @@ tags:
 - [[archive/threads/EricLengyel/2017-05-26-needs-repeating-you-can-always-perform-a-signed]]
 - [[archive/threads/EricLengyel/2017-11-17-one-advantage-to-not-including-any-os-headers-or]]
 - [[archive/threads/EricLengyel/2017-12-29-i-know-a-lot-of-people-are-against-software]]
+- [[archive/threads/EricLengyel/2018-08-14-thread]]
 - [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a]]
