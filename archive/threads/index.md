@@ -42,6 +42,7 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/mmalex]]
 - [[archive/threads/MyNameIsMJP]]
 - [[archive/threads/nicbarkeragain]]
+- [[archive/threads/no1zex]]
 - [[archive/threads/noinconsistency]]
 - [[archive/threads/NOTimothyLottes]]
 - [[archive/threads/ocornut]]
