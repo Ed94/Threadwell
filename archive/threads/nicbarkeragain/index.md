@@ -16,4 +16,5 @@ tags:
 - [[archive/threads/nicbarkeragain/2026-05-10-psa-if-youve-never-done-graphics-programming]]
 - [[archive/threads/nicbarkeragain/2026-08-03-imo-basically-every-object-creation-api-you-have]]
 - [[archive/threads/nicbarkeragain/2026-08-05-an-example-of-this-a-classic-way-to-construct-a]]
+- [[archive/threads/nicbarkeragain/2026-08-20-i-dev-with-the-debugger-attached-100-of-the-time]]
 - [[archive/threads/nicbarkeragain/2026-08-25-i-think-one-of-the-biggest-level-ups-i-had-in]]

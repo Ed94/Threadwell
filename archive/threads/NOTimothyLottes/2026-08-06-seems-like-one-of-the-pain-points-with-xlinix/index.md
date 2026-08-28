@@ -7,7 +7,7 @@ author: "NOTimothyLottes"
 handle: NOTimothyLottes
 post_id: "2085365714412556730"
 date: 2026-08-06
-archived: 2026-08-25
+archived: 2026-08-28
 draft: false
 tags:
   - archive
