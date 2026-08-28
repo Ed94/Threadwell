@@ -103,6 +103,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-06-13-interesting-how-on-this-linux-box-scheduling-nops]]
 - [[archive/threads/NOTimothyLottes/2026-06-13-nanorc-done-and-back-to-actual-programming-with]]
 - [[archive/threads/NOTimothyLottes/2026-06-14-on-linux-i-do-speculative-pinning-of-cpu-memory]]
+- [[archive/threads/NOTimothyLottes/2026-06-16-unsigned-integer-divide-by-zero-x-0-what-answer]]
 - [[archive/threads/NOTimothyLottes/2026-06-26-quick-summary-of-why-not-pselect-ppoll-epoll]]
 - [[archive/threads/NOTimothyLottes/2026-06-27-deterrent-to-alsa-is-just-parsing-through-snd-pcm]]
 - [[archive/threads/NOTimothyLottes/2026-06-29-alsa-hell-month-continues-remember-it-might-be]]
