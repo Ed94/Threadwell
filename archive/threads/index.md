@@ -30,6 +30,7 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/DevLeaderCa]]
 - [[archive/threads/dharmatrade]]
 - [[archive/threads/Dispatch_Graph]]
+- [[archive/threads/ENDESGA]]
 - [[archive/threads/EricLengyel]]
 - [[archive/threads/eshear]]
 - [[archive/threads/fchollet]]
