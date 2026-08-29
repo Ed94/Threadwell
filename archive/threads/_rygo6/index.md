@@ -10,3 +10,4 @@ tags:
 ---
 
 - [[archive/threads/_rygo6/2024-03-13-one-of-the-things-i-probably-loathe-most-about]]
+- [[archive/threads/_rygo6/2024-05-09-i-just-noticed]]
