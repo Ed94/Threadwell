@@ -18,3 +18,4 @@ tags:
 - [[archive/threads/Jonathan_Blow/2024-12-24-i-have-a-moral-dilemma-in-the-design-of-the]]
 - [[archive/threads/Jonathan_Blow/2025-05-19-some-people-might-read-this-and-think-thats-just]]
 - [[archive/threads/Jonathan_Blow/2025-08-14-i-got-a-bit-colorful-in-this-reply-but-let-me]]
+- [[archive/threads/Jonathan_Blow/2026-05-29-usually-i-would-expect-this-to-be-lame]]

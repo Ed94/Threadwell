@@ -45,6 +45,7 @@ tags:
 - [[archive/threads/rfleury/2023-12-31-you-are-responsible-for-all-code-you-ship-to-run]]
 - [[archive/threads/rfleury/2024-12-18-one-of-the-most-powerful-lessons-i-learned-as-a]]
 - [[archive/threads/rfleury/2025-04-30-to-the-degree-this-is-true-its-only-in-a]]
+- [[archive/threads/rfleury/2025-08-19-palettes-should-be-first-class-functionality]]
 - [[archive/threads/rfleury/2025-10-10-new-post-multi-core-by-default]]
 - [[archive/threads/rfleury/2025-12-04-on-foss-and-why-we-should-pay-for-good-software]]
 - [[archive/threads/rfleury/2025-12-15-none-of-these-advantages-are-mutually-exclusive]]
