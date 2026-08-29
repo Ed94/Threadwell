@@ -12,5 +12,6 @@ tags:
 - [[archive/threads/AgileJebrim/2024-12-18-you-left-out-the-bit-where-i-also-said-no]]
 - [[archive/threads/AgileJebrim/2025-02-09-check-your-compiler]]
 - [[archive/threads/AgileJebrim/2026-05-12-we-have-code-reviews-at-isochron-and-i-require-my]]
+- [[archive/threads/AgileJebrim/2026-05-24-ive-taken-to-using-a-simple-interview-question]]
 - [[archive/threads/AgileJebrim/2026-05-30-i-dont-think-hardware-vendors-are-going-to]]
 - [[archive/threads/AgileJebrim/2026-08-22-start-with-spir-v-or-ptx-instead]]
