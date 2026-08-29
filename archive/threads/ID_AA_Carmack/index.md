@@ -10,6 +10,7 @@ tags:
 ---
 
 - [[archive/threads/ID_AA_Carmack/2021-07-08-webusb-sure-sounds-like-scope-creep]]
+- [[archive/threads/ID_AA_Carmack/2021-11-08-the-software-side-of-dealing-with-custom-hardware]]
 - [[archive/threads/ID_AA_Carmack/2022-01-03-when-unity-and-unreal-package-textures-and]]
 - [[archive/threads/ID_AA_Carmack/2022-01-27-address-space-randomization-is-a-security-feature]]
 - [[archive/threads/ID_AA_Carmack/2023-02-11-row-column-major-should-have-been-termed-row]]
