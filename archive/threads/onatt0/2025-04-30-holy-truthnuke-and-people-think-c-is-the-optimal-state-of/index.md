@@ -35,6 +35,38 @@ holy truthnuke - and people think C is the optimal state of possible runtimes wh
 
 not only you have to keep the whole stack around with replicated state, it limits to serialized execution instead of parallel
 
+## Branches (from operator-supplied screenshots)
+
+The following onatt0 posts were transcribed from screenshots supplied by the
+operator on 2026-08-28. The onatt0 account is suspended; post ids are
+placeholder values because the actual Twitter snowflakes are not
+derivable from the screenshots. The `parent_post_id` fields mark where
+in the original conversation tree each post sat.
+
+**1/** **@onatt0** ^PLACEHOLDER-onatt0-1
+
+![Source snapshot](onatt0-simple-pure-data-interfaces-in-memory.png)
+
+simple pure data intemaces in memory would've been way better than to set different sets of registers on each different arch, would've allowed replay&reuse across languages without FFI
+
+**2/** **@onatt0** ^PLACEHOLDER-onatt0-2
+
+![Source snapshot](onatt0-simple-pure-data-interfaces-in-memory.png)
+
+alas C ABI architects deemed to set the same registers over and over again 'efficient'
+
+**3/** **@onatt0** ^PLACEHOLDER-onatt0-3
+
+![Source snapshot](inside-jebrims-head.png)
+
+GPU could decide the CPU control-flow, very interesting!
+
+**4/** **@onatt0** ^PLACEHOLDER-onatt0-4
+
+![Source snapshot](inside-jebrims-head.png)
+
+haha yeah, maybe ping-pong(per-frame) tapes?
+
 ## Related
 
 - Spine: [[archive/threads/NOTimothyLottes/2025-04-30-3-i-got-side-tracked-by-building-a-language-that]]
