@@ -13,6 +13,8 @@ How to read a folder: [[notes/How threads are organized]].
 
 Example of the note shape (single spine, no branches): [[archive/threads/How to archive a thread]]
 
+- [[archive/threads/_Felipe]]
+- [[archive/threads/_rygo6]]
 - [[archive/threads/AgileJebrim]]
 - [[archive/threads/alexdotjs]]
 - [[archive/threads/anisomorphism]]
@@ -30,7 +32,11 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/EricLengyel]]
 - [[archive/threads/eshear]]
 - [[archive/threads/FFmpeg]]
+- [[archive/threads/fiigii]]
+- [[archive/threads/flowerornament]]
+- [[archive/threads/frankdejonge]]
 - [[archive/threads/FreyaHolmer]]
+- [[archive/threads/FUZxxl]]
 - [[archive/threads/hamish_todd]]
 - [[archive/threads/hasen_95dx]]
 - [[archive/threads/HostOfMeta]]
@@ -62,6 +68,7 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/noinconsistency]]
 - [[archive/threads/NOTimothyLottes]]
 - [[archive/threads/ocornut]]
+- [[archive/threads/OSdev_]]
 - [[archive/threads/pickover]]
 - [[archive/threads/pikuma]]
 - [[archive/threads/RandyPGaul]]
