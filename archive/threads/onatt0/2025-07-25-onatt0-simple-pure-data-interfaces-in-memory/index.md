@@ -15,7 +15,7 @@ tags:
   - onatt0
 description: "simple pure data intemaces in memory would've been way better than to set different sets of registers on each different arch, would've allowed replay&reuse across languages without FFI"
 in_reply_to: ""
-notes: "Hand-transcribed from operator-supplied screenshot. The onatt0 account is suspended and not reachable from gallery-dl. Post id is a placeholder because the actual Twitter post id is not derivable from the screenshot. Created as a separate spine archive so Obsidian renders it as its own page."
+notes: "Hand-transcribed from operator-supplied screenshot. The onatt0 account is suspended and not reachable from gallery-dl. Post id is a placeholder because the actual Twitter post id is not derivable from the screenshot. Contains both onatt0 reply posts from this screenshot (PLACEHOLDER-onatt0-1 and PLACEHOLDER-onatt0-2)."
 ---
 
 ## Source
@@ -25,10 +25,18 @@ notes: "Hand-transcribed from operator-supplied screenshot. The onatt0 account i
 - Posted: 2025-07-25
 - Note: Account suspended. Transcribed from screenshot provided by the operator.
 
-![Source snapshot](onatt0-simple-pure-data-interfaces-in-memory.png)
+![Source snapshot](./snapshot.png)
 
 ## Thread
 
 **1/** **@onatt0** ^PLACEHOLDER-onatt0-1
 
 simple pure data intemaces in memory would've been way better than to set different sets of registers on each different arch, would've allowed replay&reuse across languages without FFI
+
+(parent_post: Eskil Steenberg)
+
+**2/** **@onatt0** ^PLACEHOLDER-onatt0-2
+
+alas C ABI architects deemed to set the same registers over and over again 'efficient'
+
+(parent_post: PLACEHOLDER-onatt0-1)
