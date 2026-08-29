@@ -85,6 +85,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2025-09-03-re-john-dark1x-and-https-youtu-be-uxqumm5aka8-si]]
 - [[archive/threads/NOTimothyLottes/2025-10-10-thread-about-this-from-rfleury-https-www-rfleury]]
 - [[archive/threads/NOTimothyLottes/2025-10-13-short-talk-on-how-i-do-cpu-side-debugging-without]]
+- [[archive/threads/NOTimothyLottes/2025-11-04-imagine-language-that-has-no-stack-calls-returns]]
 - [[archive/threads/NOTimothyLottes/2025-11-17-i-wish-everyone-would-just-adopt-reversed-with]]
 - [[archive/threads/NOTimothyLottes/2025-11-30-very-short-video-describing-an-alternative-way-to]]
 - [[archive/threads/NOTimothyLottes/2026-01-14-can-do-that]]

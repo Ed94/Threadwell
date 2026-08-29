@@ -7,7 +7,7 @@ author: "Jake Levi"
 handle: jakelevi_ml
 post_id: "2078147579947180143"
 date: 2026-07-17
-archived: 2026-08-25
+archived: 2026-08-28
 draft: false
 tags:
   - archive

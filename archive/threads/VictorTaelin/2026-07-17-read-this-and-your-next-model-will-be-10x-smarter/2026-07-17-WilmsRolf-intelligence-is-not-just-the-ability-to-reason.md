@@ -7,7 +7,7 @@ author: "Rolf Wilms 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
 handle: WilmsRolf
 post_id: "2078163825329668190"
 date: 2026-07-17
-archived: 2026-08-25
+archived: 2026-08-28
 draft: false
 tags:
   - archive

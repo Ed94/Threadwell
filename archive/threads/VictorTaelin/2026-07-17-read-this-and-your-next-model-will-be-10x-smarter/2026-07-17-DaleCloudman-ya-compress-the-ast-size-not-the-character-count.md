@@ -7,7 +7,7 @@ author: "Dale Cloudman"
 handle: DaleCloudman
 post_id: "2078134295768486176"
 date: 2026-07-17
-archived: 2026-08-25
+archived: 2026-08-28
 draft: false
 tags:
   - archive

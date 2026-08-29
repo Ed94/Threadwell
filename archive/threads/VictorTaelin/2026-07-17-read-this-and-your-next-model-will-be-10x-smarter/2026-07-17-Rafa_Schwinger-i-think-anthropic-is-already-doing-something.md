@@ -7,7 +7,7 @@ author: "Rafa Schwinger 🇻🇦"
 handle: Rafa_Schwinger
 post_id: "2078114345477603691"
 date: 2026-07-17
-archived: 2026-08-25
+archived: 2026-08-28
 draft: false
 tags:
   - archive

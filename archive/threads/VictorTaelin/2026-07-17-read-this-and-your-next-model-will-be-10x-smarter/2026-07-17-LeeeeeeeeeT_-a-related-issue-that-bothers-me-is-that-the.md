@@ -7,7 +7,7 @@ author: "LeeeeT"
 handle: LeeeeeeeeeT_
 post_id: "2078172260771201471"
 date: 2026-07-17
-archived: 2026-08-25
+archived: 2026-08-28
 draft: false
 tags:
   - archive

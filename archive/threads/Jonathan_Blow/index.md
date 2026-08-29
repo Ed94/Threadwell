@@ -15,3 +15,4 @@ tags:
 - [[archive/threads/Jonathan_Blow/2021-09-20-this-weekend-i-gave-a-speech-saying-that-software]]
 - [[archive/threads/Jonathan_Blow/2021-12-15-i-was-thinking-today-about-how-almost-all-new]]
 - [[archive/threads/Jonathan_Blow/2024-12-24-i-have-a-moral-dilemma-in-the-design-of-the]]
+- [[archive/threads/Jonathan_Blow/2025-05-19-some-people-might-read-this-and-think-thats-just]]

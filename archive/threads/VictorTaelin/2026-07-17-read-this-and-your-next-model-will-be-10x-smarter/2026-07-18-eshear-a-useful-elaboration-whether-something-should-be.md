@@ -7,7 +7,7 @@ author: "Emmett Shear"
 handle: eshear
 post_id: "2078329276093604270"
 date: 2026-07-18
-archived: 2026-08-25
+archived: 2026-08-28
 draft: false
 tags:
   - archive
