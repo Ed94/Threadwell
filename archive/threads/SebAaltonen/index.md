@@ -15,6 +15,7 @@ tags:
 - [[archive/threads/SebAaltonen/2019-05-05-this-is-how-you-write-a-good-x64-spinlock-use-two]]
 - [[archive/threads/SebAaltonen/2020-10-25-implemented-a-simple-linear-estimator-for]]
 - [[archive/threads/SebAaltonen/2020-10-31-this-is-how-you-generate-a-cube-in-vertex-shader]]
+- [[archive/threads/SebAaltonen/2020-11-12-most-people-missed-this-presentation-by]]
 - [[archive/threads/SebAaltonen/2022-04-13-software-should-be-composable]]
 - [[archive/threads/SebAaltonen/2022-08-03-tip-of-the-day-if-you-dont-have-the-passion-to]]
 - [[archive/threads/SebAaltonen/2022-11-22-ive-long-time-talked-about-killing-the-graphics]]
