@@ -14,5 +14,7 @@ tags:
 - [[archive/threads/Jonathan_Blow/2021-07-03-the-excuse-factory-casey-discusses-in-this-video]]
 - [[archive/threads/Jonathan_Blow/2021-09-20-this-weekend-i-gave-a-speech-saying-that-software]]
 - [[archive/threads/Jonathan_Blow/2021-12-15-i-was-thinking-today-about-how-almost-all-new]]
+- [[archive/threads/Jonathan_Blow/2022-01-04-re-doing-things-that-didnt-come-out-well-enough]]
 - [[archive/threads/Jonathan_Blow/2024-12-24-i-have-a-moral-dilemma-in-the-design-of-the]]
 - [[archive/threads/Jonathan_Blow/2025-05-19-some-people-might-read-this-and-think-thats-just]]
+- [[archive/threads/Jonathan_Blow/2025-08-14-i-got-a-bit-colorful-in-this-reply-but-let-me]]

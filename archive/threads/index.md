@@ -34,6 +34,7 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/hasen_95dx]]
 - [[archive/threads/HostOfMeta]]
 - [[archive/threads/hsn8086]]
+- [[archive/threads/icculus]]
 - [[archive/threads/ID_AA_Carmack]]
 - [[archive/threads/iquilezles]]
 - [[archive/threads/its_bvisness]]
@@ -84,3 +85,4 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/VPCOMPRESSB]]
 - [[archive/threads/WarrenInTheBuff]]
 - [[archive/threads/winning_tactic]]
+- [[archive/threads/wookash_podcast]]
