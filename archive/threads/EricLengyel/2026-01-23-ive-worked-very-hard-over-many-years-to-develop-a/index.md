@@ -7,7 +7,7 @@ author: "Eric Lengyel"
 handle: EricLengyel
 post_id: "2014810110493884650"
 date: 2026-01-23
-archived: 2026-08-26
+archived: 2026-08-29
 draft: false
 tags:
   - archive
@@ -32,4 +32,16 @@ I've worked very hard over many years to develop a complete and correct picture 
 ![](https://pbs.twimg.com/media/G_YGqgpWgAAq0Fr?format=jpg&name=orig)
 ![](https://pbs.twimg.com/media/G_YGtKqXAAAsJC8?format=jpg&name=orig)
 
-Branches: [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-23-gvi1herme-thread]], [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-23-intspg-seems-like-this-could-be-introduced-much-earlier]], [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-23-Jonathan_Blow-one-thing-i-like-about-ga-is-that-it-is-so]], [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-23-rlucas7-can-you-provide-a-link-to-reference-3]], [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-24-alexisgallagher-ive-bounced-off-ga-a-few-times-after-approaching]], [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-24-BBobbity16-this-chip-on-your-shoulder-thing-screams-crank]], [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-24-DanielWhiteson-awesome-the-diversity-of-curiosity-that-leads-to]], [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-24-dynamic_linker-ga-is-the-most-underappreciated-advance-in-human]], [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-24-ehsanxpin-great-then-this-is-for-you-too-https-x-com]], [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-24-vinjovanovic-ive-been-following-your-work-for-a-few-years-i]], [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-24-Yoloslide-i-like-ga-way-of-explaining-spinors-and-double]]
+**2/** **@Jonathan_Blow** ^2014821856772292614
+
+One thing I like about GA is that it is so systemic and makes so much sense when it comes to linear stuff. The conformal stuff just kind of loses me though, at first glance it always looks like a lot of added complexity for small gain. What should I look at to convince myself I am wrong here?
+
+**3/** **@EricLengyel** ^2014843525083627609
+
+You're not wrong about the conformal stuff. While I find it convenient for expressing a small set of geometric calculations, I don't think it's very useful in general, and it certainly isn't a monument to efficiency. My book is very candid about this, going as far as calling parts of it "computationally absurd". (I also think just about all traditional presentations of CGA are quite poor and fail to convey any intuition whatsoever, which does contribute something to its lack of practical utility.)
+
+What I find most useful in GA is not the conformal stuff but the 4D projective algebra that encompasses homogeneous coordinates, planes, Plücker coordinates, quaternions, and dual quaternions all in one nice neat framework.
+
+The projective algebra is fully contained inside the conformal algebra, so it doesn't hurt to just have the extra conformal tools available in case you want to use them here and there. This does not require any changes to geometric representations for things not in the conformal algebra, so you wouldn't have to do anything stupid like storing five components for every point.
+
+Branches: [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-24-Jonathan_Blow-book-ordered]], [[archive/threads/EricLengyel/2026-01-23-ive-worked-very-hard-over-many-years-to-develop-a/2026-01-24-Oktahedro-wow-you-are-wrong-on-this-point-pga-is-fine-but]]
