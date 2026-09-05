@@ -31,3 +31,4 @@ tags:
 - [[archive/threads/SebAaltonen/2025-12-16-my-no-graphics-api-blog-post-is-live-please-repost]]
 - [[archive/threads/SebAaltonen/2026-08-08-extended-2x-version-of-my-siggraph-2026-talk]]
 - [[archive/threads/SebAaltonen/2026-08-26-this-was-my-last-day-at-hypehype]]
+- [[archive/threads/SebAaltonen/2026-09-03-57-lines-in-polished-vulkan-triangle-on-my]]
