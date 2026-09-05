@@ -17,3 +17,4 @@ tags:
 - [[archive/threads/AgileJebrim/2026-05-24-ive-taken-to-using-a-simple-interview-question]]
 - [[archive/threads/AgileJebrim/2026-05-30-i-dont-think-hardware-vendors-are-going-to]]
 - [[archive/threads/AgileJebrim/2026-08-22-start-with-spir-v-or-ptx-instead]]
+- [[archive/threads/AgileJebrim/2026-09-03-so-if-a-true-no-graphics-api-requires-0-lines-of]]
