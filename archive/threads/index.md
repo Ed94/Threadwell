@@ -87,6 +87,7 @@ Example of the note shape (single spine, no branches): [[archive/threads/How to 
 - [[archive/threads/SheriefFYI]]
 - [[archive/threads/simplex_fx]]
 - [[archive/threads/skdh]]
+- [[archive/threads/stainless_code]]
 - [[archive/threads/TheAllenChou]]
 - [[archive/threads/TheGingerBill]]
 - [[archive/threads/ThePrimeagen]]

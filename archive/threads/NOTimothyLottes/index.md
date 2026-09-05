@@ -151,3 +151,4 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-08-26-for-an-integer-dsp-if-one-wants-2-negative]]
 - [[archive/threads/NOTimothyLottes/2026-08-26-tech-overlords-have-long-since-realized-just-like]]
 - [[archive/threads/NOTimothyLottes/2026-08-27-thinking-about-visible-pipelining-in-the-isa]]
+- [[archive/threads/NOTimothyLottes/2026-09-04-nothing-changes-the-physical-reality-of-the]]
