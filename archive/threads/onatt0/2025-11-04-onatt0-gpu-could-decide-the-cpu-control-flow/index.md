@@ -25,7 +25,7 @@ notes: "Hand-transcribed from operator-supplied screenshot. The onatt0 account i
 - Posted: 2025-11-04
 - Note: Account suspended. Transcribed from screenshot provided by the operator.
 
-![Source snapshot](./snapshot.png)
+![Source snapshot](archive/threads/onatt0/2025-11-04-onatt0-gpu-could-decide-the-cpu-control-flow/snapshot.png)
 
 ## Thread
 

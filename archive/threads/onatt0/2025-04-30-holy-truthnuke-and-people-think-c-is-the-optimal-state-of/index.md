@@ -25,7 +25,7 @@ notes: "Hand-transcribed from screenshot. The original account is suspended and 
 - Posted: 2025-04-30 14:53
 - Note: Account suspended. Transcribed from screenshot provided by the operator on 2026-08-25.
 
-![Source snapshot: archived local copy of the suspended post](snapshot.png)
+![Source snapshot: archived local copy of the suspended post](archive/threads/onatt0/2025-04-30-holy-truthnuke-and-people-think-c-is-the-optimal-state-of/snapshot.png)
 
 ## Branch
 
