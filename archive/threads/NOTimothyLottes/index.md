@@ -152,3 +152,6 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-08-26-tech-overlords-have-long-since-realized-just-like]]
 - [[archive/threads/NOTimothyLottes/2026-08-27-thinking-about-visible-pipelining-in-the-isa]]
 - [[archive/threads/NOTimothyLottes/2026-09-04-nothing-changes-the-physical-reality-of-the]]
+- [[archive/threads/NOTimothyLottes/2026-09-15-evening-project-building-a-spiritual-successor]]
+- [[archive/threads/NOTimothyLottes/2026-09-24-exploring-minimum-size-compilers-on-x86-64]]
+- [[archive/threads/NOTimothyLottes/2026-10-04-thread-serious-talk-on-steamdeck-2-speculation]]
