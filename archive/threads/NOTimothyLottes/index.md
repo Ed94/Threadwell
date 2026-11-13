@@ -154,4 +154,7 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-09-04-nothing-changes-the-physical-reality-of-the]]
 - [[archive/threads/NOTimothyLottes/2026-09-15-evening-project-building-a-spiritual-successor]]
 - [[archive/threads/NOTimothyLottes/2026-09-24-exploring-minimum-size-compilers-on-x86-64]]
+- [[archive/threads/NOTimothyLottes/2026-10-04-if-the-deck-1-did-4m-units-youd-only-need-a-2-5]]
 - [[archive/threads/NOTimothyLottes/2026-10-04-thread-serious-talk-on-steamdeck-2-speculation]]
+- [[archive/threads/NOTimothyLottes/2026-10-06-if-one-used-bc7-for-a-giant-vq-code-book-like-a]]
+- [[archive/threads/NOTimothyLottes/2026-11-13-thankfully-a-friend-sent-this-to-me-otherwise-id]]
