@@ -97,6 +97,15 @@ Re-run `discover` after the window refills to finish the walk. The
 post ids already found are printed before the stop, so a partial run
 still feeds `--branch`.
 
+### Empty pages
+
+A page that holds no tweets and offers no nested cursor only
+paginates empty space. Its bare `cursor-top-*` / `cursor-bottom-*`
+pair leads to more pages that hold nothing, so the walk stops there
+rather than spending the budget on them. A nested
+`conversationthread-*-cursor-showmore-*` cursor is always followed:
+that is where the posts gallery-dl drops live.
+
 A capture is complete when no post reports more replies than the
 capture holds. `refresh` overwrites `thread_data.json` with whatever
 gallery-dl returns, so a refresh that drops posts loses them; the way

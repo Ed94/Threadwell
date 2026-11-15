@@ -218,6 +218,52 @@ class DiscoverTests(unittest.TestCase):
         self.assertEqual(result.calls, 3)
         self.assertEqual(result.stopped_reason, "focal-cap")
 
+    def test_a_page_with_no_posts_is_not_paginated_further(self) -> None:
+        """A bare top/bottom pair on an empty page is a dead end.
+
+        Following it spends the request budget on pages that hold no
+        tweets. The nested cursor is still followed, because that is
+        where the posts gallery-dl drops live.
+        """
+        requests: list[str | None] = []
+
+        class FakeApi:
+            features_pagination = {"feature": True}
+
+            def _call(self, endpoint: str, params: dict, method: str = "GET") -> dict:
+                cursor = json.loads(params["variables"]).get("cursor")
+                requests.append(cursor)
+                # Every page after the first is empty and carries only
+                # the bare top/bottom pair.
+                return load("page_cursor_only.json") if cursor else load(
+                    "page_nested_cursor.json"
+                )
+
+        class FakeExtractor:
+            api = FakeApi()
+
+        result = walker.discover(
+            ("2121244702649532667",),
+            request_cap=20,
+            extractor=FakeExtractor(),
+            max_focals=1,
+        )
+        # The first page's cursor is fetched, and its bare pair is not.
+        self.assertEqual(len(requests), 2)
+        self.assertIsNone(requests[0])
+        self.assertIsNotNone(requests[1])
+        self.assertTrue(result.post_ids)
+
+    def test_a_nested_cursor_is_followed_from_an_empty_page(self) -> None:
+        """The show-more cursor survives the empty-page rule.
+
+        It is the one cursor that leads to posts gallery-dl never
+        reaches, so a page offering it must still be followed.
+        """
+        page = walker.parse_page(load("page_kenpex_baseline.json"))
+        self.assertTrue(page.nested_cursors)
+        self.assertTrue(page.post_ids)
+
     def test_under_captured_finds_posts_with_unseen_children(self) -> None:
         """A post reporting more replies than were found has a subtree left.
 

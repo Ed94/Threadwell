@@ -213,6 +213,17 @@ class _Page:
     reply_to_ids: tuple[str | None, ...]
     cursors: tuple[str, ...]
     top_level_cursor: str | None
+    nested_cursors: tuple[str, ...] = ()
+
+
+def _is_nested_cursor(entry_id: str) -> bool:
+    """True for a cursor inside a thread module or show-more prompt.
+
+    These are the cursors gallery-dl never follows: they sit inside a
+    ``conversationthread-*`` module and carry that module's id. The bare
+    ``cursor-top-*`` / ``cursor-bottom-*`` pair is ordinary pagination.
+    """
+    return "showmore" in entry_id or entry_id.startswith(_THREAD_MODULE_PREFIXES)
 
 
 def _load_gallery_dl() -> Any:
@@ -438,6 +449,7 @@ def parse_page(body: dict[str, Any]) -> _Page:
     """
     post_ids: list[tuple[str, str]] = []
     cursors: list[str] = []
+    nested: list[str] = []
     top_level: str | None = None
 
     def add_cursor(entry: dict[str, Any], top_level_entry: bool) -> None:
@@ -450,6 +462,8 @@ def parse_page(body: dict[str, Any]) -> _Page:
             return
         if value not in cursors:
             cursors.append(value)
+        if _is_nested_cursor(entry_id) and value not in nested:
+            nested.append(value)
         if top_level_entry and entry_id.startswith("cursor-bottom-"):
             if top_level is None:
                 top_level = value
@@ -509,6 +523,7 @@ def parse_page(body: dict[str, Any]) -> _Page:
         reply_to_ids=tuple(entry[3] for entry in post_ids),
         cursors=tuple(cursors),
         top_level_cursor=top_level,
+        nested_cursors=tuple(nested),
     )
 
 
@@ -573,14 +588,8 @@ def _walk_focal(
     toggles: dict[str, Any],
     capture_dir: Path | None = None,
     tracker: "_RateTracker | None" = None,
-    page_cache: dict[str | None, dict[str, Any]] | None = None,
 ) -> tuple[set[str], dict[str, int], dict[str, str | None], int, str]:
     """Walk every cursor under one focal.
-
-    ``page_cache`` holds the pages already fetched in this walk, keyed
-    by cursor. The walk expands its focal set over posts in the same
-    conversation, and each new focal would otherwise re-fetch the same
-    pages from the top.
 
     Returns ``(post_ids, reply_counts, reply_to_ids, calls, reason)``.
     """
@@ -592,51 +601,40 @@ def _walk_focal(
     calls = 0
     conversation: str | None = None
     reason = "exhausted"
-    productive = 0
     while pending and calls < request_cap:
         cursor = pending.popleft()
-        cached = None if page_cache is None else page_cache.get(cursor)
-        if cached is not None:
-            body = cached
-        else:
-            calls += 1
-            try:
-                body = _request(extractor, focal_id, cursor, variables, toggles, tracker)
-            except RateLimitReached as exc:
-                # The walk ran out of room. Report what it found so the
-                # operator can resume with another run.
-                reason = "rate-limited"
-                logger.info("walk stopped: %s", exc)
-                break
-            if page_cache is not None:
-                page_cache[cursor] = body
-        if capture_dir is not None and cached is None:
+        calls += 1
+        try:
+            body = _request(extractor, focal_id, cursor, variables, toggles, tracker)
+        except RateLimitReached as exc:
+            # The walk ran out of room. Report what it found so the
+            # operator can resume with another run.
+            reason = "rate-limited"
+            logger.info("walk stopped: %s", exc)
+            break
+        if capture_dir is not None:
             _capture_page(capture_dir, tracker.next_page() if tracker else calls, body)
         page = parse_page(body)
         if conversation is None:
             conversation = _focal_conversation(page, focal_id)
-        found = 0
         for index, tweet_id in enumerate(page.post_ids):
             if page.conversation_ids[index] != conversation:
                 continue
-            if tweet_id not in post_ids:
-                found += 1
             post_ids.add(tweet_id)
             reply_counts[tweet_id] = page.reply_counts[index]
             reply_to[tweet_id] = page.reply_to_ids[index]
-        if found:
-            productive += 1
+        has_tweets = bool(page.post_ids)
         for value in page.cursors:
             if value in seen_cursors:
                 continue
             seen_cursors.add(value)
+            if not has_tweets and value not in page.nested_cursors:
+                # A page with no tweets and no nested cursor only
+                # paginates empty space. Its bare top/bottom pair
+                # leads to more pages that yield nothing, so following
+                # it spends the budget on pages that hold no posts.
+                continue
             pending.append(value)
-        if not found and not productive:
-            # The page held no posts and no earlier page did either.
-            # Its cursors lead away from the conversation's posts, so
-            # following them spends the budget on empty pages.
-            reason = "no-posts"
-            break
     if reason == "exhausted":
         reason = "request-cap" if pending else "exhausted"
     return post_ids, reply_counts, reply_to, calls, reason
@@ -739,7 +737,6 @@ def discover(
         _clear_capture_dir(capture_dir)
     all_posts: set[str] = set()
     per_focal: dict[str, tuple[str, ...]] = {}
-    page_cache: dict[str | None, dict[str, Any]] = {}
     calls = 0
     stopped = "exhausted"
     walked: set[str] = set()
@@ -750,14 +747,7 @@ def discover(
             continue
         walked.add(focal)
         posts, reply_counts, reply_to, focal_calls, reason = _walk_focal(
-            extractor,
-            focal,
-            request_cap,
-            variables,
-            toggles,
-            capture_dir,
-            tracker,
-            page_cache,
+            extractor, focal, request_cap, variables, toggles, capture_dir, tracker
         )
         per_focal[focal] = tuple(sorted(posts))
         all_posts.update(posts)
