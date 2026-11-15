@@ -21,6 +21,7 @@ python scripts/twitter/tw.py reslug   --all
 python scripts/twitter/tw.py reslug   --all --apply
 python scripts/twitter/tw.py relabel  --all
 python scripts/twitter/tw.py relabel  --all --apply
+python scripts/twitter/tw.py discover --id <post-id>
 ```
 
 `paths.py` finds the vault two parents above this file. Dumps live at `../manual_slop/docs/twitter`. Scratch lives at `../Threadwell-ai/scratch`.
@@ -54,9 +55,40 @@ Usual path:
 
 1. `tw.py graph --id …` — confirm tip vs root.
 2. `tw.py refresh --id … --tip` if the dump stored a tip as root.
-3. `tw.py audit-media --id …` — confirm origin URLs are selected.
+3. `tw.py discover --id …` — find the replies gallery-dl's walk dropped.
+4. `tw.py refresh --id … --tip --branch <discovered-id> …` — capture them.
+5. `tw.py audit-media --id …` — confirm origin URLs are selected.
 
 Site wikilinks must be `[[archive/threads/<handle>/<date-slug>]]`. Short `[[slug]]` 404s.
+
+## Completeness
+
+Gallery-dl's `conversations=true` walk follows only the top-level
+`cursor-bottom-*` continuation. Replies reachable only through a
+`cursor-showmore-*` nested inside a `conversationthread-*` module are
+dropped without warning.
+
+`discover` walks every cursor at any depth. It prints the post ids it
+found, one per line, so the output pipes into `--branch`:
+
+```
+python scripts/twitter/tw.py discover --id <spine-tip> > ids.txt
+python scripts/twitter/tw.py refresh --id <spine-tip> --tip --branch <id> …
+```
+
+The walk expands its own focal set: a post reporting more replies than
+were found has a subtree not yet reached, so it is walked too. One
+`--id` reaches the whole thread. `discover` is read-only against the
+vault and prints no cookies and no cursor values.
+
+A capture is complete when no post reports more replies than the
+capture holds. `refresh` overwrites `thread_data.json` with whatever
+gallery-dl returns, so a refresh that drops posts loses them; the way
+back is `discover` then a re-fetch.
+
+The walker lives in `walker.py`. It reads the request shape it sends
+from the installed gallery-dl rather than hardcoding it, so keep the
+package version in step with the CLI.
 
 ## Media
 
@@ -82,7 +114,8 @@ Later emits use that same title for the folder and the frontmatter. Move both si
 
 | Script | Job |
 |---|---|
-| `tw.py` | locate / graph / refetch / add-branch / emit / refresh / ocr / merge / sync / publish / migrate-media / backup / fallback / restore-origin / reslug / relabel |
+| `tw.py` | locate / graph / refetch / add-branch / emit / refresh / ocr / merge / sync / publish / migrate-media / backup / fallback / restore-origin / reslug / relabel / discover |
+| `walker.py` | recursive conversation-cursor walk; posts gallery-dl's walk drops |
 | `graph_dry_run.py` | tip graph, no vault writes |
 | `ingest_gallery.py` | gallery-dl JSON → `thread_data.json` |
 | `emit_archive.py` | JSON → notes + assets. `--force` keeps derived and fallback rows |
@@ -99,3 +132,4 @@ Later emits use that same title for the folder and the frontmatter. Move both si
 | `media_merge.py` | restore derived rows |
 | `do_not_refetch.txt` | frozen id list |
 | `tests/` | isolated unit tests |
+| `tests/fixtures/walker/` | captured provider pages for the walker's offline tests |

@@ -767,6 +767,45 @@ def cmd_sync(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_discover(args: argparse.Namespace) -> int:
+    """Walk each focal's conversation and print the post ids it contains.
+
+    Read-only against the vault. Prints one post id per line to stdout
+    so the output pipes straight into ``refresh --branch``. Captured
+    response pages go to ``scratch/walker_<id>/``.
+    """
+    focals = tuple(dict.fromkeys(args.ids))
+    if not focals:
+        raise SystemExit("discover needs at least one --id")
+    for focal in focals:
+        check_frozen(focal)
+    try:
+        from twitter.walker import WalkerError, discover
+    except ImportError:  # pragma: no cover - script-mode import
+        try:
+            from walker import WalkerError, discover
+        except ImportError as exc:
+            raise SystemExit(
+                "the walker needs gallery-dl: pip install gallery-dl"
+            ) from exc
+    try:
+        result = discover(
+            focals,
+            request_cap=args.cap,
+            capture_dir=SCRATCH / f"walker_{focals[0]}",
+        )
+    except WalkerError as exc:
+        raise SystemExit(f"walker failed: {exc}") from exc
+    for post_id in result.post_ids:
+        print(post_id)
+    print(
+        f"posts={len(result.post_ids)} focals={len(focals)} "
+        f"requests={result.calls} stop={result.stopped_reason}",
+        file=sys.stderr,
+    )
+    return 0
+
+
 def cmd_publish(args: argparse.Namespace) -> int:
     """Flip ``draft: true`` to ``draft: false`` on the thread index (no-op if already published)."""
     post_id = args.id
@@ -1063,6 +1102,25 @@ def build_parser() -> argparse.ArgumentParser:
     relabel.add_argument("--all", dest="all_threads", action="store_true", required=True)
     relabel.add_argument("--apply", action="store_true")
 
+    discover_p = sub.add_parser(
+        "discover",
+        help="walk a conversation's cursors and print the post ids it holds",
+    )
+    discover_p.add_argument(
+        "--id",
+        dest="ids",
+        action="append",
+        required=True,
+        metavar="POST_ID",
+        help="focal post id to walk; repeatable",
+    )
+    discover_p.add_argument(
+        "--cap",
+        type=int,
+        default=20,
+        help="maximum requests per focal (default 20)",
+    )
+
     return parser
 
 
@@ -1085,6 +1143,7 @@ _COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "restore-origin": cmd_restore_origin,
     "reslug": cmd_reslug,
     "relabel": cmd_relabel,
+    "discover": cmd_discover,
 }
 
 
