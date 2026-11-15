@@ -157,5 +157,6 @@ tags:
 - [[archive/threads/NOTimothyLottes/2026-10-04-if-the-deck-1-did-4m-units-youd-only-need-a-2-5]]
 - [[archive/threads/NOTimothyLottes/2026-10-04-thread-serious-talk-on-steamdeck-2-speculation]]
 - [[archive/threads/NOTimothyLottes/2026-10-06-if-one-used-bc7-for-a-giant-vq-code-book-like-a]]
+- [[archive/threads/NOTimothyLottes/2026-10-13-im-finding-that-my-zero-effort-compile-language]]
 - [[archive/threads/NOTimothyLottes/2026-11-07-not-a-joke-im-re-trying-development-through]]
 - [[archive/threads/NOTimothyLottes/2026-11-13-thankfully-a-friend-sent-this-to-me-otherwise-id]]

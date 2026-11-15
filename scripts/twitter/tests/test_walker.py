@@ -41,6 +41,14 @@ def load(name: str) -> dict:
     return json.loads((FIXTURES / name).read_text(encoding="utf-8"))
 
 
+class AbortExtraction(Exception):
+    """Stands in for gallery-dl's AbortExtraction.
+
+    The walker matches the exception by class name, so the test needs a
+    class with that name.
+    """
+
+
 class ParsePageTests(unittest.TestCase):
     """The page parser must find cursors at every depth."""
 
@@ -257,7 +265,7 @@ class DiscoverTests(unittest.TestCase):
         self.assertGreater(len(walked_focals), len(result.per_focal))
 
     def test_capture_dir_records_the_pages(self) -> None:
-        """A run writes its response pages so it can be inspected after."""
+        """A run writes one response page per request, none overwritten."""
         import tempfile
 
         class FakeApi:
@@ -271,16 +279,46 @@ class DiscoverTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as tmp:
             target = Path(tmp) / "walker"
-            walker.discover(
+            result = walker.discover(
                 ("2121244702649532667",),
                 request_cap=2,
                 extractor=FakeExtractor(),
                 capture_dir=target,
             )
             pages = sorted(target.glob("page-*.json"))
-            self.assertEqual(len(pages), 2)
+            self.assertEqual(len(pages), result.calls)
             body = json.loads(pages[0].read_text(encoding="utf-8"))
             self.assertIn("threaded_conversation_with_injections_v2", body["data"])
+
+    def test_capture_dir_keeps_every_page_of_a_multi_focal_walk(self) -> None:
+        """A walk over several focals must not reuse a page file name.
+
+        The page number counts the whole walk, not one focal, so the
+        evidence of one focal cannot overwrite another's.
+        """
+        import tempfile
+
+        class FakeApi:
+            features_pagination = {"feature": True}
+
+            def _call(self, endpoint: str, params: dict, method: str = "GET") -> dict:
+                return load("page_nested_cursor.json")
+
+        class FakeExtractor:
+            api = FakeApi()
+
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "walker"
+            result = walker.discover(
+                ("2121244702649532667",),
+                request_cap=2,
+                extractor=FakeExtractor(),
+                capture_dir=target,
+            )
+            names = sorted(p.name for p in target.glob("page-*.json"))
+            self.assertEqual(len(names), len(set(names)))
+            self.assertEqual(len(names), result.calls)
+            self.assertGreater(len(result.per_focal), 1)
 
     def test_posts_from_other_conversations_are_excluded(self) -> None:
         """A conversation page can pull in other conversations' posts.
@@ -312,6 +350,91 @@ class DiscoverTests(unittest.TestCase):
         self.assertTrue(result.post_ids)
         for post_id in result.post_ids:
             self.assertNotIn(post_id, other_posts)
+
+
+class RateLimitTests(unittest.TestCase):
+    """The walk must stay inside the endpoint's rate-limit window."""
+
+    def test_budget_stops_the_walk(self) -> None:
+        """The whole walk is capped, not just one focal."""
+        tracker = walker._RateTracker(max_requests=3)
+        tracker.check_budget()
+        tracker.check_budget()
+        tracker.check_budget()
+        with self.assertRaises(walker.RateLimitReached):
+            tracker.check_budget()
+
+    def test_budget_error_names_the_budget(self) -> None:
+        tracker = walker._RateTracker(max_requests=1)
+        tracker.check_budget()
+        with self.assertRaises(walker.RateLimitReached) as caught:
+            tracker.check_budget()
+        self.assertIn("budget of 1", str(caught.exception))
+
+    def test_a_nearly_spent_window_stops_the_walk(self) -> None:
+        """The walk stops before it spends the last requests in a window."""
+        tracker = walker._RateTracker(max_requests=100)
+
+        class FakeResponse:
+            headers = {
+                "x-rate-limit-remaining": "5",
+                "x-rate-limit-reset": "1794705157",
+            }
+
+        tracker.observe(FakeResponse())
+        self.assertEqual(tracker.remaining, 5)
+        with self.assertRaises(walker.RateLimitReached) as caught:
+            tracker.check_budget()
+        self.assertIn("nearly spent", str(caught.exception))
+        self.assertIn("5 left", str(caught.exception))
+
+    def test_the_refill_time_is_reported(self) -> None:
+        """The operator learns when the window refills."""
+        tracker = walker._RateTracker(max_requests=100)
+
+        class FakeResponse:
+            headers = {
+                "x-rate-limit-remaining": "0",
+                "x-rate-limit-reset": "1794705157",
+            }
+
+        tracker.observe(FakeResponse())
+        error = tracker.rate_limited_error()
+        self.assertIn("refills at", str(error))
+        self.assertIsNotNone(error.reset_at)
+
+    def test_gallery_dl_abort_becomes_a_rate_limit_error(self) -> None:
+        """gallery-dl's AbortExtraction is translated, not swallowed.
+
+        With ``ratelimit=abort`` gallery-dl raises instead of sleeping
+        until the window refills. The walker turns that into a message
+        the operator can act on.
+        """
+        tracker = walker._RateTracker(max_requests=100)
+
+        class FakeApi:
+            features_pagination = {"feature": True}
+
+            def _call(self, endpoint: str, params: dict, method: str = "GET") -> dict:
+                raise AbortExtraction("Rate limit exceeded")
+
+        class FakeExtractor:
+            api = FakeApi()
+
+        with self.assertRaises(walker.RateLimitReached):
+            walker._request(
+                FakeExtractor(),
+                "2121244702649532667",
+                None,
+                walker.request_shape()[0],
+                walker.request_shape()[1],
+                tracker,
+            )
+
+    def test_the_walk_reports_the_refill_time(self) -> None:
+        tracker = walker._RateTracker(max_requests=100)
+        error = tracker.rate_limited_error()
+        self.assertIn("rate limit reached", str(error))
 
 
 class KenpexRegressionTests(unittest.TestCase):

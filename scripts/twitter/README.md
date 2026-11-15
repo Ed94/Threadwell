@@ -21,7 +21,7 @@ python scripts/twitter/tw.py reslug   --all
 python scripts/twitter/tw.py reslug   --all --apply
 python scripts/twitter/tw.py relabel  --all
 python scripts/twitter/tw.py relabel  --all --apply
-python scripts/twitter/tw.py discover --id <post-id>
+python scripts/twitter/tw.py discover --id <post-id> [--cap N] [--max-requests N]
 ```
 
 `paths.py` finds the vault two parents above this file. Dumps live at `../manual_slop/docs/twitter`. Scratch lives at `../Threadwell-ai/scratch`.
@@ -80,6 +80,22 @@ The walk expands its own focal set: a post reporting more replies than
 were found has a subtree not yet reached, so it is walked too. One
 `--id` reaches the whole thread. `discover` is read-only against the
 vault and prints no cookies and no cursor values.
+
+### Rate limit
+
+The endpoint allows 300 requests per 15-minute window. The walk stays
+inside that window:
+
+- requests are paced 5 seconds apart, the same pacing the gallery-dl
+  captures use;
+- `--max-requests` (default 180) caps the whole walk, not one focal;
+- a 429 raises instead of sleeping. gallery-dl's default is to wait
+  out the window and retry, which reads as a hung command; `discover`
+  stops, reports what it found, and prints the refill time.
+
+Re-run `discover` after the window refills to finish the walk. The
+post ids already found are printed before the stop, so a partial run
+still feeds `--branch`.
 
 A capture is complete when no post reports more replies than the
 capture holds. `refresh` overwrites `thread_data.json` with whatever

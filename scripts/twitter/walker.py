@@ -22,6 +22,7 @@ import json
 import logging
 import re
 import textwrap
+import time
 from collections import deque
 from dataclasses import dataclass
 from pathlib import Path
@@ -42,18 +43,165 @@ _gallery_dl: Any = None
 # variables template it reads from its own source.
 FOCAL_TWEET_ID = "__focal_tweet_id__"
 
+#: X allows 300 TweetDetail requests per 15-minute window. Five seconds
+#: between requests puts a walk at 180 per window, the same pacing the
+#: gallery-dl CLI uses for twitter captures.
+DEFAULT_REQUEST_INTERVAL = 5.0
+
+#: Requests one walk may issue. The window holds 300 over 15 minutes, so
+#: a walk capped here finishes inside one window without needing a
+#: refill.
+DEFAULT_MAX_REQUESTS = 180
+
+#: Remaining-request count at which a walk stops and waits for the
+#: rate-limit window to refill. gallery-dl treats "remaining < 6" the
+#: same way.
+RATE_RESERVE = 6
+
 
 class WalkerError(RuntimeError):
     """Raised when the walker cannot build or run a request."""
 
 
+class RateLimitReached(WalkerError):
+    """Raised when the walk must stop because the request budget ran out.
+
+    ``reset_at`` is the epoch second the endpoint's rate-limit window
+    refills, when the endpoint said so.
+    """
+
+    def __init__(self, message: str, reset_at: float | None = None) -> None:
+        super().__init__(message)
+        self.reset_at = reset_at
+
+
+class _RateTracker:
+    """Counts the walk's requests and reads the endpoint's rate-limit window.
+
+    ``TwitterAPI._call`` runs inside ``while True:``. On a 429, or on a
+    response whose ``x-rate-limit-remaining`` has nearly run out, it
+    calls ``_handle_ratelimit`` — which sleeps until the window refills
+    and then retries. A walk that blocks there looks hung and silently
+    burns the operator's time.
+
+    The walk therefore configures gallery-dl to ``ratelimit=abort`` (so
+    it raises instead of sleeping) and to ``sleep-request`` (so it paces
+    itself). This tracker counts the requests that actually go out and
+    reads the window from every response, so the walk can stop before it
+    spends the last requests in a window and report when the window
+    refills.
+    """
+
+    def __init__(
+        self,
+        *,
+        max_requests: int = DEFAULT_MAX_REQUESTS,
+    ) -> None:
+        self.max_requests = max_requests
+        self.calls = 0
+        self.pages = 0
+        self.remaining: int | None = None
+        self.reset_at: float | None = None
+
+    def observe(self, response: Any) -> None:
+        """Record the rate-limit headers of one response."""
+        headers = getattr(response, "headers", None)
+        if not headers:
+            return
+        remaining = headers.get("x-rate-limit-remaining")
+        if remaining is not None:
+            try:
+                self.remaining = int(remaining)
+            except (TypeError, ValueError):
+                pass
+        reset = headers.get("x-rate-limit-reset")
+        if reset is not None:
+            try:
+                self.reset_at = float(reset)
+            except (TypeError, ValueError):
+                pass
+
+    def install(self, extractor: Any) -> None:
+        """Watch the extractor's HTTP responses.
+
+        The session is wrapped rather than ``Extractor.request`` so that
+        every request is counted, including the retries gallery-dl makes
+        on a 5xx.
+
+        A 429 is raised here rather than returned. gallery-dl's request
+        layer retries a 429 with a 60-second sleep, four times over,
+        before the API layer ever sees it — four minutes of apparent
+        hang. Raising at the session boundary skips that loop.
+        """
+        session = getattr(extractor, "session", None)
+        request = getattr(session, "request", None)
+        if request is None:
+            return
+        original = request
+
+        def observed(*args: Any, **kwargs: Any) -> Any:
+            self.check_budget()
+            response = original(*args, **kwargs)
+            self.observe(response)
+            if getattr(response, "status_code", None) == 429:
+                raise self.rate_limited_error()
+            return response
+
+        session.request = observed
+
+    def check_budget(self) -> None:
+        """Stop the walk before it spends past its budget or its window."""
+        if self.calls >= self.max_requests:
+            raise RateLimitReached(
+                f"request budget of {self.max_requests} spent"
+            )
+        if self.remaining is not None and self.remaining <= RATE_RESERVE:
+            raise RateLimitReached(
+                f"rate-limit window nearly spent ({self.remaining} left); "
+                f"it refills at {self.refill_time()}",
+                reset_at=self.reset_at,
+            )
+        self.calls += 1
+
+    def refill_time(self) -> str:
+        """Return the refill time as a local timestamp, or a placeholder."""
+        if self.reset_at is None:
+            return "an unknown time"
+        return time.strftime(
+            "%Y-%m-%d %H:%M:%S", time.localtime(self.reset_at)
+        )
+
+    def rate_limited_error(self) -> RateLimitReached:
+        """Return the error to raise when the endpoint refused the walk."""
+        if self.remaining is not None:
+            detail = f"{self.remaining} requests left"
+        else:
+            detail = "the window is exhausted"
+        return RateLimitReached(
+            f"rate limit reached ({detail}); it refills at {self.refill_time()}",
+            reset_at=self.reset_at,
+        )
+
+    def next_page(self) -> int:
+        """Return a page number that no other page in this walk uses."""
+        self.pages += 1
+        return self.pages
+
+
 @dataclass(frozen=True)
 class WalkerResult:
-    """What one walk found."""
+    """What one walk found.
+
+    ``calls`` counts the API requests the walk made. ``http_requests``
+    counts the HTTP requests that reached the endpoint, which is the
+    number the rate-limit window counts.
+    """
     post_ids: tuple[str, ...]
     calls: int
     per_focal: dict[str, tuple[str, ...]]
     stopped_reason: str
+    reset_at: float | None = None
+    http_requests: int = 0
 
 
 @dataclass(frozen=True)
@@ -155,14 +303,30 @@ def request_shape() -> tuple[dict[str, Any], dict[str, Any]]:
     return variables, toggles
 
 
-def build_extractor() -> Any:
+def build_extractor(
+    *,
+    request_interval: float = DEFAULT_REQUEST_INTERVAL,
+) -> Any:
     """Build a gallery-dl extractor that is authenticated with the vault cookies.
 
     Cookies, the CSRF token, and the transaction id all come from
     gallery-dl's own request layer, so the walker speaks the same
     protocol gallery-dl does.
+
+    Two settings keep the walk inside the endpoint's rate-limit window:
+
+    - ``sleep-request`` paces the requests. The endpoint allows a fixed
+      number per window, so an unpaced walk exhausts it.
+    - ``ratelimit`` is set to ``abort``. Left at its default, a 429 makes
+      gallery-dl sleep until the window refills and then retry, inside a
+      ``while True:`` loop — the walk looks hung. Aborting lets the
+      walker report the refill time instead.
     """
     twitter = _load_gallery_dl()
+    from gallery_dl import config as gd_config
+
+    gd_config.set(("extractor", "twitter"), "sleep-request", request_interval)
+    gd_config.set(("extractor", "twitter"), "ratelimit", "abort")
     url = "https://x.com/i/web/status/1"
     extractor = twitter.TwitterTweetExtractor.from_url(url)
     if extractor is None:
@@ -371,6 +535,7 @@ def _request(
     cursor: str | None,
     variables: dict[str, Any],
     toggles: dict[str, Any],
+    tracker: "_RateTracker | None" = None,
 ) -> dict[str, Any]:
     """Issue one TweetDetail request through gallery-dl's request layer."""
     request_variables = dict(variables)
@@ -384,10 +549,20 @@ def _request(
         ),
         "fieldToggles": json.dumps(toggles, separators=(",", ":"), ensure_ascii=False),
     }
-    body = extractor.api._call(tweet_detail_endpoint(), params, method="GET")
+    try:
+        body = extractor.api._call(tweet_detail_endpoint(), params, method="GET")
+    except Exception as exc:
+        if tracker is not None and _is_rate_limit_abort(exc):
+            raise tracker.rate_limited_error() from exc
+        raise
     if not isinstance(body, dict):
         raise WalkerError("TweetDetail returned a non-object body")
     return body
+
+
+def _is_rate_limit_abort(exc: Exception) -> bool:
+    """True when gallery-dl aborted because the rate limit was hit."""
+    return type(exc).__name__ == "AbortExtraction"
 
 
 def _walk_focal(
@@ -397,8 +572,15 @@ def _walk_focal(
     variables: dict[str, Any],
     toggles: dict[str, Any],
     capture_dir: Path | None = None,
+    tracker: "_RateTracker | None" = None,
+    page_cache: dict[str | None, dict[str, Any]] | None = None,
 ) -> tuple[set[str], dict[str, int], dict[str, str | None], int, str]:
     """Walk every cursor under one focal.
+
+    ``page_cache`` holds the pages already fetched in this walk, keyed
+    by cursor. The walk expands its focal set over posts in the same
+    conversation, and each new focal would otherwise re-fetch the same
+    pages from the top.
 
     Returns ``(post_ids, reply_counts, reply_to_ids, calls, reason)``.
     """
@@ -409,28 +591,63 @@ def _walk_focal(
     pending: deque[str | None] = deque([None])
     calls = 0
     conversation: str | None = None
+    reason = "exhausted"
+    productive = 0
     while pending and calls < request_cap:
         cursor = pending.popleft()
-        calls += 1
-        body = _request(extractor, focal_id, cursor, variables, toggles)
-        if capture_dir is not None:
-            _capture_page(capture_dir, calls, body)
+        cached = None if page_cache is None else page_cache.get(cursor)
+        if cached is not None:
+            body = cached
+        else:
+            calls += 1
+            try:
+                body = _request(extractor, focal_id, cursor, variables, toggles, tracker)
+            except RateLimitReached as exc:
+                # The walk ran out of room. Report what it found so the
+                # operator can resume with another run.
+                reason = "rate-limited"
+                logger.info("walk stopped: %s", exc)
+                break
+            if page_cache is not None:
+                page_cache[cursor] = body
+        if capture_dir is not None and cached is None:
+            _capture_page(capture_dir, tracker.next_page() if tracker else calls, body)
         page = parse_page(body)
         if conversation is None:
             conversation = _focal_conversation(page, focal_id)
+        found = 0
         for index, tweet_id in enumerate(page.post_ids):
             if page.conversation_ids[index] != conversation:
                 continue
+            if tweet_id not in post_ids:
+                found += 1
             post_ids.add(tweet_id)
             reply_counts[tweet_id] = page.reply_counts[index]
             reply_to[tweet_id] = page.reply_to_ids[index]
+        if found:
+            productive += 1
         for value in page.cursors:
             if value in seen_cursors:
                 continue
             seen_cursors.add(value)
             pending.append(value)
-    reason = "request-cap" if pending else "exhausted"
+        if not found and not productive:
+            # The page held no posts and no earlier page did either.
+            # Its cursors lead away from the conversation's posts, so
+            # following them spends the budget on empty pages.
+            reason = "no-posts"
+            break
+    if reason == "exhausted":
+        reason = "request-cap" if pending else "exhausted"
     return post_ids, reply_counts, reply_to, calls, reason
+
+
+def _clear_capture_dir(capture_dir: Path) -> None:
+    """Remove the pages of a previous walk from the capture directory."""
+    if not capture_dir.is_dir():
+        return
+    for path in capture_dir.glob("page-*.json"):
+        path.unlink()
 
 
 def _capture_page(capture_dir: Path, ordinal: int, body: dict[str, Any]) -> None:
@@ -493,6 +710,7 @@ def discover(
     extractor: Any | None = None,
     max_focals: int = 40,
     capture_dir: Path | None = None,
+    max_requests: int = DEFAULT_MAX_REQUESTS,
 ) -> WalkerResult:
     """Walk each focal's conversation and return every post id found.
 
@@ -503,16 +721,25 @@ def discover(
     ``request_cap`` bounds the requests issued per focal.
     ``max_focals`` bounds how many focals the expansion may add, so a
     conversation that keeps reporting unreached children cannot run
-    away. Requests are sequential. No cursor value is logged or
-    persisted.
+    away. ``max_requests`` bounds the requests the whole walk may
+    issue, so it stays inside one rate-limit window. Requests are
+    sequential. No cursor value is logged or persisted.
     """
     if not focal_ids:
         return WalkerResult(post_ids=(), calls=0, per_focal={}, stopped_reason="no-focals")
     variables, toggles = request_shape()
     if extractor is None:
         extractor = build_extractor()
+    tracker = _RateTracker(max_requests=max_requests)
+    tracker.install(extractor)
+    if capture_dir is not None:
+        # The capture dir holds one walk's evidence. A previous run's
+        # pages would otherwise sit beside this run's, with page
+        # numbers that no longer line up.
+        _clear_capture_dir(capture_dir)
     all_posts: set[str] = set()
     per_focal: dict[str, tuple[str, ...]] = {}
+    page_cache: dict[str | None, dict[str, Any]] = {}
     calls = 0
     stopped = "exhausted"
     walked: set[str] = set()
@@ -523,12 +750,21 @@ def discover(
             continue
         walked.add(focal)
         posts, reply_counts, reply_to, focal_calls, reason = _walk_focal(
-            extractor, focal, request_cap, variables, toggles, capture_dir
+            extractor,
+            focal,
+            request_cap,
+            variables,
+            toggles,
+            capture_dir,
+            tracker,
+            page_cache,
         )
         per_focal[focal] = tuple(sorted(posts))
         all_posts.update(posts)
         calls += focal_calls
         stopped = reason
+        if reason == "rate-limited":
+            break
         if len(walked) >= max_focals:
             stopped = "focal-cap"
             break
@@ -544,4 +780,6 @@ def discover(
         calls=calls,
         per_focal=per_focal,
         stopped_reason=stopped,
+        reset_at=tracker.reset_at,
+        http_requests=tracker.calls,
     )

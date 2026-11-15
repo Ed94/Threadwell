@@ -30,6 +30,7 @@ if str(_HERE) not in sys.path:
 
 from paths import COOKIES, DUMPS, FROZEN, HERE, SCRATCH, VAULT
 from models import PostData, ThreadData, load_thread
+from walker import DEFAULT_MAX_REQUESTS
 
 try:
     from twitter.tree import spine_from_tip, spine_ids, spine_quote_ids
@@ -773,6 +774,10 @@ def cmd_discover(args: argparse.Namespace) -> int:
     Read-only against the vault. Prints one post id per line to stdout
     so the output pipes straight into ``refresh --branch``. Captured
     response pages go to ``scratch/walker_<id>/``.
+
+    The walk stays inside the endpoint's rate-limit window: requests are
+    paced, and the walk stops with a message naming the refill time
+    rather than sleeping through it.
     """
     focals = tuple(dict.fromkeys(args.ids))
     if not focals:
@@ -793,6 +798,7 @@ def cmd_discover(args: argparse.Namespace) -> int:
             focals,
             request_cap=args.cap,
             capture_dir=SCRATCH / f"walker_{focals[0]}",
+            max_requests=args.max_requests,
         )
     except WalkerError as exc:
         raise SystemExit(f"walker failed: {exc}") from exc
@@ -800,9 +806,15 @@ def cmd_discover(args: argparse.Namespace) -> int:
         print(post_id)
     print(
         f"posts={len(result.post_ids)} focals={len(focals)} "
-        f"requests={result.calls} stop={result.stopped_reason}",
+        f"requests={result.calls} http={result.http_requests} "
+        f"stop={result.stopped_reason}",
         file=sys.stderr,
     )
+    if result.reset_at is not None:
+        refill = datetime.fromtimestamp(
+            result.reset_at, tz=timezone.utc
+        ).strftime("%Y-%m-%d %H:%M:%S UTC")
+        print(f"rate-limit window refills at {refill}", file=sys.stderr)
     return 0
 
 
@@ -1119,6 +1131,16 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         default=20,
         help="maximum requests per focal (default 20)",
+    )
+    discover_p.add_argument(
+        "--max-requests",
+        type=int,
+        default=DEFAULT_MAX_REQUESTS,
+        help=(
+            "maximum requests for the whole walk (default "
+            f"{DEFAULT_MAX_REQUESTS}); keeps the walk inside one "
+            "rate-limit window"
+        ),
     )
 
     return parser
