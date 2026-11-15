@@ -19,3 +19,7 @@ tags:
 - [[archive/threads/nicbarkeragain/2026-08-20-i-dev-with-the-debugger-attached-100-of-the-time]]
 - [[archive/threads/nicbarkeragain/2026-08-25-i-think-one-of-the-biggest-level-ups-i-had-in]]
 - [[archive/threads/nicbarkeragain/2026-08-28-similar-to-string-tags-if-your-program-has]]
+- [[archive/threads/nicbarkeragain/2026-09-04-its-interesting-to-consider-that]]
+- [[archive/threads/nicbarkeragain/2026-10-14-ive-been-mulling-over-peters-thoughts-in-this]]
+- [[archive/threads/nicbarkeragain/2026-10-29-one-of-the-most-difficult-and-rewarding-parts-of]]
+- [[archive/threads/nicbarkeragain/2026-11-09-happy-to-admit-that-using-a-minimal-subset-of-c]]
