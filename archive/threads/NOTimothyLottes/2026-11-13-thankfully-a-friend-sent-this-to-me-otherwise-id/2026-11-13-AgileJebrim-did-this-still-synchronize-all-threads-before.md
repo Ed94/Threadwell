@@ -7,7 +7,7 @@ author: "Jebrim"
 handle: AgileJebrim
 post_id: "2121255478319604151"
 date: 2026-11-13
-archived: 2026-11-13
+archived: 2026-11-14
 draft: false
 tags:
   - archive
@@ -43,6 +43,12 @@ You can just read the CDP docs they go into detail. I think they have an old CDP
 **@NOTimothyLottes**
 
 I meant your non-atomic approach. The contract would thus be different if global sync guarantees were no longer required. I know how much you like pipelining.
+
+**4/** **@TooMuchVoltage** ^2121650024593432685
+
+**@AgileJebrim** **@NOTimothyLottes**
+
+Ok so, the difference seems to be between atomics and CU <-> L2 roundtrips and waiting for timestamps to be collected and coherent at L2 at a later (fuzzier) time before the parent thread can be woken up?
 
 ## Related
 

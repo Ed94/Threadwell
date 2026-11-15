@@ -7,7 +7,7 @@ author: "Amos Anon"
 handle: AmosAnon
 post_id: "2121276265219207518"
 date: 2026-11-13
-archived: 2026-11-13
+archived: 2026-11-14
 draft: false
 tags:
   - archive

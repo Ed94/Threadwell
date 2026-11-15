@@ -7,7 +7,7 @@ author: ":3"
 handle: Colonthreee
 post_id: "2121260635375722605"
 date: 2026-11-13
-archived: 2026-11-13
+archived: 2026-11-14
 draft: false
 tags:
   - archive

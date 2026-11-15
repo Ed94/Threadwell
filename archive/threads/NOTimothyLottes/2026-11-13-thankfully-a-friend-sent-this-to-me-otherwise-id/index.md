@@ -7,7 +7,7 @@ author: "NOTimothyLottes"
 handle: NOTimothyLottes
 post_id: "2121244702649532667"
 date: 2026-11-13
-archived: 2026-11-13
+archived: 2026-11-14
 draft: false
 tags:
   - archive
@@ -172,6 +172,8 @@ Branches: [[archive/threads/NOTimothyLottes/2026-11-13-thankfully-a-friend-sent-
 **24/** **@NOTimothyLottes** ^2121259314627195297
 
 Some of those who got this far are probably realizing now the parallels here - CDP, on-GPU workgraphs, Ray Tracing, they all have horrible designs - all designed to hook the high level thinkers - make the worst way of doing something faster, but never teaching the good stuff.
+
+Branches: [[archive/threads/NOTimothyLottes/2026-11-13-thankfully-a-friend-sent-this-to-me-otherwise-id/2026-11-14-SebAaltonen-bloated-framework-design-so-many-entrypoints]]
 
 **25/** **@NOTimothyLottes** ^2121260463732453668
 

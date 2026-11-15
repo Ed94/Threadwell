@@ -18,3 +18,4 @@ tags:
 - [[archive/threads/pikuma/2025-08-19-you-need-to-walk-before-you-run]]
 - [[archive/threads/pikuma/2025-08-26-assuming-the-risk-of-appearing-extremely-dumb-in]]
 - [[archive/threads/pikuma/2026-05-26-nobody-cracks-open-a-programming-book-anymore]]
+- [[archive/threads/pikuma/2026-08-25-just-a-heads-up-that-i-have-added-a-few-new]]
