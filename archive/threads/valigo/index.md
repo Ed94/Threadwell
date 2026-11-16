@@ -15,3 +15,4 @@ tags:
 - [[archive/threads/valigo/2026-03-13-human-nature-is-to-oversell-things]]
 - [[archive/threads/valigo/2026-06-14-this-is-maybe-a-hot-take-but-i-think-game-devs]]
 - [[archive/threads/valigo/2026-07-15-gpu-people-are-so-pretentious]]
+- [[archive/threads/valigo/2026-08-29-programming-language-constructs-tier-list]]

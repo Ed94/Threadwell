@@ -12,3 +12,4 @@ tags:
 - [[archive/threads/TheGingerBill/2019-12-29-sequential-languages-are-still-the-bees-knees]]
 - [[archive/threads/TheGingerBill/2026-08-25-examples-of-odins-new-inline-asm-templates]]
 - [[archive/threads/TheGingerBill/2026-08-25-this-comment-was-asking-if-i-used-llms-agents-for]]
+- [[archive/threads/TheGingerBill/2026-10-31-this-is-a-minor-pet-peeve-of-mine-because-the]]

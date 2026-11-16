@@ -18,3 +18,5 @@ tags:
 - [[archive/threads/AgileJebrim/2026-05-30-i-dont-think-hardware-vendors-are-going-to]]
 - [[archive/threads/AgileJebrim/2026-08-22-start-with-spir-v-or-ptx-instead]]
 - [[archive/threads/AgileJebrim/2026-09-03-so-if-a-true-no-graphics-api-requires-0-lines-of]]
+- [[archive/threads/AgileJebrim/2026-09-08-what-separates-an-engineer-from-a-developer-is]]
+- [[archive/threads/AgileJebrim/2026-10-13-definitions-we-use-when-timing-hard-real-time]]

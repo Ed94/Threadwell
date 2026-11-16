@@ -59,6 +59,26 @@ Usual path:
 4. `tw.py refresh --id … --tip --branch <discovered-id> …` — capture them.
 5. `tw.py audit-media --id …` — confirm origin URLs are selected.
 
+### X Articles
+
+A post that points at an X Article (`https://x.com/i/article/<id>`) carries
+the article as a URL only. gallery-dl returns the article body with the
+`articles` option:
+
+```
+gallery-dl --cookies <cookies> --retries 0 \
+  -o text-tweets=true -o conversations=true -o articles=meta,html \
+  --dump-json https://x.com/i/status/<id>
+```
+
+`articles=meta,html` puts `id`, `title`, and `html` on the tweet entry.
+The html holds one `<section>` per paragraph and keeps the links.
+
+`ingest_gallery.py` does not read the article field. Before the emit, put
+the article title, the article URL, then the paragraphs into the post
+text in `thread_data.json`. The first line becomes the note title, and
+the directory renames to the article title.
+
 Site wikilinks must be `[[archive/threads/<handle>/<date-slug>]]`. Short `[[slug]]` 404s.
 
 ## Completeness
